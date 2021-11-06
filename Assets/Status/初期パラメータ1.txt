@@ -1,0 +1,10 @@
+
+HitPoint = 30; 
+
+strength = 10; vitality = 10;
+
+magic = 40; resist = 30;
+
+agility = 10; dexterity = 20; 
+
+luck = 15;
