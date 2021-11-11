@@ -3,27 +3,75 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using System.Timers;
+using System;
+//using System.Windows.Forms;
 
 public class Card : MonoBehaviour
 {
 
-
+    //オブジェクト
     GameObject cards;
+    //スプライト
     public Sprite[] tarot;                  // [22];
+    //タイマー
+    Timer timer;
+    //乱数
+    int random1;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Find
         this.cards = GameObject.Find("card");
-        cards.GetComponent<SpriteRenderer>().sprite = tarot[0];
-    }
 
+        timer = new Timer();
+        timer.Interval = 100;
+        timer.Elapsed += new ElapsedEventHandler(onTimer);
+        timer.Start();
+    }
     // Update is called once per frame
     void Update()
     {
-
+        //cards.GetComponent<SpriteRenderer>().sprite = tarot[0];
+    }
+    void onTimer(object source, ElapsedEventArgs e)
+    {
+        random1 = UnityEngine.Random.Range(0, 22);
+        Debug.Log(random1);
+        cards.GetComponent<SpriteRenderer>().sprite = tarot[random1];
     }
 }
+
+/*
+
+*/
+
+/*      
+ *      
+ *      
+
+    //public event EventHandler Tick;
+ *      
+ *      
+ *      //タイマー
+        //
+        //
+        //timer.Tick += onTimer;
+        //
+        //timer.Enabled = true;
+
+ *    
+ *    
+ *    public int timer;
+ *         timer += Time.deltaTime;
+        if (timer >= 3f)
+        {
+            Hoge();
+        }
+ */
+//Timer timer = new Timer();
+
 
 //public string[] tarotImage;
 //tarotImage = new string[22];
