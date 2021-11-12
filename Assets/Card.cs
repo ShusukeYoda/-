@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.Timers;
 using System;
+using Random = UnityEngine.Random;
 //using System.Windows.Forms;
 
 public class Card : MonoBehaviour
@@ -13,16 +14,19 @@ public class Card : MonoBehaviour
     //オブジェクト
     GameObject cards;
     //スプライト
-    public Sprite[] tarot;                  // [22];
+    public Sprite[] tarotImage;                  // [22];
     //タイマー
     Timer timer;
+    
     //乱数
-    int random1;
+    //Random random1 = Random.Range(0, 21);
+
+    int count = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        //Find
+       //Find
         this.cards = GameObject.Find("card");
 
         timer = new Timer();
@@ -37,14 +41,49 @@ public class Card : MonoBehaviour
     }
     void onTimer(object source, ElapsedEventArgs e)
     {
-        random1 = UnityEngine.Random.Range(0, 22);
-        Debug.Log(random1);
-        cards.GetComponent<SpriteRenderer>().sprite = tarot[random1];
+        //random1 = Random.Range(0, 21);
+        Debug.Log("test");
+        
+        cards.GetComponent<SpriteRenderer>().sprite = tarotImage[count];
+
+        if (count <= 22)
+        {
+            count++;
+        }
+        else
+        {
+            count = 0;
+        }
+    }
+    private void OnDisable()
+    {
+        timer.Dispose();
     }
 }
 
 /*
-
+       tarotImage[0] = 69px - RWS_Tarot_00_Fool;
+        tarotImage[1] = "68px-RWS_Tarot_01_Magician";
+        tarotImage[2] = "69px-RWS_Tarot_02_High_Priestess";
+        tarotImage[3] = "69px-RWS_Tarot_03_Empress";
+        tarotImage[4] = "70px-RWS_Tarot_04_Emperor";
+        tarotImage[5] = "68px-RWS_Tarot_05_Hierophant";
+        tarotImage[6] = "69px-RWS_Tarot_06_Lovers";
+        tarotImage[7] = "68px-RWS_Tarot_07_Chariot";
+        tarotImage[8] = "66px-RWS_Tarot_08_Strength";
+        tarotImage[9] = "69px-RWS_Tarot_09_Hermit";
+        tarotImage[10] = "69px-RWS_Tarot_10_Wheel_of_Fortune";
+        tarotImage[11] = "69px-RWS_Tarot_11_Justice";
+        tarotImage[12] = "68px-RWS_Tarot_12_Hanged_Man";
+        tarotImage[13] = "68px-RWS_Tarot_13_Death";
+        tarotImage[14] = "69px-RWS_Tarot_14_Temperance";
+        tarotImage[15] = "69px-RWS_Tarot_15_Devil";
+        tarotImage[16] = "70px-RWS_Tarot_16_Tower";
+        tarotImage[17] = "69px-RWS_Tarot_17_Star";
+        tarotImage[18] = "68px-RWS_Tarot_18_Moon";
+        tarotImage[19] = "69px-RWS_Tarot_19_Sun";
+        tarotImage[20] = "69px-RWS_Tarot_20_Judgement";
+        tarotImage[21] = "68px-RWS_Tarot_21_World";
 */
 
 /*      
