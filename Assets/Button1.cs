@@ -15,6 +15,7 @@ public class Button1 : MonoBehaviour
     float span = 0.1f;                           //0.1秒間隔
     float delta = 0;
     int count = 0;
+    //スタートストップ
     public bool moving;
     public bool one = false;
 
@@ -59,7 +60,33 @@ public class Button1 : MonoBehaviour
         moving = false;
         one = true;
     }
+    public void StoryClick()
+    {
+        if (one)
+        {
+
+        }
+    }
+
+    public List<string> images;
+    public void StoryCards()
+    {
+        images = new List<string>
+        {};
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 //画像ファイルを読み込んで、Imageオブジェクトを作成する
 //System.Drawing.Image img = System.Drawing.Image.FromFile("Images/66px-RWS_Tarot_08_Strength");
 
