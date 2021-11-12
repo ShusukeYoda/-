@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using System.Drawing;
 using Image = UnityEngine.UI.Image;
 
-public class Button : MonoBehaviour
+public class Button没 : MonoBehaviour
 {
 
     // Image コンポーネントを格納する変数

@@ -1214,7 +1214,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 809192184}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1052176993}
+        m_TargetAssemblyTypeName: Button1, Assembly-CSharp
+        m_MethodName: StopClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &809192184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,26 +1454,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 953821161}
-  - component: {fileID: 953821160}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: testObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &953821160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953821159}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dcb0b9daaaca0d4893aa60b0d3da8ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &953821161
 Transform:
   m_ObjectHideFlags: 0
@@ -1488,6 +1487,7 @@ GameObject:
   - component: {fileID: 1052176995}
   - component: {fileID: 1052176994}
   - component: {fileID: 1052176996}
+  - component: {fileID: 1052176993}
   m_Layer: 5
   m_Name: Button1
   m_TagString: Untagged
@@ -1515,6 +1515,43 @@ RectTransform:
   m_AnchoredPosition: {x: 903, y: 369}
   m_SizeDelta: {x: 197.8086, y: 48.9044}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1052176993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052176991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dbba8fb36d79440b690f698e363891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tarotImage:
+  - {fileID: 21300000, guid: dd7f024f4488033418d4e3749d4be69b, type: 3}
+  - {fileID: 21300000, guid: 0a8f4e0013ca5b24f8608e3003bff3ca, type: 3}
+  - {fileID: 21300000, guid: ae6b5fb89b736304291f27e8a7a06773, type: 3}
+  - {fileID: 21300000, guid: 680287a4c6a361d499d43039a06013ac, type: 3}
+  - {fileID: 21300000, guid: 0650a75f3462e154bbde6559d674a810, type: 3}
+  - {fileID: 21300000, guid: 6644040d7d1bc57468ae1beb2b10f675, type: 3}
+  - {fileID: 21300000, guid: cd1741abed68ec148b0fa9c7e2bc47a5, type: 3}
+  - {fileID: 21300000, guid: eaacca881273a0343ac8ea0d8deaa04a, type: 3}
+  - {fileID: 21300000, guid: 16787b0053da9554aad89854abc59224, type: 3}
+  - {fileID: 21300000, guid: c73ff0eb398a67e4ebb70b0529830656, type: 3}
+  - {fileID: 21300000, guid: af7842b730415854eaf25be25283d736, type: 3}
+  - {fileID: 21300000, guid: 0f30058e19bb53743b2985d559c4a04e, type: 3}
+  - {fileID: 21300000, guid: ba6663186a085924c88257233a9250c4, type: 3}
+  - {fileID: 21300000, guid: 449c40d06a099a546a90473d5e65767e, type: 3}
+  - {fileID: 21300000, guid: 741f81034d9f61d46a8169af82fe243d, type: 3}
+  - {fileID: 21300000, guid: 2a02887fdde4d3c41a8460089703cbbd, type: 3}
+  - {fileID: 21300000, guid: 622190c3bca6aa14c85bd70d40f4f043, type: 3}
+  - {fileID: 21300000, guid: bb43d8a37d69d96468e3c808f3b69c60, type: 3}
+  - {fileID: 21300000, guid: dad30891bee4b384c89dc6bc968d41ab, type: 3}
+  - {fileID: 21300000, guid: 2a86fbba1158c7147a035e2bb1951521, type: 3}
+  - {fileID: 21300000, guid: 6bb18e717e6e9824ebe5823aa61911fa, type: 3}
+  - {fileID: 21300000, guid: 9ac4dddcc3302a444afe3f94aaaf00b1, type: 3}
+  moving: 0
+  one: 0
 --- !u!114 &1052176994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1596,7 +1633,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1052176994}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1052176993}
+        m_TargetAssemblyTypeName: Button1, Assembly-CSharp
+        m_MethodName: StartClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1230040841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,6 +2184,7 @@ GameObject:
   - component: {fileID: 1786979609}
   - component: {fileID: 1786979608}
   - component: {fileID: 1786979610}
+  - component: {fileID: 1786979611}
   m_Layer: 0
   m_Name: card
   m_TagString: Untagged
@@ -2243,6 +2293,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2a86fbba1158c7147a035e2bb1951521, type: 3}
   - {fileID: 21300000, guid: 6bb18e717e6e9824ebe5823aa61911fa, type: 3}
   - {fileID: 21300000, guid: 9ac4dddcc3302a444afe3f94aaaf00b1, type: 3}
+--- !u!114 &1786979611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786979607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a94901402c43e284ab6c49d4f9230977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1791078568
 GameObject:
   m_ObjectHideFlags: 0

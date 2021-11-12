@@ -12,23 +12,25 @@ public class Card : MonoBehaviour
 {
 
     //オブジェクト
-    GameObject card;
+    //GameObject card;
     //スプライト
     public Sprite[] tarotImage;                  //0-21 変更しないこと(消える)
     //タイマー
-    float span = 0.1f;                           //0.1秒間隔
-    float delta = 0;
-    int count = 0;
+   // float span = 0.1f;                           //0.1秒間隔
+   // float delta = 0;
+   // int count = 0;
 
     // Start is called before the first frame update
     void Start()
     {
        //Find
-        this.card = GameObject.Find("card");
+        //this.card = GameObject.Find("card");
     }
     // Update is called once per frame
+
     void Update()
     {
+        /*
         this.delta += Time.deltaTime;
         if(this.delta > this.span && count < 21)
         {
@@ -43,6 +45,7 @@ public class Card : MonoBehaviour
             card.GetComponent<SpriteRenderer>().sprite = tarotImage[count];
             count++;
         }
+        */
     }
 }
 

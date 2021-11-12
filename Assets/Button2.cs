@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ce : MonoBehaviour
+public class Button2 : MonoBehaviour
 {
+    Button1 button1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,11 @@ public class Ce : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void StopClick()
+    {
+        button1.moving = false;
+        button1.one = true;
     }
 }
