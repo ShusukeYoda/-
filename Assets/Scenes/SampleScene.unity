@@ -2183,7 +2183,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 2ff291c58eb62744c8e34c7bb8540b6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2191,7 +2191,7 @@ SpriteRenderer:
   m_Size: {x: 1.84, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1786979609
@@ -2220,7 +2220,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda05beb15f6b844d9c8ae2d9fcd154a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tarotImage: []
+  tarotImage:
+  - {fileID: 21300000, guid: c7e3c9704da418b4588c716f21c95be0, type: 3}
+  - {fileID: 21300000, guid: 734a792e47a65254788e8790cf5712d6, type: 3}
+  - {fileID: 21300000, guid: ae2619ffd73f50343a997501e8498a0e, type: 3}
+  - {fileID: 21300000, guid: 404c461542bcad34ab5dd5d8c9c96a7d, type: 3}
+  - {fileID: 21300000, guid: 726ddae0a2c5aa94fa9ed00cb141bb32, type: 3}
+  - {fileID: 21300000, guid: e3d36d3a3c2b5aa489dfe37f728e0642, type: 3}
+  - {fileID: 21300000, guid: 850b476c67a27e04d9cb97ac6f513a81, type: 3}
+  - {fileID: 21300000, guid: 1e57a5fc8867ffa418106a43dfd5df84, type: 3}
+  - {fileID: 21300000, guid: 66653032d4a608c4a960fbff3b813919, type: 3}
+  - {fileID: 21300000, guid: 53f499abb3d562b41949d95f4458ffe4, type: 3}
+  - {fileID: 21300000, guid: b5bc4f858da290b4aa09b0995c320b8f, type: 3}
+  - {fileID: 21300000, guid: 24d74c90868b3c44a936ef429a005dde, type: 3}
+  - {fileID: 21300000, guid: d3ddeaa71ff3efd4b84acd31464b455f, type: 3}
+  - {fileID: 21300000, guid: 6c5cf631fa6d8c041a6239f562894117, type: 3}
+  - {fileID: 21300000, guid: d4d171b6d9d40e743925e3ccc7a7d93a, type: 3}
+  - {fileID: 21300000, guid: 9f47d94af2830f248abc69003a4c1f2f, type: 3}
+  - {fileID: 21300000, guid: b5c0e1f48a77f3843bae60ccba02883e, type: 3}
+  - {fileID: 21300000, guid: b03defb4253b2a24595031298df9c9b3, type: 3}
+  - {fileID: 21300000, guid: 1521d0b39cef80c4b927c815f35b1f7b, type: 3}
+  - {fileID: 21300000, guid: cca137e4a702d8a4eb4042fabb4a03d1, type: 3}
+  - {fileID: 21300000, guid: 07cffbb0f807b184cb2c6161743f5325, type: 3}
+  - {fileID: 21300000, guid: 4cc4b5ed46de9484d89fc44a0884dfe3, type: 3}
 --- !u!1 &1791078568
 GameObject:
   m_ObjectHideFlags: 0
