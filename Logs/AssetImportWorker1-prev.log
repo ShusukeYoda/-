@@ -3190,3 +3190,4 @@ Received Import Request.
   path: Assets/Story/index (42).jfif
   artifactKey: Guid(55d84e84041709644878b3503eb18b92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Story/index (42).jfif using Guid(55d84e84041709644878b3503eb18b92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd8fb988bf6633ed6e4ba2014b041132') in 0.052441 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
