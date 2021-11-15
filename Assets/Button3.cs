@@ -14,7 +14,6 @@ public class Button3 : MonoBehaviour
     void Start()
     {
         this.storyCard = GameObject.Find("storyCard");
-        storyCard.GetComponent<SpriteRenderer>().sprite = images[0];
     }
 
     // Update is called once per frame
@@ -28,6 +27,8 @@ public class Button3 : MonoBehaviour
         images = new List<Sprite>{};
     }
 }
+
+//storyCard.GetComponent<SpriteRenderer>().sprite = images[0];
 
 /*
 

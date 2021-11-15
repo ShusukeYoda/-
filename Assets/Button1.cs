@@ -8,8 +8,10 @@ public class Button1 : MonoBehaviour
 {
     //オブジェクト
     GameObject card;
+    GameObject storyCard;
 
-    public Sprite[] tarotImage;                  //消すと消える
+    public Sprite[] tarotImage;                  //配列ｽﾌﾟﾗｲﾄ 消すと消える
+    public List<Sprite> images;                  //Listｽﾌﾟﾗｲﾄ
 
     //タイマー
     float span = 0.1f;                           //0.1秒間隔
@@ -19,11 +21,19 @@ public class Button1 : MonoBehaviour
     public bool moving;
     public bool one = false;
 
+    //乱数・ボタン３用
+    public int random1;
+    //ストーリー進行num
+    public int sNum;
+    //ストーリー進行bool
+    public bool walk = true;
+
     // Start is called before the first frame update
     void Start()
     {
         //Find
         this.card = GameObject.Find("card");
+        this.storyCard = GameObject.Find("storyCard");
     }
 
     // Update is called once per frame
@@ -57,14 +67,30 @@ public class Button1 : MonoBehaviour
     }
     public void StopClick()
     {
-        moving = false;
-        one = true;
+        if (moving == true && one == false)
+        {
+            moving = false;
+            one = true;
+            walk = true;
+        }
     }
     public void StoryClick()
     {
         if (one)
         {
+            random1 = Random.Range(1, 4);
+            //int random1 = 2;   //ストーリーcardデバッグ用
+            sNum += random1;
 
+            if (sNum < 23 && walk == true)
+            {
+                storyCard.GetComponent<SpriteRenderer>().sprite = images[sNum];
+                //walk = false;
+            }
+            else if(sNum >= 23 && walk == true)
+            {
+                storyCard.GetComponent<SpriteRenderer>().sprite = images[42];
+            }
         }
     }
 }
