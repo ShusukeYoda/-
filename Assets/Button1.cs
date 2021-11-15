@@ -67,13 +67,6 @@ public class Button1 : MonoBehaviour
 
         }
     }
-
-    public List<string> images;
-    public void StoryCards()
-    {
-        images = new List<string>
-        {};
-    }
 }
 
 
