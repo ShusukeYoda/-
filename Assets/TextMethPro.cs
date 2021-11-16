@@ -10,8 +10,6 @@ public class TextMethPro : MonoBehaviour
     public GameObject TextTMP;
     private TextMeshProUGUI textMeshPro;
 
-   // Resources.Load<TextAsset>("Start");
-
     private void Awake()
     {
 
@@ -19,11 +17,13 @@ public class TextMethPro : MonoBehaviour
 
     void Start()
     {
-        //var textAsset = Resources.Load("Start") as TextAsset;
+        var textAsset = Resources.Load("Start") as TextAsset;
         textMeshPro = this.GetComponent<TextMeshProUGUI>();
-        textMeshPro.text = ("Start");
-        //textMeshPro.text = textAsset;
-        //Debug.Log(textAsset);
+
+        textMeshPro.text = textAsset.ToString();
+        Debug.Log(textAsset);
+
+        //textMeshPro.text = ("Start");
         //GetComponent<TextMesh>().text = "Start";
     }
 
@@ -35,7 +35,7 @@ public class TextMethPro : MonoBehaviour
 
     }
 }
-
+// Resources.Load<TextAsset>("Start");
 //textMP.text = "Start";
 
 /*  
