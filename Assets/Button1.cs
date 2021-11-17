@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -20,6 +22,9 @@ public class Button1 : MonoBehaviour
     GameObject Te6;
     GameObject Te7;
     GameObject Style;
+    GameObject Dropdown;
+    public GameObject TextTMP;
+    private TextMeshProUGUI textMeshPro;
 
     private Text text;
 
@@ -41,6 +46,7 @@ public class Button1 : MonoBehaviour
     //ストーリー進行bool
     public bool walk = true;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +62,7 @@ public class Button1 : MonoBehaviour
         this.Te6 = GameObject.Find("Te6");
         this.Te7 = GameObject.Find("Te7");
         this.Style = GameObject.Find("Style");
+        this.Dropdown = GameObject.Find("Dropdown");
     }
 
     // Update is called once per frame
@@ -102,7 +109,7 @@ public class Button1 : MonoBehaviour
     {
         if (one)
         {
-            random1 = Random.Range(1, 4);
+            random1 = UnityEngine.Random.Range(1, 4);
             //int random1 = 2;   //ストーリーcardデバッグ用
             sNum += random1;
 
@@ -117,7 +124,6 @@ public class Button1 : MonoBehaviour
             }
         }
     }
-
     public class Status
     {
         public int hp;
@@ -237,11 +243,115 @@ public class Button1 : MonoBehaviour
 
                 new Status {eHp = 30,eAtt = 40 ,eDef=15, eRes = 5, eAgi = 10}　 //１１住人
             };
+
+    public int command;
+    private void Command1()
+    {
+        if (one)
+        {
+            command = 1;
+            CommandSelected(command);
+        }
+    }
+    private void Command2()
+    {
+        if (one)
+        {
+            command = 2;
+            CommandSelected(command);
+        }
+    }
+    private void Command3()
+    {
+        if (one)
+        {
+            command = 3;
+            CommandSelected(command);
+        }
+    }
+    private void Command4()
+    {
+        if (one)
+        {
+            command = 4;
+            CommandSelected(command);
+        }
+    }
+
+    int critical;
+    private void CommandSelected(int co)
+    {
+        critical = UnityEngine.Random.Range(0, 50);
+
+        if (sNum == 1)
+        {
+            if (co == 0 && walk == false)
+            {
+                var textAsset = Resources.Load("話をする1") as TextAsset;
+                textMeshPro = this.GetComponent<TextMeshProUGUI>();
+                textMeshPro.text = textAsset.ToString();
+            }
+            if (co == 1 && walk == false)
+            {
+                var textAsset = Resources.Load("斬りつける1") as TextAsset;
+                textMeshPro = this.GetComponent<TextMeshProUGUI>();
+                textMeshPro.text = textAsset.ToString();
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    var textAsset = Resources.Load("魔法を使う1") as TextAsset;
+                    textMeshPro = this.GetComponent<TextMeshProUGUI>();
+                    textMeshPro.text = textAsset.ToString();
+
+                    magic -= 5;
+                    luck += 5;
+
+                    Te4.GetComponent<Text>().text = magic.ToString();
+                    Te3.GetComponent<Text>().text = luck.ToString();
+
+                    walk = true;
+                }
+                else
+                {
+                    var textAsset = Resources.Load("魔法を使う0") as TextAsset;
+                    textMeshPro = this.GetComponent<TextMeshProUGUI>();
+                    textMeshPro.text = textAsset.ToString();
+                }
+            }
+            if (co == 3 && walk == false)
+            {
+                var textAsset = Resources.Load("立ち去る1") as TextAsset;
+                textMeshPro = this.GetComponent<TextMeshProUGUI>();
+                textMeshPro.text = textAsset.ToString();
+
+                walk = true;
+            }
+        }
+    }
 }
 
 
 
+/*
+private void CommandSelected(object sender, EventArgs e)
+{
+    if (one)
+    {
 
+        string command = Dropdown;
+        int number = this.comandSelect[command];
+
+        Command(number);
+    }
+}
+
+private void Command(int number)
+{
+    throw new NotImplementedException();
+}
+  */
 
 
 

@@ -21,7 +21,7 @@ public class TextMethPro : MonoBehaviour
         textMeshPro = this.GetComponent<TextMeshProUGUI>();
 
         textMeshPro.text = textAsset.ToString();
-        Debug.Log(textAsset);
+        //Debug.Log(textAsset);
 
         //textMeshPro.text = ("Start");
         //GetComponent<TextMesh>().text = "Start";
