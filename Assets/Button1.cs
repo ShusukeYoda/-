@@ -63,6 +63,7 @@ public class Button1 : MonoBehaviour
         this.Te7 = GameObject.Find("Te7");
         this.Style = GameObject.Find("Style");
         this.Dropdown = GameObject.Find("Dropdown");
+        this.TextTMP = GameObject.Find("TextTMP");
     }
 
     // Update is called once per frame
@@ -134,9 +135,7 @@ public class Button1 : MonoBehaviour
 
         public int agi; public int dex; public int luc;
 
-        //public int wt = 510; //WT = クラス基本値+510-AGI+装備重量
-
-        public int eHp;
+       public int eHp;
 
         public int eAtt; public int eDef;
 
@@ -181,10 +180,6 @@ public class Button1 : MonoBehaviour
     {
         if (tarotImage[count]) //tarotImage[0] == 
         {
-            //StreamReader file = new StreamReader(@"Status\初期パラメータ0.txt");
-            //richTextBox1.Text = file.ReadToEnd();
-            //file.Close();
-
             Te0.GetComponent<Text>().text = select[v].hp.ToString();
             Te1.GetComponent<Text>().text = select[v].str.ToString();
             Te2.GetComponent<Text>().text = select[v].vit.ToString();
@@ -244,8 +239,160 @@ public class Button1 : MonoBehaviour
                 new Status {eHp = 30,eAtt = 40 ,eDef=15, eRes = 5, eAgi = 10}　 //１１住人
             };
 
-    public int command;
-    private void Command1()
+
+    public void OnClick()
+    {
+        Dropdown ddtmp; 
+
+        //「Dropdown」というGameObjectのDropDownコンポーネントを操作するために取得
+        ddtmp = GameObject.Find("Dropdown").GetComponent<Dropdown>();
+
+        //DropDownコンポーネントのoptionsから選択されてているvalueをindexで指定し、
+        //選択されている文字を取得
+        //string selectedvalue = ddtmp.options[ddtmp.value].text;
+
+        CommandSelected(ddtmp.value);
+    }
+
+    int critical;
+    public void CommandSelected(int co)
+    {
+        critical = UnityEngine.Random.Range(0, 50);
+
+        if (true)//sNum == 1
+        {
+            walk = false;
+
+            if (co == 0 && walk == false)
+            {
+                var textAsset = Resources.Load("話をする1") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            }
+            if (co == 1 && walk == false)
+            {
+                var textAsset = Resources.Load("斬りつける1") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    var textAsset = Resources.Load("魔法を使う1") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+                    magic -= 5;
+                    luck += 5;
+
+                    Te4.GetComponent<Text>().text = magic.ToString();
+                    Te3.GetComponent<Text>().text = luck.ToString();
+
+                    walk = true;
+                }
+                else
+                {
+                    var textAsset = Resources.Load("魔法を使う0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                }
+            }
+            if (co == 3 && walk == false)
+            {
+                var textAsset = Resources.Load("立ち去る1") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+                walk = true;
+            }
+        }
+    }
+}
+//FileStream f = new FileStream("斬りつける1", FileMode.Open, FileAccess.Read);
+//textMeshPro.text = f.ToString();
+
+//TextTMP.textMeshPro = this.GetComponent<TextMeshProUGUI>();
+//TextTMP.textMeshPro.text = textAsset.ToString();
+
+/*
+StreamReader line2 = new StreamReader("斬りつける1");
+textMeshPro.text = line2.ReadToEnd();
+line2.Close();
+*/
+/*
+if (ddtmp.value == 0)
+{
+    //ログに出力
+    Debug.Log(ddtmp.value);
+}
+if (ddtmp.value == 1)
+{
+    //ログに出力
+    Debug.Log(ddtmp.value);
+}
+if (ddtmp.value == 2)
+{
+    //ログに出力
+    Debug.Log(ddtmp.value);
+}
+if (ddtmp.value == 3)
+{
+    //ログに出力
+    Debug.Log(ddtmp.value);
+}
+*/
+
+//public int command;
+
+/*
+public void Command1(int command)
+{
+    if (one)
+    {
+        //command = 1;
+        Debug.Log(command);
+        CommandSelected(command);
+    }
+}
+*/
+
+
+/*
+[SerializeField] private Dropdown choiceMethod;
+[SerializeField] private Dropdown choiceMovie;
+public void OnClick()
+{
+    Debug.Log("choiceMethod : " + choiceMethod.value + "choiceMovie : " + choiceMovie.value);
+
+    if (choiceMovie.value == 0)
+    {
+        Debug.Log("choiceMovie : 0");
+    }
+    //DropdownのValueが1のとき（青が選択されているとき）
+    else if (choiceMovie.value == 1)
+    {
+        Debug.Log("choiceMovie : 1");
+    }
+    //DropdownのValueが2のとき（黄が選択されているとき）
+    else if (choiceMovie.value == 2)
+    {
+        Debug.Log("choiceMovie : 2");
+    }
+    if (choiceMethod.value == 0)
+    {
+        Debug.Log("choiceMethod : 0");
+    }
+    //DropdownのValueが1のとき（青が選択されているとき）
+    else if (choiceMethod.value == 1)
+    {
+        Debug.Log("choiceMethod : 1");
+    }
+
+}
+*/
+
+//StreamReader file = new StreamReader(@"Status\初期パラメータ0.txt");
+//richTextBox1.Text = file.ReadToEnd();
+//file.Close();
+
+/*
+   private void Command1()
     {
         if (one)
         {
@@ -277,62 +424,7 @@ public class Button1 : MonoBehaviour
             CommandSelected(command);
         }
     }
-
-    int critical;
-    private void CommandSelected(int co)
-    {
-        critical = UnityEngine.Random.Range(0, 50);
-
-        if (sNum == 1)
-        {
-            if (co == 0 && walk == false)
-            {
-                var textAsset = Resources.Load("話をする1") as TextAsset;
-                textMeshPro = this.GetComponent<TextMeshProUGUI>();
-                textMeshPro.text = textAsset.ToString();
-            }
-            if (co == 1 && walk == false)
-            {
-                var textAsset = Resources.Load("斬りつける1") as TextAsset;
-                textMeshPro = this.GetComponent<TextMeshProUGUI>();
-                textMeshPro.text = textAsset.ToString();
-            }
-            if (co == 2 && walk == false)
-            {
-                if (magic >= 5)
-                {
-                    var textAsset = Resources.Load("魔法を使う1") as TextAsset;
-                    textMeshPro = this.GetComponent<TextMeshProUGUI>();
-                    textMeshPro.text = textAsset.ToString();
-
-                    magic -= 5;
-                    luck += 5;
-
-                    Te4.GetComponent<Text>().text = magic.ToString();
-                    Te3.GetComponent<Text>().text = luck.ToString();
-
-                    walk = true;
-                }
-                else
-                {
-                    var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-                    textMeshPro = this.GetComponent<TextMeshProUGUI>();
-                    textMeshPro.text = textAsset.ToString();
-                }
-            }
-            if (co == 3 && walk == false)
-            {
-                var textAsset = Resources.Load("立ち去る1") as TextAsset;
-                textMeshPro = this.GetComponent<TextMeshProUGUI>();
-                textMeshPro.text = textAsset.ToString();
-
-                walk = true;
-            }
-        }
-    }
-}
-
-
+ */
 
 /*
 private void CommandSelected(object sender, EventArgs e)
