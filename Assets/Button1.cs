@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -137,7 +139,7 @@ public class Button1 : MonoBehaviour
 
         public int agi; public int dex; public int luc;
 
-       public int eHp;
+        public int eHp;
 
         public int eAtt; public int eDef;
 
@@ -244,7 +246,7 @@ public class Button1 : MonoBehaviour
 
     public void OnClick()
     {
-        Dropdown ddtmp; 
+        Dropdown ddtmp;
 
         //「Dropdown」というGameObjectのDropDownコンポーネントを操作するために取得
         ddtmp = GameObject.Find("Dropdown").GetComponent<Dropdown>();
@@ -268,7 +270,7 @@ public class Button1 : MonoBehaviour
     {
         cri = UnityEngine.Random.Range(0, 50);
 
-        if (sNum == 1)//sNum == 1
+        if (sNum == 1)
         {
             walk = false;
 
@@ -311,19 +313,19 @@ public class Button1 : MonoBehaviour
                 walk = true;
             }
         }
-        if (true)
+        if (true)//sNum == 2 debug
         {
             enemyNum = 0;
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
             {
-                var textAsset = Resources.Load("話をする1") as TextAsset;
+                var textAsset = Resources.Load("話をする2") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 1 && walk == false)
             {
 
-                var textAsset = Resources.Load("斬りつける1") as TextAsset;
+                var textAsset = Resources.Load("斬りつける2") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
@@ -352,9 +354,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 2 && walk == false)
             {
-                if (magic >= 5)
+                if (true)//magic >= 5 debug
                 {
-                    var textAsset = Resources.Load("魔法を使う1") as TextAsset;
+                    var textAsset = Resources.Load("魔法を使う2") as TextAsset;
                     TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                     battle = true;
@@ -367,18 +369,21 @@ public class Button1 : MonoBehaviour
                     eDamage = mAttack - enemys[enemyNum].eRes;
                     enemys[enemyNum].eHp -= eDamage;
 
-                    /*
-                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
-                    StreamWriter writer =
-                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
-                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
-                    writer.Close();
 
-                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
-                    Encoding.GetEncoding("Shift_JIS"), false);
-                    richTextBox1.Text = at.ReadToEnd();
-                    at.Close();
-                    */
+
+
+                    //using StreamWriter file = new("battle値", append: true);
+                    //await file.WriteLineAsync($"{eDamage}ダメージを与えた\n");
+
+                    //テキスト書き込み不全：途中
+                    using (var fs = new System.IO.StreamWriter("battle値", true, Encoding.GetEncoding("shift_jis")))
+                    {
+                        fs.Write("あいうえお");
+                    }
+
+                    var teAsBattle = Resources.Load("battle値") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
+
 
                     //battle テキストのクリア
                     using (var fileStream = new FileStream("battle値", FileMode.Open))
@@ -565,7 +570,7 @@ public class Button1 : MonoBehaviour
     {
         await Task.Delay(1000);
 
-        
+
         if (enemyNum == 0)
         {
             var textAsset = Resources.Load("battle2") as TextAsset;
@@ -637,3 +642,42 @@ public class Button1 : MonoBehaviour
         storyCard.GetComponent<SpriteRenderer>().sprite = images[23];
     }
 }
+
+
+
+/*
+ * 
+                    using StreamWriter file = new("battle値", append: true);
+                    await file.WriteLineAsync($"{eDamage}ダメージを与えた\n");
+*/
+//Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
+
+//File.AppendAllText("battle値", $"{eDamage}ダメージを与えた\n");
+/*
+StreamWriter writer =
+  new StreamWriter("battle値", true);
+writer.WriteLine($"{eDamage}ダメージを与えた\n");
+writer.Close();                   
+*/
+/*
+string filePath = "battle値";
+StreamWriter outStream = System.IO.File.CreateText(filePath);
+outStream.WriteLine($"{eDamage}ダメージを与えた\n");
+outStream.Close();
+*/
+
+/*
+IResourceWriter writer = new ResourceWriter("battle値");
+writer.AddResource("battle値", $"{eDamage}ダメージを与えた\n");
+writer.Close();
+*/
+
+//File.WriteAllBytes("battle値", $"{eDamage}ダメージを与えた\n");
+//var teAsBattle = AssetDatabase.LoadAssetAtPath<TextMeshProUGUI>("battle値");
+//UnityEngine.Object teAsBattle = AssetDatabase.LoadMainAssetAtPath("battle値");
+/*
+StreamReader at = new StreamReader(@"\battle値.txt",
+Encoding.GetEncoding("Shift_JIS"), false);
+richTextBox1.Text = at.ReadToEnd();
+at.Close();
+*/
