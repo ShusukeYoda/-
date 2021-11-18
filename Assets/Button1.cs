@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using TMPro;
 using UnityEngine;
@@ -254,12 +256,19 @@ public class Button1 : MonoBehaviour
         CommandSelected(ddtmp.value);
     }
 
-    int critical;
-    public void CommandSelected(int co)
-    {
-        critical = UnityEngine.Random.Range(0, 50);
+    bool battle = false;
 
-        if (true)//sNum == 1
+    int damage;
+    int eDamage;
+    int cri;
+
+    public int enemyNum;
+
+    public async void CommandSelected(int co)
+    {
+        cri = UnityEngine.Random.Range(0, 50);
+
+        if (sNum == 1)//sNum == 1
         {
             walk = false;
 
@@ -302,186 +311,329 @@ public class Button1 : MonoBehaviour
                 walk = true;
             }
         }
-    }
-}
-//FileStream f = new FileStream("斬りつける1", FileMode.Open, FileAccess.Read);
-//textMeshPro.text = f.ToString();
-
-//TextTMP.textMeshPro = this.GetComponent<TextMeshProUGUI>();
-//TextTMP.textMeshPro.text = textAsset.ToString();
-
-/*
-StreamReader line2 = new StreamReader("斬りつける1");
-textMeshPro.text = line2.ReadToEnd();
-line2.Close();
-*/
-/*
-if (ddtmp.value == 0)
-{
-    //ログに出力
-    Debug.Log(ddtmp.value);
-}
-if (ddtmp.value == 1)
-{
-    //ログに出力
-    Debug.Log(ddtmp.value);
-}
-if (ddtmp.value == 2)
-{
-    //ログに出力
-    Debug.Log(ddtmp.value);
-}
-if (ddtmp.value == 3)
-{
-    //ログに出力
-    Debug.Log(ddtmp.value);
-}
-*/
-
-//public int command;
-
-/*
-public void Command1(int command)
-{
-    if (one)
-    {
-        //command = 1;
-        Debug.Log(command);
-        CommandSelected(command);
-    }
-}
-*/
-
-
-/*
-[SerializeField] private Dropdown choiceMethod;
-[SerializeField] private Dropdown choiceMovie;
-public void OnClick()
-{
-    Debug.Log("choiceMethod : " + choiceMethod.value + "choiceMovie : " + choiceMovie.value);
-
-    if (choiceMovie.value == 0)
-    {
-        Debug.Log("choiceMovie : 0");
-    }
-    //DropdownのValueが1のとき（青が選択されているとき）
-    else if (choiceMovie.value == 1)
-    {
-        Debug.Log("choiceMovie : 1");
-    }
-    //DropdownのValueが2のとき（黄が選択されているとき）
-    else if (choiceMovie.value == 2)
-    {
-        Debug.Log("choiceMovie : 2");
-    }
-    if (choiceMethod.value == 0)
-    {
-        Debug.Log("choiceMethod : 0");
-    }
-    //DropdownのValueが1のとき（青が選択されているとき）
-    else if (choiceMethod.value == 1)
-    {
-        Debug.Log("choiceMethod : 1");
-    }
-
-}
-*/
-
-//StreamReader file = new StreamReader(@"Status\初期パラメータ0.txt");
-//richTextBox1.Text = file.ReadToEnd();
-//file.Close();
-
-/*
-   private void Command1()
-    {
-        if (one)
+        if (true)
         {
-            command = 1;
-            CommandSelected(command);
+            enemyNum = 0;
+            if (co == 0 && battle == false ||
+                co == 0 && walk == false)
+            {
+                var textAsset = Resources.Load("話をする1") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            }
+            if (co == 1 && walk == false)
+            {
+
+                var textAsset = Resources.Load("斬りつける1") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+
+                battle = true;
+
+                if (cri <= luck)
+                {
+                    eDamage = attack * 2 - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+                }
+                else
+                {
+                    eDamage = attack - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+                }
+
+                if (damage < 0)
+                {
+                    damage = 0;
+                }
+
+                await Task.Delay(2000);
+
+                //バトルメソッドへ
+                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    var textAsset = Resources.Load("魔法を使う1") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+                    battle = true;
+
+                    await Task.Delay(2000);
+
+                    magic -= 5;
+                    Te4.GetComponent<Text>().text = magic.ToString();
+
+                    eDamage = mAttack - enemys[enemyNum].eRes;
+                    enemys[enemyNum].eHp -= eDamage;
+
+                    /*
+                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
+                    StreamWriter writer =
+                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
+                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
+                    writer.Close();
+
+                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
+                    Encoding.GetEncoding("Shift_JIS"), false);
+                    richTextBox1.Text = at.ReadToEnd();
+                    at.Close();
+                    */
+
+                    //battle テキストのクリア
+                    using (var fileStream = new FileStream("battle値", FileMode.Open))
+                    {
+                        fileStream.SetLength(0);
+                    }
+
+                    if (enemys[enemyNum].eHp <= 0)
+                    {
+                        KilledBranch(enemyNum);
+                    }
+                }
+                else
+                {
+                    var textAsset = Resources.Load("魔法を使う0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                }
+            }
+            if (co == 3 && battle != true)
+            {
+                var textAsset = Resources.Load("立ち去る2") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+                walk = true;
+            }
         }
     }
-    private void Command2()
-    {
-        if (one)
-        {
-            command = 2;
-            CommandSelected(command);
-        }
-    }
-    private void Command3()
-    {
-        if (one)
-        {
-            command = 3;
-            CommandSelected(command);
-        }
-    }
-    private void Command4()
-    {
-        if (one)
-        {
-            command = 4;
-            CommandSelected(command);
-        }
-    }
- */
 
-/*
-private void CommandSelected(object sender, EventArgs e)
-{
-    if (one)
+    private async void SwBattlePre(int damage, int eDamage, int eAgi, int eHp)
     {
 
-        string command = Dropdown;
-        int number = this.comandSelect[command];
+        if (agility >= eAgi)
+        {
+            /*
+            Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
+            StreamWriter writer =
+              new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
+            writer.WriteLine($"{eDamage}ダメージを与えた\n");
+            writer.Close();
 
-        Command(number);
+
+            StreamReader at = new StreamReader(@"Battle\battle値.txt",
+            Encoding.GetEncoding("Shift_JIS"), false);
+            richTextBox1.Text = at.ReadToEnd();
+            at.Close();
+            */
+
+
+            //与ダメージ
+            enemys[enemyNum].eHp -= eDamage;
+
+            if (eHp <= 0)
+            {
+                await Task.Delay(1000);
+
+                KilledBranch(enemyNum);
+            }
+            else
+            {
+                await Task.Delay(2000);
+
+                SwBattlePost(damage, eDamage, eAgi, eHp);
+            }
+        }
+        else
+        {
+            /*
+            Encoding sjis = Encoding.GetEncoding("Shift_JIS");
+            StreamWriter writ =
+              new StreamWriter(@"Battle\battle値.txt", true, sjis);
+            writ.WriteLine($"{damage}ダメージを受けた\n");
+            writ.Close();
+
+
+            StreamReader df = new StreamReader(@"Battle\battle値.txt",
+            Encoding.GetEncoding("Shift_JIS"), false);
+            richTextBox1.Text = df.ReadToEnd();
+            df.Close();
+            */
+
+
+            //ステータスバーに表記
+            hitP -= damage;
+
+            if (hitP < 0)
+            {
+                hitP = 0;
+            }
+            Te0.GetComponent<Text>().text = hitP.ToString();
+
+            if (hitP <= 0)
+            {
+                await Task.Delay(2000);
+
+                GameOver();
+            }
+            else
+            {
+                await Task.Delay(2000);
+
+                SwBattlePost(damage, eDamage, eAgi, eHp);
+            }
+
+        }
+    }
+
+    private async void SwBattlePost(int damage, int eDamage, int eAgi, int eHp)
+    {
+        if (agility < eAgi)
+        {
+            /*
+            Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
+            StreamWriter writer =
+              new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
+            writer.WriteLine($"{eDamage}ダメージを与えた\n");
+            writer.Close();
+
+
+            StreamReader at = new StreamReader(@"Battle\battle値.txt",
+            Encoding.GetEncoding("Shift_JIS"), false);
+            richTextBox1.Text = at.ReadToEnd();
+            at.Close();
+            */
+
+
+            //与ダメージ
+            enemys[enemyNum].eHp -= eDamage;
+
+            if (eHp <= 0)
+            {
+                await Task.Delay(1000);
+
+                KilledBranch(enemyNum);
+            }
+
+            //battle テキストのクリア
+            using (var fileStream = new FileStream("battle値", FileMode.Open))
+            {
+                fileStream.SetLength(0);
+            }
+
+        }
+        else
+        {
+            /*
+            Encoding sjis = Encoding.GetEncoding("Shift_JIS");
+            StreamWriter writ =
+              new StreamWriter(@"Battle\battle値.txt", true, sjis);
+            writ.WriteLine($"{damage}ダメージを受けた\n");
+            writ.Close();
+
+
+            StreamReader df = new StreamReader(@"Battle\battle値.txt",
+            Encoding.GetEncoding("Shift_JIS"), false);
+            richTextBox1.Text = df.ReadToEnd();
+            df.Close();
+            */
+
+            //ステータスバーに表記
+            hitP -= damage;
+            if (hitP < 0)
+            {
+                hitP = 0;
+            }
+            Te0.GetComponent<Text>().text = hitP.ToString();
+
+            if (hitP <= 0)
+            {
+                await Task.Delay(2000);
+
+                GameOver();
+            }
+
+
+            //battle テキストのクリア
+            using (var fileStream = new FileStream("battle値", FileMode.Open))
+            {
+                fileStream.SetLength(0);
+            }
+        }
+    }
+
+    private async void KilledBranch(int enemyNum)
+    {
+        await Task.Delay(1000);
+
+        
+        if (enemyNum == 0)
+        {
+            var textAsset = Resources.Load("battle2") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+        }
+        /*
+        if (enemyNum == 1 || enemyNom == 3)
+        {
+            StreamReader line1 = new StreamReader(@"Battle\battle7.11.txt");
+            richTextBox1.Text = line1.ReadToEnd();
+        }
+        if (enemyNum == 2)
+        {
+            StreamReader line1 = new StreamReader(@"Battle\battle9.txt");
+            richTextBox1.Text = line1.ReadToEnd();
+        }
+        if (enemyNum == 4)
+        {
+            StreamReader line1 = new StreamReader(@"Battle\battle13.txt");
+            richTextBox1.Text = line1.ReadToEnd();
+        }
+        if (enemyNum == 5)
+        {
+            StreamReader line1 = new StreamReader(@"Battle\battle15.txt");
+            richTextBox1.Text = line1.ReadToEnd();
+        }
+        if (enemyNum == 6)
+        {
+            StreamReader line1 = new StreamReader(@"Battle\battle17.txt");
+            richTextBox1.Text = line1.ReadToEnd();
+        }
+        if (enemyNum == 7)
+        {
+            StreamReader line1 = new StreamReader(@"Battle\battle18.txt");
+            richTextBox1.Text = line1.ReadToEnd();
+        }
+        if (enemyNum == 8)
+        {
+            StreamReader line1 = new StreamReader(@"Battle\battle19.txt");
+            richTextBox1.Text = line1.ReadToEnd();
+        }
+        if (enemyNum == 9)
+        {
+            StreamReader line1 = new StreamReader(@"Battle\battle20.txt");
+            richTextBox1.Text = line1.ReadToEnd();
+        }
+        if (enemyNum == 10)
+        {
+            StreamReader line1 = new StreamReader(@"Battle\battle21.txt");
+            richTextBox1.Text = line1.ReadToEnd();
+        }
+        */
+
+        //テキストクリア
+        using (var fileStream = new FileStream("battle値", FileMode.Open))
+        {
+            fileStream.SetLength(0);
+        }
+        walk = true;
+        battle = false;
+    }
+    private void GameOver()
+    {
+        var textAsset = Resources.Load("GameOver") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+        walk = true;
+
+        storyCard.GetComponent<SpriteRenderer>().sprite = images[23];
     }
 }
-
-private void Command(int number)
-{
-    throw new NotImplementedException();
-}
-  */
-
-
-
-
-
-
-
-//画像ファイルを読み込んで、Imageオブジェクトを作成する
-//System.Drawing.Image img = System.Drawing.Image.FromFile("Images/66px-RWS_Tarot_08_Strength");
-
-/*
-GameObject card;
-Tarot tarot = new Tarot();
-int[] dice = new int[22];
-
-
-this.card = GameObject.Find("card");
-card.GetComponent<Tarot>();
-*/
-
-//int index = Random.Range(0, dice.Length);
-//card = Resources.Load < Sprite > "Images/66px-RWS_Tarot_08_Strength";
-
-//tarot.tarotImage[index];
-
-//Sprite sprite;
-//= Resources.Load<Sprite>("Images/66px-RWS_Tarot_08_Strength");
-//tarot.tarotImage[index];
-
-/*
-Tarot tarot = new Tarot();
-
-int[] dice = new int[22];
-int index = Random.Range(0, dice.Length);
-
-Sprite[] sprites = Resources.LoadAll<Sprite>("Images");
-*/
-
-
-//Sprite image = Resources.Load<Sprite>("Images/66px-RWS_Tarot_08_Strength");
-//card.ImageLocation = tarot.tarotImage[index];
