@@ -366,29 +366,29 @@ public class Button1 : MonoBehaviour
                     var textAsset = Resources.Load("魔法を使う2") as TextAsset;
                     TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
+                    //バトルフラグ
                     battle = true;
-
+                    //2秒待ち
                     await Task.Delay(2000);
-
+                    //mp消費
                     magic -= 5;
                     Te4.GetComponent<Text>().text = magic.ToString();
-
+                    //エネミーへダメ
                     eDamage = mAttack - enemys[enemyNum].eRes;
                     enemys[enemyNum].eHp -= eDamage;
 
-
+                    //テキスト書き込み
                     SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); //$"{eDamage}ダメージを与えた\n"
-
+                    //テキスト読み込み
                     var teAsBattle = Resources.Load("battle値") as TextAsset;
                     TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
 
-                    
                     //battle テキストのクリア
                     using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
                     {
                         fileStream.SetLength(0);
                     }
-
+                    //倒したとき
                     if (enemys[enemyNum].eHp <= 0)
                     {
                         KilledBranch(enemyNum);
@@ -422,30 +422,23 @@ public class Button1 : MonoBehaviour
 
         if (agility >= eAgi)
         {
-            /*
-            Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
-            StreamWriter writer =
-              new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
-            writer.WriteLine($"{eDamage}ダメージを与えた\n");
-            writer.Close();
-
-
-            StreamReader at = new StreamReader(@"Battle\battle値.txt",
-            Encoding.GetEncoding("Shift_JIS"), false);
-            richTextBox1.Text = at.ReadToEnd();
-            at.Close();
-            */
-
+            //テキスト書き込み
+            SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); //$"{eDamage}ダメージを与えた\n"
+            //テキスト読み込み
+            var teAsBattle = Resources.Load("battle値") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
 
             //与ダメージ
             enemys[enemyNum].eHp -= eDamage;
 
+            //倒したとき
             if (eHp <= 0)
             {
                 await Task.Delay(1000);
 
                 KilledBranch(enemyNum);
             }
+            //続行：通常
             else
             {
                 await Task.Delay(2000);
@@ -455,20 +448,11 @@ public class Button1 : MonoBehaviour
         }
         else
         {
-            /*
-            Encoding sjis = Encoding.GetEncoding("Shift_JIS");
-            StreamWriter writ =
-              new StreamWriter(@"Battle\battle値.txt", true, sjis);
-            writ.WriteLine($"{damage}ダメージを受けた\n");
-            writ.Close();
-
-
-            StreamReader df = new StreamReader(@"Battle\battle値.txt",
-            Encoding.GetEncoding("Shift_JIS"), false);
-            richTextBox1.Text = df.ReadToEnd();
-            df.Close();
-            */
-
+            //テキスト書き込み
+            SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); //$"{eDamage}ダメージを与えた\n"
+            //テキスト読み込み
+            var teAsBattle = Resources.Load("battle値") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
 
             //ステータスバーに表記
             hitP -= damage;
@@ -479,12 +463,14 @@ public class Button1 : MonoBehaviour
             }
             Te0.GetComponent<Text>().text = hitP.ToString();
 
+            //倒れたとき
             if (hitP <= 0)
             {
                 await Task.Delay(2000);
 
                 GameOver();
             }
+            //続行：通常
             else
             {
                 await Task.Delay(2000);
@@ -499,24 +485,16 @@ public class Button1 : MonoBehaviour
     {
         if (agility < eAgi)
         {
-            /*
-            Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
-            StreamWriter writer =
-              new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
-            writer.WriteLine($"{eDamage}ダメージを与えた\n");
-            writer.Close();
-
-
-            StreamReader at = new StreamReader(@"Battle\battle値.txt",
-            Encoding.GetEncoding("Shift_JIS"), false);
-            richTextBox1.Text = at.ReadToEnd();
-            at.Close();
-            */
-
+            //テキスト書き込み
+            SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); //$"{eDamage}ダメージを与えた\n"
+            //テキスト読み込み
+            var teAsBattle = Resources.Load("battle値") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
 
             //与ダメージ
             enemys[enemyNum].eHp -= eDamage;
 
+            //倒したとき
             if (eHp <= 0)
             {
                 await Task.Delay(1000);
@@ -525,7 +503,7 @@ public class Button1 : MonoBehaviour
             }
 
             //battle テキストのクリア
-            using (var fileStream = new FileStream("battle値", FileMode.Open))
+            using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
             {
                 fileStream.SetLength(0);
             }
@@ -533,19 +511,11 @@ public class Button1 : MonoBehaviour
         }
         else
         {
-            /*
-            Encoding sjis = Encoding.GetEncoding("Shift_JIS");
-            StreamWriter writ =
-              new StreamWriter(@"Battle\battle値.txt", true, sjis);
-            writ.WriteLine($"{damage}ダメージを受けた\n");
-            writ.Close();
-
-
-            StreamReader df = new StreamReader(@"Battle\battle値.txt",
-            Encoding.GetEncoding("Shift_JIS"), false);
-            richTextBox1.Text = df.ReadToEnd();
-            df.Close();
-            */
+            //テキスト書き込み
+            SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); //$"{eDamage}ダメージを与えた\n"
+            //テキスト読み込み
+            var teAsBattle = Resources.Load("battle値") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
 
             //ステータスバーに表記
             hitP -= damage;
@@ -555,6 +525,7 @@ public class Button1 : MonoBehaviour
             }
             Te0.GetComponent<Text>().text = hitP.ToString();
 
+            //倒れたとき
             if (hitP <= 0)
             {
                 await Task.Delay(2000);
@@ -562,9 +533,8 @@ public class Button1 : MonoBehaviour
                 GameOver();
             }
 
-
             //battle テキストのクリア
-            using (var fileStream = new FileStream("battle値", FileMode.Open))
+            using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
             {
                 fileStream.SetLength(0);
             }
@@ -629,8 +599,8 @@ public class Button1 : MonoBehaviour
         }
         */
 
-        //テキストクリア
-        using (var fileStream = new FileStream("battle値", FileMode.Open))
+        //battle テキストのクリア
+        using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
         {
             fileStream.SetLength(0);
         }
