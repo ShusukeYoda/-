@@ -11,6 +11,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class Button1 : MonoBehaviour
 {
@@ -68,6 +69,12 @@ public class Button1 : MonoBehaviour
         this.Style = GameObject.Find("Style");
         this.Dropdown = GameObject.Find("Dropdown");
         this.TextTMP = GameObject.Find("TextTMP");
+
+        //battle テキストのクリア
+        using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
+        {
+            fileStream.SetLength(0);
+        }
     }
 
     // Update is called once per frame
@@ -129,7 +136,7 @@ public class Button1 : MonoBehaviour
             }
         }
     }
-    public class Status
+    public class Status : Form
     {
         public int hp;
 
@@ -370,23 +377,14 @@ public class Button1 : MonoBehaviour
                     enemys[enemyNum].eHp -= eDamage;
 
 
-
-
-                    //using StreamWriter file = new("battle値", append: true);
-                    //await file.WriteLineAsync($"{eDamage}ダメージを与えた\n");
-
-                    //テキスト書き込み不全：途中
-                    using (var fs = new System.IO.StreamWriter("battle値", true, Encoding.GetEncoding("shift_jis")))
-                    {
-                        fs.Write("あいうえお");
-                    }
+                    SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); //$"{eDamage}ダメージを与えた\n"
 
                     var teAsBattle = Resources.Load("battle値") as TextAsset;
                     TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
 
-
+                    
                     //battle テキストのクリア
-                    using (var fileStream = new FileStream("battle値", FileMode.Open))
+                    using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
                     {
                         fileStream.SetLength(0);
                     }
@@ -410,6 +408,13 @@ public class Button1 : MonoBehaviour
                 walk = true;
             }
         }
+    }
+    public void SaveText(string path, string contents)
+    {
+        StreamWriter sw;
+        sw = new StreamWriter(path, true);
+        sw.WriteLine(contents);
+        sw.Close();
     }
 
     private async void SwBattlePre(int damage, int eDamage, int eAgi, int eHp)
