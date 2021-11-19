@@ -74,6 +74,7 @@ public class Button1 : MonoBehaviour
         using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
         {
             fileStream.SetLength(0);
+            Debug.Log("clear");
         }
     }
 
@@ -331,6 +332,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
+                hitP = 100; //debug
+                agility = 30; //debug
+                attack = 50; //debug
 
                 var textAsset = Resources.Load("斬りつける2") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -373,20 +377,24 @@ public class Button1 : MonoBehaviour
                     //mp消費
                     magic -= 5;
                     Te4.GetComponent<Text>().text = magic.ToString();
-                    //エネミーへダメ
+
+                    //与ダメ
                     eDamage = mAttack - enemys[enemyNum].eRes;
                     enemys[enemyNum].eHp -= eDamage;
 
                     //テキスト書き込み
-                    SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); //$"{eDamage}ダメージを与えた\n"
+                    SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); 
                     //テキスト読み込み
                     var teAsBattle = Resources.Load("battle値") as TextAsset;
                     TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
+
+                    await Task.Delay(1000);
 
                     //battle テキストのクリア
                     using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
                     {
                         fileStream.SetLength(0);
+                        Debug.Log("clear");
                     }
                     //倒したとき
                     if (enemys[enemyNum].eHp <= 0)
@@ -415,6 +423,8 @@ public class Button1 : MonoBehaviour
         sw = new StreamWriter(path, true);
         sw.WriteLine(contents);
         sw.Close();
+        Debug.Log(path);
+        Debug.Log(contents);
     }
 
     private async void SwBattlePre(int damage, int eDamage, int eAgi, int eHp)
@@ -423,10 +433,12 @@ public class Button1 : MonoBehaviour
         if (agility >= eAgi)
         {
             //テキスト書き込み
-            SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); //$"{eDamage}ダメージを与えた\n"
+            SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); 
             //テキスト読み込み
             var teAsBattle = Resources.Load("battle値") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
+
+            //
 
             //与ダメージ
             enemys[enemyNum].eHp -= eDamage;
@@ -449,10 +461,12 @@ public class Button1 : MonoBehaviour
         else
         {
             //テキスト書き込み
-            SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); //$"{eDamage}ダメージを与えた\n"
+            SaveText("Assets/Resources/battle値.txt", $"{damage}ダメージを受けた\n"); 
             //テキスト読み込み
             var teAsBattle = Resources.Load("battle値") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
+
+            //
 
             //ステータスバーに表記
             hitP -= damage;
@@ -486,10 +500,12 @@ public class Button1 : MonoBehaviour
         if (agility < eAgi)
         {
             //テキスト書き込み
-            SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); //$"{eDamage}ダメージを与えた\n"
+            SaveText("Assets/Resources/battle値.txt", $"{damage}ダメージを受けた\n"); 
             //テキスト読み込み
             var teAsBattle = Resources.Load("battle値") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
+
+            //
 
             //与ダメージ
             enemys[enemyNum].eHp -= eDamage;
@@ -502,20 +518,25 @@ public class Button1 : MonoBehaviour
                 KilledBranch(enemyNum);
             }
 
+            await Task.Delay(1000);
+
             //battle テキストのクリア
             using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
             {
                 fileStream.SetLength(0);
+                Debug.Log("clear");
             }
 
         }
         else
         {
             //テキスト書き込み
-            SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); //$"{eDamage}ダメージを与えた\n"
+            SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); 
             //テキスト読み込み
             var teAsBattle = Resources.Load("battle値") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
+
+            //
 
             //ステータスバーに表記
             hitP -= damage;
@@ -533,10 +554,13 @@ public class Button1 : MonoBehaviour
                 GameOver();
             }
 
+            await Task.Delay(1000);
+
             //battle テキストのクリア
             using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
             {
                 fileStream.SetLength(0);
+                Debug.Log("clear");
             }
         }
     }
@@ -603,6 +627,7 @@ public class Button1 : MonoBehaviour
         using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
         {
             fileStream.SetLength(0);
+            Debug.Log("clear");
         }
         walk = true;
         battle = false;
