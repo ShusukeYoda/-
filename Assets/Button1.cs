@@ -325,10 +325,6 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                //hitP = 100; //debug
-                //agility = 30; //debug
-                //attack = 50; //debug
-
                 var textAsset = Resources.Load("斬りつける2") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
@@ -651,8 +647,6 @@ public class Button1 : MonoBehaviour
                 {
                     eDamage = attack * 2 - enemys[enemyNum].eDef;
                     damage = enemys[enemyNum].eAtt - defense;
-
-
                 }
                 else
                 {
@@ -666,8 +660,6 @@ public class Button1 : MonoBehaviour
                 }
 
                 await Task.Delay(2000);
-
-                //System.Threading.Thread.Sleep(1000);  使用するとバグる
 
                 //バトルメソッドへ
                 SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
@@ -916,8 +908,6 @@ public class Button1 : MonoBehaviour
                 {
                     eDamage = attack * 2 - enemys[enemyNum].eDef;
                     damage = enemys[enemyNum].eAtt - defense;
-
-
                 }
                 else
                 {
@@ -931,8 +921,6 @@ public class Button1 : MonoBehaviour
                 }
 
                 await Task.Delay(2000);
-
-                //System.Threading.Thread.Sleep(1000);  使用するとバグる
 
                 //バトルメソッドへ
                 SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
@@ -1104,8 +1092,6 @@ public class Button1 : MonoBehaviour
                 {
                     eDamage = attack * 2 - enemys[enemyNum].eDef;
                     damage = enemys[enemyNum].eAtt - defense;
-
-
                 }
                 else
                 {
@@ -1119,8 +1105,6 @@ public class Button1 : MonoBehaviour
                 }
 
                 await Task.Delay(2000);
-
-                //System.Threading.Thread.Sleep(1000);  使用するとバグる
 
                 //バトルメソッドへ
                 SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
@@ -1326,8 +1310,6 @@ public class Button1 : MonoBehaviour
                 {
                     eDamage = attack * 2 - enemys[enemyNum].eDef;
                     damage = enemys[enemyNum].eAtt - defense;
-
-
                 }
                 else
                 {
@@ -1341,8 +1323,6 @@ public class Button1 : MonoBehaviour
                 }
 
                 await Task.Delay(2000);
-
-                //System.Threading.Thread.Sleep(1000);  使用するとバグる
 
                 //バトルメソッドへ
                 SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
@@ -1471,8 +1451,6 @@ public class Button1 : MonoBehaviour
                 {
                     eDamage = attack * 2 - enemys[enemyNum].eDef;
                     damage = enemys[enemyNum].eAtt - defense;
-
-
                 }
                 else
                 {
@@ -1486,8 +1464,6 @@ public class Button1 : MonoBehaviour
                 }
 
                 await Task.Delay(2000);
-
-                //System.Threading.Thread.Sleep(1000);  使用するとバグる
 
                 //バトルメソッドへ
                 SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
@@ -1633,8 +1609,6 @@ public class Button1 : MonoBehaviour
                 {
                     eDamage = attack * 2 - enemys[enemyNum].eDef;
                     damage = enemys[enemyNum].eAtt - defense;
-
-
                 }
                 else
                 {
@@ -1648,8 +1622,6 @@ public class Button1 : MonoBehaviour
                 }
 
                 await Task.Delay(2000);
-
-                //System.Threading.Thread.Sleep(1000);  使用するとバグる
 
                 //バトルメソッドへ
                 SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
@@ -1820,8 +1792,6 @@ public class Button1 : MonoBehaviour
                 {
                     eDamage = attack * 2 - enemys[enemyNum].eDef;
                     damage = enemys[enemyNum].eAtt - defense;
-
-
                 }
                 else
                 {
@@ -1835,8 +1805,6 @@ public class Button1 : MonoBehaviour
                 }
 
                 await Task.Delay(2000);
-
-                //System.Threading.Thread.Sleep(1000);  使用するとバグる
 
                 //バトルメソッドへ
                 SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
@@ -1923,8 +1891,6 @@ public class Button1 : MonoBehaviour
                 {
                     eDamage = attack * 2 - enemys[enemyNum].eDef;
                     damage = enemys[enemyNum].eAtt - defense;
-
-
                 }
                 else
                 {
@@ -1938,8 +1904,6 @@ public class Button1 : MonoBehaviour
                 }
 
                 await Task.Delay(2000);
-
-                //System.Threading.Thread.Sleep(1000);  使用するとバグる
 
                 //バトルメソッドへ
                 SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
@@ -1997,8 +1961,6 @@ public class Button1 : MonoBehaviour
                 {
                     eDamage = attack * 2 - enemys[enemyNum].eDef;
                     damage = enemys[enemyNum].eAtt - defense;
-
-
                 }
                 else
                 {
@@ -2012,7 +1974,6 @@ public class Button1 : MonoBehaviour
                 }
 
                 await Task.Delay(2000);
-
 
                 //バトルメソッドへ
                 SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
