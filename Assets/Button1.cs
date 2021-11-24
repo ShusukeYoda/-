@@ -425,9 +425,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é3.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é3") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 2 && walk == false)
             {
@@ -447,9 +446,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
             }
             if (co == 3 && walk == false)
@@ -469,9 +467,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é4.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é4") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 2 && walk == false)
             {
@@ -492,9 +489,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
             }
             if (co == 3 && walk == false)
@@ -521,9 +517,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é5.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é5") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 2 && walk == false)
             {
@@ -543,9 +538,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
             }
             if (co == 3 && walk == false)
@@ -572,9 +566,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é6.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é6") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 2 && walk == false)
             {
@@ -586,9 +579,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
             }
             if (co == 3 && walk == false)
@@ -653,9 +645,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é7.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é7") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 //battle
                 battle = true;
@@ -839,9 +830,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é8.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é8") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 2 && walk == false)
             {
@@ -853,9 +843,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
             }
             if (co == 3 && walk == false)
@@ -921,9 +910,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é9.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é9") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 //battle
                 battle = true;
@@ -1024,9 +1012,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é10.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é10") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 2 && walk == false)
             {
@@ -1047,9 +1034,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
             }
             if (co == 3 && walk == false)
@@ -1114,9 +1100,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é11.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é11") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 //battle
                 battle = true;
@@ -1292,9 +1277,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é12.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é12") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 2 && walk == false)
             {
@@ -1315,9 +1299,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
             }
             if (co == 3 && walk == false)
@@ -1341,9 +1324,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é13.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é13") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 //battle
                 battle = true;
@@ -1419,9 +1401,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
 
             }
@@ -1442,9 +1423,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é14.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é14") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 2 && walk == false)
             {
@@ -1465,9 +1445,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
             }
             if (co == 3 && walk == false)
@@ -1490,9 +1469,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é15.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é15") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 //battle
                 battle = true;
@@ -1539,9 +1517,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
             }
             if (co == 3 && battle != true)
@@ -1568,9 +1545,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é16.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é16") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 2 && walk == false)
             {
@@ -1590,9 +1566,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
             }
             if (co == 3 && walk == false)
@@ -1657,9 +1632,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é17.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é17") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 //battle
                 battle = true;
@@ -1845,9 +1819,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é18.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é18") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 //battle
                 battle = true;
@@ -1923,9 +1896,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
 
             }
@@ -1950,9 +1922,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é19.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é19") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 //battle
                 battle = true;
@@ -1999,9 +1970,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
             }
             if (co == 3 && battle != true)
@@ -2026,9 +1996,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é20.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é20") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 //battle
                 battle = true;
@@ -2103,9 +2072,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
 
             }
@@ -2132,15 +2100,13 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && battle != true)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é21a.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é21a") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 1 && walk == false && battle == true)
             {
-                StreamReader line2 = new StreamReader(@"Command\Ža‚è‚Â‚¯‚é21b.txt");
-                richTextBox1.Text = line2.ReadToEnd();
-                line2.Close();
+                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é21b") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 //battle
                 if (cri <= luck)
@@ -2178,9 +2144,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
             }
             if (co == 2 && walk == false && battle == true)
@@ -2229,9 +2194,8 @@ public class Button1 : MonoBehaviour
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\–‚–@‚ðŽg‚¤0.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("–‚–@‚ðŽg‚¤0") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
 
             }
