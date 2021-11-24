@@ -432,15 +432,14 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う1.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
-
+                    var textAsset = Resources.Load("魔法を使う1") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                     magic -= 5;
                     luck += 5;
-                    label13.Text = magic.ToString();
-                    label12.Text = luck.ToString();
+
+                    Te4.GetComponent<Text>().text = magic.ToString();
+                    Te3.GetComponent<Text>().text = luck.ToString();
 
                     walk = true;
                 }
@@ -474,16 +473,14 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う1.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
-
-
+                    var textAsset = Resources.Load("魔法を使う1") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                     magic -= 5;
                     luck += 5;
-                    label13.Text = magic.ToString();
-                    label12.Text = luck.ToString();
+
+                    Te4.GetComponent<Text>().text = magic.ToString();
+                    Te3.GetComponent<Text>().text = luck.ToString();
 
                     walk = true;
                 }
@@ -524,15 +521,14 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う1.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
-
+                    var textAsset = Resources.Load("魔法を使う1") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                     magic -= 5;
                     luck += 5;
-                    label13.Text = magic.ToString();
-                    label12.Text = luck.ToString();
+
+                    Te4.GetComponent<Text>().text = magic.ToString();
+                    Te3.GetComponent<Text>().text = luck.ToString();
 
                     walk = true;
                 }
@@ -1019,16 +1015,14 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う1.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
-
-
+                    var textAsset = Resources.Load("魔法を使う1") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                     magic -= 5;
                     luck += 5;
-                    label13.Text = magic.ToString();
-                    label12.Text = luck.ToString();
+
+                    Te4.GetComponent<Text>().text = magic.ToString();
+                    Te3.GetComponent<Text>().text = luck.ToString();
 
                     walk = true;
                 }
@@ -1284,16 +1278,14 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う1.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
-
-
+                    var textAsset = Resources.Load("魔法を使う1") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                     magic -= 5;
                     luck += 5;
-                    label13.Text = magic.ToString();
-                    label12.Text = luck.ToString();
+
+                    Te4.GetComponent<Text>().text = magic.ToString();
+                    Te3.GetComponent<Text>().text = luck.ToString();
 
                     walk = true;
                 }
@@ -1552,15 +1544,14 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う1.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
-
+                    var textAsset = Resources.Load("魔法を使う1") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                     magic -= 5;
                     luck += 5;
-                    label13.Text = magic.ToString();
-                    label12.Text = luck.ToString();
+
+                    Te4.GetComponent<Text>().text = magic.ToString();
+                    Te3.GetComponent<Text>().text = luck.ToString();
 
                     walk = true;
                 }
