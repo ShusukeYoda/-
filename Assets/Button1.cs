@@ -504,7 +504,7 @@ public class Button1 : MonoBehaviour
 
 
                 magic += 10;
-                label13.Text = magic.ToString();
+                Te4.GetComponent<Text>().text = magic.ToString();
 
                 walk = true;
             }
@@ -552,7 +552,7 @@ public class Button1 : MonoBehaviour
 
 
                 luck -= 10;
-                label12.Text = luck.ToString();
+                Te3.GetComponent<Text>().text = luck.ToString();
 
                 walk = true;
             }
@@ -565,9 +565,8 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う6.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
+                    var textAsset = Resources.Load("魔法を使う6") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
                 else
                 {
@@ -629,11 +628,6 @@ public class Button1 : MonoBehaviour
                     GameOver();
                 }
                 await Task.Delay(2000);
-
-                using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                {
-                    fileStream.SetLength(0);
-                }
             }
             if (co == 1 && walk == false)
             {
@@ -695,12 +689,6 @@ public class Button1 : MonoBehaviour
                     richTextBox1.Text = at.ReadToEnd();
                     at.Close();
 
-                    //battle テキストのクリア
-                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                    {
-                        fileStream.SetLength(0);
-                    }
-
                     if (enemys[enemyNum].eHp <= 0)
                     {
                         KilledBranch(enemyNum);
@@ -745,11 +733,6 @@ public class Button1 : MonoBehaviour
                         GameOver();
                     }
                     await Task.Delay(2000);
-
-                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                    {
-                        fileStream.SetLength(0);
-                    }
                 }
 
             }
@@ -795,11 +778,6 @@ public class Button1 : MonoBehaviour
                     GameOver();
                 }
                 await Task.Delay(2000);
-
-                using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                {
-                    fileStream.SetLength(0);
-                }
             }
         }
         if (sNum == 8)
@@ -890,10 +868,6 @@ public class Button1 : MonoBehaviour
                     GameOver();
                 }
                 await Task.Delay(2000);
-
-                using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                {
-                    fileStream.SetLength(0);
                 }
             }
             if (co == 1 && walk == false)
@@ -958,12 +932,6 @@ public class Button1 : MonoBehaviour
                     Encoding.GetEncoding("Shift_JIS"), false);
                     richTextBox1.Text = at.ReadToEnd();
                     at.Close();
-
-                    //テキストクリア
-                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                    {
-                        fileStream.SetLength(0);
-                    }
 
                     if (enemys[enemyNum].eHp <= 0)
                     {
@@ -1074,11 +1042,6 @@ public class Button1 : MonoBehaviour
                     GameOver();
                 }
                 await Task.Delay(2000);
-
-                using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                {
-                    fileStream.SetLength(0);
-                }
             }
             if (co == 1 && walk == false)
             {
@@ -1142,12 +1105,6 @@ public class Button1 : MonoBehaviour
                     richTextBox1.Text = at.ReadToEnd();
                     at.Close();
 
-                    //テキストクリア
-                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                    {
-                        fileStream.SetLength(0);
-                    }
-
                     if (enemys[enemyNum].eHp <= 0)
                     {
                         KilledBranch(enemyNum);
@@ -1192,12 +1149,6 @@ public class Button1 : MonoBehaviour
                         GameOver();
                     }
                     await Task.Delay(2000);
-
-                    //テキストクリア
-                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                    {
-                        fileStream.SetLength(0);
-                    }
                 }
 
             }
@@ -1239,11 +1190,6 @@ public class Button1 : MonoBehaviour
                     GameOver();
                 }
                 await Task.Delay(2000);
-
-                using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                {
-                    fileStream.SetLength(0);
-                }
             }
         }
         if (sNum == 12)
@@ -1359,12 +1305,6 @@ public class Button1 : MonoBehaviour
                     Encoding.GetEncoding("Shift_JIS"), false);
                     richTextBox1.Text = at.ReadToEnd();
                     at.Close();
-
-                    //テキストクリア
-                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                    {
-                        fileStream.SetLength(0);
-                    }
 
                     if (enemys[enemyNum].eHp <= 0)
                     {
@@ -1591,11 +1531,6 @@ public class Button1 : MonoBehaviour
                     GameOver();
                 }
                 await Task.Delay(2000);
-
-                using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                {
-                    fileStream.SetLength(0);
-                }
             }
             if (co == 1 && walk == false)
             {
@@ -1661,12 +1596,6 @@ public class Button1 : MonoBehaviour
                     richTextBox1.Text = at.ReadToEnd();
                     at.Close();
 
-                    //テキストクリア
-                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                    {
-                        fileStream.SetLength(0);
-                    }
-
                     if (enemys[enemyNum].eHp <= 0)
                     {
                         KilledBranch(enemyNum);
@@ -1711,12 +1640,6 @@ public class Button1 : MonoBehaviour
                         GameOver();
                     }
                     await Task.Delay(2000);
-
-                    //テキストクリア
-                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                    {
-                        fileStream.SetLength(0);
-                    }
                 }
 
             }
@@ -1761,12 +1684,6 @@ public class Button1 : MonoBehaviour
                     GameOver();
                 }
                 await Task.Delay(2000);
-
-                using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                {
-                    fileStream.SetLength(0);
-                }
-
             }
         }
         if (sNum == 18)
@@ -1841,12 +1758,6 @@ public class Button1 : MonoBehaviour
                     Encoding.GetEncoding("Shift_JIS"), false);
                     richTextBox1.Text = at.ReadToEnd();
                     at.Close();
-
-                    //テキストクリア
-                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                    {
-                        fileStream.SetLength(0);
-                    }
 
                     if (enemys[enemyNum].eHp <= 0)
                     {
@@ -2011,12 +1922,6 @@ public class Button1 : MonoBehaviour
                     richTextBox1.Text = at.ReadToEnd();
                     at.Close();
 
-                    //テキストクリア
-                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                    {
-                        fileStream.SetLength(0);
-                    }
-
                     if (enemys[enemyNum].eHp <= 0)
                     {
                         KilledBranch(enemyNum);
@@ -2133,12 +2038,6 @@ public class Button1 : MonoBehaviour
                     richTextBox1.Text = at.ReadToEnd();
                     at.Close();
 
-                    //テキストクリア
-                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
-                    {
-                        fileStream.SetLength(0);
-                    }
-
                     if (enemys[enemyNum].eHp <= 0)
                     {
                         KilledBranch(enemyNum);
@@ -2175,7 +2074,7 @@ public class Button1 : MonoBehaviour
         if (agility >= eAgi)
         {
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-            Debug.Log("チェックポイント");
+            UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
@@ -2199,7 +2098,7 @@ public class Button1 : MonoBehaviour
         else
         {
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
-            Debug.Log("チェックポイント");
+            UnityEngine.Debug.Log("チェックポイント");
             //
 
             //ステータスバーに表記
@@ -2234,7 +2133,7 @@ public class Button1 : MonoBehaviour
         if (agility >= eAgi)
         {
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
-            Debug.Log("チェックポイント");
+            UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
@@ -2254,7 +2153,7 @@ public class Button1 : MonoBehaviour
         else
         {
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-            Debug.Log("チェックポイント");
+            UnityEngine.Debug.Log("チェックポイント");
             //
 
             //ステータスバーに表記
