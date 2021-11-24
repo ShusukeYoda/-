@@ -71,6 +71,11 @@ public class Button1 : MonoBehaviour
         this.TextTMP = GameObject.Find("TextTMP");
 
         //battle テキストのクリア
+        TextClear();
+    }
+
+    private static void TextClear()
+    {
         using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
         {
             fileStream.SetLength(0);
@@ -391,11 +396,8 @@ public class Button1 : MonoBehaviour
                     await Task.Delay(1000);
 
                     //battle テキストのクリア
-                    using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
-                    {
-                        fileStream.SetLength(0);
-                        Debug.Log("clear");
-                    }
+                    TextClear();
+
                     //倒したとき
                     if (enemys[enemyNum].eHp <= 0)
                     {
@@ -521,11 +523,7 @@ public class Button1 : MonoBehaviour
             await Task.Delay(1000);
 
             //battle テキストのクリア
-            using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
-            {
-                fileStream.SetLength(0);
-                Debug.Log("clear");
-            }
+            TextClear();
 
         }
         else
@@ -557,11 +555,7 @@ public class Button1 : MonoBehaviour
             await Task.Delay(1000);
 
             //battle テキストのクリア
-            using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
-            {
-                fileStream.SetLength(0);
-                Debug.Log("clear");
-            }
+            TextClear();
         }
     }
 
@@ -624,11 +618,8 @@ public class Button1 : MonoBehaviour
         */
 
         //battle テキストのクリア
-        using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
-        {
-            fileStream.SetLength(0);
-            Debug.Log("clear");
-        }
+        TextClear();
+
         walk = true;
         battle = false;
     }
