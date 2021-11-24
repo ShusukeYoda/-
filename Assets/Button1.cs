@@ -2187,53 +2187,53 @@ public class Button1 : MonoBehaviour
             var textAsset = Resources.Load("battle2") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
         }
-        /*
-        if (enemyNum == 1 || enemyNom == 3)
+        
+        if (enemyNum == 1 || enemyNum == 3)
         {
-            StreamReader line1 = new StreamReader(@"Battle\battle7.11.txt");
-            richTextBox1.Text = line1.ReadToEnd();
+            var textAsset = Resources.Load("battle7.11") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
         }
         if (enemyNum == 2)
         {
-            StreamReader line1 = new StreamReader(@"Battle\battle9.txt");
-            richTextBox1.Text = line1.ReadToEnd();
-        }
+            var textAsset = Resources.Load("battle9") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+    }
         if (enemyNum == 4)
         {
-            StreamReader line1 = new StreamReader(@"Battle\battle13.txt");
-            richTextBox1.Text = line1.ReadToEnd();
-        }
+        var textAsset = Resources.Load("battle13") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+    }
         if (enemyNum == 5)
         {
-            StreamReader line1 = new StreamReader(@"Battle\battle15.txt");
-            richTextBox1.Text = line1.ReadToEnd();
-        }
+        var textAsset = Resources.Load("battle15") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+    }
         if (enemyNum == 6)
         {
-            StreamReader line1 = new StreamReader(@"Battle\battle17.txt");
-            richTextBox1.Text = line1.ReadToEnd();
-        }
+        var textAsset = Resources.Load("battle17") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+    }
         if (enemyNum == 7)
         {
-            StreamReader line1 = new StreamReader(@"Battle\battle18.txt");
-            richTextBox1.Text = line1.ReadToEnd();
-        }
+        var textAsset = Resources.Load("battle18") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+    }
         if (enemyNum == 8)
         {
-            StreamReader line1 = new StreamReader(@"Battle\battle19.txt");
-            richTextBox1.Text = line1.ReadToEnd();
-        }
+        var textAsset = Resources.Load("battle19") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+    }
         if (enemyNum == 9)
         {
-            StreamReader line1 = new StreamReader(@"Battle\battle20.txt");
-            richTextBox1.Text = line1.ReadToEnd();
-        }
+        var textAsset = Resources.Load("battle20") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+    }
         if (enemyNum == 10)
         {
-            StreamReader line1 = new StreamReader(@"Battle\battle21.txt");
-            richTextBox1.Text = line1.ReadToEnd();
-        }
-        */
+        var textAsset = Resources.Load("battle21") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+    }
+        
 
 
         walk = true;
