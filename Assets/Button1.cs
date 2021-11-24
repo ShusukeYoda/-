@@ -69,9 +69,6 @@ public class Button1 : MonoBehaviour
         this.Style = GameObject.Find("Style");
         this.Dropdown = GameObject.Find("Dropdown");
         this.TextTMP = GameObject.Find("TextTMP");
-
-        //battle テキストのクリア
-        TextClear();
     }
     // Update is called once per frame
     void Update()
@@ -97,14 +94,6 @@ public class Button1 : MonoBehaviour
         {
             card.GetComponent<SpriteRenderer>().sprite = tarotImage[count];
             ChooseTarot(count);
-        }
-    }
-    private static void TextClear()
-    {
-        using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
-        {
-            fileStream.SetLength(0);
-            Debug.Log("clear");
         }
     }
 
@@ -385,16 +374,15 @@ public class Button1 : MonoBehaviour
                     eDamage = mAttack - enemys[enemyNum].eRes;
                     enemys[enemyNum].eHp -= eDamage;
 
-                    //テキスト書き込み
-                    SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); 
-                    //テキスト読み込み
-                    var teAsBattle = Resources.Load("battle値") as TextAsset;
-                    TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
+                    if (eDamage < 0)
+                    {
+                        eDamage = 0;
+                    }
+
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
 
                     await Task.Delay(1000);
 
-                    //battle テキストのクリア
-                    TextClear();
 
                     //倒したとき
                     if (enemys[enemyNum].eHp <= 0)
@@ -417,27 +405,13 @@ public class Button1 : MonoBehaviour
             }
         }
     }
-    public void SaveText(string path, string contents)
-    {
-        StreamWriter sw;
-        sw = new StreamWriter(path, true);
-        sw.WriteLine(contents);
-        sw.Close();
-        Debug.Log(path);
-        Debug.Log(contents);
-    }
 
     private async void SwBattlePre(int damage, int eDamage, int eAgi, int eHp)
     {
 
         if (agility >= eAgi)
         {
-            //テキスト書き込み
-            SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); 
-            //テキスト読み込み
-            //var teAsBattle = Resources.Load("battle値") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"{ eDamage}ダメージを与えた\n";
-            //teAsBattle.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             Debug.Log("チェックポイント");
             //
 
@@ -461,12 +435,8 @@ public class Button1 : MonoBehaviour
         }
         else
         {
-            //テキスト書き込み
-            SaveText("Assets/Resources/battle値.txt", $"{damage}ダメージを受けた\n"); 
-            //テキスト読み込み
-            var teAsBattle = Resources.Load("battle値") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
-
+            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
+            Debug.Log("チェックポイント");
             //
 
             //ステータスバーに表記
@@ -498,14 +468,10 @@ public class Button1 : MonoBehaviour
 
     private async void SwBattlePost(int damage, int eDamage, int eAgi, int eHp)
     {
-        if (agility < eAgi)
+        if (agility >= eAgi)
         {
-            //テキスト書き込み
-            SaveText("Assets/Resources/battle値.txt", $"{damage}ダメージを受けた\n"); 
-            //テキスト読み込み
-            var teAsBattle = Resources.Load("battle値") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
-
+            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
+            Debug.Log("チェックポイント");
             //
 
             //与ダメージ
@@ -519,20 +485,13 @@ public class Button1 : MonoBehaviour
                 KilledBranch(enemyNum);
             }
 
-            await Task.Delay(1000);
-
-            //battle テキストのクリア
-            TextClear();
+            await Task.Delay(2000);
 
         }
         else
         {
-            //テキスト書き込み
-            SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); 
-            //テキスト読み込み
-            var teAsBattle = Resources.Load("battle値") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
-
+            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
+            Debug.Log("チェックポイント");
             //
 
             //ステータスバーに表記
@@ -551,10 +510,8 @@ public class Button1 : MonoBehaviour
                 GameOver();
             }
 
-            await Task.Delay(1000);
+            await Task.Delay(2000);
 
-            //battle テキストのクリア
-            TextClear();
         }
     }
 
@@ -616,8 +573,6 @@ public class Button1 : MonoBehaviour
         }
         */
 
-        //battle テキストのクリア
-        TextClear();
 
         walk = true;
         battle = false;
@@ -635,6 +590,49 @@ public class Button1 : MonoBehaviour
 
 
 
+
+
+
+
+
+
+
+
+/*　未使用メソッド
+ *　    //battle テキストのクリア
+        TextClear();
+
+    private static void TextClear()
+    {
+        using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
+        {
+            fileStream.SetLength(0);
+            Debug.Log("clear");
+        }
+    }
+
+        //saveテキスト
+    public void SaveText(string path, string contents)
+    {
+        StreamWriter sw;
+        sw = new StreamWriter(path, true);
+        sw.WriteLine(contents);
+        sw.Close();
+        Debug.Log(path);
+        Debug.Log(contents);
+    }
+*/
+
+
+/*　ダメージ処理の変更について
+            //テキスト書き込み
+            //SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); 
+            //テキスト読み込み
+            //var teAsBattle = Resources.Load("battle値") as TextAsset;
+   ここのみ  TextTMP.GetComponent<TextMeshProUGUI>().text = $"{ eDamage}ダメージを与えた\n";
+            //teAsBattle.ToString();
+            Debug.Log("チェックポイント");
+ */
 /*
  * 
                     using StreamWriter file = new("battle値", append: true);
