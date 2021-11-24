@@ -420,9 +420,8 @@ public class Button1 : MonoBehaviour
         {
             if (co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする3.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする3") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 1 && walk == false)
             {
@@ -455,9 +454,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && walk == false)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る3.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る3") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
                 walk = true;
             }
         }
@@ -465,9 +464,8 @@ public class Button1 : MonoBehaviour
         {
             if (co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする4.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする4") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 1 && walk == false)
             {
@@ -501,9 +499,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && walk == false)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る4.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る4") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
                 walk = true;
             }
         }
@@ -511,9 +509,8 @@ public class Button1 : MonoBehaviour
         {
             if (co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする5.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする5") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -553,9 +550,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && walk == false)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る5.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る5") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
                 walk = true;
             }
         }
@@ -563,9 +560,8 @@ public class Button1 : MonoBehaviour
         {
             if (co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする6.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする6") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -597,9 +593,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && walk == false)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る6.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る6") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
                 walk = true;
             }
         }
@@ -610,9 +606,8 @@ public class Button1 : MonoBehaviour
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする7.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする7") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -782,9 +777,8 @@ public class Button1 : MonoBehaviour
             if (co == 3 && battle == false ||
                 co == 3 && walk == false)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る7.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る7") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -833,9 +827,8 @@ public class Button1 : MonoBehaviour
         {
             if (co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする8.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする8") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -867,9 +860,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && walk == false)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る8.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る8") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
                 walk = true;
             }
         }
@@ -879,9 +872,8 @@ public class Button1 : MonoBehaviour
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする9.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする9") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -1017,9 +1009,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && battle != true)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る9.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る9") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
                 walk = true;
             }
         }
@@ -1027,9 +1019,8 @@ public class Button1 : MonoBehaviour
         {
             if (co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする10.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする10") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 1 && walk == false)
             {
@@ -1063,9 +1054,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && walk == false)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る10.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る10") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
                 walk = true;
             }
         }
@@ -1076,9 +1067,8 @@ public class Button1 : MonoBehaviour
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする11.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする11") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -1250,9 +1240,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && walk == false)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る11.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る11") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
                 await Task.Delay(2000);
@@ -1298,9 +1287,8 @@ public class Button1 : MonoBehaviour
         {
             if (co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする12.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする12") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 1 && walk == false)
             {
@@ -1334,9 +1322,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && walk == false)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る12.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る12") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
                 walk = true;
             }
         }
@@ -1346,9 +1334,8 @@ public class Button1 : MonoBehaviour
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする13.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする13") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
@@ -1440,9 +1427,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && battle != true)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る13.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る13") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
                 walk = true;
             }
         }
@@ -1450,9 +1437,8 @@ public class Button1 : MonoBehaviour
         {
             if (co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする14.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする14") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
             if (co == 1 && walk == false)
             {
@@ -1486,9 +1472,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && walk == false)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る14.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る14") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
                 walk = true;
             }
         }
@@ -1497,9 +1483,8 @@ public class Button1 : MonoBehaviour
             enemyNum = 5;
             if (co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする15.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする15") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
@@ -1561,9 +1546,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && battle != true)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る15.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る15") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
                 walk = true;
             }
         }
@@ -1571,9 +1556,8 @@ public class Button1 : MonoBehaviour
         {
             if (co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする16.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする16") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -1613,9 +1597,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && walk == false)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る16.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る16") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
                 walk = true;
             }
         }
@@ -1626,9 +1610,8 @@ public class Button1 : MonoBehaviour
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする17.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする17") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -1802,9 +1785,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && battle != true)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る17.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る17") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -1856,9 +1838,8 @@ public class Button1 : MonoBehaviour
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする18.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする18") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
@@ -1950,9 +1931,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && battle != true)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る18.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る18") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
@@ -1963,9 +1943,8 @@ public class Button1 : MonoBehaviour
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする19.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする19") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
@@ -2027,9 +2006,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && battle != true)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る19.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る19") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
                 walk = true;
             }
         }
@@ -2039,9 +2018,8 @@ public class Button1 : MonoBehaviour
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする20.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする20") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
 
@@ -2134,9 +2112,8 @@ public class Button1 : MonoBehaviour
 
             if (co == 3 && battle != true)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る20.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る20") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
@@ -2147,9 +2124,8 @@ public class Button1 : MonoBehaviour
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
             {
-                StreamReader line1 = new StreamReader(@"Command\話をする21.txt");
-                richTextBox1.Text = line1.ReadToEnd();
-                line1.Close();
+                var textAsset = Resources.Load("話をする21") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
 
@@ -2262,9 +2238,8 @@ public class Button1 : MonoBehaviour
             if (co == 3 && battle != true ||
                 co == 0 && walk == false)
             {
-                StreamReader line4 = new StreamReader(@"Command\立ち去る21.txt");
-                richTextBox1.Text = line4.ReadToEnd();
-                line4.Close();
+                var textAsset = Resources.Load("立ち去る21") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
