@@ -73,16 +73,6 @@ public class Button1 : MonoBehaviour
         //battle テキストのクリア
         TextClear();
     }
-
-    private static void TextClear()
-    {
-        using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
-        {
-            fileStream.SetLength(0);
-            Debug.Log("clear");
-        }
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -107,6 +97,14 @@ public class Button1 : MonoBehaviour
         {
             card.GetComponent<SpriteRenderer>().sprite = tarotImage[count];
             ChooseTarot(count);
+        }
+    }
+    private static void TextClear()
+    {
+        using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
+        {
+            fileStream.SetLength(0);
+            Debug.Log("clear");
         }
     }
 
@@ -437,9 +435,10 @@ public class Button1 : MonoBehaviour
             //テキスト書き込み
             SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); 
             //テキスト読み込み
-            var teAsBattle = Resources.Load("battle値") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = teAsBattle.ToString();
-
+            //var teAsBattle = Resources.Load("battle値") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = $"{ eDamage}ダメージを与えた\n";
+            //teAsBattle.ToString();
+            Debug.Log("チェックポイント");
             //
 
             //与ダメージ
