@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Resources;
 using System.Text;
@@ -313,7 +314,7 @@ public class Button1 : MonoBehaviour
                 walk = true;
             }
         }
-        if (true)//sNum == 2 debug
+        if (sNum == 2)//sNum == 2 debug
         {
             enemyNum = 0;
             if (co == 0 && battle == false ||
@@ -324,9 +325,9 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                hitP = 100; //debug
-                agility = 30; //debug
-                attack = 50; //debug
+                //hitP = 100; //debug
+                //agility = 30; //debug
+                //attack = 50; //debug
 
                 var textAsset = Resources.Load("斬りつける2") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -356,8 +357,8 @@ public class Button1 : MonoBehaviour
                 SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
             }
             if (co == 2 && walk == false)
-            {
-                if (true)//magic >= 5 debug
+{
+                if (magic >= 5)//magic >= 5 debug
                 {
                     var textAsset = Resources.Load("魔法を使う2") as TextAsset;
                     TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -404,7 +405,1878 @@ public class Button1 : MonoBehaviour
                 walk = true;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+        if (sNum == 3)
+        {
+            if (co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする3.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける3.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う1.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+                    magic -= 5;
+                    luck += 5;
+                    label13.Text = magic.ToString();
+                    label12.Text = luck.ToString();
+
+                    walk = true;
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+            }
+            if (co == 3 && walk == false)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る3.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+                walk = true;
+            }
+        }
+        if (sNum == 4)
+        {
+            if (co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする4.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける4.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う1.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+
+                    magic -= 5;
+                    luck += 5;
+                    label13.Text = magic.ToString();
+                    label12.Text = luck.ToString();
+
+                    walk = true;
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+            }
+            if (co == 3 && walk == false)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る4.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+                walk = true;
+            }
+        }
+        if (sNum == 5)
+        {
+            if (co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする5.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+
+
+
+                magic += 10;
+                label13.Text = magic.ToString();
+
+                walk = true;
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける5.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う1.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+                    magic -= 5;
+                    luck += 5;
+                    label13.Text = magic.ToString();
+                    label12.Text = luck.ToString();
+
+                    walk = true;
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+            }
+            if (co == 3 && walk == false)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る5.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+                walk = true;
+            }
+        }
+        if (sNum == 6)
+        {
+            if (co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする6.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+
+
+
+                luck -= 10;
+                label12.Text = luck.ToString();
+
+                walk = true;
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける6.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う6.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+            }
+            if (co == 3 && walk == false)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る6.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+                walk = true;
+            }
+        }
+        if (sNum == 7)
+        {
+            enemyNum = 1;
+            battle = true;
+            if (co == 0 && battle == false ||
+                co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする7.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+
+
+
+
+
+                await Task.Delay(2000);
+
+                damage = attack - enemys[enemyNum].eDef;
+
+                Encoding sjis = Encoding.GetEncoding("Shift_JIS");
+                StreamWriter writ =
+                  new StreamWriter(@"Battle\battle値.txt", true, sjis);
+                writ.WriteLine($"{damage}ダメージを受けた\n");
+                writ.Close();
+
+
+                StreamReader df = new StreamReader(@"Battle\battle値.txt",
+                Encoding.GetEncoding("Shift_JIS"), false);
+                richTextBox1.Text = df.ReadToEnd();
+                df.Close();
+
+                //ステータスバーに表記
+                hitP -= damage;
+
+                if (hitP < 0)
+                {
+                    hitP = 0;
+                }
+                label9.Text = hitP.ToString();
+
+                if (hitP <= 0)
+                {
+                    await Task.Delay(2000);
+
+                    GameOver();
+                }
+                await Task.Delay(2000);
+
+                using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                {
+                    fileStream.SetLength(0);
+                }
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける7.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+
+                //battle
+                battle = true;
+
+                if (cri <= luck)
+                {
+                    eDamage = attack * 2 - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+
+
+                }
+                else
+                {
+                    eDamage = attack - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+                }
+
+                if (damage < 0)
+                {
+                    damage = 0;
+                }
+
+                await Task.Delay(2000);
+
+                //System.Threading.Thread.Sleep(1000);  使用するとバグる
+
+                //バトルメソッドへ
+                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う7.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+
+
+
+                    await Task.Delay(2000);
+
+                    magic -= 5;
+                    label13.Text = magic.ToString();
+
+                    eDamage = mAttack - enemys[enemyNum].eRes;
+                    enemys[enemyNum].eHp -= eDamage;
+
+                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
+                    StreamWriter writer =
+                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
+                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
+                    writer.Close();
+
+                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
+                    Encoding.GetEncoding("Shift_JIS"), false);
+                    richTextBox1.Text = at.ReadToEnd();
+                    at.Close();
+
+                    //battle テキストのクリア
+                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                    {
+                        fileStream.SetLength(0);
+                    }
+
+                    if (enemys[enemyNum].eHp <= 0)
+                    {
+                        KilledBranch(enemyNum);
+                    }
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う7b.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+
+
+                    await Task.Delay(2000);
+
+                    damage = attack - enemys[0].eDef;
+
+                    Encoding sjis = Encoding.GetEncoding("Shift_JIS");
+                    StreamWriter writ =
+                      new StreamWriter(@"Battle\battle値.txt", true, sjis);
+                    writ.WriteLine($"{damage}ダメージを受けた\n");
+                    writ.Close();
+
+
+                    StreamReader df = new StreamReader(@"Battle\battle値.txt",
+                    Encoding.GetEncoding("Shift_JIS"), false);
+                    richTextBox1.Text = df.ReadToEnd();
+                    df.Close();
+
+                    //ステータスバーに表記
+                    hitP -= damage;
+
+                    if (hitP < 0)
+                    {
+                        hitP = 0;
+                    }
+                    label9.Text = hitP.ToString();
+
+                    if (hitP <= 0)
+                    {
+                        await Task.Delay(2000);
+
+                        GameOver();
+                    }
+                    await Task.Delay(2000);
+
+                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                    {
+                        fileStream.SetLength(0);
+                    }
+                }
+
+            }
+            if (co == 3 && battle == false ||
+                co == 3 && walk == false)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る7.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+
+
+
+
+
+                await Task.Delay(2000);
+
+                damage = attack - enemys[enemyNum].eDef;
+
+                Encoding sjis = Encoding.GetEncoding("Shift_JIS");
+                StreamWriter writ =
+                  new StreamWriter(@"Battle\battle値.txt", true, sjis);
+                writ.WriteLine($"{damage}ダメージを受けた\n");
+                writ.Close();
+
+
+                StreamReader df = new StreamReader(@"Battle\battle値.txt",
+                Encoding.GetEncoding("Shift_JIS"), false);
+                richTextBox1.Text = df.ReadToEnd();
+                df.Close();
+
+                //ステータスバーに表記
+                hitP -= damage;
+
+                if (hitP < 0)
+                {
+                    hitP = 0;
+                }
+                label9.Text = hitP.ToString();
+
+                if (hitP <= 0)
+                {
+                    await Task.Delay(2000);
+
+                    GameOver();
+                }
+                await Task.Delay(2000);
+
+                using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                {
+                    fileStream.SetLength(0);
+                }
+            }
+        }
+        if (sNum == 8)
+        {
+            if (co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする8.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+
+
+
+                strength += 10;
+                label10.Text = strength.ToString();
+
+                walk = true;
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける8.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う8.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+            }
+            if (co == 3 && walk == false)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る8.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+                walk = true;
+            }
+        }
+        if (sNum == 9)
+        {
+            enemyNum = 2;
+            if (co == 0 && battle == false ||
+                co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする9.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+
+
+
+
+
+                battle = true;
+
+                await Task.Delay(2000);
+
+                damage = attack - enemys[enemyNum].eDef;
+
+                Encoding sjis = Encoding.GetEncoding("Shift_JIS");
+                StreamWriter writ =
+                  new StreamWriter(@"Battle\battle値.txt", true, sjis);
+                writ.WriteLine($"{damage}ダメージを受けた\n");
+                writ.Close();
+
+
+                StreamReader df = new StreamReader(@"Battle\battle値.txt",
+                Encoding.GetEncoding("Shift_JIS"), false);
+                richTextBox1.Text = df.ReadToEnd();
+                df.Close();
+
+                //ステータスバーに表記
+                hitP -= damage;
+
+                if (hitP < 0)
+                {
+                    hitP = 0;
+                }
+                label9.Text = hitP.ToString();
+
+                if (hitP <= 0)
+                {
+                    await Task.Delay(2000);
+
+                    GameOver();
+                }
+                await Task.Delay(2000);
+
+                using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                {
+                    fileStream.SetLength(0);
+                }
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける9.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+
+                //battle
+                battle = true;
+
+                if (cri <= luck)
+                {
+                    eDamage = attack * 2 - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+
+
+                }
+                else
+                {
+                    eDamage = attack - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+                }
+
+                if (damage < 0)
+                {
+                    damage = 0;
+                }
+
+                await Task.Delay(2000);
+
+                //System.Threading.Thread.Sleep(1000);  使用するとバグる
+
+                //バトルメソッドへ
+                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+            }
+            if (co == 2 && battle != true ||
+                co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う9a.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+
+
+
+                    battle = true;
+
+                    await Task.Delay(2000);
+
+                    magic -= 5;
+                    label13.Text = magic.ToString();
+
+                    eDamage = mAttack - enemys[enemyNum].eRes;
+                    enemys[enemyNum].eHp -= eDamage;
+
+                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
+                    StreamWriter writer =
+                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
+                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
+                    writer.Close();
+
+                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
+                    Encoding.GetEncoding("Shift_JIS"), false);
+                    richTextBox1.Text = at.ReadToEnd();
+                    at.Close();
+
+                    //テキストクリア
+                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                    {
+                        fileStream.SetLength(0);
+                    }
+
+                    if (enemys[enemyNum].eHp <= 0)
+                    {
+                        KilledBranch(enemyNum);
+                    }
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う9b.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                    battle = true;
+                }
+
+            }
+            if (co == 3 && battle != true)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る9.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+                walk = true;
+            }
+        }
+        if (sNum == 10)
+        {
+            if (co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする10.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける10.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う1.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+
+                    magic -= 5;
+                    luck += 5;
+                    label13.Text = magic.ToString();
+                    label12.Text = luck.ToString();
+
+                    walk = true;
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+            }
+            if (co == 3 && walk == false)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る10.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+                walk = true;
+            }
+        }
+        if (sNum == 11)
+        {
+            enemyNum = 3;
+            battle = true;
+            if (co == 0 && battle == false ||
+                co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする11.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+
+
+
+
+
+                await Task.Delay(2000);
+
+                damage = attack - enemys[enemyNum].eDef;
+
+                Encoding sjis = Encoding.GetEncoding("Shift_JIS");
+                StreamWriter writ =
+                  new StreamWriter(@"Battle\battle値.txt", true, sjis);
+                writ.WriteLine($"{damage}ダメージを受けた\n");
+                writ.Close();
+
+
+                StreamReader df = new StreamReader(@"Battle\battle値.txt",
+                Encoding.GetEncoding("Shift_JIS"), false);
+                richTextBox1.Text = df.ReadToEnd();
+                df.Close();
+
+                //ステータスバーに表記
+                hitP -= damage;
+
+                if (hitP < 0)
+                {
+                    hitP = 0;
+                }
+                label9.Text = hitP.ToString();
+
+                if (hitP <= 0)
+                {
+                    await Task.Delay(2000);
+
+                    GameOver();
+                }
+                await Task.Delay(2000);
+
+                using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                {
+                    fileStream.SetLength(0);
+                }
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける11.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+
+                //battle
+                battle = true;
+
+                if (cri <= luck)
+                {
+                    eDamage = attack * 2 - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+
+
+                }
+                else
+                {
+                    eDamage = attack - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+                }
+
+                if (damage < 0)
+                {
+                    damage = 0;
+                }
+
+                await Task.Delay(2000);
+
+                //System.Threading.Thread.Sleep(1000);  使用するとバグる
+
+                //バトルメソッドへ
+                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う11.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+
+
+
+                    battle = true;
+
+                    await Task.Delay(2000);
+
+                    magic -= 5;
+                    label13.Text = magic.ToString();
+
+                    eDamage = mAttack - enemys[enemyNum].eRes;
+                    enemys[enemyNum].eHp -= eDamage;
+
+                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
+                    StreamWriter writer =
+                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
+                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
+                    writer.Close();
+
+                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
+                    Encoding.GetEncoding("Shift_JIS"), false);
+                    richTextBox1.Text = at.ReadToEnd();
+                    at.Close();
+
+                    //テキストクリア
+                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                    {
+                        fileStream.SetLength(0);
+                    }
+
+                    if (enemys[enemyNum].eHp <= 0)
+                    {
+                        KilledBranch(enemyNum);
+                    }
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う11b.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+
+
+                    await Task.Delay(2000);
+
+                    damage = attack - enemys[enemyNum].eDef;
+
+                    Encoding sjis = Encoding.GetEncoding("Shift_JIS");
+                    StreamWriter writ =
+                      new StreamWriter(@"Battle\battle値.txt", true, sjis);
+                    writ.WriteLine($"{damage}ダメージを受けた\n");
+                    writ.Close();
+
+
+                    StreamReader df = new StreamReader(@"Battle\battle値.txt",
+                    Encoding.GetEncoding("Shift_JIS"), false);
+                    richTextBox1.Text = df.ReadToEnd();
+                    df.Close();
+
+                    //ステータスバーに表記
+                    hitP -= damage;
+
+                    if (hitP < 0)
+                    {
+                        hitP = 0;
+                    }
+                    label9.Text = hitP.ToString();
+
+                    if (hitP <= 0)
+                    {
+                        await Task.Delay(2000);
+
+                        GameOver();
+                    }
+                    await Task.Delay(2000);
+
+                    //テキストクリア
+                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                    {
+                        fileStream.SetLength(0);
+                    }
+                }
+
+            }
+            if (co == 3 && walk == false)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る11.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+
+
+                await Task.Delay(2000);
+
+                damage = attack - enemys[enemyNum].eDef;
+
+                Encoding sjis = Encoding.GetEncoding("Shift_JIS");
+                StreamWriter writ =
+                  new StreamWriter(@"Battle\battle値.txt", true, sjis);
+                writ.WriteLine($"{damage}ダメージを受けた\n");
+                writ.Close();
+
+
+                StreamReader df = new StreamReader(@"Battle\battle値.txt",
+                Encoding.GetEncoding("Shift_JIS"), false);
+                richTextBox1.Text = df.ReadToEnd();
+                df.Close();
+
+                //ステータスバーに表記
+                hitP -= damage;
+
+                if (hitP < 0)
+                {
+                    hitP = 0;
+                }
+                label9.Text = hitP.ToString();
+
+                if (hitP <= 0)
+                {
+                    await Task.Delay(2000);
+
+                    GameOver();
+                }
+                await Task.Delay(2000);
+
+                using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                {
+                    fileStream.SetLength(0);
+                }
+            }
+        }
+        if (sNum == 12)
+        {
+            if (co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする12.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける12.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う1.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+
+                    magic -= 5;
+                    luck += 5;
+                    label13.Text = magic.ToString();
+                    label12.Text = luck.ToString();
+
+                    walk = true;
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+            }
+            if (co == 3 && walk == false)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る12.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+                walk = true;
+            }
+        }
+        if (sNum == 13)
+        {
+            enemyNum = 4;
+            if (co == 0 && battle == false ||
+                co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする13.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+
+                battle = true;
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける13.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+
+                //battle
+                battle = true;
+
+                if (cri <= luck)
+                {
+                    eDamage = attack * 2 - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+
+
+                }
+                else
+                {
+                    eDamage = attack - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+                }
+
+                if (damage < 0)
+                {
+                    damage = 0;
+                }
+
+                await Task.Delay(2000);
+
+                //System.Threading.Thread.Sleep(1000);  使用するとバグる
+
+                //バトルメソッドへ
+                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う13.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+
+
+
+                    battle = true;
+
+                    await Task.Delay(2000);
+
+                    magic -= 5;
+                    label13.Text = magic.ToString();
+
+                    eDamage = mAttack - enemys[enemyNum].eRes;
+                    enemys[enemyNum].eHp -= eDamage;
+
+                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
+                    StreamWriter writer =
+                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
+                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
+                    writer.Close();
+
+                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
+                    Encoding.GetEncoding("Shift_JIS"), false);
+                    richTextBox1.Text = at.ReadToEnd();
+                    at.Close();
+
+                    //テキストクリア
+                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                    {
+                        fileStream.SetLength(0);
+                    }
+
+                    if (enemys[enemyNum].eHp <= 0)
+                    {
+                        KilledBranch(enemyNum);
+                    }
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+
+            }
+            if (co == 3 && battle != true)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る13.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+                walk = true;
+            }
+        }
+        if (sNum == 14)
+        {
+            if (co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする14.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける14.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う14.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+
+                    magic -= 5;
+                    hitP += 10;
+                    label13.Text = magic.ToString();
+                    label9.Text = hitP.ToString();
+
+                    walk = true;
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+            }
+            if (co == 3 && walk == false)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る14.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+                walk = true;
+            }
+        }
+        if (sNum == 15)
+        {
+            enemyNum = 5;
+            if (co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする15.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+
+                battle = true;
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける15.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+
+                //battle
+                battle = true;
+
+                if (cri <= luck)
+                {
+                    eDamage = attack * 2 - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+
+
+                }
+                else
+                {
+                    eDamage = attack - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+                }
+
+                if (damage < 0)
+                {
+                    damage = 0;
+                }
+
+                await Task.Delay(2000);
+
+                //System.Threading.Thread.Sleep(1000);  使用するとバグる
+
+                //バトルメソッドへ
+                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う15.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+
+                    magic -= 5;
+                    label13.Text = magic.ToString();
+
+                    walk = true;
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+            }
+            if (co == 3 && battle != true)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る15.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+                walk = true;
+            }
+        }
+        if (sNum == 16)
+        {
+            if (co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする16.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+
+
+
+                luck += 10;
+                label12.Text = luck.ToString();
+
+                walk = true;
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける16.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う1.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+                    magic -= 5;
+                    luck += 5;
+                    label13.Text = magic.ToString();
+                    label12.Text = luck.ToString();
+
+                    walk = true;
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+            }
+            if (co == 3 && walk == false)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る16.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+                walk = true;
+            }
+        }
+        if (sNum == 17)
+        {
+            enemyNum = 6;
+            battle = true;
+            if (co == 0 && battle == false ||
+                co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする17.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+
+
+
+
+
+                await Task.Delay(2000);
+
+                damage = attack - enemys[enemyNum].eDef;
+
+                Encoding sjis = Encoding.GetEncoding("Shift_JIS");
+                StreamWriter writ =
+                  new StreamWriter(@"Battle\battle値.txt", true, sjis);
+                writ.WriteLine($"{damage}ダメージを受けた\n");
+                writ.Close();
+
+
+                StreamReader df = new StreamReader(@"Battle\battle値.txt",
+                Encoding.GetEncoding("Shift_JIS"), false);
+                richTextBox1.Text = df.ReadToEnd();
+                df.Close();
+
+                //ステータスバーに表記
+                hitP -= damage;
+
+                if (hitP < 0)
+                {
+                    hitP = 0;
+                }
+                label9.Text = hitP.ToString();
+
+                if (hitP <= 0)
+                {
+                    await Task.Delay(2000);
+
+                    GameOver();
+                }
+                await Task.Delay(2000);
+
+                using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                {
+                    fileStream.SetLength(0);
+                }
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける17.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+
+                //battle
+                battle = true;
+
+                if (cri <= luck)
+                {
+                    eDamage = attack * 2 - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+
+
+                }
+                else
+                {
+                    eDamage = attack - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+                }
+
+                if (damage < 0)
+                {
+                    damage = 0;
+                }
+
+                await Task.Delay(2000);
+
+                //System.Threading.Thread.Sleep(1000);  使用するとバグる
+
+                //バトルメソッドへ
+                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う17.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+
+
+                    magic -= 5;
+                    label13.Text = magic.ToString();
+
+                    battle = true;
+
+                    await Task.Delay(2000);
+
+                    magic -= 5;
+                    label13.Text = magic.ToString();
+
+                    eDamage = mAttack - enemys[enemyNum].eRes;
+                    enemys[enemyNum].eHp -= eDamage;
+
+                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
+                    StreamWriter writer =
+                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
+                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
+                    writer.Close();
+
+                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
+                    Encoding.GetEncoding("Shift_JIS"), false);
+                    richTextBox1.Text = at.ReadToEnd();
+                    at.Close();
+
+                    //テキストクリア
+                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                    {
+                        fileStream.SetLength(0);
+                    }
+
+                    if (enemys[enemyNum].eHp <= 0)
+                    {
+                        KilledBranch(enemyNum);
+                    }
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う17b.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+
+
+                    await Task.Delay(2000);
+
+                    damage = attack - enemys[enemyNum].eDef;
+
+                    Encoding sjis = Encoding.GetEncoding("Shift_JIS");
+                    StreamWriter writ =
+                      new StreamWriter(@"Battle\battle値.txt", true, sjis);
+                    writ.WriteLine($"{damage}ダメージを受けた\n");
+                    writ.Close();
+
+
+                    StreamReader df = new StreamReader(@"Battle\battle値.txt",
+                    Encoding.GetEncoding("Shift_JIS"), false);
+                    richTextBox1.Text = df.ReadToEnd();
+                    df.Close();
+
+                    //ステータスバーに表記
+                    hitP -= damage;
+
+                    if (hitP < 0)
+                    {
+                        hitP = 0;
+                    }
+                    label9.Text = hitP.ToString();
+
+                    if (hitP <= 0)
+                    {
+                        await Task.Delay(2000);
+
+                        GameOver();
+                    }
+                    await Task.Delay(2000);
+
+                    //テキストクリア
+                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                    {
+                        fileStream.SetLength(0);
+                    }
+                }
+
+            }
+            if (co == 3 && battle != true)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る17.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+
+
+
+
+
+                await Task.Delay(2000);
+
+                damage = attack - enemys[enemyNum].eDef;
+
+                Encoding sjis = Encoding.GetEncoding("Shift_JIS");
+                StreamWriter writ =
+                  new StreamWriter(@"Battle\battle値.txt", true, sjis);
+                writ.WriteLine($"{damage}ダメージを受けた\n");
+                writ.Close();
+
+
+                StreamReader df = new StreamReader(@"Battle\battle値.txt",
+                Encoding.GetEncoding("Shift_JIS"), false);
+                richTextBox1.Text = df.ReadToEnd();
+                df.Close();
+
+                //ステータスバーに表記
+                hitP -= damage;
+
+                if (hitP < 0)
+                {
+                    hitP = 0;
+                }
+                label9.Text = hitP.ToString();
+
+                if (hitP <= 0)
+                {
+                    await Task.Delay(2000);
+
+                    GameOver();
+                }
+                await Task.Delay(2000);
+
+                using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                {
+                    fileStream.SetLength(0);
+                }
+
+            }
+        }
+        if (sNum == 18)
+        {
+            enemyNum = 7;
+            if (co == 0 && battle == false ||
+                co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする18.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+
+                battle = true;
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける18.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+
+                //battle
+                battle = true;
+
+                if (cri <= luck)
+                {
+                    eDamage = attack * 2 - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+
+
+                }
+                else
+                {
+                    eDamage = attack - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+                }
+
+                if (damage < 0)
+                {
+                    damage = 0;
+                }
+
+                await Task.Delay(2000);
+
+                //System.Threading.Thread.Sleep(1000);  使用するとバグる
+
+                //バトルメソッドへ
+                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う18.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+
+
+
+                    battle = true;
+
+                    await Task.Delay(2000);
+
+                    magic -= 5;
+                    label13.Text = magic.ToString();
+
+                    eDamage = mAttack - enemys[enemyNum].eRes;
+                    enemys[enemyNum].eHp -= eDamage;
+
+                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
+                    StreamWriter writer =
+                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
+                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
+                    writer.Close();
+
+                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
+                    Encoding.GetEncoding("Shift_JIS"), false);
+                    richTextBox1.Text = at.ReadToEnd();
+                    at.Close();
+
+                    //テキストクリア
+                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                    {
+                        fileStream.SetLength(0);
+                    }
+
+                    if (enemys[enemyNum].eHp <= 0)
+                    {
+                        KilledBranch(enemyNum);
+                    }
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+
+            }
+            if (co == 3 && battle != true)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る18.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+
+                battle = true;
+            }
+        }
+        if (sNum == 19)
+        {
+            enemyNum = 8;
+            if (co == 0 && battle == false ||
+                co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする19.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+
+                battle = true;
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける19.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+
+                //battle
+                battle = true;
+
+                if (cri <= luck)
+                {
+                    eDamage = attack * 2 - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+
+
+                }
+                else
+                {
+                    eDamage = attack - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+                }
+
+                if (damage < 0)
+                {
+                    damage = 0;
+                }
+
+                await Task.Delay(2000);
+
+                //System.Threading.Thread.Sleep(1000);  使用するとバグる
+
+                //バトルメソッドへ
+                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う19.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+
+                    magic -= 5;
+                    label13.Text = magic.ToString();
+
+                    walk = true;
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+            }
+            if (co == 3 && battle != true)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る19.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+                walk = true;
+            }
+        }
+        if (sNum == 20)
+        {
+            enemyNum = 9;
+            if (co == 0 && battle == false ||
+                co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする20.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+
+                battle = true;
+
+            }
+            if (co == 1 && walk == false)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける20.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+
+                //battle
+                battle = true;
+
+                if (cri <= luck)
+                {
+                    eDamage = attack * 2 - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+
+
+                }
+                else
+                {
+                    eDamage = attack - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+                }
+
+                if (damage < 0)
+                {
+                    damage = 0;
+                }
+
+                await Task.Delay(2000);
+
+
+                //バトルメソッドへ
+                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+            }
+            if (co == 2 && walk == false)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う20.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+
+
+
+                    battle = true;
+
+                    await Task.Delay(2000);
+
+                    magic -= 5;
+                    label13.Text = magic.ToString();
+
+                    eDamage = mAttack - enemys[enemyNum].eRes;
+                    enemys[enemyNum].eHp -= eDamage;
+
+                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
+                    StreamWriter writer =
+                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
+                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
+                    writer.Close();
+
+                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
+                    Encoding.GetEncoding("Shift_JIS"), false);
+                    richTextBox1.Text = at.ReadToEnd();
+                    at.Close();
+
+                    //テキストクリア
+                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                    {
+                        fileStream.SetLength(0);
+                    }
+
+                    if (enemys[enemyNum].eHp <= 0)
+                    {
+                        KilledBranch(enemyNum);
+                    }
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+
+            }
+
+            if (co == 3 && battle != true)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る20.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+
+                battle = true;
+            }
+        }
+        if (sNum == 21)
+        {
+            enemyNum = 10;
+            if (co == 0 && battle == false ||
+                co == 0 && walk == false)
+            {
+                StreamReader line1 = new StreamReader(@"Command\話をする21.txt");
+                richTextBox1.Text = line1.ReadToEnd();
+                line1.Close();
+
+                battle = true;
+
+            }
+            if (co == 1 && battle != true)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける21a.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+            }
+            if (co == 1 && walk == false && battle == true)
+            {
+                StreamReader line2 = new StreamReader(@"Command\斬りつける21b.txt");
+                richTextBox1.Text = line2.ReadToEnd();
+                line2.Close();
+
+                //battle
+                if (cri <= luck)
+                {
+                    eDamage = attack * 2 - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+
+
+                }
+                else
+                {
+                    eDamage = attack - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+                }
+
+                if (damage < 0)
+                {
+                    damage = 0;
+                }
+
+                await Task.Delay(2000);
+
+
+                //バトルメソッドへ
+                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+            }
+
+            if (co == 2 && battle != true)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line2 = new StreamReader(@"Command\魔法を使う21b.txt");
+                    richTextBox1.Text = line2.ReadToEnd();
+                    line2.Close();
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+            }
+            if (co == 2 && walk == false && battle == true)
+            {
+                if (magic >= 5)
+                {
+                    StreamReader line3 = new StreamReader(@"Command\魔法を使う21.txt");
+                    richTextBox1.Text = line3.ReadToEnd();
+                    line3.Close();
+
+
+
+
+
+                    battle = true;
+
+                    await Task.Delay(2000);
+
+                    magic -= 5;
+                    label13.Text = magic.ToString();
+
+                    eDamage = mAttack - enemys[enemyNum].eRes;
+                    enemys[enemyNum].eHp -= eDamage;
+
+                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
+                    StreamWriter writer =
+                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
+                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
+                    writer.Close();
+
+                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
+                    Encoding.GetEncoding("Shift_JIS"), false);
+                    richTextBox1.Text = at.ReadToEnd();
+                    at.Close();
+
+                    //テキストクリア
+                    using (var fileStream = new FileStream(@"Battle\battle値.txt", FileMode.Open))
+                    {
+                        fileStream.SetLength(0);
+                    }
+
+                    if (enemys[enemyNum].eHp <= 0)
+                    {
+                        KilledBranch(enemyNum);
+                    }
+                }
+                else
+                {
+                    StreamReader line0 = new StreamReader(@"Command\魔法を使う0.txt");
+                    richTextBox1.Text = line0.ReadToEnd();
+                    line0.Close();
+                }
+
+            }
+            if (co == 3 && battle != true ||
+                co == 0 && walk == false)
+            {
+                StreamReader line4 = new StreamReader(@"Command\立ち去る21.txt");
+                richTextBox1.Text = line4.ReadToEnd();
+                line4.Close();
+
+                battle = true;
+            }
+        }
     }
+
+
+
+
+
+
+
 
     private async void SwBattlePre(int damage, int eDamage, int eAgi, int eHp)
     {
