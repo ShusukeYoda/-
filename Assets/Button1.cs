@@ -113,7 +113,7 @@ public class Button1 : MonoBehaviour
     }
     public void StoryClick()
     {
-        if (one)
+        if (one && walk)
         {
             random1 = UnityEngine.Random.Range(1, 4);
             //int random1 = 2;   //ストーリーcardデバッグ用
@@ -316,6 +316,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 2)//sNum == 2 debug
         {
+            walk = false;
             enemyNum = 0;
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
@@ -414,6 +415,7 @@ public class Button1 : MonoBehaviour
 
         if (sNum == 3)
         {
+            walk = false;
             if (co == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする3") as TextAsset;
@@ -455,6 +457,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 4)
         {
+            walk = false;
             if (co == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする4") as TextAsset;
@@ -496,6 +499,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 5)
         {
+            walk = false;
             if (co == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする5") as TextAsset;
@@ -544,6 +548,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 6)
         {
+            walk = false;
             if (co == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする6") as TextAsset;
@@ -584,6 +589,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 7)
         {
+            walk = false;
             enemyNum = 1;
             battle = true;
             if (co == 0 && battle == false ||
@@ -759,6 +765,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 8)
         {
+            walk = false;
             if (co == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする8") as TextAsset;
@@ -799,6 +806,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 9)
         {
+            walk = false;
             enemyNum = 2;
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
@@ -924,6 +932,7 @@ public class Button1 : MonoBehaviour
 
         if (sNum == 10)
         {
+            walk = false;
             if (co == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする10") as TextAsset;
@@ -965,6 +974,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 11)
         {
+            walk = false;
             enemyNum = 3;
             battle = true;
             if (co == 0 && battle == false ||
@@ -1139,6 +1149,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 12)
         {
+            walk = false;
             if (co == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする12") as TextAsset;
@@ -1180,6 +1191,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 13)
         {
+            walk = false;
             enemyNum = 4;
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
@@ -1271,6 +1283,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 14)
         {
+            walk = false;
             if (co == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする14") as TextAsset;
@@ -1313,6 +1326,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 15)
         {
+            walk = false;
             enemyNum = 5;
             if (co == 0 && walk == false)
             {
@@ -1380,6 +1394,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 16)
         {
+            walk = false;
             if (co == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする16") as TextAsset;
@@ -1428,6 +1443,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 17)
         {
+            walk = false;
             enemyNum = 6;
             battle = true;
             if (co == 0 && battle == false ||
@@ -1601,6 +1617,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 18)
         {
+            walk = false;
             enemyNum = 7;
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
@@ -1693,6 +1710,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 19)
         {
+            walk = false;
             enemyNum = 8;
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
@@ -1761,6 +1779,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 20)
         {
+            walk = false;
             enemyNum = 9;
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
@@ -1854,6 +1873,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 21)
         {
+            walk = false;
             enemyNum = 10;
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
