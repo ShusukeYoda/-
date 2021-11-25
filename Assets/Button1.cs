@@ -353,7 +353,7 @@ public class Button1 : MonoBehaviour
                 SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
             }
             if (co == 2 && walk == false)
-{
+            {
                 if (magic >= 5)//magic >= 5 debug
                 {
                     var textAsset = Resources.Load("魔法を使う2") as TextAsset;
@@ -600,17 +600,9 @@ public class Button1 : MonoBehaviour
 
                 damage = attack - enemys[enemyNum].eDef;
 
-                Encoding sjis = Encoding.GetEncoding("Shift_JIS");
-                StreamWriter writ =
-                  new StreamWriter(@"Battle\battle値.txt", true, sjis);
-                writ.WriteLine($"{damage}ダメージを受けた\n");
-                writ.Close();
-
-
-                StreamReader df = new StreamReader(@"Battle\battle値.txt",
-                Encoding.GetEncoding("Shift_JIS"), false);
-                richTextBox1.Text = df.ReadToEnd();
-                df.Close();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
+                UnityEngine.Debug.Log("チェックポイント");
+                //
 
                 //ステータスバーに表記
                 hitP -= damage;
@@ -619,8 +611,9 @@ public class Button1 : MonoBehaviour
                 {
                     hitP = 0;
                 }
-                label9.Text = hitP.ToString();
+                Te0.GetComponent<Text>().text = hitP.ToString();
 
+                //倒れたとき
                 if (hitP <= 0)
                 {
                     await Task.Delay(2000);
@@ -662,9 +655,8 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う7.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
+                    var textAsset = Resources.Load("魔法を使う7") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -673,49 +665,40 @@ public class Button1 : MonoBehaviour
                     await Task.Delay(2000);
 
                     magic -= 5;
-                    label13.Text = magic.ToString();
+                    Te4.GetComponent<Text>().text = magic.ToString();
 
                     eDamage = mAttack - enemys[enemyNum].eRes;
                     enemys[enemyNum].eHp -= eDamage;
 
-                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
-                    StreamWriter writer =
-                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
-                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
-                    writer.Close();
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
+                    UnityEngine.Debug.Log("チェックポイント");
+                    //
 
-                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
-                    Encoding.GetEncoding("Shift_JIS"), false);
-                    richTextBox1.Text = at.ReadToEnd();
-                    at.Close();
+                    //与ダメージ
+                    enemys[enemyNum].eHp -= eDamage;
 
+                    //倒したとき
                     if (enemys[enemyNum].eHp <= 0)
                     {
+                        await Task.Delay(1000);
+
                         KilledBranch(enemyNum);
                     }
+
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\魔法を使う7b.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("魔法を使う7b") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
                     await Task.Delay(2000);
 
                     damage = attack - enemys[0].eDef;
 
-                    Encoding sjis = Encoding.GetEncoding("Shift_JIS");
-                    StreamWriter writ =
-                      new StreamWriter(@"Battle\battle値.txt", true, sjis);
-                    writ.WriteLine($"{damage}ダメージを受けた\n");
-                    writ.Close();
-
-
-                    StreamReader df = new StreamReader(@"Battle\battle値.txt",
-                    Encoding.GetEncoding("Shift_JIS"), false);
-                    richTextBox1.Text = df.ReadToEnd();
-                    df.Close();
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
+                    UnityEngine.Debug.Log("チェックポイント");
+                    //
 
                     //ステータスバーに表記
                     hitP -= damage;
@@ -724,8 +707,9 @@ public class Button1 : MonoBehaviour
                     {
                         hitP = 0;
                     }
-                    label9.Text = hitP.ToString();
+                    Te0.GetComponent<Text>().text = hitP.ToString();
 
+                    //倒れたとき
                     if (hitP <= 0)
                     {
                         await Task.Delay(2000);
@@ -750,17 +734,9 @@ public class Button1 : MonoBehaviour
 
                 damage = attack - enemys[enemyNum].eDef;
 
-                Encoding sjis = Encoding.GetEncoding("Shift_JIS");
-                StreamWriter writ =
-                  new StreamWriter(@"Battle\battle値.txt", true, sjis);
-                writ.WriteLine($"{damage}ダメージを受けた\n");
-                writ.Close();
-
-
-                StreamReader df = new StreamReader(@"Battle\battle値.txt",
-                Encoding.GetEncoding("Shift_JIS"), false);
-                richTextBox1.Text = df.ReadToEnd();
-                df.Close();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
+                UnityEngine.Debug.Log("チェックポイント");
+                //
 
                 //ステータスバーに表記
                 hitP -= damage;
@@ -769,8 +745,9 @@ public class Button1 : MonoBehaviour
                 {
                     hitP = 0;
                 }
-                label9.Text = hitP.ToString();
+                Te0.GetComponent<Text>().text = hitP.ToString();
 
+                //倒れたとき
                 if (hitP <= 0)
                 {
                     await Task.Delay(2000);
@@ -790,7 +767,7 @@ public class Button1 : MonoBehaviour
 
 
                 strength += 10;
-                label10.Text = strength.ToString();
+                Te1.GetComponent<Text>().text = strength.ToString();                                //Te1で正しいのか
 
                 walk = true;
             }
@@ -803,9 +780,8 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う8.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
+                    var textAsset = Resources.Load("魔法を使う8") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
                 else
                 {
@@ -840,17 +816,9 @@ public class Button1 : MonoBehaviour
 
                 damage = attack - enemys[enemyNum].eDef;
 
-                Encoding sjis = Encoding.GetEncoding("Shift_JIS");
-                StreamWriter writ =
-                  new StreamWriter(@"Battle\battle値.txt", true, sjis);
-                writ.WriteLine($"{damage}ダメージを受けた\n");
-                writ.Close();
-
-
-                StreamReader df = new StreamReader(@"Battle\battle値.txt",
-                Encoding.GetEncoding("Shift_JIS"), false);
-                richTextBox1.Text = df.ReadToEnd();
-                df.Close();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
+                UnityEngine.Debug.Log("チェックポイント");
+                //
 
                 //ステータスバーに表記
                 hitP -= damage;
@@ -859,8 +827,9 @@ public class Button1 : MonoBehaviour
                 {
                     hitP = 0;
                 }
-                label9.Text = hitP.ToString();
+                Te0.GetComponent<Text>().text = hitP.ToString();
 
+                //倒れたとき
                 if (hitP <= 0)
                 {
                     await Task.Delay(2000);
@@ -868,93 +837,91 @@ public class Button1 : MonoBehaviour
                     GameOver();
                 }
                 await Task.Delay(2000);
-                }
             }
-            if (co == 1 && walk == false)
+        }
+        if (co == 1 && walk == false)
+        {
+            var textAsset = Resources.Load("斬りつける9") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+            //battle
+            battle = true;
+
+            if (cri <= luck)
             {
-                var textAsset = Resources.Load("斬りつける9") as TextAsset;
+                eDamage = attack * 2 - enemys[enemyNum].eDef;
+                damage = enemys[enemyNum].eAtt - defense;
+            }
+            else
+            {
+                eDamage = attack - enemys[enemyNum].eDef;
+                damage = enemys[enemyNum].eAtt - defense;
+            }
+
+            if (damage < 0)
+            {
+                damage = 0;
+            }
+
+            await Task.Delay(2000);
+
+            //バトルメソッドへ
+            SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+        }
+        if (co == 2 && battle != true ||
+            co == 2 && walk == false)
+        {
+            if (magic >= 5)
+            {
+                var textAsset = Resources.Load("魔法を使う9a") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-                //battle
+
+
+
+
                 battle = true;
-
-                if (cri <= luck)
-                {
-                    eDamage = attack * 2 - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-                else
-                {
-                    eDamage = attack - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-
-                if (damage < 0)
-                {
-                    damage = 0;
-                }
 
                 await Task.Delay(2000);
 
-                //バトルメソッドへ
-                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
-            }
-            if (co == 2 && battle != true ||
-                co == 2 && walk == false)
-            {
-                if (magic >= 5)
+                magic -= 5;
+                Te4.GetComponent<Text>().text = magic.ToString();
+
+                eDamage = mAttack - enemys[enemyNum].eRes;
+                enemys[enemyNum].eHp -= eDamage;
+
+                TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
+                UnityEngine.Debug.Log("チェックポイント");
+                //
+
+                //与ダメージ
+                enemys[enemyNum].eHp -= eDamage;
+
+                //倒したとき
+                if (enemys[enemyNum].eHp <= 0)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う9a.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
+                    await Task.Delay(1000);
 
-
-
-
-
-                    battle = true;
-
-                    await Task.Delay(2000);
-
-                    magic -= 5;
-                    label13.Text = magic.ToString();
-
-                    eDamage = mAttack - enemys[enemyNum].eRes;
-                    enemys[enemyNum].eHp -= eDamage;
-
-                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
-                    StreamWriter writer =
-                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
-                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
-                    writer.Close();
-
-                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
-                    Encoding.GetEncoding("Shift_JIS"), false);
-                    richTextBox1.Text = at.ReadToEnd();
-                    at.Close();
-
-                    if (enemys[enemyNum].eHp <= 0)
-                    {
-                        KilledBranch(enemyNum);
-                    }
-                }
-                else
-                {
-                    StreamReader line0 = new StreamReader(@"Command\魔法を使う9b.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
-                    battle = true;
+                    KilledBranch(enemyNum);
                 }
 
             }
-            if (co == 3 && battle != true)
+            else
             {
-                var textAsset = Resources.Load("立ち去る9") as TextAsset;
+                var textAsset = Resources.Load("魔法を使う9b") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                battle = true;
             }
+
         }
+        if (co == 3 && battle != true)
+        {
+            var textAsset = Resources.Load("立ち去る9") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+            walk = true;
+        }
+
         if (sNum == 10)
         {
             if (co == 0 && walk == false)
@@ -1014,17 +981,9 @@ public class Button1 : MonoBehaviour
 
                 damage = attack - enemys[enemyNum].eDef;
 
-                Encoding sjis = Encoding.GetEncoding("Shift_JIS");
-                StreamWriter writ =
-                  new StreamWriter(@"Battle\battle値.txt", true, sjis);
-                writ.WriteLine($"{damage}ダメージを受けた\n");
-                writ.Close();
-
-
-                StreamReader df = new StreamReader(@"Battle\battle値.txt",
-                Encoding.GetEncoding("Shift_JIS"), false);
-                richTextBox1.Text = df.ReadToEnd();
-                df.Close();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
+                UnityEngine.Debug.Log("チェックポイント");
+                //
 
                 //ステータスバーに表記
                 hitP -= damage;
@@ -1033,8 +992,9 @@ public class Button1 : MonoBehaviour
                 {
                     hitP = 0;
                 }
-                label9.Text = hitP.ToString();
+                Te0.GetComponent<Text>().text = hitP.ToString();
 
+                //倒れたとき
                 if (hitP <= 0)
                 {
                     await Task.Delay(2000);
@@ -1076,9 +1036,8 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う11.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
+                    var textAsset = Resources.Load("魔法を使う11") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -1089,65 +1048,58 @@ public class Button1 : MonoBehaviour
                     await Task.Delay(2000);
 
                     magic -= 5;
-                    label13.Text = magic.ToString();
+                    Te4.GetComponent<Text>().text = magic.ToString();
 
                     eDamage = mAttack - enemys[enemyNum].eRes;
                     enemys[enemyNum].eHp -= eDamage;
 
-                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
-                    StreamWriter writer =
-                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
-                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
-                    writer.Close();
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
+                    UnityEngine.Debug.Log("チェックポイント");
+                    //
 
-                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
-                    Encoding.GetEncoding("Shift_JIS"), false);
-                    richTextBox1.Text = at.ReadToEnd();
-                    at.Close();
+                    //与ダメージ
+                    enemys[enemyNum].eHp -= eDamage;
 
+                    //倒したとき
                     if (enemys[enemyNum].eHp <= 0)
                     {
+                        await Task.Delay(1000);
+
                         KilledBranch(enemyNum);
                     }
+
+                    await Task.Delay(2000);
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\魔法を使う11b.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("魔法を使う11b") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
                     await Task.Delay(2000);
 
                     damage = attack - enemys[enemyNum].eDef;
 
-                    Encoding sjis = Encoding.GetEncoding("Shift_JIS");
-                    StreamWriter writ =
-                      new StreamWriter(@"Battle\battle値.txt", true, sjis);
-                    writ.WriteLine($"{damage}ダメージを受けた\n");
-                    writ.Close();
-
-
-                    StreamReader df = new StreamReader(@"Battle\battle値.txt",
-                    Encoding.GetEncoding("Shift_JIS"), false);
-                    richTextBox1.Text = df.ReadToEnd();
-                    df.Close();
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
+                    UnityEngine.Debug.Log("チェックポイント");
+                    //
 
                     //ステータスバーに表記
                     hitP -= damage;
-
                     if (hitP < 0)
                     {
                         hitP = 0;
                     }
-                    label9.Text = hitP.ToString();
+                    Te0.GetComponent<Text>().text = hitP.ToString();
 
+                    //倒れたとき
                     if (hitP <= 0)
                     {
                         await Task.Delay(2000);
 
                         GameOver();
                     }
+
                     await Task.Delay(2000);
                 }
 
@@ -1162,33 +1114,26 @@ public class Button1 : MonoBehaviour
 
                 damage = attack - enemys[enemyNum].eDef;
 
-                Encoding sjis = Encoding.GetEncoding("Shift_JIS");
-                StreamWriter writ =
-                  new StreamWriter(@"Battle\battle値.txt", true, sjis);
-                writ.WriteLine($"{damage}ダメージを受けた\n");
-                writ.Close();
-
-
-                StreamReader df = new StreamReader(@"Battle\battle値.txt",
-                Encoding.GetEncoding("Shift_JIS"), false);
-                richTextBox1.Text = df.ReadToEnd();
-                df.Close();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
+                UnityEngine.Debug.Log("チェックポイント");
+                //
 
                 //ステータスバーに表記
                 hitP -= damage;
-
                 if (hitP < 0)
                 {
                     hitP = 0;
                 }
-                label9.Text = hitP.ToString();
+                Te0.GetComponent<Text>().text = hitP.ToString();
 
+                //倒れたとき
                 if (hitP <= 0)
                 {
                     await Task.Delay(2000);
 
                     GameOver();
                 }
+
                 await Task.Delay(2000);
             }
         }
@@ -1277,9 +1222,8 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う13.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
+                    var textAsset = Resources.Load("魔法を使う13") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -1290,24 +1234,23 @@ public class Button1 : MonoBehaviour
                     await Task.Delay(2000);
 
                     magic -= 5;
-                    label13.Text = magic.ToString();
+                    Te4.GetComponent<Text>().text = magic.ToString();
 
                     eDamage = mAttack - enemys[enemyNum].eRes;
                     enemys[enemyNum].eHp -= eDamage;
 
-                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
-                    StreamWriter writer =
-                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
-                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
-                    writer.Close();
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
+                    UnityEngine.Debug.Log("チェックポイント");
+                    //
 
-                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
-                    Encoding.GetEncoding("Shift_JIS"), false);
-                    richTextBox1.Text = at.ReadToEnd();
-                    at.Close();
+                    //与ダメージ
+                    enemys[enemyNum].eHp -= eDamage;
 
+                    //倒したとき
                     if (enemys[enemyNum].eHp <= 0)
                     {
+                        await Task.Delay(1000);
+
                         KilledBranch(enemyNum);
                     }
                 }
@@ -1342,16 +1285,15 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う14.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
+                    var textAsset = Resources.Load("魔法を使う14") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
                     magic -= 5;
                     hitP += 10;
-                    label13.Text = magic.ToString();
-                    label9.Text = hitP.ToString();
+                    Te4.GetComponent<Text>().text = magic.ToString();
+                    Te0.GetComponent<Text>().text = hitP.ToString();
 
                     walk = true;
                 }
@@ -1412,14 +1354,13 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う15.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
+                    var textAsset = Resources.Load("魔法を使う15") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
                     magic -= 5;
-                    label13.Text = magic.ToString();
+                    Te4.GetComponent<Text>().text = magic.ToString();
 
                     walk = true;
                 }
@@ -1447,7 +1388,7 @@ public class Button1 : MonoBehaviour
 
 
                 luck += 10;
-                label12.Text = luck.ToString();
+                Te3.GetComponent<Text>().text = luck.ToString();
 
                 walk = true;
             }
@@ -1503,27 +1444,19 @@ public class Button1 : MonoBehaviour
 
                 damage = attack - enemys[enemyNum].eDef;
 
-                Encoding sjis = Encoding.GetEncoding("Shift_JIS");
-                StreamWriter writ =
-                  new StreamWriter(@"Battle\battle値.txt", true, sjis);
-                writ.WriteLine($"{damage}ダメージを受けた\n");
-                writ.Close();
-
-
-                StreamReader df = new StreamReader(@"Battle\battle値.txt",
-                Encoding.GetEncoding("Shift_JIS"), false);
-                richTextBox1.Text = df.ReadToEnd();
-                df.Close();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
+                UnityEngine.Debug.Log("チェックポイント");
+                //
 
                 //ステータスバーに表記
                 hitP -= damage;
-
                 if (hitP < 0)
                 {
                     hitP = 0;
                 }
-                label9.Text = hitP.ToString();
+                Te0.GetComponent<Text>().text = hitP.ToString();
 
+                //倒れたとき
                 if (hitP <= 0)
                 {
                     await Task.Delay(2000);
@@ -1565,74 +1498,62 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う17.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
+                    var textAsset = Resources.Load("魔法を使う17") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
 
-                    magic -= 5;
-                    label13.Text = magic.ToString();
 
                     battle = true;
 
                     await Task.Delay(2000);
 
                     magic -= 5;
-                    label13.Text = magic.ToString();
+                    Te4.GetComponent<Text>().text = magic.ToString();
 
                     eDamage = mAttack - enemys[enemyNum].eRes;
                     enemys[enemyNum].eHp -= eDamage;
 
-                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
-                    StreamWriter writer =
-                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
-                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
-                    writer.Close();
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
+                    UnityEngine.Debug.Log("チェックポイント");
+                    //
 
-                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
-                    Encoding.GetEncoding("Shift_JIS"), false);
-                    richTextBox1.Text = at.ReadToEnd();
-                    at.Close();
+                    //与ダメージ
+                    enemys[enemyNum].eHp -= eDamage;
 
+                    //倒したとき
                     if (enemys[enemyNum].eHp <= 0)
                     {
+                        await Task.Delay(1000);
+
                         KilledBranch(enemyNum);
                     }
+
                 }
                 else
                 {
-                    StreamReader line0 = new StreamReader(@"Command\魔法を使う17b.txt");
-                    richTextBox1.Text = line0.ReadToEnd();
-                    line0.Close();
+                    var textAsset = Resources.Load("魔法を使う17b") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
                     await Task.Delay(2000);
 
                     damage = attack - enemys[enemyNum].eDef;
 
-                    Encoding sjis = Encoding.GetEncoding("Shift_JIS");
-                    StreamWriter writ =
-                      new StreamWriter(@"Battle\battle値.txt", true, sjis);
-                    writ.WriteLine($"{damage}ダメージを受けた\n");
-                    writ.Close();
-
-
-                    StreamReader df = new StreamReader(@"Battle\battle値.txt",
-                    Encoding.GetEncoding("Shift_JIS"), false);
-                    richTextBox1.Text = df.ReadToEnd();
-                    df.Close();
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
+                    UnityEngine.Debug.Log("チェックポイント");
+                    //
 
                     //ステータスバーに表記
                     hitP -= damage;
-
                     if (hitP < 0)
                     {
                         hitP = 0;
                     }
-                    label9.Text = hitP.ToString();
+                    Te0.GetComponent<Text>().text = hitP.ToString();
 
+                    //倒れたとき
                     if (hitP <= 0)
                     {
                         await Task.Delay(2000);
@@ -1656,27 +1577,19 @@ public class Button1 : MonoBehaviour
 
                 damage = attack - enemys[enemyNum].eDef;
 
-                Encoding sjis = Encoding.GetEncoding("Shift_JIS");
-                StreamWriter writ =
-                  new StreamWriter(@"Battle\battle値.txt", true, sjis);
-                writ.WriteLine($"{damage}ダメージを受けた\n");
-                writ.Close();
-
-
-                StreamReader df = new StreamReader(@"Battle\battle値.txt",
-                Encoding.GetEncoding("Shift_JIS"), false);
-                richTextBox1.Text = df.ReadToEnd();
-                df.Close();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
+                UnityEngine.Debug.Log("チェックポイント");
+                //
 
                 //ステータスバーに表記
                 hitP -= damage;
-
                 if (hitP < 0)
                 {
                     hitP = 0;
                 }
-                label9.Text = hitP.ToString();
+                Te0.GetComponent<Text>().text = hitP.ToString();
 
+                //倒れたとき
                 if (hitP <= 0)
                 {
                     await Task.Delay(2000);
@@ -1730,9 +1643,8 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う18.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
+                    var textAsset = Resources.Load("魔法を使う18") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -1743,26 +1655,26 @@ public class Button1 : MonoBehaviour
                     await Task.Delay(2000);
 
                     magic -= 5;
-                    label13.Text = magic.ToString();
+                    Te4.GetComponent<Text>().text = magic.ToString();
 
                     eDamage = mAttack - enemys[enemyNum].eRes;
                     enemys[enemyNum].eHp -= eDamage;
 
-                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
-                    StreamWriter writer =
-                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
-                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
-                    writer.Close();
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
+                    UnityEngine.Debug.Log("チェックポイント");
+                    //
 
-                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
-                    Encoding.GetEncoding("Shift_JIS"), false);
-                    richTextBox1.Text = at.ReadToEnd();
-                    at.Close();
+                    //与ダメージ
+                    enemys[enemyNum].eHp -= eDamage;
 
+                    //倒したとき
                     if (enemys[enemyNum].eHp <= 0)
                     {
+                        await Task.Delay(1000);
+
                         KilledBranch(enemyNum);
                     }
+
                 }
                 else
                 {
@@ -1823,14 +1735,13 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う19.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
+                    var textAsset = Resources.Load("魔法を使う19") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
                     magic -= 5;
-                    label13.Text = magic.ToString();
+                    Te4.GetComponent<Text>().text = magic.ToString();
 
                     walk = true;
                 }
@@ -1893,9 +1804,8 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う20.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
+                    var textAsset = Resources.Load("魔法を使う20") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -1906,24 +1816,23 @@ public class Button1 : MonoBehaviour
                     await Task.Delay(2000);
 
                     magic -= 5;
-                    label13.Text = magic.ToString();
+                    Te4.GetComponent<Text>().text = magic.ToString();
 
                     eDamage = mAttack - enemys[enemyNum].eRes;
                     enemys[enemyNum].eHp -= eDamage;
 
-                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
-                    StreamWriter writer =
-                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
-                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
-                    writer.Close();
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
+                    UnityEngine.Debug.Log("チェックポイント");
+                    //
 
-                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
-                    Encoding.GetEncoding("Shift_JIS"), false);
-                    richTextBox1.Text = at.ReadToEnd();
-                    at.Close();
+                    //与ダメージ
+                    enemys[enemyNum].eHp -= eDamage;
 
+                    //倒したとき
                     if (enemys[enemyNum].eHp <= 0)
                     {
+                        await Task.Delay(1000);
+
                         KilledBranch(enemyNum);
                     }
                 }
@@ -1995,9 +1904,8 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line2 = new StreamReader(@"Command\魔法を使う21b.txt");
-                    richTextBox1.Text = line2.ReadToEnd();
-                    line2.Close();
+                    var textAsset = Resources.Load("魔法を使う21b") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
                 }
                 else
                 {
@@ -2009,9 +1917,8 @@ public class Button1 : MonoBehaviour
             {
                 if (magic >= 5)
                 {
-                    StreamReader line3 = new StreamReader(@"Command\魔法を使う21.txt");
-                    richTextBox1.Text = line3.ReadToEnd();
-                    line3.Close();
+                    var textAsset = Resources.Load("魔法を使う21") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
 
@@ -2022,24 +1929,23 @@ public class Button1 : MonoBehaviour
                     await Task.Delay(2000);
 
                     magic -= 5;
-                    label13.Text = magic.ToString();
+                    Te4.GetComponent<Text>().text = magic.ToString();
 
                     eDamage = mAttack - enemys[enemyNum].eRes;
                     enemys[enemyNum].eHp -= eDamage;
 
-                    Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
-                    StreamWriter writer =
-                      new StreamWriter(@"Battle\battle値.txt", true, sjisEnc);
-                    writer.WriteLine($"{eDamage}ダメージを与えた\n");
-                    writer.Close();
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
+                    UnityEngine.Debug.Log("チェックポイント");
+                    //
 
-                    StreamReader at = new StreamReader(@"Battle\battle値.txt",
-                    Encoding.GetEncoding("Shift_JIS"), false);
-                    richTextBox1.Text = at.ReadToEnd();
-                    at.Close();
+                    //与ダメージ
+                    enemys[enemyNum].eHp -= eDamage;
 
+                    //倒したとき
                     if (enemys[enemyNum].eHp <= 0)
                     {
+                        await Task.Delay(1000);
+
                         KilledBranch(enemyNum);
                     }
                 }
@@ -2062,12 +1968,6 @@ public class Button1 : MonoBehaviour
     }
 
 
-
-
-
-
-
-
     private async void SwBattlePre(int damage, int eDamage, int eAgi, int eHp)
     {
 
@@ -2081,7 +1981,7 @@ public class Button1 : MonoBehaviour
             enemys[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (eHp <= 0)
+            if (enemys[enemyNum].eHp <= 0)
             {
                 await Task.Delay(1000);
 
@@ -2140,7 +2040,7 @@ public class Button1 : MonoBehaviour
             enemys[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (eHp <= 0)
+            if (enemys[enemyNum].eHp <= 0)
             {
                 await Task.Delay(1000);
 
@@ -2187,7 +2087,7 @@ public class Button1 : MonoBehaviour
             var textAsset = Resources.Load("battle2") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
         }
-        
+
         if (enemyNum == 1 || enemyNum == 3)
         {
             var textAsset = Resources.Load("battle7.11") as TextAsset;
@@ -2197,43 +2097,43 @@ public class Button1 : MonoBehaviour
         {
             var textAsset = Resources.Load("battle9") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-    }
+        }
         if (enemyNum == 4)
         {
-        var textAsset = Resources.Load("battle13") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-    }
+            var textAsset = Resources.Load("battle13") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+        }
         if (enemyNum == 5)
         {
-        var textAsset = Resources.Load("battle15") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-    }
+            var textAsset = Resources.Load("battle15") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+        }
         if (enemyNum == 6)
         {
-        var textAsset = Resources.Load("battle17") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-    }
+            var textAsset = Resources.Load("battle17") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+        }
         if (enemyNum == 7)
         {
-        var textAsset = Resources.Load("battle18") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-    }
+            var textAsset = Resources.Load("battle18") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+        }
         if (enemyNum == 8)
         {
-        var textAsset = Resources.Load("battle19") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-    }
+            var textAsset = Resources.Load("battle19") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+        }
         if (enemyNum == 9)
         {
-        var textAsset = Resources.Load("battle20") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-    }
+            var textAsset = Resources.Load("battle20") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+        }
         if (enemyNum == 10)
         {
-        var textAsset = Resources.Load("battle21") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-    }
-        
+            var textAsset = Resources.Load("battle21") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+        }
+
 
 
         walk = true;
