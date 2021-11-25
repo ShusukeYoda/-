@@ -2689,6 +2689,7 @@ MonoBehaviour:
   random1: 0
   sNum: 0
   walk: 0
+  textasset: []
   enemyNum: 0
 --- !u!114 &1052176994
 MonoBehaviour:

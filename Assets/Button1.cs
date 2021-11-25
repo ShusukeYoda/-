@@ -52,6 +52,7 @@ public class Button1 : MonoBehaviour
     //ストーリー進行bool
     public bool walk = true;
 
+    public TextAsset[] textasset;
 
     // Start is called before the first frame update
     void Start()
@@ -121,12 +122,16 @@ public class Button1 : MonoBehaviour
 
             if (sNum < 23 && walk == true)
             {
+                walk = false;
                 storyCard.GetComponent<SpriteRenderer>().sprite = images[sNum];
-                //walk = false;
             }
             else if (sNum >= 23 && walk == true)
             {
+                walk = false;
                 storyCard.GetComponent<SpriteRenderer>().sprite = images[42];
+
+                var textAsset = Resources.Load("EndImage") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
         }
     }
