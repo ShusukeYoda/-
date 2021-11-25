@@ -115,8 +115,8 @@ public class Button1 : MonoBehaviour
     {
         if (one && walk)
         {
-            random1 = UnityEngine.Random.Range(1, 4);
-            //int random1 = 2;   //ストーリーcardデバッグ用
+            //random1 = UnityEngine.Random.Range(1, 4);
+            int random1 = 2;   //ストーリーcardデバッグ用
             sNum += random1;
 
             if (sNum < 23 && walk == true)
@@ -846,90 +846,90 @@ public class Button1 : MonoBehaviour
                 }
                 await Task.Delay(2000);
             }
-        }
-        if (co == 1 && walk == false)
-        {
-            var textAsset = Resources.Load("斬りつける9") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-            //battle
-            battle = true;
-
-            if (cri <= luck)
+            if (co == 1 && walk == false)
             {
-                eDamage = attack * 2 - enemys[enemyNum].eDef;
-                damage = enemys[enemyNum].eAtt - defense;
-            }
-            else
-            {
-                eDamage = attack - enemys[enemyNum].eDef;
-                damage = enemys[enemyNum].eAtt - defense;
-            }
-
-            if (damage < 0)
-            {
-                damage = 0;
-            }
-
-            await Task.Delay(2000);
-
-            //バトルメソッドへ
-            SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
-        }
-        if (co == 2 && battle != true ||
-            co == 2 && walk == false)
-        {
-            if (magic >= 5)
-            {
-                var textAsset = Resources.Load("魔法を使う9a") as TextAsset;
+                var textAsset = Resources.Load("斬りつける9") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-
-
-
-
+                //battle
                 battle = true;
+
+                if (cri <= luck)
+                {
+                    eDamage = attack * 2 - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+                }
+                else
+                {
+                    eDamage = attack - enemys[enemyNum].eDef;
+                    damage = enemys[enemyNum].eAtt - defense;
+                }
+
+                if (damage < 0)
+                {
+                    damage = 0;
+                }
 
                 await Task.Delay(2000);
 
-                magic -= 5;
-                Te4.GetComponent<Text>().text = magic.ToString();
-
-                eDamage = mAttack - enemys[enemyNum].eRes;
-                enemys[enemyNum].eHp -= eDamage;
-
-                TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-                UnityEngine.Debug.Log("チェックポイント");
-                //
-
-                //与ダメージ
-                enemys[enemyNum].eHp -= eDamage;
-
-                //倒したとき
-                if (enemys[enemyNum].eHp <= 0)
+                //バトルメソッドへ
+                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+            }
+            if (co == 2 && battle != true ||
+                co == 2 && walk == false)
+            {
+                if (magic >= 5)
                 {
-                    await Task.Delay(1000);
+                    var textAsset = Resources.Load("魔法を使う9a") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-                    KilledBranch(enemyNum);
+
+
+
+
+                    battle = true;
+
+                    await Task.Delay(2000);
+
+                    magic -= 5;
+                    Te4.GetComponent<Text>().text = magic.ToString();
+
+                    eDamage = mAttack - enemys[enemyNum].eRes;
+                    enemys[enemyNum].eHp -= eDamage;
+
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
+                    UnityEngine.Debug.Log("チェックポイント");
+                    //
+
+                    //与ダメージ
+                    enemys[enemyNum].eHp -= eDamage;
+
+                    //倒したとき
+                    if (enemys[enemyNum].eHp <= 0)
+                    {
+                        await Task.Delay(1000);
+
+                        KilledBranch(enemyNum);
+                    }
+
+                }
+                else
+                {
+                    var textAsset = Resources.Load("魔法を使う9b") as TextAsset;
+                    TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                    battle = true;
                 }
 
             }
-            else
+            if (co == 3 && battle != true)
             {
-                var textAsset = Resources.Load("魔法を使う9b") as TextAsset;
+                var textAsset = Resources.Load("立ち去る9") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-                battle = true;
+
+                walk = true;
             }
-
         }
-        if (co == 3 && battle != true)
-        {
-            var textAsset = Resources.Load("立ち去る9") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-            walk = true;
-        }
-
         if (sNum == 10)
         {
             walk = false;
