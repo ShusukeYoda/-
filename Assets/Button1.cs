@@ -52,7 +52,7 @@ public class Button1 : MonoBehaviour
     public AudioClip onPointSE;
     // BGM
     public AudioSource[] audio;
-
+    
     //タイマー
     float span = 0.1f;                           //0.1秒間隔
     float delta = 0;
@@ -88,6 +88,7 @@ public class Button1 : MonoBehaviour
         this.Dropdown = GameObject.Find("Dropdown");
         this.Audio = GameObject.Find("BGM1");
         this.TextTMP = GameObject.Find("TextTMP");
+        audio[0].Play();
     }
     // Update is called once per frame
     void Update()
@@ -144,7 +145,7 @@ public class Button1 : MonoBehaviour
             }
             else if (sNum >= 23 && walk == true)
             {
-                                                                //画像と音楽が合っていない
+                audio[0].Stop();                                //画像と音楽が合っていない
                 audio[1] = Audio.GetComponent<AudioSource>();   //音楽が二重で流れている
                 audio[1].Play();
                 UnityEngine.Debug.Log("チェック");
@@ -2188,8 +2189,8 @@ public class Button1 : MonoBehaviour
     }
     private void GameOver()
     {
-        audio[0] = Audio.GetComponent<AudioSource>();
-        audio[0].Play();
+        audio[2] = Audio.GetComponent<AudioSource>();
+        audio[2].Play();
 
         var textAsset = Resources.Load("GameOver") as TextAsset;
         TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();

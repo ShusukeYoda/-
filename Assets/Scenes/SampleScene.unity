@@ -2950,6 +2950,7 @@ MonoBehaviour:
   startStopSE: {fileID: 8300000, guid: 5d92c720de1ac994984de9b1e2a878d5, type: 3}
   onPointSE: {fileID: 8300000, guid: a47534e15f255824391770c10fc5b162, type: 3}
   audio:
+  - {fileID: 408383078}
   - {fileID: 662050372}
   - {fileID: 1815844298}
   moving: 0
