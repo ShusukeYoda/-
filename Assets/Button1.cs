@@ -29,6 +29,7 @@ public class Button1 : MonoBehaviour
     GameObject Te7;
     GameObject Style;
     GameObject Dropdown;
+    GameObject Audio;
     public GameObject TextTMP;
     private TextMeshProUGUI textMeshPro;
 
@@ -36,6 +37,21 @@ public class Button1 : MonoBehaviour
 
     public Sprite[] tarotImage;                  //配列ｽﾌﾟﾗｲﾄ 消すと消える
     public List<Sprite> images;                  //Listｽﾌﾟﾗｲﾄ
+
+    // SE
+    public AudioClip cardShuffleSE;
+    public AudioClip attackSE;
+    public AudioClip criticalSE;
+    public AudioClip damageSE;
+    public AudioClip magicSE1;
+    public AudioClip magicSE2;
+    public AudioClip magicSE3;
+    public AudioClip magicSE4;
+    public AudioClip cardStopSE;
+    public AudioClip startStopSE;
+    public AudioClip onPointSE;
+    // BGM
+    public AudioSource[] audio;
 
     //タイマー
     float span = 0.1f;                           //0.1秒間隔
@@ -70,6 +86,7 @@ public class Button1 : MonoBehaviour
         this.Te7 = GameObject.Find("Te7");
         this.Style = GameObject.Find("Style");
         this.Dropdown = GameObject.Find("Dropdown");
+        this.Audio = GameObject.Find("BGM1");
         this.TextTMP = GameObject.Find("TextTMP");
     }
     // Update is called once per frame
@@ -117,7 +134,7 @@ public class Button1 : MonoBehaviour
         if (one && walk)
         {
             //random1 = UnityEngine.Random.Range(1, 4);
-            int random1 = 2;   //ストーリーcardデバッグ用
+            int random1 = 23;   //ストーリーcardデバッグ用
             sNum += random1;
 
             if (sNum < 23 && walk == true)
@@ -127,6 +144,11 @@ public class Button1 : MonoBehaviour
             }
             else if (sNum >= 23 && walk == true)
             {
+                                                                //画像と音楽が合っていない
+                audio[1] = Audio.GetComponent<AudioSource>();   //音楽が二重で流れている
+                audio[1].Play();
+                UnityEngine.Debug.Log("チェック");
+
                 walk = false;
                 storyCard.GetComponent<SpriteRenderer>().sprite = images[42];
 
@@ -2166,6 +2188,9 @@ public class Button1 : MonoBehaviour
     }
     private void GameOver()
     {
+        audio[0] = Audio.GetComponent<AudioSource>();
+        audio[0].Play();
+
         var textAsset = Resources.Load("GameOver") as TextAsset;
         TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
