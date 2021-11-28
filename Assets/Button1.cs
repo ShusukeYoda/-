@@ -29,7 +29,9 @@ public class Button1 : MonoBehaviour
     GameObject Te7;
     GameObject Style;
     GameObject Dropdown;
-    GameObject Audio;
+    GameObject Audio1;
+    GameObject Audio2;
+    GameObject Audio3;
     public GameObject TextTMP;
     private TextMeshProUGUI textMeshPro;
 
@@ -39,6 +41,7 @@ public class Button1 : MonoBehaviour
     public List<Sprite> images;                  //Listｽﾌﾟﾗｲﾄ
 
     // SE
+
     public AudioClip cardShuffleSE;
     public AudioClip attackSE;
     public AudioClip criticalSE;
@@ -50,9 +53,11 @@ public class Button1 : MonoBehaviour
     public AudioClip cardStopSE;
     public AudioClip startStopSE;
     public AudioClip onPointSE;
+
     // BGM
-    public AudioSource[] audio;
-    
+    public AudioClip[] clips;
+    public AudioSource[] audios;
+
     //タイマー
     float span = 0.1f;                           //0.1秒間隔
     float delta = 0;
@@ -86,9 +91,15 @@ public class Button1 : MonoBehaviour
         this.Te7 = GameObject.Find("Te7");
         this.Style = GameObject.Find("Style");
         this.Dropdown = GameObject.Find("Dropdown");
-        this.Audio = GameObject.Find("BGM1");
+
+
+        this.Audio1 = GameObject.Find("BGM");
+        this.Audio2 = GameObject.Find("BGM1");
+        this.Audio3 = GameObject.Find("BGM2");
+
+        Audio1.GetComponent<AudioSource>().Play();
+
         this.TextTMP = GameObject.Find("TextTMP");
-        audio[0].Play();
     }
     // Update is called once per frame
     void Update()
@@ -134,27 +145,29 @@ public class Button1 : MonoBehaviour
     {
         if (one && walk)
         {
-            //random1 = UnityEngine.Random.Range(1, 4);
-            int random1 = 23;   //ストーリーcardデバッグ用
+            random1 = UnityEngine.Random.Range(1, 4);
+            //int random1 = 22;   //ストーリーcardデバッグ用
             sNum += random1;
 
-            if (sNum < 23 && walk == true)
+
+            if (sNum <= 21 && walk)
             {
                 walk = false;
                 storyCard.GetComponent<SpriteRenderer>().sprite = images[sNum];
             }
-            else if (sNum >= 23 && walk == true)
+            else if (sNum >= 22 && walk)
             {
-                audio[0].Stop();                                //画像と音楽が合っていない
-                audio[1] = Audio.GetComponent<AudioSource>();   //音楽が二重で流れている
-                audio[1].Play();
-                UnityEngine.Debug.Log("チェック");
+                Audio1.GetComponent<AudioSource>().Stop();
+                Audio3.GetComponent<AudioSource>().Play();
 
-                walk = false;
-                storyCard.GetComponent<SpriteRenderer>().sprite = images[42];
+                UnityEngine.Debug.Log("チェック");
 
                 var textAsset = Resources.Load("EndImage") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+                storyCard.GetComponent<SpriteRenderer>().sprite = images[22];
+
+                walk = false;
             }
         }
     }
@@ -2189,8 +2202,8 @@ public class Button1 : MonoBehaviour
     }
     private void GameOver()
     {
-        audio[2] = Audio.GetComponent<AudioSource>();
-        audio[2].Play();
+        Audio1.GetComponent<AudioSource>().Stop();
+        Audio2.GetComponent<AudioSource>().Play();
 
         var textAsset = Resources.Load("GameOver") as TextAsset;
         TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -2210,7 +2223,13 @@ public class Button1 : MonoBehaviour
 
 
 
+/*
 
+
+        audio[2] = Audio1.GetComponent<AudioSource>();
+        audio[2].Play();
+
+ */
 /*　未使用メソッド
  *　    //battle テキストのクリア
         TextClear();
