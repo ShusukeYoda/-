@@ -1514,8 +1514,6 @@ public class Button1 : MonoBehaviour
             //“|‚µ‚½‚Æ‚«
             if (enemys[enemyNum].eHp <= 0)
             {
-                await Task.Delay(1000);
-
                 KilledBranch(enemyNum);
             }
         }
@@ -1570,8 +1568,6 @@ public class Button1 : MonoBehaviour
             //“|‚µ‚½‚Æ‚«
             if (enemys[enemyNum].eHp <= 0)
             {
-                await Task.Delay(1000);
-
                 KilledBranch(enemyNum);
             }
         }
@@ -1634,8 +1630,6 @@ public class Button1 : MonoBehaviour
             //“|‚µ‚½‚Æ‚«
             if (enemys[enemyNum].eHp <= 0)
             {
-                await Task.Delay(1000);
-
                 KilledBranch(enemyNum);
             }
 
@@ -1676,8 +1670,6 @@ public class Button1 : MonoBehaviour
             //“|‚µ‚½‚Æ‚«
             if (enemys[enemyNum].eHp <= 0)
             {
-                await Task.Delay(1000);
-
                 KilledBranch(enemyNum);
             }
 
@@ -1789,8 +1781,6 @@ public class Button1 : MonoBehaviour
             //“|‚µ‚½‚Æ‚«
             if (enemys[enemyNum].eHp <= 0)
             {
-                await Task.Delay(1000);
-
                 KilledBranch(enemyNum);
             }
         }
@@ -1831,8 +1821,6 @@ public class Button1 : MonoBehaviour
             //“|‚µ‚½‚Æ‚«
             if (enemys[enemyNum].eHp <= 0)
             {
-                await Task.Delay(1000);
-
                 KilledBranch(enemyNum);
             }
 
@@ -1902,8 +1890,6 @@ public class Button1 : MonoBehaviour
             //“|‚µ‚½‚Æ‚«
             if (enemys[enemyNum].eHp <= 0)
             {
-                await Task.Delay(1000);
-
                 KilledBranch(enemyNum);
             }
 
@@ -1958,8 +1944,6 @@ public class Button1 : MonoBehaviour
             //“|‚µ‚½‚Æ‚«
             if (enemys[enemyNum].eHp <= 0)
             {
-                await Task.Delay(1000);
-
                 KilledBranch(enemyNum);
             }
 
@@ -2094,8 +2078,6 @@ public class Button1 : MonoBehaviour
             //“|‚µ‚½‚Æ‚«
             if (enemys[enemyNum].eHp <= 0)
             {
-                await Task.Delay(1000);
-
                 KilledBranch(enemyNum);
             }
             //‘±sF’Êí
@@ -2156,8 +2138,6 @@ public class Button1 : MonoBehaviour
             //“|‚µ‚½‚Æ‚«
             if (enemys[enemyNum].eHp <= 0)
             {
-                await Task.Delay(1000);
-
                 KilledBranch(enemyNum);
             }
             SE1.GetComponent<AudioSource>().Play();
