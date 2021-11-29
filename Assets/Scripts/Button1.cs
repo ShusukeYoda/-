@@ -29,6 +29,7 @@ public class Button1 : MonoBehaviour
     GameObject Te7;
     GameObject Style;
     GameObject Dropdown;
+    //BGM
     GameObject Audio1;
     GameObject Audio2;
     GameObject Audio3;
@@ -41,7 +42,6 @@ public class Button1 : MonoBehaviour
     public List<Sprite> images;                  //Listｽﾌﾟﾗｲﾄ
 
     // SE
-
     public AudioClip cardShuffleSE;
     public AudioClip attackSE;
     public AudioClip criticalSE;
@@ -53,10 +53,6 @@ public class Button1 : MonoBehaviour
     public AudioClip cardStopSE;
     public AudioClip startStopSE;
     public AudioClip onPointSE;
-
-    // BGM
-    public AudioClip[] clips;
-    public AudioSource[] audios;
 
     //タイマー
     float span = 0.1f;                           //0.1秒間隔
@@ -72,8 +68,6 @@ public class Button1 : MonoBehaviour
     public int sNum;
     //ストーリー進行bool
     public bool walk = true;
-
-    public TextAsset[] textasset;
 
     // Start is called before the first frame update
     void Start()
@@ -2222,7 +2216,11 @@ public class Button1 : MonoBehaviour
 
 
 /*
+    // BGM
+    public AudioClip[] clips;
+    public AudioSource[] audios;
 
+    public TextAsset[] textasset;
 
         audio[2] = Audio1.GetComponent<AudioSource>();
         audio[2].Play();
