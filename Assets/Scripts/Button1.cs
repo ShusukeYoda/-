@@ -383,32 +383,7 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                var textAsset = Resources.Load("斬りつける2") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-                battle = true;
-
-                if (cri <= luck)
-                {
-                    eDamage = attack * 2 - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-                else
-                {
-                    eDamage = attack - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-
-                if (damage < 0)
-                {
-                    damage = 0;
-                }
-
-                await Task.Delay(2000);
-
-                //バトルメソッドへ
-                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+                await Attack2();
             }
             if (co == 2 && walk == false)
             {
@@ -546,12 +521,10 @@ public class Button1 : MonoBehaviour
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
             {
+                SE1.GetComponent<AudioSource>().Play();
+
                 var textAsset = Resources.Load("話をする7") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-
-
 
                 await Task.Delay(2000);
 
@@ -581,32 +554,7 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                var textAsset = Resources.Load("斬りつける7") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                //battle
-                battle = true;
-
-                if (cri <= luck)
-                {
-                    eDamage = attack * 2 - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-                else
-                {
-                    eDamage = attack - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-
-                if (damage < 0)
-                {
-                    damage = 0;
-                }
-
-                await Task.Delay(2000);
-
-                //バトルメソッドへ
-                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+                await Attack7();
             }
             if (co == 2 && walk == false)
             {
@@ -615,12 +563,10 @@ public class Button1 : MonoBehaviour
             if (co == 3 && battle == false ||
                 co == 3 && walk == false)
             {
+                SE1.GetComponent<AudioSource>().Play();
+
                 var textAsset = Resources.Load("立ち去る7") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-
-
 
                 await Task.Delay(2000);
 
@@ -688,11 +634,10 @@ public class Button1 : MonoBehaviour
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
             {
+                SE1.GetComponent<AudioSource>().Play();
+
                 var textAsset = Resources.Load("話をする9") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-
 
 
                 battle = true;
@@ -726,32 +671,7 @@ public class Button1 : MonoBehaviour
 
             if (co == 1 && walk == false)
             {
-                var textAsset = Resources.Load("斬りつける9") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                //battle
-                battle = true;
-
-                if (cri <= luck)
-                {
-                    eDamage = attack * 2 - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-                else
-                {
-                    eDamage = attack - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-
-                if (damage < 0)
-                {
-                    damage = 0;
-                }
-
-                await Task.Delay(2000);
-
-                //バトルメソッドへ
-                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+                await Attack9();
             }
             if (co == 2 && battle != true ||
                 co == 2 && walk == false)
@@ -800,12 +720,10 @@ public class Button1 : MonoBehaviour
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
             {
+                SE1.GetComponent<AudioSource>().Play();
+
                 var textAsset = Resources.Load("話をする11") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-
-
 
                 await Task.Delay(2000);
 
@@ -835,32 +753,7 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                var textAsset = Resources.Load("斬りつける11") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                //battle
-                battle = true;
-
-                if (cri <= luck)
-                {
-                    eDamage = attack * 2 - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-                else
-                {
-                    eDamage = attack - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-
-                if (damage < 0)
-                {
-                    damage = 0;
-                }
-
-                await Task.Delay(2000);
-
-                //バトルメソッドへ
-                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+                await Attack11();
             }
             if (co == 2 && walk == false)
             {
@@ -869,6 +762,8 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && walk == false)
             {
+                SE1.GetComponent<AudioSource>().Play();
+
                 var textAsset = Resources.Load("立ち去る11") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
@@ -939,32 +834,7 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                var textAsset = Resources.Load("斬りつける13") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                //battle
-                battle = true;
-
-                if (cri <= luck)
-                {
-                    eDamage = attack * 2 - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-                else
-                {
-                    eDamage = attack - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-
-                if (damage < 0)
-                {
-                    damage = 0;
-                }
-
-                await Task.Delay(2000);
-
-                //バトルメソッドへ
-                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+                await Attack13();
             }
             if (co == 2 && walk == false)
             {
@@ -1017,32 +887,7 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                var textAsset = Resources.Load("斬りつける15") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                //battle
-                battle = true;
-
-                if (cri <= luck)
-                {
-                    eDamage = attack * 2 - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-                else
-                {
-                    eDamage = attack - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-
-                if (damage < 0)
-                {
-                    damage = 0;
-                }
-
-                await Task.Delay(2000);
-
-                //バトルメソッドへ
-                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+                await Attack15();
             }
             if (co == 2 && walk == false)
             {
@@ -1096,12 +941,10 @@ public class Button1 : MonoBehaviour
             if (co == 0 && battle == false ||
                 co == 0 && walk == false)
             {
+                SE1.GetComponent<AudioSource>().Play();
+
                 var textAsset = Resources.Load("話をする17") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-
-
 
                 await Task.Delay(2000);
 
@@ -1130,32 +973,7 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                var textAsset = Resources.Load("斬りつける17") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                //battle
-                battle = true;
-
-                if (cri <= luck)
-                {
-                    eDamage = attack * 2 - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-                else
-                {
-                    eDamage = attack - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-
-                if (damage < 0)
-                {
-                    damage = 0;
-                }
-
-                await Task.Delay(2000);
-
-                //バトルメソッドへ
-                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+                await Attack17();
             }
             if (co == 2 && walk == false)
             {
@@ -1164,12 +982,10 @@ public class Button1 : MonoBehaviour
             }
             if (co == 3 && battle != true)
             {
+                SE1.GetComponent<AudioSource>().Play();
+
                 var textAsset = Resources.Load("立ち去る17") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-
-
 
                 await Task.Delay(2000);
 
@@ -1211,32 +1027,7 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                var textAsset = Resources.Load("斬りつける18") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                //battle
-                battle = true;
-
-                if (cri <= luck)
-                {
-                    eDamage = attack * 2 - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-                else
-                {
-                    eDamage = attack - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-
-                if (damage < 0)
-                {
-                    damage = 0;
-                }
-
-                await Task.Delay(2000);
-
-                //バトルメソッドへ
-                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+                await Attack18();
             }
             if (co == 2 && walk == false)
             {
@@ -1265,32 +1056,7 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                var textAsset = Resources.Load("斬りつける19") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                //battle
-                battle = true;
-
-                if (cri <= luck)
-                {
-                    eDamage = attack * 2 - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-                else
-                {
-                    eDamage = attack - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-
-                if (damage < 0)
-                {
-                    damage = 0;
-                }
-
-                await Task.Delay(2000);
-
-                //バトルメソッドへ
-                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+                await Attack19();
             }
             if (co == 2 && walk == false)
             {
@@ -1319,32 +1085,7 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                var textAsset = Resources.Load("斬りつける20") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                //battle
-                battle = true;
-
-                if (cri <= luck)
-                {
-                    eDamage = attack * 2 - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-                else
-                {
-                    eDamage = attack - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-
-                if (damage < 0)
-                {
-                    damage = 0;
-                }
-
-                await Task.Delay(2000);
-
-                //バトルメソッドへ
-                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+                await Attack20();
             }
             if (co == 2 && walk == false)
             {
@@ -1380,33 +1121,7 @@ public class Button1 : MonoBehaviour
             }
             if (co == 1 && walk == false && battle == true)
             {
-                var textAsset = Resources.Load("斬りつける21b") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                //battle
-                if (cri <= luck)
-                {
-                    eDamage = attack * 2 - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-
-
-                }
-                else
-                {
-                    eDamage = attack - enemys[enemyNum].eDef;
-                    damage = enemys[enemyNum].eAtt - defense;
-                }
-
-                if (damage < 0)
-                {
-                    damage = 0;
-                }
-
-                await Task.Delay(2000);
-
-
-                //バトルメソッドへ
-                SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+                await Attack21b();
             }
 
             if (co == 2 && battle != true)
@@ -1427,6 +1142,346 @@ public class Button1 : MonoBehaviour
                 battle = true;
             }
         }
+    }
+
+    private async Task Attack21b()
+    {
+        var textAsset = Resources.Load("斬りつける21b") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+        //battle
+        if (cri <= luck)
+        {
+            SE2.GetComponent<AudioSource>().Play();
+            eDamage = attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+        else
+        {
+            eDamage = attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+
+        if (damage < 0)
+        {
+            damage = 0;
+        }
+
+        await Task.Delay(2000);
+
+
+        //バトルメソッドへ
+        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+    }
+
+    private async Task Attack20()
+    {
+        var textAsset = Resources.Load("斬りつける20") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+        //battle
+        battle = true;
+
+        if (cri <= luck)
+        {
+            SE2.GetComponent<AudioSource>().Play();
+            eDamage = attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+        else
+        {
+            eDamage = attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+
+        if (damage < 0)
+        {
+            damage = 0;
+        }
+
+        await Task.Delay(2000);
+
+        //バトルメソッドへ
+        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+    }
+
+    private async Task Attack19()
+    {
+        var textAsset = Resources.Load("斬りつける19") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+        //battle
+        battle = true;
+
+        if (cri <= luck)
+        {
+            SE2.GetComponent<AudioSource>().Play();
+            eDamage = attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+        else
+        {
+            eDamage = attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+
+        if (damage < 0)
+        {
+            damage = 0;
+        }
+
+        await Task.Delay(2000);
+
+        //バトルメソッドへ
+        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+    }
+
+    private async Task Attack18()
+    {
+        var textAsset = Resources.Load("斬りつける18") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+        //battle
+        battle = true;
+
+        if (cri <= luck)
+        {
+            SE2.GetComponent<AudioSource>().Play();
+            eDamage = attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+        else
+        {
+            eDamage = attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+
+        if (damage < 0)
+        {
+            damage = 0;
+        }
+
+        await Task.Delay(2000);
+
+        //バトルメソッドへ
+        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+    }
+
+    private async Task Attack17()
+    {
+        var textAsset = Resources.Load("斬りつける17") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+        //battle
+        battle = true;
+
+        if (cri <= luck)
+        {
+            SE2.GetComponent<AudioSource>().Play();
+            eDamage = attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+        else
+        {
+            eDamage = attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+
+        if (damage < 0)
+        {
+            damage = 0;
+        }
+
+        await Task.Delay(2000);
+
+        //バトルメソッドへ
+        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+    }
+
+    private async Task Attack15()
+    {
+        var textAsset = Resources.Load("斬りつける15") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+        //battle
+        battle = true;
+
+        if (cri <= luck)
+        {
+            SE2.GetComponent<AudioSource>().Play();
+            eDamage = attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+        else
+        {
+            eDamage = attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+
+        if (damage < 0)
+        {
+            damage = 0;
+        }
+
+        await Task.Delay(2000);
+
+        //バトルメソッドへ
+        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+    }
+
+    private async Task Attack13()
+    {
+        var textAsset = Resources.Load("斬りつける13") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+        //battle
+        battle = true;
+
+        if (cri <= luck)
+        {
+            SE2.GetComponent<AudioSource>().Play();
+            eDamage = attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+        else
+        {
+            eDamage = attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+
+        if (damage < 0)
+        {
+            damage = 0;
+        }
+
+        await Task.Delay(2000);
+
+        //バトルメソッドへ
+        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+    }
+
+    private async Task Attack11()
+    {
+        var textAsset = Resources.Load("斬りつける11") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+        //battle
+        battle = true;
+
+        if (cri <= luck)
+        {
+            SE2.GetComponent<AudioSource>().Play();
+            eDamage = attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+        else
+        {
+            eDamage = attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+
+        if (damage < 0)
+        {
+            damage = 0;
+        }
+
+        await Task.Delay(2000);
+
+        //バトルメソッドへ
+        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+    }
+
+    private async Task Attack9()
+    {
+        var textAsset = Resources.Load("斬りつける9") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+        //battle
+        battle = true;
+
+        if (cri <= luck)
+        {
+            SE2.GetComponent<AudioSource>().Play();
+            eDamage = attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+        else
+        {
+            eDamage = attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+
+        if (damage < 0)
+        {
+            damage = 0;
+        }
+
+        await Task.Delay(2000);
+
+        //バトルメソッドへ
+        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+    }
+
+    private async Task Attack7()
+    {
+        var textAsset = Resources.Load("斬りつける7") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+        //battle
+        battle = true;
+
+        if (cri <= luck)
+        {
+            SE2.GetComponent<AudioSource>().Play();
+            eDamage = attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+        else
+        {
+            eDamage = attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+
+        if (damage < 0)
+        {
+            damage = 0;
+        }
+
+        await Task.Delay(2000);
+
+        //バトルメソッドへ
+        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+    }
+
+    private async Task Attack2()
+    {
+        var textAsset = Resources.Load("斬りつける2") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+
+        battle = true;
+
+        if (cri <= luck)
+        {
+            SE2.GetComponent<AudioSource>().Play();
+            eDamage = attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+        else
+        {
+            eDamage = attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - defense;
+        }
+
+        if (damage < 0)
+        {
+            damage = 0;
+        }
+
+        await Task.Delay(2000);
+
+        //バトルメソッドへ
+        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
     }
 
     private async Task magic21Attack()
@@ -2046,6 +2101,7 @@ public class Button1 : MonoBehaviour
             //続行：通常
             else
             {
+                SE1.GetComponent<AudioSource>().Play();
                 await Task.Delay(2000);
 
                 SwBattlePost(damage, eDamage, eAgi, eHp);
@@ -2069,6 +2125,7 @@ public class Button1 : MonoBehaviour
             //倒れたとき
             if (hitP <= 0)
             {
+                SE1.GetComponent<AudioSource>().Play();
                 await Task.Delay(2000);
 
                 GameOver();
@@ -2076,6 +2133,7 @@ public class Button1 : MonoBehaviour
             //続行：通常
             else
             {
+                SE1.GetComponent<AudioSource>().Play();
                 await Task.Delay(2000);
 
                 SwBattlePost(damage, eDamage, eAgi, eHp);
@@ -2102,7 +2160,7 @@ public class Button1 : MonoBehaviour
 
                 KilledBranch(enemyNum);
             }
-
+            SE1.GetComponent<AudioSource>().Play();
             await Task.Delay(2000);
 
         }
@@ -2123,11 +2181,12 @@ public class Button1 : MonoBehaviour
             //倒れたとき
             if (hitP <= 0)
             {
+                SE3.GetComponent<AudioSource>().Play();
                 await Task.Delay(2000);
 
                 GameOver();
             }
-
+            SE1.GetComponent<AudioSource>().Play();
             await Task.Delay(2000);
 
         }
@@ -2135,8 +2194,8 @@ public class Button1 : MonoBehaviour
 
     private async void KilledBranch(int enemyNum)
     {
+        SE3.GetComponent<AudioSource>().Play();
         await Task.Delay(1000);
-
 
         if (enemyNum == 0)
         {
