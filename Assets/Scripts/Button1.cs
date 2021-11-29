@@ -33,6 +33,19 @@ public class Button1 : MonoBehaviour
     GameObject Audio1;
     GameObject Audio2;
     GameObject Audio3;
+    //SE
+    GameObject SE1;
+    GameObject SE2;
+    GameObject SE3;
+    GameObject SE4;
+    GameObject SE5;
+    GameObject SE6;
+    GameObject SE7;
+    GameObject SE8;
+    GameObject SE9;
+    GameObject SE10;
+    GameObject SE11;
+
     public GameObject TextTMP;
     private TextMeshProUGUI textMeshPro;
 
@@ -54,7 +67,7 @@ public class Button1 : MonoBehaviour
     public AudioClip startStopSE;
     public AudioClip onPointSE;
 
-    public AudioSource audioA;
+    public AudioSource audioSource;
 
     //É^ÉCÉ}Å[
     float span = 0.1f;                           //0.1ïbä‘äu
@@ -95,9 +108,22 @@ public class Button1 : MonoBehaviour
 
         Audio1.GetComponent<AudioSource>().Play();
 
+        this.SE1 = GameObject.Find("attackDamageSE");
+        this.SE2 = GameObject.Find("criticalSE");
+        this.SE3 = GameObject.Find("destroySE");
+        this.SE4 = GameObject.Find("magicAttack1SE");
+        this.SE5 = GameObject.Find("magicAttack2SE");
+        this.SE6 = GameObject.Find("magicSE");
+        this.SE7 = GameObject.Find("onePointSE");
+        this.SE8 = GameObject.Find("recoverySE");
+        this.SE9 = GameObject.Find("shaffleSE");
+        this.SE10 = GameObject.Find("tarot&StartSE");
+        this.SE11 = GameObject.Find("cardStopSE");
+
+
         this.TextTMP = GameObject.Find("TextTMP");
 
-        audio.PlayOneShot(criticalSE);
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -128,10 +154,15 @@ public class Button1 : MonoBehaviour
 
     public void StartClick()
     {
+        SE10.GetComponent<AudioSource>().Play();
+        SE9.GetComponent<AudioSource>().Play();
+
         moving = true;
     }
     public void StopClick()
     {
+        SE11.GetComponent<AudioSource>().Play();
+
         if (moving == true && one == false)
         {
             moving = false;
