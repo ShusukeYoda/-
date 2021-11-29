@@ -43,16 +43,18 @@ public class Button1 : MonoBehaviour
 
     // SE
     public AudioClip cardShuffleSE;
-    public AudioClip attackSE;
+    public AudioClip attackDamageSE;
     public AudioClip criticalSE;
-    public AudioClip damageSE;
+    public AudioClip destroySE;
     public AudioClip magicSE1;
     public AudioClip magicSE2;
     public AudioClip magicSE3;
-    public AudioClip magicSE4;
+    public AudioClip recoverySE4;
     public AudioClip cardStopSE;
     public AudioClip startStopSE;
     public AudioClip onPointSE;
+
+    public AudioSource audioA;
 
     //É^ÉCÉ}Å[
     float span = 0.1f;                           //0.1ïbä‘äu
@@ -94,6 +96,8 @@ public class Button1 : MonoBehaviour
         Audio1.GetComponent<AudioSource>().Play();
 
         this.TextTMP = GameObject.Find("TextTMP");
+
+        audio.PlayOneShot(criticalSE);
     }
     // Update is called once per frame
     void Update()

@@ -11,7 +11,7 @@ public class CoroutineTest : MonoBehaviour
         StartCoroutine(EndMessage());
     }
 
-    IEnumerator EndMessage()
+    IEnumerator EndMessage() //(引数）も可能
     {
         Debug.Log("始まり");
         yield return new WaitForSeconds(3);
@@ -24,3 +24,34 @@ public class CoroutineTest : MonoBehaviour
         
     }
 }
+
+/*
+    参照
+    IEumerator Start(){
+        Debug.Log("始まり");
+        yield return new WaitForSeconds(3);
+        Debug.Log("終わり");
+    }
+*
+*   参照
+    void Start(){
+        Debug.Log("始まり");
+        Invoke("EndMsg",3);
+    }
+    void EndMsg()
+    {
+        Debug.Log("途中");
+    }
+*
+*   参照
+    void Start(){
+        Debug.Log("始まり");
+        //Invoke("EndMsg",3);
+        InvokeRepeating("EndMsg",1,5);
+    }
+    void EndMsg()
+    {
+        Debug.Log("途中");　
+    }
+ */
+    //Debug位置にinstantiateとか

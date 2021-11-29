@@ -2938,32 +2938,22 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 086edd05431df294c9f804c9354b5c14, type: 3}
   - {fileID: 21300000, guid: bbfd54548a842614aafc5504692eb6f5, type: 3}
   - {fileID: 21300000, guid: eeb67c2caec0c9c41964d9769dc7d8f9, type: 3}
-  cardShuffleSE: {fileID: 0}
-  attackSE: {fileID: 0}
-  criticalSE: {fileID: 0}
-  damageSE: {fileID: 0}
-  magicSE1: {fileID: 0}
-  magicSE2: {fileID: 0}
-  magicSE3: {fileID: 0}
-  magicSE4: {fileID: 0}
-  cardStopSE: {fileID: 0}
-  startStopSE: {fileID: 0}
-  onPointSE: {fileID: 0}
-  clips:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  audios:
-  - {fileID: 0}
-  - {fileID: 408383078}
-  - {fileID: 662050372}
-  - {fileID: 1815844298}
+  cardShuffleSE: {fileID: 8300000, guid: 0dd69bc175270464e910af7bb77f4950, type: 3}
+  attackDamageSE: {fileID: 8300000, guid: a0595b395e2bfa44fa44bab6daadeb4e, type: 3}
+  criticalSE: {fileID: 8300000, guid: cba031fabaddf024da65f8fd7e3ec48c, type: 3}
+  destroySE: {fileID: 8300000, guid: baab7f5bb5d18294cb189f9740bbc3b6, type: 3}
+  magicSE1: {fileID: 8300000, guid: 98b3c5a2984ea294ba2ac341104c4eb6, type: 3}
+  magicSE2: {fileID: 8300000, guid: f326124247ad1094e889bacf73bea6ce, type: 3}
+  magicSE3: {fileID: 8300000, guid: bcc8a4ee86b94574cb41f1e5ab63d4a7, type: 3}
+  recoverySE4: {fileID: 8300000, guid: ba2ed18ea653ebb49adc9d996a1f3455, type: 3}
+  cardStopSE: {fileID: 8300000, guid: 35134bbbf08cbb746b96cf89ab778900, type: 3}
+  startStopSE: {fileID: 8300000, guid: 5d92c720de1ac994984de9b1e2a878d5, type: 3}
+  onPointSE: {fileID: 8300000, guid: a47534e15f255824391770c10fc5b162, type: 3}
   moving: 0
   one: 0
   random1: 0
   sNum: 0
   walk: 0
-  textasset: []
   enemyNum: 0
 --- !u!114 &1052176994
 MonoBehaviour:
