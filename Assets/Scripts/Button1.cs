@@ -225,8 +225,7 @@ public class Button1 : MonoBehaviour
 
     List<Status> select = new List<Status>
             {
-                new Status {hp = 35, str = 20, vit = 10, mg = 15, res = 5,agi = 20,dex =15,luc = 30,line = "スタイルは『0 愚者』"
-},
+                new Status {hp = 35, str = 20, vit = 10, mg = 15, res = 5,agi = 20,dex =15,luc = 30,line = "スタイルは『0 愚者』"},
                 new Status {hp = 30, str = 10, vit = 10, mg = 40, res = 30,agi = 10,dex =20,luc = 15,line = "スタイルは『I 魔術師』"},
                 new Status {hp = 30, str = 15, vit = 15, mg = 35, res = 30,agi = 10,dex =15,luc = 30,line = "スタイルは『II 女教皇』"},
 
@@ -254,7 +253,16 @@ public class Button1 : MonoBehaviour
                 new Status {hp = 65, str = 30, vit = 15, mg = 30, res = 25,agi = 10,dex =25,luc = 25,line = "スタイルは『XX  審判』"},
                 new Status {hp = 50, str = 45, vit = 25, mg = 25, res = 20,agi = 20,dex =20,luc = 20,line = "スタイルは『XXI 世界』"},
             };
-
+    int attack;
+    int defense;
+    int mAttack;
+    int mDefense;
+    int hitP;
+    int magic;
+    int strength;
+    int resist;
+    int agility;
+    int luck;
     private void ChooseTarot(int v)
     {
         if (tarotImage[count]) //tarotImage[0] == 
@@ -282,16 +290,6 @@ public class Button1 : MonoBehaviour
         agility = select[v].agi;
         luck = select[v].luc;
     }
-    int attack;
-    int defense;
-    int mAttack;
-    int mDefense;
-    int hitP;
-    int magic;
-    int strength;
-    int resist;
-    int agility;
-    int luck;
 
     List<Status> enemys = new List<Status>
             {
@@ -2023,7 +2021,7 @@ public class Button1 : MonoBehaviour
             await Task.Delay(2000);
             //mp消費
             magic -= 5;
-            Te4.GetComponent<Text>().text = magic.ToString();
+            Te4.GetComponent<UnityEngine.UI.Text>().text = magic.ToString();
 
             //与ダメ
             eDamage = mAttack - enemys[enemyNum].eRes;
@@ -2065,7 +2063,11 @@ public class Button1 : MonoBehaviour
 
             Te4.GetComponent<Text>().text = magic.ToString();
             Te3.GetComponent<Text>().text = luck.ToString();
-
+            /*
+            magic -= 5;     //UIテスト
+            Te4.GetComponent<Text>().text = magic.ToString();
+            UnityEngine.Debug.Log(magic);
+            */
             walk = true;
         }
         else
