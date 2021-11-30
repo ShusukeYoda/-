@@ -108,7 +108,7 @@ public class Button1 : MonoBehaviour
 
         Audio1.GetComponent<AudioSource>().Play();
 
-        this.SE1 = GameObject.Find("attackDamageSE");
+        this.SE1 = GameObject.Find("attackDamegeSE");
         this.SE2 = GameObject.Find("criticalSE");
         this.SE3 = GameObject.Find("destroySE");
         this.SE4 = GameObject.Find("magicAttack1SE");
@@ -174,8 +174,8 @@ public class Button1 : MonoBehaviour
     {
         if (one && walk)
         {
-            random1 = UnityEngine.Random.Range(1, 4);
-            //int random1 = 22;   //ストーリーcardデバッグ用
+            //random1 = UnityEngine.Random.Range(1, 4);
+            int random1 = 2;   //ストーリーcardデバッグ用
             sNum += random1;
 
 
@@ -1158,6 +1158,7 @@ public class Button1 : MonoBehaviour
         }
         else
         {
+            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1190,6 +1191,7 @@ public class Button1 : MonoBehaviour
         }
         else
         {
+            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1221,6 +1223,7 @@ public class Button1 : MonoBehaviour
         }
         else
         {
+            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1252,6 +1255,7 @@ public class Button1 : MonoBehaviour
         }
         else
         {
+            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1283,6 +1287,7 @@ public class Button1 : MonoBehaviour
         }
         else
         {
+            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1314,6 +1319,7 @@ public class Button1 : MonoBehaviour
         }
         else
         {
+            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1345,6 +1351,7 @@ public class Button1 : MonoBehaviour
         }
         else
         {
+            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1376,6 +1383,7 @@ public class Button1 : MonoBehaviour
         }
         else
         {
+            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1407,6 +1415,7 @@ public class Button1 : MonoBehaviour
         }
         else
         {
+            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1438,6 +1447,7 @@ public class Button1 : MonoBehaviour
         }
         else
         {
+            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1469,6 +1479,7 @@ public class Button1 : MonoBehaviour
         }
         else
         {
+            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
