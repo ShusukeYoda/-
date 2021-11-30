@@ -334,6 +334,7 @@ public class Button1 : MonoBehaviour
     }
 
     bool battle = false;
+    bool critical = false;
 
     int damage;
     int eDamage;
@@ -1152,13 +1153,13 @@ public class Button1 : MonoBehaviour
         //battle
         if (cri <= luck)
         {
-            SE2.GetComponent<AudioSource>().Play();
+            critical = true;
+
             eDamage = attack * 2 - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
         else
         {
-            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1185,13 +1186,13 @@ public class Button1 : MonoBehaviour
 
         if (cri <= luck)
         {
-            SE2.GetComponent<AudioSource>().Play();
+            critical = true;
+
             eDamage = attack * 2 - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
         else
         {
-            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1217,13 +1218,13 @@ public class Button1 : MonoBehaviour
 
         if (cri <= luck)
         {
-            SE2.GetComponent<AudioSource>().Play();
+            critical = true;
+
             eDamage = attack * 2 - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
         else
         {
-            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1249,13 +1250,13 @@ public class Button1 : MonoBehaviour
 
         if (cri <= luck)
         {
-            SE2.GetComponent<AudioSource>().Play();
+            critical = true;
+
             eDamage = attack * 2 - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
         else
         {
-            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1281,13 +1282,13 @@ public class Button1 : MonoBehaviour
 
         if (cri <= luck)
         {
-            SE2.GetComponent<AudioSource>().Play();
+            critical = true;
+
             eDamage = attack * 2 - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
         else
         {
-            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1313,13 +1314,13 @@ public class Button1 : MonoBehaviour
 
         if (cri <= luck)
         {
-            SE2.GetComponent<AudioSource>().Play();
+            critical = true;
+
             eDamage = attack * 2 - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
         else
         {
-            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1345,13 +1346,13 @@ public class Button1 : MonoBehaviour
 
         if (cri <= luck)
         {
-            SE2.GetComponent<AudioSource>().Play();
+            critical = true;
+
             eDamage = attack * 2 - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
         else
         {
-            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1377,13 +1378,13 @@ public class Button1 : MonoBehaviour
 
         if (cri <= luck)
         {
-            SE2.GetComponent<AudioSource>().Play();
+            critical = true;
+
             eDamage = attack * 2 - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
         else
         {
-            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1409,13 +1410,13 @@ public class Button1 : MonoBehaviour
 
         if (cri <= luck)
         {
-            SE2.GetComponent<AudioSource>().Play();
+            critical = true;
+
             eDamage = attack * 2 - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
         else
         {
-            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1441,13 +1442,13 @@ public class Button1 : MonoBehaviour
 
         if (cri <= luck)
         {
-            SE2.GetComponent<AudioSource>().Play();
+            critical = true;
+
             eDamage = attack * 2 - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
         else
         {
-            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -1473,13 +1474,13 @@ public class Button1 : MonoBehaviour
 
         if (cri <= luck)
         {
-            SE2.GetComponent<AudioSource>().Play();
+            critical = true;
+
             eDamage = attack * 2 - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
         else
         {
-            SE1.GetComponent<AudioSource>().Play();
             eDamage = attack - enemys[enemyNum].eDef;
             damage = enemys[enemyNum].eAtt - defense;
         }
@@ -2079,9 +2080,26 @@ public class Button1 : MonoBehaviour
 
         if (agility >= eAgi)
         {
+            if (critical)
+            {
+                SE2.GetComponent<AudioSource>().Play();
+                critical = false;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
+
+                //与ダメージ
+                enemys[enemyNum].eHp -= eDamage;
+
+                //倒したとき
+                if (enemys[enemyNum].eHp <= 0)
+                {
+                    KilledBranch(enemyNum);
+                }
+                await Task.Delay(2000);
+                SwBattlePost(damage, eDamage, eAgi, eHp);
+            }
+
+            //criticalではないとき
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
 
             //与ダメージ
             enemys[enemyNum].eHp -= eDamage;
@@ -2131,7 +2149,6 @@ public class Button1 : MonoBehaviour
 
                 SwBattlePost(damage, eDamage, eAgi, eHp);
             }
-
         }
     }
 
@@ -2139,9 +2156,26 @@ public class Button1 : MonoBehaviour
     {
         if (agility >= eAgi)
         {
+            if (critical)
+            {
+                SE2.GetComponent<AudioSource>().Play();
+                critical = false;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
+
+                //与ダメージ
+                enemys[enemyNum].eHp -= eDamage;
+
+                //倒したとき
+                if (enemys[enemyNum].eHp <= 0)
+                {
+                    KilledBranch(enemyNum);
+                }
+                SE1.GetComponent<AudioSource>().Play();
+                await Task.Delay(2000);
+            }
+
+            //criticalではないとき
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
 
             //与ダメージ
             enemys[enemyNum].eHp -= eDamage;
@@ -2158,8 +2192,6 @@ public class Button1 : MonoBehaviour
         else
         {
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
 
             //ステータスバーに表記
             hitP -= damage;
@@ -2172,14 +2204,13 @@ public class Button1 : MonoBehaviour
             //倒れたとき
             if (hitP <= 0)
             {
-                SE3.GetComponent<AudioSource>().Play();
+                SE1.GetComponent<AudioSource>().Play();
                 await Task.Delay(2000);
 
                 GameOver();
             }
             SE1.GetComponent<AudioSource>().Play();
             await Task.Delay(2000);
-
         }
     }
 
