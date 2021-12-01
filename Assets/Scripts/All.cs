@@ -351,21 +351,7 @@ public class All : MonoBehaviour
                 //
 
                 //ステータスバーに表記
-                tarot.hitP -= damage;
-
-                if (tarot.hitP < 0)
-                {
-                    tarot.hitP = 0;
-                }
-                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-                //倒れたとき
-                if (tarot.hitP <= 0)
-                {
-                    await Task.Delay(2000);
-
-                    GameOver();
-                }
+                await PreGameOver();
                 await Task.Delay(2000);
             }
             if (co == 1 && walk == false)
@@ -392,22 +378,7 @@ public class All : MonoBehaviour
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
-                //ステータスバーに表記
-                tarot.hitP -= damage;
-
-                if (tarot.hitP < 0)
-                {
-                    tarot.hitP = 0;
-                }
-                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-                //倒れたとき
-                if (tarot.hitP <= 0)
-                {
-                    await Task.Delay(2000);
-
-                    GameOver();
-                }
+                await PreGameOver();
                 await Task.Delay(2000);
             }
         }
@@ -466,22 +437,7 @@ public class All : MonoBehaviour
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
-                //ステータスバーに表記
-                tarot.hitP -= damage;
-
-                if (tarot.hitP < 0)
-                {
-                    tarot.hitP = 0;
-                }
-                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-                //倒れたとき
-                if (tarot.hitP <= 0)
-                {
-                    await Task.Delay(2000);
-
-                    GameOver();
-                }
+                await PreGameOver();
                 await Task.Delay(2000);
             }
 
@@ -549,22 +505,7 @@ public class All : MonoBehaviour
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
-                //ステータスバーに表記
-                tarot.hitP -= damage;
-
-                if (tarot.hitP < 0)
-                {
-                    tarot.hitP = 0;
-                }
-                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-                //倒れたとき
-                if (tarot.hitP <= 0)
-                {
-                    await Task.Delay(2000);
-
-                    GameOver();
-                }
+                await PreGameOver();
                 await Task.Delay(2000);
             }
             if (co == 1 && walk == false)
@@ -592,22 +533,7 @@ public class All : MonoBehaviour
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
-                //ステータスバーに表記
-                tarot.hitP -= damage;
-                if (tarot.hitP < 0)
-                {
-                    tarot.hitP = 0;
-                }
-                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-                //倒れたとき
-                if (tarot.hitP <= 0)
-                {
-                    await Task.Delay(2000);
-
-                    GameOver();
-                }
-
+                await PreGameOver();
                 await Task.Delay(2000);
             }
         }
@@ -770,21 +696,7 @@ public class All : MonoBehaviour
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
-                //ステータスバーに表記
-                tarot.hitP -= damage;
-                if (tarot.hitP < 0)
-                {
-                    tarot.hitP = 0;
-                }
-                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-                //倒れたとき
-                if (tarot.hitP <= 0)
-                {
-                    await Task.Delay(2000);
-
-                    GameOver();
-                }
+                await PreGameOver();
                 await Task.Delay(2000);
             }
             if (co == 1 && walk == false)
@@ -811,21 +723,7 @@ public class All : MonoBehaviour
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
-                //ステータスバーに表記
-                tarot.hitP -= damage;
-                if (tarot.hitP < 0)
-                {
-                    tarot.hitP = 0;
-                }
-                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-                //倒れたとき
-                if (tarot.hitP <= 0)
-                {
-                    await Task.Delay(2000);
-
-                    GameOver();
-                }
+                await PreGameOver();
                 await Task.Delay(2000);
             }
         }
@@ -957,6 +855,25 @@ public class All : MonoBehaviour
 
                 battle = true;
             }
+        }
+    }
+
+    private async Task PreGameOver()
+    {
+        tarot.hitP -= damage;
+
+        if (tarot.hitP < 0)
+        {
+            tarot.hitP = 0;
+        }
+        Te0.GetComponent<Text>().text = tarot.hitP.ToString();
+
+        //倒れたとき
+        if (tarot.hitP <= 0)
+        {
+            await Task.Delay(2000);
+
+            GameOver();
         }
     }
 
@@ -1515,21 +1432,7 @@ public class All : MonoBehaviour
             UnityEngine.Debug.Log("チェックポイント");
             //
 
-            //ステータスバーに表記
-            tarot.hitP -= damage;
-            if (tarot.hitP < 0)
-            {
-                tarot.hitP = 0;
-            }
-            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-            //倒れたとき
-            if (tarot.hitP <= 0)
-            {
-                await Task.Delay(2000);
-
-                GameOver();
-            }
+            await PreGameOver();
             await Task.Delay(2000);
         }
     }
@@ -1667,22 +1570,7 @@ public class All : MonoBehaviour
             UnityEngine.Debug.Log("チェックポイント");
             //
 
-            //ステータスバーに表記
-            tarot.hitP -= damage;
-            if (tarot.hitP < 0)
-            {
-                tarot.hitP = 0;
-            }
-            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-            //倒れたとき
-            if (tarot.hitP <= 0)
-            {
-                await Task.Delay(2000);
-
-                GameOver();
-            }
-
+            await PreGameOver();
             await Task.Delay(2000);
         }
     }
@@ -1789,22 +1677,7 @@ public class All : MonoBehaviour
             UnityEngine.Debug.Log("チェックポイント");
             //
 
-            //ステータスバーに表記
-            tarot.hitP -= damage;
-
-            if (tarot.hitP < 0)
-            {
-                tarot.hitP = 0;
-            }
-            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-            //倒れたとき
-            if (tarot.hitP <= 0)
-            {
-                await Task.Delay(2000);
-
-                GameOver();
-            }
+            await PreGameOver();
             await Task.Delay(2000);
         }
     }
@@ -1944,30 +1817,13 @@ public class All : MonoBehaviour
             //
 
             //ステータスバーに表記
-            tarot.hitP -= damage;
-
-            if (tarot.hitP < 0)
-            {
-                tarot.hitP = 0;
-            }
-            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-            //倒れたとき
-            if (tarot.hitP <= 0)
-            {
-                SE1.GetComponent<AudioSource>().Play();
-                await Task.Delay(2000);
-
-                GameOver();
-            }
+            await PreGameOver();
             //続行：通常
-            else
-            {
-                SE1.GetComponent<AudioSource>().Play();
-                await Task.Delay(2000);
+            SE1.GetComponent<AudioSource>().Play();
+            await Task.Delay(2000);
 
-                SwBattlePost(damage, eDamage, eAgi, eHp);
-            }
+            SwBattlePost(damage, eDamage, eAgi, eHp);
+
         }
     }
 
@@ -2012,22 +1868,7 @@ public class All : MonoBehaviour
         {
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
 
-            //ステータスバーに表記
-            tarot.hitP -= damage;
-            if (tarot.hitP < 0)
-            {
-                tarot.hitP = 0;
-            }
-            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-            //倒れたとき
-            if (tarot.hitP <= 0)
-            {
-                SE1.GetComponent<AudioSource>().Play();
-                await Task.Delay(2000);
-
-                GameOver();
-            }
+            await PreGameOver();
             SE1.GetComponent<AudioSource>().Play();
             await Task.Delay(2000);
         }
