@@ -19,6 +19,7 @@ public class All : MonoBehaviour
     Tarot tarot;
     public List<Sprite> images;    //Listｽﾌﾟﾗｲﾄ
     StoryCard SCard;
+    Status status;
 
     //オブジェクト
     GameObject card;
@@ -75,6 +76,7 @@ public class All : MonoBehaviour
         this.card = GameObject.Find("card");
         this.storyCard = GameObject.Find("storyCard");
         this.SCard = GameObject.Find("storyCard").GetComponent<StoryCard>();
+        this.status = GameObject.Find("Status").GetComponent<Status>();
         this.Te0 = GameObject.Find("Te0");
         this.Te1 = GameObject.Find("Te1");
         this.Te2 = GameObject.Find("Te2");
@@ -102,7 +104,6 @@ public class All : MonoBehaviour
         this.SE9 = GameObject.Find("shaffleSE");
         this.SE10 = GameObject.Find("tarot&StartSE");
         this.SE11 = GameObject.Find("cardStopSE");
-
 
         this.TextTMP = GameObject.Find("TextTMP");
     }
@@ -147,7 +148,6 @@ public class All : MonoBehaviour
 
                 new Status {eHp = 40,eAtt = 50 ,eDef=15, eRes = 0, eAgi = 10}　 //１１住人
             };
-
     bool battle = false;
     bool critical = false;
 
