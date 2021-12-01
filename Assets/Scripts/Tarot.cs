@@ -1,30 +1,106 @@
-﻿class Tarot
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using static System.Net.WebRequestMethods;
+
+class Tarot :MonoBehaviour
 {
-    public string[] tarotImage;
-    public Tarot()
+    All all;
+    Tarot tarot;
+    Text text;
+    public Sprite[] tarotImage;   //配列ｽﾌﾟﾗｲﾄ 消すと消える
+
+    GameObject Te0;
+    GameObject Te1;
+    GameObject Te2;
+    GameObject Te3;
+    GameObject Te4;
+    GameObject Te5;
+    GameObject Te6;
+    GameObject Te7;
+    GameObject Style;
+
+    void Start()
     {
-        tarotImage = new string[22];
-        tarotImage[0] = @"Image\69px-RWS_Tarot_00_Fool.jpg";
-        tarotImage[1] = @"Image\68px-RWS_Tarot_01_Magician.jpg";
-        tarotImage[2] = @"Image\69px-RWS_Tarot_02_High_Priestess.jpg";
-        tarotImage[3] = @"Image\69px-RWS_Tarot_03_Empress.jpg";
-        tarotImage[4] = @"Image\70px-RWS_Tarot_04_Emperor.jpg";
-        tarotImage[5] = @"Image\68px-RWS_Tarot_05_Hierophant.jpg";
-        tarotImage[6] = @"Image\69px-RWS_Tarot_06_Lovers.jpg";
-        tarotImage[7] = @"Image\68px-RWS_Tarot_07_Chariot.jpg";
-        tarotImage[8] = @"Image\66px-RWS_Tarot_08_Strength.jpg";
-        tarotImage[9] = @"Image\69px-RWS_Tarot_09_Hermit.jpg";
-        tarotImage[10] = @"Image\69px-RWS_Tarot_10_Wheel_of_Fortune.jpg";
-        tarotImage[11] = @"Image\69px-RWS_Tarot_11_Justice.jpg";
-        tarotImage[12] = @"Image\68px-RWS_Tarot_12_Hanged_Man.jpg";
-        tarotImage[13] = @"Image\68px-RWS_Tarot_13_Death.jpg";
-        tarotImage[14] = @"Image\69px-RWS_Tarot_14_Temperance.jpg";
-        tarotImage[15] = @"Image\69px-RWS_Tarot_15_Devil.jpg";
-        tarotImage[16] = @"Image\70px-RWS_Tarot_16_Tower.jpg";
-        tarotImage[17] = @"Image\69px-RWS_Tarot_17_Star.jpg";
-        tarotImage[18] = @"Image\68px-RWS_Tarot_18_Moon.jpg";
-        tarotImage[19] = @"Image\69px-RWS_Tarot_19_Sun.jpg";
-        tarotImage[20] = @"Image\69px-RWS_Tarot_20_Judgement.jpg";
-        tarotImage[21] = @"Image\68px-RWS_Tarot_21_World.jpg";
+        this.all = GameObject.Find("Main Camera").GetComponent<All>();
+        this.tarot = GameObject.Find("card").GetComponent<Tarot>();
+        this.Te0 = GameObject.Find("Te0");
+        this.Te1 = GameObject.Find("Te1");
+        this.Te2 = GameObject.Find("Te2");
+        this.Te3 = GameObject.Find("Te3");
+        this.Te4 = GameObject.Find("Te4");
+        this.Te5 = GameObject.Find("Te5");
+        this.Te6 = GameObject.Find("Te6");
+        this.Te7 = GameObject.Find("Te7");
+        this.Style = GameObject.Find("Style");
     }
+    public int attack;
+    public int defense;
+    public int mAttack;
+    public int mDefense;
+    public int hitP;
+    public int magic;
+    public int strength;
+    public int resist;
+    public int agility;
+    public int luck;
+    public void ChooseTarot(int v)
+    {
+        if (tarot.tarotImage[all.count]) //tarotImage[0] == 
+        {
+            Te0.GetComponent<Text>().text = select[v].hp.ToString();
+            Te1.GetComponent<Text>().text = select[v].str.ToString();
+            Te2.GetComponent<Text>().text = select[v].vit.ToString();
+            Te3.GetComponent<Text>().text = select[v].luc.ToString();
+            Te4.GetComponent<Text>().text = select[v].mg.ToString();
+            Te5.GetComponent<Text>().text = select[v].res.ToString();
+            Te6.GetComponent<Text>().text = select[v].agi.ToString();
+            Te7.GetComponent<Text>().text = select[v].dex.ToString();
+            Style.GetComponent<Text>().text = select[v].line.ToString();
+        }
+        //プレイヤーステータス
+        attack = select[v].str + (select[v].dex / 5) * (select[v].luc / 5);
+        defense = select[v].vit + (select[v].dex / 5) * (select[v].luc / 5);
+        mAttack = select[v].mg - 5 + (select[v].dex / 5) * (select[v].luc / 5);
+        mDefense = select[v].res + (select[v].dex / 5) * (select[v].luc / 5);
+
+        hitP = select[v].hp;
+        magic = select[v].mg;
+        strength = select[v].str;
+        resist = select[v].res;
+        agility = select[v].agi;
+        luck = select[v].luc;
+    }
+
+
+    List<Status> select = new List<Status>
+            {
+                new Status {hp = 35, str = 20, vit = 10, mg = 15, res = 5,agi = 20,dex =15,luc = 30,line = "スタイルは『0 愚者』"},
+                new Status {hp = 30, str = 10, vit = 10, mg = 40, res = 30,agi = 10,dex =20,luc = 15,line = "スタイルは『I 魔術師』"},
+                new Status {hp = 30, str = 15, vit = 15, mg = 35, res = 30,agi = 10,dex =15,luc = 30,line = "スタイルは『II 女教皇』"},
+
+                new Status {hp = 30, str = 20, vit = 15, mg = 25, res = 20,agi = 10,dex =15,luc = 15,line = "スタイルは『III 女帝』"},
+                new Status {hp = 35, str = 30, vit = 20, mg = 15, res = 10,agi = 10,dex =15,luc = 15,line = "スタイルは『IV 皇帝』"},
+                new Status {hp = 30, str = 10, vit = 15, mg = 35, res = 30,agi = 10,dex =15,luc = 30,line = "スタイルは『V 教皇』"},
+
+                new Status {hp = 35, str = 20, vit = 20, mg = 20, res = 15,agi = 15,dex =20,luc = 10,line = "スタイルは『VI 恋人』"},
+                new Status {hp = 50, str = 40, vit = 30, mg = 0, res = 0,agi = 5,dex =10,luc = 10,line = "スタイルは『VII 戦車』"},
+                new Status {hp = 45, str = 50, vit = 25, mg = 5, res = 5,agi = 15,dex =25,luc = 15,line = "スタイルは『VIII 力』"},
+                new Status {hp = 40, str = 25, vit = 15, mg = 20, res = 15,agi = 10,dex =5,luc = 10,line = "スタイルは『IX 隠者』"},
+
+                new Status {hp = 40, str = 30, vit = 20, mg = 25, res = 20,agi = 15,dex =15,luc = 15,line = "スタイルは『X 運命の輪』"},
+                new Status {hp = 40, str = 35, vit = 20, mg = 15, res = 10,agi = 15,dex =10,luc = 10,line = "スタイルは『XI 正義』"},
+                new Status {hp = 45, str = 35, vit = 20, mg = 10, res = 10,agi = 10,dex =10,luc = 5,line = "スタイルは『XII 吊された男』"},
+                new Status {hp = 35, str = 45, vit = 25, mg = 20, res = 15,agi = 20,dex =20,luc = 10,line = "スタイルは『XIII 死神』"},
+
+                new Status {hp = 45, str = 25, vit = 20, mg = 25, res = 20,agi = 15,dex =30,luc = 15,line = "スタイルは『XIV 節制』"},
+                new Status {hp = 35, str = 45, vit = 25, mg = 15, res = 10,agi = 10,dex =15,luc = 10,line = "スタイルは『XV 悪魔』"},
+                new Status {hp = 35, str = 40, vit = 20, mg = 10, res = 10,agi = 10,dex =15,luc = 5,line = "スタイルは『XVI 塔』"},
+                new Status {hp = 40, str = 45, vit = 25, mg = 15, res = 10,agi = 10,dex =20,luc = 20,line = "スタイルは『XVII 星』"},
+
+                new Status {hp = 60, str = 35, vit = 20, mg = 30, res = 25,agi = 10,dex =20,luc = 20,line = "スタイルは『XVIII 月』"},
+                new Status {hp = 55, str = 40, vit = 20, mg = 35, res = 30,agi = 10,dex =20,luc = 20,line = "スタイルは『XIX 太陽』"},
+                new Status {hp = 65, str = 30, vit = 15, mg = 30, res = 25,agi = 10,dex =25,luc = 25,line = "スタイルは『XX  審判』"},
+                new Status {hp = 50, str = 45, vit = 25, mg = 25, res = 20,agi = 20,dex =20,luc = 20,line = "スタイルは『XXI 世界』"},
+            };
 }

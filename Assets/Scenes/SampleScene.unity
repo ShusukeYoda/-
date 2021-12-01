@@ -588,8 +588,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1052176993}
-        m_TargetAssemblyTypeName: Button1, Assembly-CSharp
+      - m_Target: {fileID: 1057758132}
+        m_TargetAssemblyTypeName: Button, Assembly-CSharp
         m_MethodName: StoryClick
         m_Mode: 1
         m_Arguments:
@@ -650,29 +650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72828642f88a764ca79e433a6c99c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  images:
-  - {fileID: 21300000, guid: 640e182ccace67d478133b660b8f6bf8, type: 3}
-  - {fileID: 21300000, guid: 55409dbd326fa854f87997376ae61b17, type: 3}
-  - {fileID: 21300000, guid: bdafe1a12c1003042b7d5ca38deec266, type: 3}
-  - {fileID: 21300000, guid: a81c4e881e0a588479fc820406e32831, type: 3}
-  - {fileID: 21300000, guid: 64cf903faaf0d8343a487f95187098ed, type: 3}
-  - {fileID: 21300000, guid: 20a6925e42a464d459434a92146dcb47, type: 3}
-  - {fileID: 21300000, guid: 739b4630817bef44b88b27a82605ae2f, type: 3}
-  - {fileID: 21300000, guid: 0f7f8852d9ebd2248a2dec9a7704736b, type: 3}
-  - {fileID: 21300000, guid: 409eea15d7131c9438c3e3d782758aa0, type: 3}
-  - {fileID: 21300000, guid: 54713e4bd6e8ea746abf31d634935371, type: 3}
-  - {fileID: 21300000, guid: 66ae1d12467da904880193520777a201, type: 3}
-  - {fileID: 21300000, guid: 125d385dab4ec374abb39994b8198c2a, type: 3}
-  - {fileID: 21300000, guid: e2c053fd18d45734881dfa7fba0e5385, type: 3}
-  - {fileID: 21300000, guid: 0c85431424c70094e95025a9090fcc02, type: 3}
-  - {fileID: 21300000, guid: 459167d043a5e9b4ab387af1901f1f2a, type: 3}
-  - {fileID: 21300000, guid: 93f0b35a5c131be49a807843d94d9e69, type: 3}
-  - {fileID: 21300000, guid: 4e91d4dc8c121f4448d0c4f0374e6d7b, type: 3}
-  - {fileID: 21300000, guid: 3fce3f82993788845bc2232d88c3cfa9, type: 3}
-  - {fileID: 21300000, guid: f043f1bfad4ccc54184d30f7e5f2a720, type: 3}
-  - {fileID: 21300000, guid: 8bc7fb329c3528949b4c3185ea6f54bd, type: 3}
-  - {fileID: 21300000, guid: 3e3e837496069e2459ca640222d4de0c, type: 3}
-  - {fileID: 21300000, guid: 086edd05431df294c9f804c9354b5c14, type: 3}
 --- !u!1 &165327175
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,7 +753,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1052176993}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Button1, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -1976,6 +1953,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2067,6 +2045,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dbba8fb36d79440b690f698e363891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextTMP: {fileID: 0}
+  images: []
+  span: 0.1
+  delta: 0
+  count: 0
+  moving: 0
+  one: 0
+  random1: 0
+  sNum: 0
+  walk: 1
+  enemyNum: 0
 --- !u!1 &570406200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2802,6 +2803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 786964476}
   - component: {fileID: 786964475}
+  - component: {fileID: 786964477}
   m_Layer: 0
   m_Name: storyCard
   m_TagString: Untagged
@@ -2875,6 +2877,18 @@ Transform:
   m_Father: {fileID: 667208681}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &786964477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786964474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d6d1c4e877d0c2449ccd1d0d5053a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &809192181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2958,8 +2972,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1052176993}
-        m_TargetAssemblyTypeName: Button1, Assembly-CSharp
+      - m_Target: {fileID: 1057758132}
+        m_TargetAssemblyTypeName: Button, Assembly-CSharp
         m_MethodName: StopClick
         m_Mode: 1
         m_Arguments:
@@ -3484,7 +3498,6 @@ GameObject:
   - component: {fileID: 1052176995}
   - component: {fileID: 1052176994}
   - component: {fileID: 1052176996}
-  - component: {fileID: 1052176993}
   - component: {fileID: 1052176997}
   m_Layer: 5
   m_Name: Button1
@@ -3513,85 +3526,6 @@ RectTransform:
   m_AnchoredPosition: {x: 903, y: 369}
   m_SizeDelta: {x: 197.8086, y: 48.9044}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1052176993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052176991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3dbba8fb36d79440b690f698e363891, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TextTMP: {fileID: 0}
-  tarotImage:
-  - {fileID: 21300000, guid: dd7f024f4488033418d4e3749d4be69b, type: 3}
-  - {fileID: 21300000, guid: 0a8f4e0013ca5b24f8608e3003bff3ca, type: 3}
-  - {fileID: 21300000, guid: ae6b5fb89b736304291f27e8a7a06773, type: 3}
-  - {fileID: 21300000, guid: 680287a4c6a361d499d43039a06013ac, type: 3}
-  - {fileID: 21300000, guid: 0650a75f3462e154bbde6559d674a810, type: 3}
-  - {fileID: 21300000, guid: 6644040d7d1bc57468ae1beb2b10f675, type: 3}
-  - {fileID: 21300000, guid: cd1741abed68ec148b0fa9c7e2bc47a5, type: 3}
-  - {fileID: 21300000, guid: eaacca881273a0343ac8ea0d8deaa04a, type: 3}
-  - {fileID: 21300000, guid: 16787b0053da9554aad89854abc59224, type: 3}
-  - {fileID: 21300000, guid: c73ff0eb398a67e4ebb70b0529830656, type: 3}
-  - {fileID: 21300000, guid: af7842b730415854eaf25be25283d736, type: 3}
-  - {fileID: 21300000, guid: 0f30058e19bb53743b2985d559c4a04e, type: 3}
-  - {fileID: 21300000, guid: ba6663186a085924c88257233a9250c4, type: 3}
-  - {fileID: 21300000, guid: 449c40d06a099a546a90473d5e65767e, type: 3}
-  - {fileID: 21300000, guid: 741f81034d9f61d46a8169af82fe243d, type: 3}
-  - {fileID: 21300000, guid: 2a02887fdde4d3c41a8460089703cbbd, type: 3}
-  - {fileID: 21300000, guid: 622190c3bca6aa14c85bd70d40f4f043, type: 3}
-  - {fileID: 21300000, guid: bb43d8a37d69d96468e3c808f3b69c60, type: 3}
-  - {fileID: 21300000, guid: dad30891bee4b384c89dc6bc968d41ab, type: 3}
-  - {fileID: 21300000, guid: 2a86fbba1158c7147a035e2bb1951521, type: 3}
-  - {fileID: 21300000, guid: 6bb18e717e6e9824ebe5823aa61911fa, type: 3}
-  - {fileID: 21300000, guid: 9ac4dddcc3302a444afe3f94aaaf00b1, type: 3}
-  images:
-  - {fileID: 21300000, guid: 640e182ccace67d478133b660b8f6bf8, type: 3}
-  - {fileID: 21300000, guid: 55409dbd326fa854f87997376ae61b17, type: 3}
-  - {fileID: 21300000, guid: bdafe1a12c1003042b7d5ca38deec266, type: 3}
-  - {fileID: 21300000, guid: a81c4e881e0a588479fc820406e32831, type: 3}
-  - {fileID: 21300000, guid: 64cf903faaf0d8343a487f95187098ed, type: 3}
-  - {fileID: 21300000, guid: 20a6925e42a464d459434a92146dcb47, type: 3}
-  - {fileID: 21300000, guid: 739b4630817bef44b88b27a82605ae2f, type: 3}
-  - {fileID: 21300000, guid: 0f7f8852d9ebd2248a2dec9a7704736b, type: 3}
-  - {fileID: 21300000, guid: 409eea15d7131c9438c3e3d782758aa0, type: 3}
-  - {fileID: 21300000, guid: 54713e4bd6e8ea746abf31d634935371, type: 3}
-  - {fileID: 21300000, guid: 66ae1d12467da904880193520777a201, type: 3}
-  - {fileID: 21300000, guid: 125d385dab4ec374abb39994b8198c2a, type: 3}
-  - {fileID: 21300000, guid: e2c053fd18d45734881dfa7fba0e5385, type: 3}
-  - {fileID: 21300000, guid: 0c85431424c70094e95025a9090fcc02, type: 3}
-  - {fileID: 21300000, guid: 459167d043a5e9b4ab387af1901f1f2a, type: 3}
-  - {fileID: 21300000, guid: 93f0b35a5c131be49a807843d94d9e69, type: 3}
-  - {fileID: 21300000, guid: 4e91d4dc8c121f4448d0c4f0374e6d7b, type: 3}
-  - {fileID: 21300000, guid: 3fce3f82993788845bc2232d88c3cfa9, type: 3}
-  - {fileID: 21300000, guid: f043f1bfad4ccc54184d30f7e5f2a720, type: 3}
-  - {fileID: 21300000, guid: 8bc7fb329c3528949b4c3185ea6f54bd, type: 3}
-  - {fileID: 21300000, guid: 3e3e837496069e2459ca640222d4de0c, type: 3}
-  - {fileID: 21300000, guid: 086edd05431df294c9f804c9354b5c14, type: 3}
-  - {fileID: 21300000, guid: bbfd54548a842614aafc5504692eb6f5, type: 3}
-  - {fileID: 21300000, guid: eeb67c2caec0c9c41964d9769dc7d8f9, type: 3}
-  cardShuffleSE: {fileID: 8300000, guid: 0dd69bc175270464e910af7bb77f4950, type: 3}
-  attackDamageSE: {fileID: 8300000, guid: a0595b395e2bfa44fa44bab6daadeb4e, type: 3}
-  criticalSE: {fileID: 8300000, guid: cba031fabaddf024da65f8fd7e3ec48c, type: 3}
-  destroySE: {fileID: 8300000, guid: baab7f5bb5d18294cb189f9740bbc3b6, type: 3}
-  magicSE1: {fileID: 8300000, guid: 98b3c5a2984ea294ba2ac341104c4eb6, type: 3}
-  magicSE2: {fileID: 8300000, guid: f326124247ad1094e889bacf73bea6ce, type: 3}
-  magicSE3: {fileID: 8300000, guid: bcc8a4ee86b94574cb41f1e5ab63d4a7, type: 3}
-  recoverySE4: {fileID: 8300000, guid: ba2ed18ea653ebb49adc9d996a1f3455, type: 3}
-  cardStopSE: {fileID: 8300000, guid: 35134bbbf08cbb746b96cf89ab778900, type: 3}
-  startStopSE: {fileID: 8300000, guid: 5d92c720de1ac994984de9b1e2a878d5, type: 3}
-  onPointSE: {fileID: 8300000, guid: a47534e15f255824391770c10fc5b162, type: 3}
-  audioSource: {fileID: 0}
-  moving: 0
-  one: 0
-  random1: 0
-  sNum: 0
-  walk: 0
-  enemyNum: 0
 --- !u!114 &1052176994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3674,8 +3608,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1052176993}
-        m_TargetAssemblyTypeName: Button1, Assembly-CSharp
+      - m_Target: {fileID: 1057758132}
+        m_TargetAssemblyTypeName: Button, Assembly-CSharp
         m_MethodName: StartClick
         m_Mode: 1
         m_Arguments:
@@ -3782,6 +3716,49 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1057758131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1057758133}
+  - component: {fileID: 1057758132}
+  m_Layer: 0
+  m_Name: ButtonClass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1057758132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057758131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9554781f103637a43be176267f1b1db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1057758133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057758131}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 441.0224, y: 390.70486, z: -289.18198}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1060473063
 GameObject:
   m_ObjectHideFlags: 0
@@ -5756,7 +5733,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1786979607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cda05beb15f6b844d9c8ae2d9fcd154a, type: 3}
+  m_Script: {fileID: 11500000, guid: 307a2d8c9df791a4fb04f91f921fce57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tarotImage:
@@ -5782,6 +5759,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2a86fbba1158c7147a035e2bb1951521, type: 3}
   - {fileID: 21300000, guid: 6bb18e717e6e9824ebe5823aa61911fa, type: 3}
   - {fileID: 21300000, guid: 9ac4dddcc3302a444afe3f94aaaf00b1, type: 3}
+  attack: 0
+  defense: 0
+  mAttack: 0
+  mDefense: 0
+  hitP: 0
+  magic: 0
+  strength: 0
+  resist: 0
+  agility: 0
+  luck: 0
 --- !u!1 &1791078568
 GameObject:
   m_ObjectHideFlags: 0

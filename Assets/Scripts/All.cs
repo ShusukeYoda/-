@@ -14,8 +14,11 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
-public class Button1 : MonoBehaviour
+public class All : MonoBehaviour
 {
+    Tarot tarot;
+    public List<Sprite> images;    //Listｽﾌﾟﾗｲﾄ
+
     //オブジェクト
     GameObject card;
     GameObject storyCard;
@@ -49,32 +52,12 @@ public class Button1 : MonoBehaviour
     public GameObject TextTMP;
     private TextMeshProUGUI textMeshPro;
 
-    private Text text;
-
-    public Sprite[] tarotImage;                  //配列ｽﾌﾟﾗｲﾄ 消すと消える
-    public List<Sprite> images;                  //Listｽﾌﾟﾗｲﾄ
-
-    // SE
-    public AudioClip cardShuffleSE;
-    public AudioClip attackDamageSE;
-    public AudioClip criticalSE;
-    public AudioClip destroySE;
-    public AudioClip magicSE1;
-    public AudioClip magicSE2;
-    public AudioClip magicSE3;
-    public AudioClip recoverySE4;
-    public AudioClip cardStopSE;
-    public AudioClip startStopSE;
-    public AudioClip onPointSE;
-
-    public AudioSource audioSource;
-
     //タイマー
-    float span = 0.1f;                           //0.1秒間隔
-    float delta = 0;
-    int count = 0;
+    public float span = 0.1f;                           //0.1秒間隔
+    public float delta = 0;
+    public int count = 0;
     //スタートストップ
-    public bool moving;
+    public bool moving = false;
     public bool one = false;
 
     //乱数・ボタン３用
@@ -106,8 +89,6 @@ public class Button1 : MonoBehaviour
         this.Audio2 = GameObject.Find("BGM1");
         this.Audio3 = GameObject.Find("BGM2");
 
-        Audio1.GetComponent<AudioSource>().Play();
-
         this.SE1 = GameObject.Find("attackDamegeSE");
         this.SE2 = GameObject.Find("criticalSE");
         this.SE3 = GameObject.Find("destroySE");
@@ -122,199 +103,8 @@ public class Button1 : MonoBehaviour
 
 
         this.TextTMP = GameObject.Find("TextTMP");
-
-        audioSource = gameObject.GetComponent<AudioSource>();
     }
     // Update is called once per frame
-    void Update()
-    {
-        if (moving && one == false)
-        {
-            this.delta += Time.deltaTime;
-            if (this.delta > this.span && count < 21)
-            {
-                this.delta = 0;
-                card.GetComponent<SpriteRenderer>().sprite = tarotImage[count];
-                count++;
-            }
-            else if (this.delta > this.span && count == 21)
-            {
-                count = 0;
-                this.delta = 0;
-                card.GetComponent<SpriteRenderer>().sprite = tarotImage[count];
-                count++;
-            }
-        }
-        else if (moving == false && one == true)
-        {
-            card.GetComponent<SpriteRenderer>().sprite = tarotImage[count];
-            ChooseTarot(count);
-        }
-    }
-
-    public void StartClick()
-    {
-        SE10.GetComponent<AudioSource>().Play();
-        SE9.GetComponent<AudioSource>().Play();
-
-        moving = true;
-    }
-    public void StopClick()
-    {
-        SE11.GetComponent<AudioSource>().Play();
-
-        if (moving == true && one == false)
-        {
-            moving = false;
-            one = true;
-            walk = true;
-        }
-    }
-    public void StoryClick()
-    {
-        if (one && walk)
-        {
-            //random1 = UnityEngine.Random.Range(1, 4);
-            int random1 = 2;   //ストーリーcardデバッグ用
-            sNum += random1;
-
-
-            if (sNum <= 21 && walk)
-            {
-                walk = false;
-                storyCard.GetComponent<SpriteRenderer>().sprite = images[sNum];
-
-                var textAsset = Resources.Load("image"+sNum) as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-            }
-            else if (sNum >= 22 && walk)
-            {
-                Audio1.GetComponent<AudioSource>().Stop();
-                Audio3.GetComponent<AudioSource>().Play();
-
-                UnityEngine.Debug.Log("チェック");
-
-                var textAsset = Resources.Load("EndImage") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                storyCard.GetComponent<SpriteRenderer>().sprite = images[22];
-
-                walk = false;
-            }
-        }
-    }
-    public class Status : Form
-    {
-        public int hp;
-
-        public int str; public int vit;
-
-        public int mg; public int res;
-
-        public int agi; public int dex; public int luc;
-
-        public int eHp;
-
-        public int eAtt; public int eDef;
-
-        public int eRes; public int eAgi;
-
-        public string line;
-    }
-
-    List<Status> select = new List<Status>
-            {
-                new Status {hp = 35, str = 20, vit = 10, mg = 15, res = 5,agi = 20,dex =15,luc = 30,line = "スタイルは『0 愚者』"},
-                new Status {hp = 30, str = 10, vit = 10, mg = 40, res = 30,agi = 10,dex =20,luc = 15,line = "スタイルは『I 魔術師』"},
-                new Status {hp = 30, str = 15, vit = 15, mg = 35, res = 30,agi = 10,dex =15,luc = 30,line = "スタイルは『II 女教皇』"},
-
-                new Status {hp = 30, str = 20, vit = 15, mg = 25, res = 20,agi = 10,dex =15,luc = 15,line = "スタイルは『III 女帝』"},
-                new Status {hp = 35, str = 30, vit = 20, mg = 15, res = 10,agi = 10,dex =15,luc = 15,line = "スタイルは『IV 皇帝』"},
-                new Status {hp = 30, str = 10, vit = 15, mg = 35, res = 30,agi = 10,dex =15,luc = 30,line = "スタイルは『V 教皇』"},
-
-                new Status {hp = 35, str = 20, vit = 20, mg = 20, res = 15,agi = 15,dex =20,luc = 10,line = "スタイルは『VI 恋人』"},
-                new Status {hp = 50, str = 40, vit = 30, mg = 0, res = 0,agi = 5,dex =10,luc = 10,line = "スタイルは『VII 戦車』"},
-                new Status {hp = 45, str = 50, vit = 25, mg = 5, res = 5,agi = 15,dex =25,luc = 15,line = "スタイルは『VIII 力』"},
-                new Status {hp = 40, str = 25, vit = 15, mg = 20, res = 15,agi = 10,dex =5,luc = 10,line = "スタイルは『IX 隠者』"},
-
-                new Status {hp = 40, str = 30, vit = 20, mg = 25, res = 20,agi = 15,dex =15,luc = 15,line = "スタイルは『X 運命の輪』"},
-                new Status {hp = 40, str = 35, vit = 20, mg = 15, res = 10,agi = 15,dex =10,luc = 10,line = "スタイルは『XI 正義』"},
-                new Status {hp = 45, str = 35, vit = 20, mg = 10, res = 10,agi = 10,dex =10,luc = 5,line = "スタイルは『XII 吊された男』"},
-                new Status {hp = 35, str = 45, vit = 25, mg = 20, res = 15,agi = 20,dex =20,luc = 10,line = "スタイルは『XIII 死神』"},
-
-                new Status {hp = 45, str = 25, vit = 20, mg = 25, res = 20,agi = 15,dex =30,luc = 15,line = "スタイルは『XIV 節制』"},
-                new Status {hp = 35, str = 45, vit = 25, mg = 15, res = 10,agi = 10,dex =15,luc = 10,line = "スタイルは『XV 悪魔』"},
-                new Status {hp = 35, str = 40, vit = 20, mg = 10, res = 10,agi = 10,dex =15,luc = 5,line = "スタイルは『XVI 塔』"},
-                new Status {hp = 40, str = 45, vit = 25, mg = 15, res = 10,agi = 10,dex =20,luc = 20,line = "スタイルは『XVII 星』"},
-
-                new Status {hp = 60, str = 35, vit = 20, mg = 30, res = 25,agi = 10,dex =20,luc = 20,line = "スタイルは『XVIII 月』"},
-                new Status {hp = 55, str = 40, vit = 20, mg = 35, res = 30,agi = 10,dex =20,luc = 20,line = "スタイルは『XIX 太陽』"},
-                new Status {hp = 65, str = 30, vit = 15, mg = 30, res = 25,agi = 10,dex =25,luc = 25,line = "スタイルは『XX  審判』"},
-                new Status {hp = 50, str = 45, vit = 25, mg = 25, res = 20,agi = 20,dex =20,luc = 20,line = "スタイルは『XXI 世界』"},
-            };
-    int attack;
-    int defense;
-    int mAttack;
-    int mDefense;
-    int hitP;
-    int magic;
-    int strength;
-    int resist;
-    int agility;
-    int luck;
-    private void ChooseTarot(int v)
-    {
-        if (tarotImage[count]) //tarotImage[0] == 
-        {
-            Te0.GetComponent<Text>().text = select[v].hp.ToString();
-            Te1.GetComponent<Text>().text = select[v].str.ToString();
-            Te2.GetComponent<Text>().text = select[v].vit.ToString();
-            Te3.GetComponent<Text>().text = select[v].luc.ToString();
-            Te4.GetComponent<Text>().text = select[v].mg.ToString();
-            Te5.GetComponent<Text>().text = select[v].res.ToString();
-            Te6.GetComponent<Text>().text = select[v].agi.ToString();
-            Te7.GetComponent<Text>().text = select[v].dex.ToString();
-            Style.GetComponent<Text>().text = select[v].line.ToString();
-        }
-        //プレイヤーステータス
-        attack = select[v].str + (select[v].dex / 5) * (select[v].luc / 5);
-        defense = select[v].vit + (select[v].dex / 5) * (select[v].luc / 5);
-        mAttack = select[v].mg - 5 + (select[v].dex / 5) * (select[v].luc / 5);
-        mDefense = select[v].res + (select[v].dex / 5) * (select[v].luc / 5);
-
-        hitP = select[v].hp;
-        magic = select[v].mg;
-        strength = select[v].str;
-        resist = select[v].res;
-        agility = select[v].agi;
-        luck = select[v].luc;
-    }
-
-    List<Status> enemys = new List<Status>
-            {
-                new Status {eHp = 50,eAtt = 35 ,eDef=5, eRes = 5, eAgi = 10},　//１騎士
-
-                new Status {eHp = 55,eAtt = 40 ,eDef=15, eRes = 5, eAgi = 10},　//２山賊
-
-                new Status {eHp = 50,eAtt = 40 ,eDef=15, eRes = 5, eAgi = 15},　//３山賊(測)
-
-                new Status {eHp = 55,eAtt = 40 ,eDef=15, eRes = 5, eAgi = 10},　//４山賊
-
-                new Status {eHp = 50,eAtt = 40 ,eDef=15, eRes = 5, eAgi = 15},　//５冒険者
-
-                new Status {eHp = 50,eAtt = 40 ,eDef=15, eRes = 5, eAgi = 15},　//６若者
-
-                new Status {eHp = 60,eAtt = 45 ,eDef=15, eRes = 5, eAgi = 20},　//７屈強な
-
-                new Status {eHp = 60,eAtt = 45 ,eDef=15, eRes = 5, eAgi = 10},　//８正規兵
-
-                new Status {eHp = 55,eAtt = 40 ,eDef=15, eRes = 5, eAgi = 15},　//９傭兵
-
-                new Status {eHp = 60,eAtt = 45 ,eDef=15, eRes = 5, eAgi = 10},　//１０正規兵ら
-
-                new Status {eHp = 40,eAtt = 40 ,eDef=15, eRes = 5, eAgi = 10}　 //１１住人
-            };
 
 
     public void OnClick()
@@ -330,6 +120,31 @@ public class Button1 : MonoBehaviour
 
         CommandSelected(ddtmp.value);
     }
+
+    List<Status> enemys = new List<Status>
+            {
+                new Status {eHp = 50,eAtt = 45 ,eDef=5, eRes = 5, eAgi = 10},　//１騎士
+
+                new Status {eHp = 55,eAtt = 50 ,eDef=15, eRes = 0, eAgi = 10},　//２山賊
+
+                new Status {eHp = 50,eAtt = 50 ,eDef=15, eRes = 5, eAgi = 15},　//３山賊(測)
+
+                new Status {eHp = 55,eAtt = 50 ,eDef=15, eRes = 0, eAgi = 10},　//４山賊
+
+                new Status {eHp = 50,eAtt = 50 ,eDef=15, eRes = 10, eAgi = 15},　//５冒険者
+
+                new Status {eHp = 50,eAtt = 50 ,eDef=15, eRes = 5, eAgi = 15},　//６若者
+
+                new Status {eHp = 60,eAtt = 55 ,eDef=15, eRes = 15, eAgi = 20},　//７屈強な
+
+                new Status {eHp = 60,eAtt = 55 ,eDef=15, eRes = 5, eAgi = 10},　//８正規兵
+
+                new Status {eHp = 55,eAtt = 50 ,eDef=15, eRes = 10, eAgi = 15},　//９傭兵
+
+                new Status {eHp = 60,eAtt = 55 ,eDef=15, eRes = 5, eAgi = 10},　//１０正規兵ら
+
+                new Status {eHp = 40,eAtt = 50 ,eDef=15, eRes = 0, eAgi = 10}　 //１１住人
+            };
 
     bool battle = false;
     bool critical = false;
@@ -371,7 +186,7 @@ public class Button1 : MonoBehaviour
             }
         }
         if (sNum == 2)//sNum == 2 debug
-           {
+        {
             walk = false;
             enemyNum = 0;
             if (co == 0 && battle == false ||
@@ -458,8 +273,8 @@ public class Button1 : MonoBehaviour
                 var textAsset = Resources.Load("話をする5") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-                magic += 10;
-                Te4.GetComponent<Text>().text = magic.ToString();
+                tarot.magic += 10;
+                Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
                 walk = true;
             }
@@ -490,8 +305,8 @@ public class Button1 : MonoBehaviour
                 var textAsset = Resources.Load("話をする6") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-                luck -= 10;
-                Te3.GetComponent<Text>().text = luck.ToString();
+                tarot.luck -= 10;
+                Te3.GetComponent<Text>().text = tarot.luck.ToString();
 
                 walk = true;
             }
@@ -527,23 +342,23 @@ public class Button1 : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
                 //ステータスバーに表記
-                hitP -= damage;
+                tarot.hitP -= damage;
 
-                if (hitP < 0)
+                if (tarot.hitP < 0)
                 {
-                    hitP = 0;
+                    tarot.hitP = 0;
                 }
-                Te0.GetComponent<Text>().text = hitP.ToString();
+                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
                 //倒れたとき
-                if (hitP <= 0)
+                if (tarot.hitP <= 0)
                 {
                     await Task.Delay(2000);
 
@@ -569,23 +384,23 @@ public class Button1 : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
                 //ステータスバーに表記
-                hitP -= damage;
+                tarot.hitP -= damage;
 
-                if (hitP < 0)
+                if (tarot.hitP < 0)
                 {
-                    hitP = 0;
+                    tarot.hitP = 0;
                 }
-                Te0.GetComponent<Text>().text = hitP.ToString();
+                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
                 //倒れたとき
-                if (hitP <= 0)
+                if (tarot.hitP <= 0)
                 {
                     await Task.Delay(2000);
 
@@ -604,8 +419,8 @@ public class Button1 : MonoBehaviour
                 var textAsset = Resources.Load("話をする8") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-                strength += 10;
-                Te1.GetComponent<Text>().text = strength.ToString();                                //Te1で正しいのか
+                tarot.strength += 10;
+                Te1.GetComponent<Text>().text = tarot.strength.ToString();                                //Te1で正しいのか
 
                 walk = true;
             }
@@ -643,23 +458,23 @@ public class Button1 : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
                 //ステータスバーに表記
-                hitP -= damage;
+                tarot.hitP -= damage;
 
-                if (hitP < 0)
+                if (tarot.hitP < 0)
                 {
-                    hitP = 0;
+                    tarot.hitP = 0;
                 }
-                Te0.GetComponent<Text>().text = hitP.ToString();
+                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
                 //倒れたとき
-                if (hitP <= 0)
+                if (tarot.hitP <= 0)
                 {
                     await Task.Delay(2000);
 
@@ -688,7 +503,7 @@ public class Button1 : MonoBehaviour
         }
         if (sNum == 10)
         {
-           walk = false;
+            walk = false;
             if (co == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする10") as TextAsset;
@@ -726,23 +541,23 @@ public class Button1 : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
                 //ステータスバーに表記
-                hitP -= damage;
+                tarot.hitP -= damage;
 
-                if (hitP < 0)
+                if (tarot.hitP < 0)
                 {
-                    hitP = 0;
+                    tarot.hitP = 0;
                 }
-                Te0.GetComponent<Text>().text = hitP.ToString();
+                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
                 //倒れたとき
-                if (hitP <= 0)
+                if (tarot.hitP <= 0)
                 {
                     await Task.Delay(2000);
 
@@ -769,22 +584,22 @@ public class Button1 : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
                 //ステータスバーに表記
-                hitP -= damage;
-                if (hitP < 0)
+                tarot.hitP -= damage;
+                if (tarot.hitP < 0)
                 {
-                    hitP = 0;
+                    tarot.hitP = 0;
                 }
-                Te0.GetComponent<Text>().text = hitP.ToString();
+                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
                 //倒れたとき
-                if (hitP <= 0)
+                if (tarot.hitP <= 0)
                 {
                     await Task.Delay(2000);
 
@@ -910,8 +725,8 @@ public class Button1 : MonoBehaviour
                 var textAsset = Resources.Load("話をする16") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-                luck += 10;
-                Te3.GetComponent<Text>().text = luck.ToString();
+                tarot.luck += 10;
+                Te3.GetComponent<Text>().text = tarot.luck.ToString();
 
                 walk = true;
             }
@@ -947,22 +762,22 @@ public class Button1 : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
                 //ステータスバーに表記
-                hitP -= damage;
-                if (hitP < 0)
+                tarot.hitP -= damage;
+                if (tarot.hitP < 0)
                 {
-                    hitP = 0;
+                    tarot.hitP = 0;
                 }
-                Te0.GetComponent<Text>().text = hitP.ToString();
+                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
                 //倒れたとき
-                if (hitP <= 0)
+                if (tarot.hitP <= 0)
                 {
                     await Task.Delay(2000);
 
@@ -988,22 +803,22 @@ public class Button1 : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
                 //ステータスバーに表記
-                hitP -= damage;
-                if (hitP < 0)
+                tarot.hitP -= damage;
+                if (tarot.hitP < 0)
                 {
-                    hitP = 0;
+                    tarot.hitP = 0;
                 }
-                Te0.GetComponent<Text>().text = hitP.ToString();
+                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
                 //倒れたとき
-                if (hitP <= 0)
+                if (tarot.hitP <= 0)
                 {
                     await Task.Delay(2000);
 
@@ -1149,17 +964,17 @@ public class Button1 : MonoBehaviour
         TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
         //battle
-        if (cri <= luck)
+        if (cri <= tarot.luck)
         {
             critical = true;
 
-            eDamage = attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1182,17 +997,17 @@ public class Button1 : MonoBehaviour
         //battle
         battle = true;
 
-        if (cri <= luck)
+        if (cri <= tarot.luck)
         {
             critical = true;
 
-            eDamage = attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1214,17 +1029,17 @@ public class Button1 : MonoBehaviour
         //battle
         battle = true;
 
-        if (cri <= luck)
+        if (cri <= tarot.luck)
         {
             critical = true;
 
-            eDamage = attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1246,17 +1061,17 @@ public class Button1 : MonoBehaviour
         //battle
         battle = true;
 
-        if (cri <= luck)
+        if (cri <= tarot.luck)
         {
             critical = true;
 
-            eDamage = attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1278,17 +1093,17 @@ public class Button1 : MonoBehaviour
         //battle
         battle = true;
 
-        if (cri <= luck)
+        if (cri <= tarot.luck)
         {
             critical = true;
 
-            eDamage = attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1310,17 +1125,17 @@ public class Button1 : MonoBehaviour
         //battle
         battle = true;
 
-        if (cri <= luck)
+        if (cri <= tarot.luck)
         {
             critical = true;
 
-            eDamage = attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1342,17 +1157,17 @@ public class Button1 : MonoBehaviour
         //battle
         battle = true;
 
-        if (cri <= luck)
+        if (cri <= tarot.luck)
         {
             critical = true;
 
-            eDamage = attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1374,17 +1189,17 @@ public class Button1 : MonoBehaviour
         //battle
         battle = true;
 
-        if (cri <= luck)
+        if (cri <= tarot.luck)
         {
             critical = true;
 
-            eDamage = attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1406,17 +1221,17 @@ public class Button1 : MonoBehaviour
         //battle
         battle = true;
 
-        if (cri <= luck)
+        if (cri <= tarot.luck)
         {
             critical = true;
 
-            eDamage = attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1438,17 +1253,17 @@ public class Button1 : MonoBehaviour
         //battle
         battle = true;
 
-        if (cri <= luck)
+        if (cri <= tarot.luck)
         {
             critical = true;
 
-            eDamage = attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1470,17 +1285,17 @@ public class Button1 : MonoBehaviour
 
         battle = true;
 
-        if (cri <= luck)
+        if (cri <= tarot.luck)
         {
             critical = true;
 
-            eDamage = attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - defense;
+            eDamage = tarot.attack - enemys[enemyNum].eDef;
+            damage = enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1496,7 +1311,7 @@ public class Button1 : MonoBehaviour
 
     private async Task magic21Attack()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1508,10 +1323,10 @@ public class Button1 : MonoBehaviour
 
             await Task.Delay(2000);
 
-            magic -= 5;
-            Te4.GetComponent<Text>().text = magic.ToString();
+            tarot.magic -= 5;
+            Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = mAttack - enemys[enemyNum].eRes;
+            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
             enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
@@ -1536,7 +1351,7 @@ public class Button1 : MonoBehaviour
 
     private void magic21()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             var textAsset = Resources.Load("魔法を使う21b") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -1550,7 +1365,7 @@ public class Button1 : MonoBehaviour
 
     private async Task magic20Attack()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1562,10 +1377,10 @@ public class Button1 : MonoBehaviour
 
             await Task.Delay(2000);
 
-            magic -= 5;
-            Te4.GetComponent<Text>().text = magic.ToString();
+            tarot.magic -= 5;
+            Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = mAttack - enemys[enemyNum].eRes;
+            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
             enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
@@ -1590,7 +1405,7 @@ public class Button1 : MonoBehaviour
 
     private void magicInvisible()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             SE6.GetComponent<AudioSource>().Play();
 
@@ -1598,8 +1413,8 @@ public class Button1 : MonoBehaviour
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
-            magic -= 5;
-            Te4.GetComponent<Text>().text = magic.ToString();
+            tarot.magic -= 5;
+            Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
             walk = true;
         }
@@ -1612,7 +1427,7 @@ public class Button1 : MonoBehaviour
 
     private async Task magic18Attack()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1624,10 +1439,10 @@ public class Button1 : MonoBehaviour
 
             await Task.Delay(2000);
 
-            magic -= 5;
-            Te4.GetComponent<Text>().text = magic.ToString();
+            tarot.magic -= 5;
+            Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = mAttack - enemys[enemyNum].eRes;
+            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
             enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
@@ -1653,7 +1468,7 @@ public class Button1 : MonoBehaviour
 
     private async Task magic17Attack()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1664,10 +1479,10 @@ public class Button1 : MonoBehaviour
 
             await Task.Delay(2000);
 
-            magic -= 5;
-            Te4.GetComponent<Text>().text = magic.ToString();
+            tarot.magic -= 5;
+            Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = mAttack - enemys[enemyNum].eRes;
+            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
             enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
@@ -1692,22 +1507,22 @@ public class Button1 : MonoBehaviour
 
             await Task.Delay(2000);
 
-            damage = attack - enemys[enemyNum].eDef;
+            damage = tarot.attack - enemys[enemyNum].eDef;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //ステータスバーに表記
-            hitP -= damage;
-            if (hitP < 0)
+            tarot.hitP -= damage;
+            if (tarot.hitP < 0)
             {
-                hitP = 0;
+                tarot.hitP = 0;
             }
-            Te0.GetComponent<Text>().text = hitP.ToString();
+            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
             //倒れたとき
-            if (hitP <= 0)
+            if (tarot.hitP <= 0)
             {
                 await Task.Delay(2000);
 
@@ -1719,15 +1534,15 @@ public class Button1 : MonoBehaviour
 
     private void magicSleep()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             SE6.GetComponent<AudioSource>().Play();
 
             var textAsset = Resources.Load("魔法を使う15") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-            magic -= 5;
-            Te4.GetComponent<Text>().text = magic.ToString();
+            tarot.magic -= 5;
+            Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
             walk = true;
         }
@@ -1740,17 +1555,17 @@ public class Button1 : MonoBehaviour
 
     private void magicRecovery()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             SE8.GetComponent<AudioSource>().Play();
 
             var textAsset = Resources.Load("魔法を使う14") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-            magic -= 5;
-            hitP += 10;
-            Te4.GetComponent<Text>().text = magic.ToString();
-            Te0.GetComponent<Text>().text = hitP.ToString();
+            tarot.magic -= 5;
+            tarot.hitP += 10;
+            Te4.GetComponent<Text>().text = tarot.magic.ToString();
+            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
             walk = true;
         }
@@ -1763,7 +1578,7 @@ public class Button1 : MonoBehaviour
 
     private async Task magic13Attack()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1775,10 +1590,10 @@ public class Button1 : MonoBehaviour
 
             await Task.Delay(2000);
 
-            magic -= 5;
-            Te4.GetComponent<Text>().text = magic.ToString();
+            tarot.magic -= 5;
+            Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = mAttack - enemys[enemyNum].eRes;
+            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
             enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
@@ -1803,7 +1618,7 @@ public class Button1 : MonoBehaviour
 
     private async Task magic11Attack()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1815,10 +1630,10 @@ public class Button1 : MonoBehaviour
 
             await Task.Delay(2000);
 
-            magic -= 5;
-            Te4.GetComponent<Text>().text = magic.ToString();
+            tarot.magic -= 5;
+            Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = mAttack - enemys[enemyNum].eRes;
+            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
             enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
@@ -1844,22 +1659,22 @@ public class Button1 : MonoBehaviour
 
             await Task.Delay(2000);
 
-            damage = attack - enemys[enemyNum].eDef;
+            damage = tarot.attack - enemys[enemyNum].eDef;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //ステータスバーに表記
-            hitP -= damage;
-            if (hitP < 0)
+            tarot.hitP -= damage;
+            if (tarot.hitP < 0)
             {
-                hitP = 0;
+                tarot.hitP = 0;
             }
-            Te0.GetComponent<Text>().text = hitP.ToString();
+            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
             //倒れたとき
-            if (hitP <= 0)
+            if (tarot.hitP <= 0)
             {
                 await Task.Delay(2000);
 
@@ -1872,7 +1687,7 @@ public class Button1 : MonoBehaviour
 
     private async Task magic9Attack()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1884,10 +1699,10 @@ public class Button1 : MonoBehaviour
 
             await Task.Delay(2000);
 
-            magic -= 5;
-            Te4.GetComponent<Text>().text = magic.ToString();
+            tarot.magic -= 5;
+            Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = mAttack - enemys[enemyNum].eRes;
+            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
             enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
@@ -1914,7 +1729,7 @@ public class Button1 : MonoBehaviour
 
     private void magic8()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             var textAsset = Resources.Load("魔法を使う8") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -1928,7 +1743,7 @@ public class Button1 : MonoBehaviour
 
     private async Task magic7Attack()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1938,10 +1753,10 @@ public class Button1 : MonoBehaviour
 
             await Task.Delay(2000);
 
-            magic -= 5;
-            Te4.GetComponent<Text>().text = magic.ToString();
+            tarot.magic -= 5;
+            Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = mAttack - enemys[enemyNum].eRes;
+            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
             enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
@@ -1966,23 +1781,23 @@ public class Button1 : MonoBehaviour
 
             await Task.Delay(2000);
 
-            damage = attack - enemys[0].eDef;
+            damage = tarot.attack - enemys[0].eDef;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //ステータスバーに表記
-            hitP -= damage;
+            tarot.hitP -= damage;
 
-            if (hitP < 0)
+            if (tarot.hitP < 0)
             {
-                hitP = 0;
+                tarot.hitP = 0;
             }
-            Te0.GetComponent<Text>().text = hitP.ToString();
+            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
             //倒れたとき
-            if (hitP <= 0)
+            if (tarot.hitP <= 0)
             {
                 await Task.Delay(2000);
 
@@ -1994,7 +1809,7 @@ public class Button1 : MonoBehaviour
 
     private void magic6()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             var textAsset = Resources.Load("魔法を使う6") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -2008,7 +1823,7 @@ public class Button1 : MonoBehaviour
 
     private async Task magicAttack2()
     {
-        if (magic >= 5)//magic >= 5 debug
+        if (tarot.magic >= 5)//magic >= 5 debug
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -2020,11 +1835,11 @@ public class Button1 : MonoBehaviour
             //2秒待ち
             await Task.Delay(2000);
             //mp消費
-            magic -= 5;
-            Te4.GetComponent<UnityEngine.UI.Text>().text = magic.ToString();
+            tarot.magic -= 5;
+            Te4.GetComponent<UnityEngine.UI.Text>().text = tarot.magic.ToString();
 
             //与ダメ
-            eDamage = mAttack - enemys[enemyNum].eRes;
+            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
             enemys[enemyNum].eHp -= eDamage;
 
             if (eDamage < 0)
@@ -2051,18 +1866,18 @@ public class Button1 : MonoBehaviour
 
     private void magic1Method()
     {
-        if (magic >= 5)
+        if (tarot.magic >= 5)
         {
             SE8.GetComponent<AudioSource>().Play();
 
             var textAsset = Resources.Load("魔法を使う1") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-            magic -= 5;
-            luck += 5;
+            tarot.magic -= 5;
+            tarot.luck += 5;
 
-            Te4.GetComponent<Text>().text = magic.ToString();
-            Te3.GetComponent<Text>().text = luck.ToString();
+            Te4.GetComponent<Text>().text = tarot.magic.ToString();
+            Te3.GetComponent<Text>().text = tarot.luck.ToString();
             /*
             magic -= 5;     //UIテスト
             Te4.GetComponent<Text>().text = magic.ToString();
@@ -2080,7 +1895,7 @@ public class Button1 : MonoBehaviour
     private async void SwBattlePre(int damage, int eDamage, int eAgi, int eHp)
     {
 
-        if (agility >= eAgi)
+        if (tarot.agility >= eAgi)
         {
             if (critical)
             {
@@ -2127,16 +1942,16 @@ public class Button1 : MonoBehaviour
             //
 
             //ステータスバーに表記
-            hitP -= damage;
+            tarot.hitP -= damage;
 
-            if (hitP < 0)
+            if (tarot.hitP < 0)
             {
-                hitP = 0;
+                tarot.hitP = 0;
             }
-            Te0.GetComponent<Text>().text = hitP.ToString();
+            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
             //倒れたとき
-            if (hitP <= 0)
+            if (tarot.hitP <= 0)
             {
                 SE1.GetComponent<AudioSource>().Play();
                 await Task.Delay(2000);
@@ -2156,7 +1971,7 @@ public class Button1 : MonoBehaviour
 
     private async void SwBattlePost(int damage, int eDamage, int eAgi, int eHp)
     {
-        if (agility >= eAgi)
+        if (tarot.agility >= eAgi)
         {
             if (critical)
             {
@@ -2196,15 +2011,15 @@ public class Button1 : MonoBehaviour
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
 
             //ステータスバーに表記
-            hitP -= damage;
-            if (hitP < 0)
+            tarot.hitP -= damage;
+            if (tarot.hitP < 0)
             {
-                hitP = 0;
+                tarot.hitP = 0;
             }
-            Te0.GetComponent<Text>().text = hitP.ToString();
+            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
             //倒れたとき
-            if (hitP <= 0)
+            if (tarot.hitP <= 0)
             {
                 SE1.GetComponent<AudioSource>().Play();
                 await Task.Delay(2000);
@@ -2291,95 +2106,3 @@ public class Button1 : MonoBehaviour
         storyCard.GetComponent<SpriteRenderer>().sprite = images[23];
     }
 }
-
-
-
-
-
-
-
-
-
-
-/*
-    // BGM
-    public AudioClip[] clips;
-    public AudioSource[] audios;
-
-    public TextAsset[] textasset;
-
-        audio[2] = Audio1.GetComponent<AudioSource>();
-        audio[2].Play();
-
- */
-/*　未使用メソッド
- *　    //battle テキストのクリア
-        TextClear();
-
-    private static void TextClear()
-    {
-        using (var fileStream = new FileStream("Assets/Resources/battle値.txt", FileMode.Open))
-        {
-            fileStream.SetLength(0);
-            Debug.Log("clear");
-        }
-    }
-
-        //saveテキスト
-    public void SaveText(string path, string contents)
-    {
-        StreamWriter sw;
-        sw = new StreamWriter(path, true);
-        sw.WriteLine(contents);
-        sw.Close();
-        Debug.Log(path);
-        Debug.Log(contents);
-    }
-*/
-
-
-/*　ダメージ処理の変更について
-            //テキスト書き込み
-            //SaveText("Assets/Resources/battle値.txt", $"{ eDamage}ダメージを与えた\n"); 
-            //テキスト読み込み
-            //var teAsBattle = Resources.Load("battle値") as TextAsset;
-   ここのみ  TextTMP.GetComponent<TextMeshProUGUI>().text = $"{ eDamage}ダメージを与えた\n";
-            //teAsBattle.ToString();
-            Debug.Log("チェックポイント");
- */
-/*
- * 
-                    using StreamWriter file = new("battle値", append: true);
-                    await file.WriteLineAsync($"{eDamage}ダメージを与えた\n");
-*/
-//Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
-
-//File.AppendAllText("battle値", $"{eDamage}ダメージを与えた\n");
-/*
-StreamWriter writer =
-  new StreamWriter("battle値", true);
-writer.WriteLine($"{eDamage}ダメージを与えた\n");
-writer.Close();                   
-*/
-/*
-string filePath = "battle値";
-StreamWriter outStream = System.IO.File.CreateText(filePath);
-outStream.WriteLine($"{eDamage}ダメージを与えた\n");
-outStream.Close();
-*/
-
-/*
-IResourceWriter writer = new ResourceWriter("battle値");
-writer.AddResource("battle値", $"{eDamage}ダメージを与えた\n");
-writer.Close();
-*/
-
-//File.WriteAllBytes("battle値", $"{eDamage}ダメージを与えた\n");
-//var teAsBattle = AssetDatabase.LoadAssetAtPath<TextMeshProUGUI>("battle値");
-//UnityEngine.Object teAsBattle = AssetDatabase.LoadMainAssetAtPath("battle値");
-/*
-StreamReader at = new StreamReader(@"\battle値.txt",
-Encoding.GetEncoding("Shift_JIS"), false);
-richTextBox1.Text = at.ReadToEnd();
-at.Close();
-*/
