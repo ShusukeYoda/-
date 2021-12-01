@@ -18,6 +18,7 @@ public class All : MonoBehaviour
 {
     Tarot tarot;
     public List<Sprite> images;    //Listｽﾌﾟﾗｲﾄ
+    StoryCard SCard;
 
     //オブジェクト
     GameObject card;
@@ -73,6 +74,7 @@ public class All : MonoBehaviour
         //Find
         this.card = GameObject.Find("card");
         this.storyCard = GameObject.Find("storyCard");
+        this.SCard = GameObject.Find("storyCard").GetComponent<StoryCard>();
         this.Te0 = GameObject.Find("Te0");
         this.Te1 = GameObject.Find("Te1");
         this.Te2 = GameObject.Find("Te2");
@@ -2103,6 +2105,6 @@ public class All : MonoBehaviour
 
         walk = true;
 
-        storyCard.GetComponent<SpriteRenderer>().sprite = images[23];
+        storyCard.GetComponent<SpriteRenderer>().sprite = SCard.images[23];
     }
 }

@@ -16,13 +16,14 @@ public class Button : MonoBehaviour
     GameObject Audio3;
     All all;
     Tarot tarot;
-
+    StoryCard SCard;
 
     // Start is called before the first frame update
     void Start()
     {
         this.card = GameObject.Find("card");
         this.tarot = GameObject.Find("card").GetComponent<Tarot>();
+        this.SCard = GameObject.Find("storyCard").GetComponent<StoryCard>();
         this.SE9 = GameObject.Find("shaffleSE");
         this.SE10 = GameObject.Find("tarot&StartSE");
         this.SE11 = GameObject.Find("cardStopSE");
@@ -90,7 +91,7 @@ public class Button : MonoBehaviour
             if (all.sNum <= 21 && all.walk)
             {
                 all.walk = false;
-                storyCard.GetComponent<SpriteRenderer>().sprite = all.images[all.sNum];
+                storyCard.GetComponent<SpriteRenderer>().sprite = SCard.images[all.sNum];
 
                 var textAsset = Resources.Load("image" + all.sNum) as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -103,7 +104,7 @@ public class Button : MonoBehaviour
                 var textAsset = Resources.Load("EndImage") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-                storyCard.GetComponent<SpriteRenderer>().sprite = all.images[22];
+                storyCard.GetComponent<SpriteRenderer>().sprite = SCard.images[22];
 
                 all.walk = false;
             }
