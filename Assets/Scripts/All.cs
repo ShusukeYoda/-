@@ -124,30 +124,6 @@ public class All : MonoBehaviour
         CommandSelected(ddtmp.value);
     }
 
-    List<Status> enemys = new List<Status>
-            {
-                new Status {eHp = 50,eAtt = 45 ,eDef=5, eRes = 5, eAgi = 10},　//１騎士
-
-                new Status {eHp = 55,eAtt = 50 ,eDef=15, eRes = 0, eAgi = 10},　//２山賊
-
-                new Status {eHp = 50,eAtt = 50 ,eDef=15, eRes = 5, eAgi = 15},　//３山賊(測)
-
-                new Status {eHp = 55,eAtt = 50 ,eDef=15, eRes = 0, eAgi = 10},　//４山賊
-
-                new Status {eHp = 50,eAtt = 50 ,eDef=15, eRes = 10, eAgi = 15},　//５冒険者
-
-                new Status {eHp = 50,eAtt = 50 ,eDef=15, eRes = 5, eAgi = 15},　//６若者
-
-                new Status {eHp = 60,eAtt = 55 ,eDef=15, eRes = 15, eAgi = 20},　//７屈強な
-
-                new Status {eHp = 60,eAtt = 55 ,eDef=15, eRes = 5, eAgi = 10},　//８正規兵
-
-                new Status {eHp = 55,eAtt = 50 ,eDef=15, eRes = 10, eAgi = 15},　//９傭兵
-
-                new Status {eHp = 60,eAtt = 55 ,eDef=15, eRes = 5, eAgi = 10},　//１０正規兵ら
-
-                new Status {eHp = 40,eAtt = 50 ,eDef=15, eRes = 0, eAgi = 10}　 //１１住人
-            };
     bool battle = false;
     bool critical = false;
 
@@ -344,7 +320,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = tarot.attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - status.enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -372,7 +348,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = tarot.attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - status.enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -431,7 +407,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = tarot.attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - status.enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -499,7 +475,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = tarot.attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - status.enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -527,7 +503,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = tarot.attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - status.enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -690,7 +666,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = tarot.attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - status.enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -717,7 +693,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = tarot.attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - status.enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -887,13 +863,13 @@ public class All : MonoBehaviour
         {
             critical = true;
 
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack * 2 - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -905,7 +881,7 @@ public class All : MonoBehaviour
 
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, status.enemys[enemyNum].eAgi, status.enemys[enemyNum].eHp);
     }
 
     private async Task Attack20()
@@ -920,13 +896,13 @@ public class All : MonoBehaviour
         {
             critical = true;
 
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack * 2 - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -937,7 +913,7 @@ public class All : MonoBehaviour
         await Task.Delay(2000);
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, status.enemys[enemyNum].eAgi, status.enemys[enemyNum].eHp);
     }
 
     private async Task Attack19()
@@ -952,13 +928,13 @@ public class All : MonoBehaviour
         {
             critical = true;
 
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack * 2 - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -969,7 +945,7 @@ public class All : MonoBehaviour
         await Task.Delay(2000);
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, status.enemys[enemyNum].eAgi, status.enemys[enemyNum].eHp);
     }
 
     private async Task Attack18()
@@ -984,13 +960,13 @@ public class All : MonoBehaviour
         {
             critical = true;
 
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack * 2 - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1001,7 +977,7 @@ public class All : MonoBehaviour
         await Task.Delay(2000);
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, status.enemys[enemyNum].eAgi, status.enemys[enemyNum].eHp);
     }
 
     private async Task Attack17()
@@ -1016,13 +992,13 @@ public class All : MonoBehaviour
         {
             critical = true;
 
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack * 2 - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1033,7 +1009,7 @@ public class All : MonoBehaviour
         await Task.Delay(2000);
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, status.enemys[enemyNum].eAgi, status.enemys[enemyNum].eHp);
     }
 
     private async Task Attack15()
@@ -1048,13 +1024,13 @@ public class All : MonoBehaviour
         {
             critical = true;
 
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack * 2 - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1065,7 +1041,7 @@ public class All : MonoBehaviour
         await Task.Delay(2000);
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, status.enemys[enemyNum].eAgi, status.enemys[enemyNum].eHp);
     }
 
     private async Task Attack13()
@@ -1080,13 +1056,13 @@ public class All : MonoBehaviour
         {
             critical = true;
 
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack * 2 - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1097,7 +1073,7 @@ public class All : MonoBehaviour
         await Task.Delay(2000);
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, status.enemys[enemyNum].eAgi, status.enemys[enemyNum].eHp);
     }
 
     private async Task Attack11()
@@ -1112,13 +1088,13 @@ public class All : MonoBehaviour
         {
             critical = true;
 
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack * 2 - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1129,7 +1105,7 @@ public class All : MonoBehaviour
         await Task.Delay(2000);
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, status.enemys[enemyNum].eAgi, status.enemys[enemyNum].eHp);
     }
 
     private async Task Attack9()
@@ -1144,13 +1120,13 @@ public class All : MonoBehaviour
         {
             critical = true;
 
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack * 2 - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1161,7 +1137,7 @@ public class All : MonoBehaviour
         await Task.Delay(2000);
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, status.enemys[enemyNum].eAgi, status.enemys[enemyNum].eHp);
     }
 
     private async Task Attack7()
@@ -1176,13 +1152,13 @@ public class All : MonoBehaviour
         {
             critical = true;
 
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack * 2 - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1193,7 +1169,7 @@ public class All : MonoBehaviour
         await Task.Delay(2000);
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, status.enemys[enemyNum].eAgi, status.enemys[enemyNum].eHp);
     }
 
     private async Task Attack2()
@@ -1208,13 +1184,13 @@ public class All : MonoBehaviour
         {
             critical = true;
 
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack * 2 - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
         else
         {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
+            eDamage = tarot.attack - status.enemys[enemyNum].eDef;
+            damage = status.enemys[enemyNum].eAtt - tarot.defense;
         }
 
         if (damage < 0)
@@ -1225,7 +1201,7 @@ public class All : MonoBehaviour
         await Task.Delay(2000);
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, status.enemys[enemyNum].eAgi, status.enemys[enemyNum].eHp);
     }
 
     private async Task magic21Attack()
@@ -1245,18 +1221,18 @@ public class All : MonoBehaviour
             tarot.magic -= 5;
             Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
+            eDamage = tarot.mAttack - status.enemys[enemyNum].eRes;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
+            if (status.enemys[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1299,18 +1275,18 @@ public class All : MonoBehaviour
             tarot.magic -= 5;
             Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
+            eDamage = tarot.mAttack - status.enemys[enemyNum].eRes;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
+            if (status.enemys[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1361,18 +1337,18 @@ public class All : MonoBehaviour
             tarot.magic -= 5;
             Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
+            eDamage = tarot.mAttack - status.enemys[enemyNum].eRes;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
+            if (status.enemys[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1401,18 +1377,18 @@ public class All : MonoBehaviour
             tarot.magic -= 5;
             Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
+            eDamage = tarot.mAttack - status.enemys[enemyNum].eRes;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
+            if (status.enemys[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1426,7 +1402,7 @@ public class All : MonoBehaviour
 
             await Task.Delay(2000);
 
-            damage = tarot.attack - enemys[enemyNum].eDef;
+            damage = tarot.attack - status.enemys[enemyNum].eDef;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
             UnityEngine.Debug.Log("チェックポイント");
@@ -1498,18 +1474,18 @@ public class All : MonoBehaviour
             tarot.magic -= 5;
             Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
+            eDamage = tarot.mAttack - status.enemys[enemyNum].eRes;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
+            if (status.enemys[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1538,18 +1514,18 @@ public class All : MonoBehaviour
             tarot.magic -= 5;
             Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
+            eDamage = tarot.mAttack - status.enemys[enemyNum].eRes;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
+            if (status.enemys[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1564,7 +1540,7 @@ public class All : MonoBehaviour
 
             await Task.Delay(2000);
 
-            damage = tarot.attack - enemys[enemyNum].eDef;
+            damage = tarot.attack - status.enemys[enemyNum].eDef;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
             UnityEngine.Debug.Log("チェックポイント");
@@ -1592,18 +1568,18 @@ public class All : MonoBehaviour
             tarot.magic -= 5;
             Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
+            eDamage = tarot.mAttack - status.enemys[enemyNum].eRes;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
+            if (status.enemys[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1646,18 +1622,18 @@ public class All : MonoBehaviour
             tarot.magic -= 5;
             Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
+            eDamage = tarot.mAttack - status.enemys[enemyNum].eRes;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
+            if (status.enemys[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1671,7 +1647,7 @@ public class All : MonoBehaviour
 
             await Task.Delay(2000);
 
-            damage = tarot.attack - enemys[0].eDef;
+            damage = tarot.attack - status.enemys[0].eDef;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
             UnityEngine.Debug.Log("チェックポイント");
@@ -1714,8 +1690,8 @@ public class All : MonoBehaviour
             Te4.GetComponent<UnityEngine.UI.Text>().text = tarot.magic.ToString();
 
             //与ダメ
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
+            eDamage = tarot.mAttack - status.enemys[enemyNum].eRes;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             if (eDamage < 0)
             {
@@ -1727,7 +1703,7 @@ public class All : MonoBehaviour
             await Task.Delay(1000);
 
             //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
+            if (status.enemys[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1779,10 +1755,10 @@ public class All : MonoBehaviour
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
 
                 //与ダメージ
-                enemys[enemyNum].eHp -= eDamage;
+                status.enemys[enemyNum].eHp -= eDamage;
 
                 //倒したとき
-                if (enemys[enemyNum].eHp <= 0)
+                if (status.enemys[enemyNum].eHp <= 0)
                 {
                     KilledBranch(enemyNum);
                 }
@@ -1794,10 +1770,10 @@ public class All : MonoBehaviour
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
 
             //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
+            if (status.enemys[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1838,10 +1814,10 @@ public class All : MonoBehaviour
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
 
                 //与ダメージ
-                enemys[enemyNum].eHp -= eDamage;
+                status.enemys[enemyNum].eHp -= eDamage;
 
                 //倒したとき
-                if (enemys[enemyNum].eHp <= 0)
+                if (status.enemys[enemyNum].eHp <= 0)
                 {
                     KilledBranch(enemyNum);
                 }
@@ -1853,10 +1829,10 @@ public class All : MonoBehaviour
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
 
             //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
+            status.enemys[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
+            if (status.enemys[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }

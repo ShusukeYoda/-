@@ -20,7 +20,7 @@ public class Status : MonoBehaviour
 
     public string line;
 
-    List<Status> enemys = new List<Status>
+    public List<Status> enemys = new List<Status>
             {
                 new Status {eHp = 50,eAtt = 45 ,eDef=5, eRes = 5, eAgi = 10},　//１騎士
 
