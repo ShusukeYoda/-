@@ -73,7 +73,7 @@ class Tarot :MonoBehaviour
     }
 
 
-    List<Status> select = new List<Status>
+    public List<Status> select = new List<Status>
             {
                 new Status {hp = 35, str = 20, vit = 10, mg = 15, res = 5,agi = 20,dex =15,luc = 30,line = "スタイルは『0 愚者』"},
                 new Status {hp = 30, str = 10, vit = 10, mg = 40, res = 30,agi = 10,dex =20,luc = 15,line = "スタイルは『I 魔術師』"},

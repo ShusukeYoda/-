@@ -20,6 +20,7 @@ public class All : MonoBehaviour
     public List<Sprite> images;    //Listｽﾌﾟﾗｲﾄ
     StoryCard SCard;
     Status status;
+    pullDown pull;
 
     //オブジェクト
     GameObject card;
@@ -77,6 +78,7 @@ public class All : MonoBehaviour
         this.storyCard = GameObject.Find("storyCard");
         this.SCard = GameObject.Find("storyCard").GetComponent<StoryCard>();
         this.status = GameObject.Find("Status").GetComponent<Status>();
+        this.pull = GameObject.Find("Dropdown").GetComponent<pullDown>();
         this.Te0 = GameObject.Find("Te0");
         this.Te1 = GameObject.Find("Te1");
         this.Te2 = GameObject.Find("Te2");
@@ -108,21 +110,6 @@ public class All : MonoBehaviour
         this.TextTMP = GameObject.Find("TextTMP");
     }
     // Update is called once per frame
-
-
-    public void OnClick()
-    {
-        Dropdown ddtmp;
-
-        //「Dropdown」というGameObjectのDropDownコンポーネントを操作するために取得
-        ddtmp = GameObject.Find("Dropdown").GetComponent<Dropdown>();
-
-        //DropDownコンポーネントのoptionsから選択されてているvalueをindexで指定し、
-        //選択されている文字を取得
-        //string selectedvalue = ddtmp.options[ddtmp.value].text;
-
-        CommandSelected(ddtmp.value);
-    }
 
     bool battle = false;
     bool critical = false;
