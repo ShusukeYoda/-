@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class pullDown : MonoBehaviour
 {
     GameObject Dropdown;
-    All all;
+    CommandManager all;
 
     // Start is called before the first frame update
     void Start()
     {
         this.Dropdown = GameObject.Find("Dropdown");
-        this.all = GameObject.Find("Main Camera").GetComponent<All>();
+        this.all = GameObject.Find("Main Camera").GetComponent<CommandManager>();
     }
     public void OnClick()
     {

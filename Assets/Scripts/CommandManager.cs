@@ -15,7 +15,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
-public class All : MonoBehaviour
+public class CommandManager : MonoBehaviour
 {
     UnityEvent unityEvent;
 
@@ -73,6 +73,30 @@ public class All : MonoBehaviour
     //ストーリー進行bool
     public bool walk = true;
 
+    public List<Status> enemy = new List<Status>()
+            {
+                new Status {eHp = 50,eAtt = 45 ,eDef=5, eRes = 5, eAgi = 10},　//１騎士
+
+                new Status {eHp = 55,eAtt = 50 ,eDef=15, eRes = 0, eAgi = 10},　//２山賊
+
+                new Status {eHp = 50,eAtt = 50 ,eDef=15, eRes = 5, eAgi = 15},　//３山賊(測)
+
+                new Status {eHp = 55,eAtt = 50 ,eDef=15, eRes = 0, eAgi = 10},　//４山賊
+
+                new Status {eHp = 50,eAtt = 50 ,eDef=15, eRes = 10, eAgi = 15},　//５冒険者
+
+                new Status {eHp = 50,eAtt = 50 ,eDef=15, eRes = 5, eAgi = 15},　//６若者
+
+                new Status {eHp = 60,eAtt = 55 ,eDef=15, eRes = 15, eAgi = 20},　//７屈強な
+
+                new Status {eHp = 60,eAtt = 55 ,eDef=15, eRes = 5, eAgi = 10},　//８正規兵
+
+                new Status {eHp = 55,eAtt = 50 ,eDef=15, eRes = 10, eAgi = 15},　//９傭兵
+
+                new Status {eHp = 60,eAtt = 55 ,eDef=15, eRes = 5, eAgi = 10},　//１０正規兵ら
+
+                new Status {eHp = 40,eAtt = 50 ,eDef=15, eRes = 0, eAgi = 10}　 //１１住人
+            };
     // Start is called before the first frame update
     void Start()
     {
@@ -111,6 +135,9 @@ public class All : MonoBehaviour
         this.SE11 = GameObject.Find("cardStopSE");
 
         this.TextTMP = GameObject.Find("TextTMP");
+
+        status.magic -= 5;
+        Te4.GetComponent<Text>().text = status.magic.ToString();
     }
     // Update is called once per frame
 
@@ -310,7 +337,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = status.attack - status.enemy[enemyNum].eDef;
+                damage = status.attack - enemy[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -338,7 +365,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = status.attack - status.enemy[enemyNum].eDef;
+                damage = status.attack - enemy[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -397,7 +424,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = status.attack - status.enemy[enemyNum].eDef;
+                damage = status.attack - enemy[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -465,7 +492,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = status.attack - status.enemy[enemyNum].eDef;
+                damage = status.attack - enemy[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -493,7 +520,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = status.attack - status.enemy[enemyNum].eDef;
+                damage = status.attack - enemy[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -656,7 +683,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = status.attack - status.enemy[enemyNum].eDef;
+                damage = status.attack - enemy[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -683,7 +710,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = status.attack - status.enemy[enemyNum].eDef;
+                damage = status.attack - enemy[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -853,7 +880,7 @@ public class All : MonoBehaviour
 
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, status.enemy[enemyNum].eAgi, status.enemy[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, enemy[enemyNum].eAgi, enemy[enemyNum].eHp);
     }
 
     private async Task Attack20()
@@ -867,7 +894,7 @@ public class All : MonoBehaviour
         Calculation();
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, status.enemy[enemyNum].eAgi, status.enemy[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, enemy[enemyNum].eAgi, enemy[enemyNum].eHp);
     }
 
     private async Task Attack19()
@@ -881,7 +908,7 @@ public class All : MonoBehaviour
         Calculation();
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, status.enemy[enemyNum].eAgi, status.enemy[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, enemy[enemyNum].eAgi, enemy[enemyNum].eHp);
     }
 
     private async Task Attack18()
@@ -895,7 +922,7 @@ public class All : MonoBehaviour
         Calculation();
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, status.enemy[enemyNum].eAgi, status.enemy[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, enemy[enemyNum].eAgi, enemy[enemyNum].eHp);
     }
 
     private async Task Attack17()
@@ -909,7 +936,7 @@ public class All : MonoBehaviour
         Calculation();
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, status.enemy[enemyNum].eAgi, status.enemy[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, enemy[enemyNum].eAgi, enemy[enemyNum].eHp);
     }
 
     private async Task Attack15()
@@ -923,7 +950,7 @@ public class All : MonoBehaviour
         Calculation();
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, status.enemy[enemyNum].eAgi, status.enemy[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, enemy[enemyNum].eAgi, enemy[enemyNum].eHp);
     }
 
     private async Task Attack13()
@@ -937,7 +964,7 @@ public class All : MonoBehaviour
         Calculation();
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, status.enemy[enemyNum].eAgi, status.enemy[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, enemy[enemyNum].eAgi, enemy[enemyNum].eHp);
     }
 
     private async Task Attack11()
@@ -951,7 +978,7 @@ public class All : MonoBehaviour
         Calculation();
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, status.enemy[enemyNum].eAgi, status.enemy[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, enemy[enemyNum].eAgi, enemy[enemyNum].eHp);
     }
 
     private async Task Attack9()
@@ -965,7 +992,7 @@ public class All : MonoBehaviour
         Calculation();
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, status.enemy[enemyNum].eAgi, status.enemy[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, enemy[enemyNum].eAgi, enemy[enemyNum].eHp);
     }
 
     private async Task Attack7()
@@ -979,7 +1006,7 @@ public class All : MonoBehaviour
         Calculation();
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, status.enemy[enemyNum].eAgi, status.enemy[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, enemy[enemyNum].eAgi, enemy[enemyNum].eHp);
     }
 
     private async Task Attack2()
@@ -993,7 +1020,7 @@ public class All : MonoBehaviour
         Calculation();
 
         //バトルメソッドへ
-        SwBattlePre(damage, eDamage, status.enemy[enemyNum].eAgi, status.enemy[enemyNum].eHp);
+        SwBattlePre(damage, eDamage, enemy[enemyNum].eAgi, enemy[enemyNum].eHp);
     }
 
     private async void Calculation()
@@ -1002,13 +1029,13 @@ public class All : MonoBehaviour
         {
             critical = true;
 
-            eDamage = status.attack * 2 - status.enemy[enemyNum].eDef;
-            damage = status.enemy[enemyNum].eAtt - status.defense;
+            eDamage = status.attack * 2 - enemy[enemyNum].eDef;
+            damage = enemy[enemyNum].eAtt - status.defense;
         }
         else
         {
-            eDamage = status.attack - status.enemy[enemyNum].eDef;
-            damage = status.enemy[enemyNum].eAtt - status.defense;
+            eDamage = status.attack - enemy[enemyNum].eDef;
+            damage = enemy[enemyNum].eAtt - status.defense;
         }
 
         if (damage < 0)
@@ -1020,7 +1047,7 @@ public class All : MonoBehaviour
 
     private async Task magic21Attack()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1032,21 +1059,21 @@ public class All : MonoBehaviour
 
             await Task.Delay(2000);
 
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
+            status.magic -= 5;
+            Te4.GetComponent<Text>().text = status.magic.ToString();
 
-            eDamage = tarot.mAttack - status.enemy[enemyNum].eRes;
-            status.enemy[enemyNum].eHp -= eDamage;
+            eDamage = status.mAttack - enemy[enemyNum].eRes;
+            enemy[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            status.enemy[enemyNum].eHp -= eDamage;
+            enemy[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (status.enemy[enemyNum].eHp <= 0)
+            if (enemy[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1060,7 +1087,7 @@ public class All : MonoBehaviour
 
     private void magic21()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             var textAsset = Resources.Load("魔法を使う21b") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -1074,7 +1101,7 @@ public class All : MonoBehaviour
 
     private async Task magic20Attack()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1086,21 +1113,21 @@ public class All : MonoBehaviour
 
             await Task.Delay(2000);
 
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
+            status.magic -= 5;
+            Te4.GetComponent<Text>().text = status.magic.ToString();
 
-            eDamage = tarot.mAttack - status.enemy[enemyNum].eRes;
-            status.enemy[enemyNum].eHp -= eDamage;
+            eDamage = status.mAttack - enemy[enemyNum].eRes;
+            enemy[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            status.enemy[enemyNum].eHp -= eDamage;
+            enemy[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (status.enemy[enemyNum].eHp <= 0)
+            if (enemy[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1114,7 +1141,7 @@ public class All : MonoBehaviour
 
     private void magicInvisible()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             SE6.GetComponent<AudioSource>().Play();
 
@@ -1122,8 +1149,8 @@ public class All : MonoBehaviour
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
 
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
+            status.magic -= 5;
+            Te4.GetComponent<Text>().text = status.magic.ToString();
 
             walk = true;
         }
@@ -1136,7 +1163,7 @@ public class All : MonoBehaviour
 
     private async Task magic18Attack()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1148,21 +1175,21 @@ public class All : MonoBehaviour
 
             await Task.Delay(2000);
 
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
+            status.magic -= 5;
+            Te4.GetComponent<Text>().text = status.magic.ToString();
 
-            eDamage = tarot.mAttack - status.enemy[enemyNum].eRes;
-            status.enemy[enemyNum].eHp -= eDamage;
+            eDamage = status.mAttack - enemy[enemyNum].eRes;
+            enemy[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            status.enemy[enemyNum].eHp -= eDamage;
+            enemy[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (status.enemy[enemyNum].eHp <= 0)
+            if (enemy[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1177,7 +1204,7 @@ public class All : MonoBehaviour
 
     private async Task magic17Attack()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1188,21 +1215,21 @@ public class All : MonoBehaviour
 
             await Task.Delay(2000);
 
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
+            status.magic -= 5;
+            Te4.GetComponent<Text>().text = status.magic.ToString();
 
-            eDamage = tarot.mAttack - status.enemy[enemyNum].eRes;
-            status.enemy[enemyNum].eHp -= eDamage;
+            eDamage = status.mAttack - enemy[enemyNum].eRes;
+            enemy[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            status.enemy[enemyNum].eHp -= eDamage;
+            enemy[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (status.enemy[enemyNum].eHp <= 0)
+            if (enemy[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1216,7 +1243,7 @@ public class All : MonoBehaviour
 
             await Task.Delay(2000);
 
-            damage = tarot.attack - status.enemy[enemyNum].eDef;
+            damage = status.attack - enemy[enemyNum].eDef;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
             UnityEngine.Debug.Log("チェックポイント");
@@ -1229,15 +1256,15 @@ public class All : MonoBehaviour
 
     private void magicSleep()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             SE6.GetComponent<AudioSource>().Play();
 
             var textAsset = Resources.Load("魔法を使う15") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
+            status.magic -= 5;
+            Te4.GetComponent<Text>().text = status.magic.ToString();
 
             walk = true;
         }
@@ -1250,17 +1277,17 @@ public class All : MonoBehaviour
 
     private void magicRecovery()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             SE8.GetComponent<AudioSource>().Play();
 
             var textAsset = Resources.Load("魔法を使う14") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-            tarot.magic -= 5;
-            tarot.hitP += 10;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
-            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
+            status.magic -= 5;
+            status.hitP += 10;
+            Te4.GetComponent<Text>().text = status.magic.ToString();
+            Te0.GetComponent<Text>().text = status.hitP.ToString();
 
             walk = true;
         }
@@ -1273,7 +1300,7 @@ public class All : MonoBehaviour
 
     private async Task magic13Attack()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1285,21 +1312,21 @@ public class All : MonoBehaviour
 
             await Task.Delay(2000);
 
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
+            status.magic -= 5;
+            Te4.GetComponent<Text>().text = status.magic.ToString();
 
-            eDamage = tarot.mAttack - status.enemy[enemyNum].eRes;
-            status.enemy[enemyNum].eHp -= eDamage;
+            eDamage = status.mAttack - enemy[enemyNum].eRes;
+            enemy[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            status.enemy[enemyNum].eHp -= eDamage;
+            enemy[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (status.enemy[enemyNum].eHp <= 0)
+            if (enemy[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1313,7 +1340,7 @@ public class All : MonoBehaviour
 
     private async Task magic11Attack()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1325,21 +1352,21 @@ public class All : MonoBehaviour
 
             await Task.Delay(2000);
 
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
+            status.magic -= 5;
+            Te4.GetComponent<Text>().text = status.magic.ToString();
 
-            eDamage = tarot.mAttack - status.enemy[enemyNum].eRes;
-            status.enemy[enemyNum].eHp -= eDamage;
+            eDamage = status.mAttack - enemy[enemyNum].eRes;
+            enemy[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            status.enemy[enemyNum].eHp -= eDamage;
+            enemy[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (status.enemy[enemyNum].eHp <= 0)
+            if (enemy[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1354,7 +1381,7 @@ public class All : MonoBehaviour
 
             await Task.Delay(2000);
 
-            damage = tarot.attack - status.enemy[enemyNum].eDef;
+            damage = status.attack - enemy[enemyNum].eDef;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
             UnityEngine.Debug.Log("チェックポイント");
@@ -1367,7 +1394,7 @@ public class All : MonoBehaviour
 
     private async Task magic9Attack()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1379,21 +1406,21 @@ public class All : MonoBehaviour
 
             await Task.Delay(2000);
 
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
+            status.magic -= 5;
+            Te4.GetComponent<Text>().text = status.magic.ToString();
 
-            eDamage = tarot.mAttack - status.enemy[enemyNum].eRes;
-            status.enemy[enemyNum].eHp -= eDamage;
+            eDamage = status.mAttack - enemy[enemyNum].eRes;
+            enemy[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            status.enemy[enemyNum].eHp -= eDamage;
+            enemy[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (status.enemy[enemyNum].eHp <= 0)
+            if (enemy[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1409,7 +1436,7 @@ public class All : MonoBehaviour
 
     private void magic8()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             var textAsset = Resources.Load("魔法を使う8") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -1423,7 +1450,7 @@ public class All : MonoBehaviour
 
     private async Task magic7Attack()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1433,21 +1460,21 @@ public class All : MonoBehaviour
 
             await Task.Delay(2000);
 
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
+            status.magic -= 5;
+            Te4.GetComponent<Text>().text = status.magic.ToString();
 
-            eDamage = tarot.mAttack - status.enemy[enemyNum].eRes;
-            status.enemy[enemyNum].eHp -= eDamage;
+            eDamage = status.mAttack - enemy[enemyNum].eRes;
+            enemy[enemyNum].eHp -= eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             UnityEngine.Debug.Log("チェックポイント");
             //
 
             //与ダメージ
-            status.enemy[enemyNum].eHp -= eDamage;
+            enemy[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (status.enemy[enemyNum].eHp <= 0)
+            if (enemy[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1461,7 +1488,7 @@ public class All : MonoBehaviour
 
             await Task.Delay(2000);
 
-            damage = tarot.attack - status.enemy[0].eDef;
+            damage = status.attack - enemy[0].eDef;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
             UnityEngine.Debug.Log("チェックポイント");
@@ -1474,7 +1501,7 @@ public class All : MonoBehaviour
 
     private void magic6()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             var textAsset = Resources.Load("魔法を使う6") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -1488,7 +1515,7 @@ public class All : MonoBehaviour
 
     private async Task magicAttack2()
     {
-        if (tarot.magic >= 5)//magic >= 5 debug
+        if (status.magic >= 5)//magic >= 5 debug
         {
             SE4.GetComponent<AudioSource>().Play();
 
@@ -1500,12 +1527,12 @@ public class All : MonoBehaviour
             //2秒待ち
             await Task.Delay(2000);
             //mp消費
-            tarot.magic -= 5;
-            Te4.GetComponent<UnityEngine.UI.Text>().text = tarot.magic.ToString();
+            status.magic -= 5;
+            Te4.GetComponent<UnityEngine.UI.Text>().text = status.magic.ToString();
 
             //与ダメ
-            eDamage = tarot.mAttack - status.enemy[enemyNum].eRes;
-            status.enemy[enemyNum].eHp -= eDamage;
+            eDamage = status.mAttack - enemy[enemyNum].eRes;
+            enemy[enemyNum].eHp -= eDamage;
 
             if (eDamage < 0)
             {
@@ -1517,7 +1544,7 @@ public class All : MonoBehaviour
             await Task.Delay(1000);
 
             //倒したとき
-            if (status.enemy[enemyNum].eHp <= 0)
+            if (enemy[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1531,18 +1558,18 @@ public class All : MonoBehaviour
 
     private void magic1Method()
     {
-        if (tarot.magic >= 5)
+        if (status.magic >= 5)
         {
             SE8.GetComponent<AudioSource>().Play();
 
             var textAsset = Resources.Load("魔法を使う1") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-            tarot.magic -= 5;
-            tarot.luck += 5;
+            status.magic -= 5;
+            status.luck += 5;
 
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
-            Te3.GetComponent<Text>().text = tarot.luck.ToString();
+            Te4.GetComponent<Text>().text = status.magic.ToString();
+            Te3.GetComponent<Text>().text = status.luck.ToString();
             /*
             magic -= 5;     //UIテスト
             Te4.GetComponent<Text>().text = magic.ToString();
@@ -1560,7 +1587,7 @@ public class All : MonoBehaviour
     private async void SwBattlePre(int damage, int eDamage, int eAgi, int eHp)
     {
 
-        if (tarot.agility >= eAgi)
+        if (status.agility >= eAgi)
         {
             if (critical)
             {
@@ -1569,10 +1596,10 @@ public class All : MonoBehaviour
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
 
                 //与ダメージ
-                status.enemy[enemyNum].eHp -= eDamage;
+                enemy[enemyNum].eHp -= eDamage;
 
                 //倒したとき
-                if (status.enemy[enemyNum].eHp <= 0)
+                if (enemy[enemyNum].eHp <= 0)
                 {
                     KilledBranch(enemyNum);
                 }
@@ -1584,10 +1611,10 @@ public class All : MonoBehaviour
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
 
             //与ダメージ
-            status.enemy[enemyNum].eHp -= eDamage;
+            enemy[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (status.enemy[enemyNum].eHp <= 0)
+            if (enemy[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }
@@ -1619,7 +1646,7 @@ public class All : MonoBehaviour
 
     private async void SwBattlePost(int damage, int eDamage, int eAgi, int eHp)
     {
-        if (tarot.agility >= eAgi)
+        if (status.agility >= eAgi)
         {
             if (critical)
             {
@@ -1628,10 +1655,10 @@ public class All : MonoBehaviour
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
 
                 //与ダメージ
-                status.enemy[enemyNum].eHp -= eDamage;
+                enemy[enemyNum].eHp -= eDamage;
 
                 //倒したとき
-                if (status.enemy[enemyNum].eHp <= 0)
+                if (enemy[enemyNum].eHp <= 0)
                 {
                     KilledBranch(enemyNum);
                 }
@@ -1643,10 +1670,10 @@ public class All : MonoBehaviour
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
 
             //与ダメージ
-            status.enemy[enemyNum].eHp -= eDamage;
+            enemy[enemyNum].eHp -= eDamage;
 
             //倒したとき
-            if (status.enemy[enemyNum].eHp <= 0)
+            if (enemy[enemyNum].eHp <= 0)
             {
                 KilledBranch(enemyNum);
             }

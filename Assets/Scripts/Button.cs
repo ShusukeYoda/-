@@ -14,7 +14,7 @@ public class Button : MonoBehaviour
     GameObject TextTMP;
     GameObject Audio1;
     GameObject Audio3;
-    All all;
+    CommandManager all;
     Tarot tarot;
     StoryCard SCard;
 
@@ -32,7 +32,7 @@ public class Button : MonoBehaviour
         this.Audio1 = GameObject.Find("BGM");
         this.Audio3 = GameObject.Find("BGM2");
         //ƒNƒ‰ƒX‚ğæ“¾‚·‚é‘‚«•û
-        this.all = GameObject.Find("Main Camera").GetComponent<All>(); 
+        this.all = GameObject.Find("Main Camera").GetComponent<CommandManager>(); 
     }
     void Update()
     {
