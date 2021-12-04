@@ -33,7 +33,7 @@ class Tarot :MonoBehaviour
     void Start()
     {
         this.all = GameObject.Find("Main Camera").GetComponent<CommandManager>();
-        this.status = GameObject.Find("Status").GetComponent<Status>();
+        this.status = new Status();
         
         this.Te0 = GameObject.Find("Te0").GetComponent<Text>();
         this.Te1 = GameObject.Find("Te1").GetComponent<Text>();

@@ -104,7 +104,7 @@ public class CommandManager : MonoBehaviour
         this.card = GameObject.Find("card");
         this.storyCard = GameObject.Find("storyCard");
         this.SCard = GameObject.Find("storyCard").GetComponent<StoryCard>();
-        this.status = GameObject.Find("Status").GetComponent<Status>();
+        this.status = new Status();
         this.pull = GameObject.Find("Dropdown").GetComponent<pullDown>();
         this.Te0 = GameObject.Find("Te0");
         this.Te1 = GameObject.Find("Te1");
