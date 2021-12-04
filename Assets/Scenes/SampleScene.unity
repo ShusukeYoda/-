@@ -541,7 +541,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 903, y: 138}
+  m_AnchoredPosition: {x: 311.00006, y: -91.999985}
   m_SizeDelta: {x: 197.8086, y: 48.9044}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &155777480
@@ -2426,11 +2426,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -2950,7 +2950,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 903, y: 273}
+  m_AnchoredPosition: {x: 311.00006, y: 43.000015}
   m_SizeDelta: {x: 197.8086, y: 48.9044}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &809192183
@@ -3548,7 +3548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 903, y: 369}
+  m_AnchoredPosition: {x: 311, y: 139}
   m_SizeDelta: {x: 197.8086, y: 48.9044}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1052176994
@@ -5784,16 +5784,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2a86fbba1158c7147a035e2bb1951521, type: 3}
   - {fileID: 21300000, guid: 6bb18e717e6e9824ebe5823aa61911fa, type: 3}
   - {fileID: 21300000, guid: 9ac4dddcc3302a444afe3f94aaaf00b1, type: 3}
-  attack: 0
-  defense: 0
-  mAttack: 0
-  mDefense: 0
-  hitP: 0
-  magic: 0
-  strength: 0
-  resist: 0
-  agility: 0
-  luck: 0
 --- !u!1 &1791078568
 GameObject:
   m_ObjectHideFlags: 0
@@ -6205,7 +6195,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1847651628}
-  - component: {fileID: 1847651629}
   m_Layer: 0
   m_Name: Status
   m_TagString: Untagged
@@ -6227,33 +6216,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1847651629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1847651627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b58bb77d08fbe9c479429938f556b58d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 0
-  str: 0
-  vit: 0
-  mg: 0
-  res: 0
-  agi: 0
-  dex: 0
-  luc: 0
-  eHp: 0
-  eAtt: 0
-  eDef: 0
-  eRes: 0
-  eAgi: 0
-  line: 
-  enemys: []
 --- !u!1 &1916876098
 GameObject:
   m_ObjectHideFlags: 0
