@@ -105,6 +105,8 @@ public class All : MonoBehaviour
 
 
         this.TextTMP = GameObject.Find("TextTMP");
+
+        Audio1.GetComponent<AudioSource>().Play();
     }
     // Update is called once per frame
 
