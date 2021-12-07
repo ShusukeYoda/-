@@ -10,29 +10,31 @@ class Tarot :MonoBehaviour
     Text text;
     public Sprite[] tarotImage;   //配列ｽﾌﾟﾗｲﾄ 消すと消える
 
-    GameObject Te0;
-    GameObject Te1;
-    GameObject Te2;
-    GameObject Te3;
-    GameObject Te4;
-    GameObject Te5;
-    GameObject Te6;
-    GameObject Te7;
-    GameObject Style;
+    Text Te0;
+    Text Te1;
+    Text Te2;
+    Text Te3;
+    Text Te4;
+    Text Te5;
+    Text Te6;
+    Text Te7;
+    Text Style;
 
     void Start()
     {
         this.all = GameObject.Find("Main Camera").GetComponent<All>();
         this.tarot = GameObject.Find("card").GetComponent<Tarot>();
-        this.Te0 = GameObject.Find("Te0");
-        this.Te1 = GameObject.Find("Te1");
-        this.Te2 = GameObject.Find("Te2");
-        this.Te3 = GameObject.Find("Te3");
-        this.Te4 = GameObject.Find("Te4");
-        this.Te5 = GameObject.Find("Te5");
-        this.Te6 = GameObject.Find("Te6");
-        this.Te7 = GameObject.Find("Te7");
-        this.Style = GameObject.Find("Style");
+        this.Te0 = GameObject.Find("Te0").GetComponent<Text>();
+        this.Te1 = GameObject.Find("Te1").GetComponent<Text>();
+        this.Te2 = GameObject.Find("Te2").GetComponent<Text>();
+        this.Te3 = GameObject.Find("Te3").GetComponent<Text>();
+        this.Te4 = GameObject.Find("Te4").GetComponent<Text>();
+        this.Te5 = GameObject.Find("Te5").GetComponent<Text>();
+        this.Te6 = GameObject.Find("Te6").GetComponent<Text>();
+        this.Te7 = GameObject.Find("Te7").GetComponent<Text>();
+        this.Style = GameObject.Find("Style").GetComponent<Text>();
+
+
     }
     public int attack;
     public int defense;
@@ -48,15 +50,15 @@ class Tarot :MonoBehaviour
     {
         if (tarot.tarotImage[all.count]) //tarotImage[0] == 
         {
-            Te0.GetComponent<Text>().text = select[v].hp.ToString();
-            Te1.GetComponent<Text>().text = select[v].str.ToString();
-            Te2.GetComponent<Text>().text = select[v].vit.ToString();
-            Te3.GetComponent<Text>().text = select[v].luc.ToString();
-            Te4.GetComponent<Text>().text = select[v].mg.ToString();
-            Te5.GetComponent<Text>().text = select[v].res.ToString();
-            Te6.GetComponent<Text>().text = select[v].agi.ToString();
-            Te7.GetComponent<Text>().text = select[v].dex.ToString();
-            Style.GetComponent<Text>().text = select[v].line.ToString();
+            Te0.text = select[v].hp.ToString();
+            Te1.text = select[v].str.ToString();
+            Te2.text = select[v].vit.ToString();
+            Te3.text = select[v].luc.ToString();
+            Te4.text = select[v].mg.ToString();
+            Te5.text = select[v].res.ToString();
+            Te6.text = select[v].agi.ToString();
+            Te7.text = select[v].dex.ToString();
+            Style.text = select[v].line.ToString();
         }
         //プレイヤーステータス
         attack = select[v].str + (select[v].dex / 5) * (select[v].luc / 5);

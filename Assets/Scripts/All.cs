@@ -201,7 +201,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack2();
+                await Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -358,7 +358,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack7();
+                await Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -445,7 +445,7 @@ public class All : MonoBehaviour
 
             if (co == 1 && walk == false)
             {
-                await Attack9();
+                await Attack();
             }
             if (co == 2 && battle != true ||
                 co == 2 && walk == false)
@@ -512,7 +512,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack11();
+                await Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -578,7 +578,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack13();
+                await Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -631,7 +631,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack15();
+                await Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -703,7 +703,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack17();
+                await Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -743,7 +743,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack18();
+                await Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -772,7 +772,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack19();
+                await Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -801,7 +801,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack20();
+                await Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -837,7 +837,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false && battle == true)
             {
-                await Attack21b();
+                await Attack();
             }
 
             if (co == 2 && battle != true)
@@ -879,331 +879,12 @@ public class All : MonoBehaviour
         }
     }
 
-    private async Task Attack21b()
+    private async Task Attack()
     {
-        var textAsset = Resources.Load("斬りつける21b") as TextAsset;
+        var textAsset = Resources.Load($"斬りつける{sNum}") as TextAsset;
         TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
         //battle
-        if (cri <= tarot.luck)
-        {
-            critical = true;
-
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-        else
-        {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-
-        if (damage < 0)
-        {
-            damage = 0;
-        }
-
-        await Task.Delay(2000);
-
-
-        //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
-    }
-
-    private async Task Attack20()
-    {
-        var textAsset = Resources.Load("斬りつける20") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-        //battle
-        battle = true;
-
-        if (cri <= tarot.luck)
-        {
-            critical = true;
-
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-        else
-        {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-
-        if (damage < 0)
-        {
-            damage = 0;
-        }
-
-        await Task.Delay(2000);
-
-        //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
-    }
-
-    private async Task Attack19()
-    {
-        var textAsset = Resources.Load("斬りつける19") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-        //battle
-        battle = true;
-
-        if (cri <= tarot.luck)
-        {
-            critical = true;
-
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-        else
-        {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-
-        if (damage < 0)
-        {
-            damage = 0;
-        }
-
-        await Task.Delay(2000);
-
-        //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
-    }
-
-    private async Task Attack18()
-    {
-        var textAsset = Resources.Load("斬りつける18") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-        //battle
-        battle = true;
-
-        if (cri <= tarot.luck)
-        {
-            critical = true;
-
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-        else
-        {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-
-        if (damage < 0)
-        {
-            damage = 0;
-        }
-
-        await Task.Delay(2000);
-
-        //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
-    }
-
-    private async Task Attack17()
-    {
-        var textAsset = Resources.Load("斬りつける17") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-        //battle
-        battle = true;
-
-        if (cri <= tarot.luck)
-        {
-            critical = true;
-
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-        else
-        {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-
-        if (damage < 0)
-        {
-            damage = 0;
-        }
-
-        await Task.Delay(2000);
-
-        //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
-    }
-
-    private async Task Attack15()
-    {
-        var textAsset = Resources.Load("斬りつける15") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-        //battle
-        battle = true;
-
-        if (cri <= tarot.luck)
-        {
-            critical = true;
-
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-        else
-        {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-
-        if (damage < 0)
-        {
-            damage = 0;
-        }
-
-        await Task.Delay(2000);
-
-        //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
-    }
-
-    private async Task Attack13()
-    {
-        var textAsset = Resources.Load("斬りつける13") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-        //battle
-        battle = true;
-
-        if (cri <= tarot.luck)
-        {
-            critical = true;
-
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-        else
-        {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-
-        if (damage < 0)
-        {
-            damage = 0;
-        }
-
-        await Task.Delay(2000);
-
-        //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
-    }
-
-    private async Task Attack11()
-    {
-        var textAsset = Resources.Load("斬りつける11") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-        //battle
-        battle = true;
-
-        if (cri <= tarot.luck)
-        {
-            critical = true;
-
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-        else
-        {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-
-        if (damage < 0)
-        {
-            damage = 0;
-        }
-
-        await Task.Delay(2000);
-
-        //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
-    }
-
-    private async Task Attack9()
-    {
-        var textAsset = Resources.Load("斬りつける9") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-        //battle
-        battle = true;
-
-        if (cri <= tarot.luck)
-        {
-            critical = true;
-
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-        else
-        {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-
-        if (damage < 0)
-        {
-            damage = 0;
-        }
-
-        await Task.Delay(2000);
-
-        //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
-    }
-
-    private async Task Attack7()
-    {
-        var textAsset = Resources.Load("斬りつける7") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-        //battle
-        battle = true;
-
-        if (cri <= tarot.luck)
-        {
-            critical = true;
-
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-        else
-        {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-
-        if (damage < 0)
-        {
-            damage = 0;
-        }
-
-        await Task.Delay(2000);
-
-        //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
-    }
-
-    private async Task Attack2()
-    {
-        var textAsset = Resources.Load("斬りつける2") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
         battle = true;
 
         if (cri <= tarot.luck)
