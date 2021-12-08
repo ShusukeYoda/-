@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 55023329}
   - component: {fileID: 55023331}
   - component: {fileID: 55023330}
+  - component: {fileID: 55023332}
   m_Layer: 5
   m_Name: Te0
   m_TagString: Untagged
@@ -350,6 +351,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55023328}
   m_CullTransparentMesh: 1
+--- !u!114 &55023332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55023328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dbba8fb36d79440b690f698e363891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images: []
+  TextTMP: {fileID: 0}
+  span: 0.1
+  delta: 0
+  count: 0
+  moving: 0
+  one: 0
+  random1: 0
+  sNum: 0
+  walk: 1
+  enemyNum: 0
 --- !u!1 &106125325
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +385,7 @@ GameObject:
   - component: {fileID: 106125326}
   - component: {fileID: 106125328}
   - component: {fileID: 106125327}
+  - component: {fileID: 106125329}
   m_Layer: 5
   m_Name: Style
   m_TagString: Untagged
@@ -429,6 +454,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106125325}
   m_CullTransparentMesh: 1
+--- !u!114 &106125329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106125325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dbba8fb36d79440b690f698e363891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images: []
+  TextTMP: {fileID: 0}
+  span: 0.1
+  delta: 0
+  count: 0
+  moving: 0
+  one: 0
+  random1: 0
+  sNum: 0
+  walk: 1
+  enemyNum: 0
 --- !u!1 &143779979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,6 +1612,7 @@ GameObject:
   - component: {fileID: 353767095}
   - component: {fileID: 353767097}
   - component: {fileID: 353767096}
+  - component: {fileID: 353767098}
   m_Layer: 5
   m_Name: Te6
   m_TagString: Untagged
@@ -1632,6 +1681,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353767094}
   m_CullTransparentMesh: 1
+--- !u!114 &353767098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353767094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dbba8fb36d79440b690f698e363891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images: []
+  TextTMP: {fileID: 0}
+  span: 0.1
+  delta: 0
+  count: 0
+  moving: 0
+  one: 0
+  random1: 0
+  sNum: 0
+  walk: 1
+  enemyNum: 0
 --- !u!1 &408383075
 GameObject:
   m_ObjectHideFlags: 0
@@ -4006,6 +4078,7 @@ GameObject:
   - component: {fileID: 1118726278}
   - component: {fileID: 1118726280}
   - component: {fileID: 1118726279}
+  - component: {fileID: 1118726281}
   m_Layer: 5
   m_Name: Te3
   m_TagString: Untagged
@@ -4074,6 +4147,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1118726277}
   m_CullTransparentMesh: 1
+--- !u!114 &1118726281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118726277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dbba8fb36d79440b690f698e363891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images: []
+  TextTMP: {fileID: 0}
+  span: 0.1
+  delta: 0
+  count: 0
+  moving: 0
+  one: 0
+  random1: 0
+  sNum: 0
+  walk: 1
+  enemyNum: 0
 --- !u!1 &1230040841
 GameObject:
   m_ObjectHideFlags: 0
@@ -4164,6 +4260,7 @@ GameObject:
   - component: {fileID: 1235391174}
   - component: {fileID: 1235391176}
   - component: {fileID: 1235391175}
+  - component: {fileID: 1235391177}
   m_Layer: 5
   m_Name: Te7
   m_TagString: Untagged
@@ -4232,6 +4329,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1235391173}
   m_CullTransparentMesh: 1
+--- !u!114 &1235391177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235391173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dbba8fb36d79440b690f698e363891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images: []
+  TextTMP: {fileID: 0}
+  span: 0.1
+  delta: 0
+  count: 0
+  moving: 0
+  one: 0
+  random1: 0
+  sNum: 0
+  walk: 1
+  enemyNum: 0
 --- !u!1 &1235806347
 GameObject:
   m_ObjectHideFlags: 0
@@ -4860,6 +4980,7 @@ GameObject:
   - component: {fileID: 1365600832}
   - component: {fileID: 1365600834}
   - component: {fileID: 1365600833}
+  - component: {fileID: 1365600835}
   m_Layer: 5
   m_Name: Te2
   m_TagString: Untagged
@@ -4928,6 +5049,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365600831}
   m_CullTransparentMesh: 1
+--- !u!114 &1365600835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365600831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dbba8fb36d79440b690f698e363891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images: []
+  TextTMP: {fileID: 0}
+  span: 0.1
+  delta: 0
+  count: 0
+  moving: 0
+  one: 0
+  random1: 0
+  sNum: 0
+  walk: 1
+  enemyNum: 0
 --- !u!1 &1378341528
 GameObject:
   m_ObjectHideFlags: 0
@@ -5066,6 +5210,7 @@ GameObject:
   - component: {fileID: 1394162566}
   - component: {fileID: 1394162568}
   - component: {fileID: 1394162567}
+  - component: {fileID: 1394162569}
   m_Layer: 5
   m_Name: Te4
   m_TagString: Untagged
@@ -5134,6 +5279,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394162565}
   m_CullTransparentMesh: 1
+--- !u!114 &1394162569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394162565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dbba8fb36d79440b690f698e363891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images: []
+  TextTMP: {fileID: 0}
+  span: 0.1
+  delta: 0
+  count: 0
+  moving: 0
+  one: 0
+  random1: 0
+  sNum: 0
+  walk: 1
+  enemyNum: 0
 --- !u!1 &1450911870
 GameObject:
   m_ObjectHideFlags: 0
@@ -5308,6 +5476,7 @@ GameObject:
   - component: {fileID: 1643811828}
   - component: {fileID: 1643811830}
   - component: {fileID: 1643811829}
+  - component: {fileID: 1643811831}
   m_Layer: 5
   m_Name: Te5
   m_TagString: Untagged
@@ -5376,6 +5545,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1643811827}
   m_CullTransparentMesh: 1
+--- !u!114 &1643811831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643811827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dbba8fb36d79440b690f698e363891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images: []
+  TextTMP: {fileID: 0}
+  span: 0.1
+  delta: 0
+  count: 0
+  moving: 0
+  one: 0
+  random1: 0
+  sNum: 0
+  walk: 1
+  enemyNum: 0
 --- !u!1 &1681810888
 GameObject:
   m_ObjectHideFlags: 0
@@ -5554,6 +5746,7 @@ GameObject:
   - component: {fileID: 1728311832}
   - component: {fileID: 1728311834}
   - component: {fileID: 1728311833}
+  - component: {fileID: 1728311835}
   m_Layer: 5
   m_Name: Te1
   m_TagString: Untagged
@@ -5622,6 +5815,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728311831}
   m_CullTransparentMesh: 1
+--- !u!114 &1728311835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728311831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dbba8fb36d79440b690f698e363891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images: []
+  TextTMP: {fileID: 0}
+  span: 0.1
+  delta: 0
+  count: 0
+  moving: 0
+  one: 0
+  random1: 0
+  sNum: 0
+  walk: 1
+  enemyNum: 0
 --- !u!1 &1756506687
 GameObject:
   m_ObjectHideFlags: 0

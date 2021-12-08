@@ -43,6 +43,7 @@ namespace 試作RPG
             form2.Height = 394;
             form2.Show();
 
+            /*
             void OnGUI()
             {
                 // ボタンを表示する
@@ -52,7 +53,7 @@ namespace 試作RPG
                     Debug.Log("Button is clicked.");
                 }
             }
-
+            */
         }
 
 

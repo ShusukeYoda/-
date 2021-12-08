@@ -52,8 +52,8 @@ public class All : MonoBehaviour
     public GameObject TextTMP;
     private TextMeshProUGUI textMeshPro;
 
-    //タイマー
-    public float span = 0.1f;                           //0.1秒間隔
+    //タイマー//0.1秒間隔
+    public float span = 0.1f;                           
     public float delta = 0;
     public int count = 0;
     //スタートストップ
@@ -78,7 +78,8 @@ public class All : MonoBehaviour
         this.Te1 = GameObject.Find("Te1");
         this.Te2 = GameObject.Find("Te2");
         this.Te3 = GameObject.Find("Te3");
-        this.Te4 = GameObject.Find("Te4");
+        //.GetComponent<Text>()
+        this.Te4 = GameObject.Find("Te4"); 
         this.Te5 = GameObject.Find("Te5");
         this.Te6 = GameObject.Find("Te6");
         this.Te7 = GameObject.Find("Te7");

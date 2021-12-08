@@ -33,8 +33,6 @@ class Tarot :MonoBehaviour
         this.Te6 = GameObject.Find("Te6").GetComponent<Text>();
         this.Te7 = GameObject.Find("Te7").GetComponent<Text>();
         this.Style = GameObject.Find("Style").GetComponent<Text>();
-
-
     }
     public int attack;
     public int defense;
@@ -48,7 +46,7 @@ class Tarot :MonoBehaviour
     public int luck;
     public void ChooseTarot(int v)
     {
-        if (tarot.tarotImage[all.count]) //tarotImage[0] == 
+        if (tarotImage[all.count]) //tarotImage[0] == 
         {
             Te0.text = select[v].hp.ToString();
             Te1.text = select[v].str.ToString();
