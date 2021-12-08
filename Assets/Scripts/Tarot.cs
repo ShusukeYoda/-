@@ -44,6 +44,7 @@ class Tarot :MonoBehaviour
     public int resist;
     public int agility;
     public int luck;
+    public bool selected = false;
     public void ChooseTarot(int v)
     {
         if (tarotImage[all.count]) //tarotImage[0] == 
@@ -57,6 +58,7 @@ class Tarot :MonoBehaviour
             Te6.text = select[v].agi.ToString();
             Te7.text = select[v].dex.ToString();
             Style.text = select[v].line.ToString();
+            selected = true;
         }
         //プレイヤーステータス
         attack = select[v].str + (select[v].dex / 5) * (select[v].luc / 5);

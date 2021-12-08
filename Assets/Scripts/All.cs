@@ -203,7 +203,7 @@ public class All : MonoBehaviour
             }
             if (co == 2 && walk == false)
             {
-                await magicAttack2();
+                await magicAttack2(tarot.magic);
             }
             if (co == 3 && battle != true)
             {
@@ -1377,7 +1377,7 @@ public class All : MonoBehaviour
         }
     }
 
-    private async Task magicAttack2()
+    private async Task magicAttack2(int magic)
     {
         if (tarot.magic >= 5)//magic >= 5 debug
         {
@@ -1385,10 +1385,7 @@ public class All : MonoBehaviour
 
             //mpè¡îÔ
             tarot.magic -= 5;
-            Te4.GetComponent<UnityEngine.UI.Text>().text = tarot.magic.ToString();
-
-            Debug.Log(tarot.magic.ToString());
-            Debug.Log(Te4.GetComponent<UnityEngine.UI.Text>().text);
+            Te4.GetComponent<UnityEngine.UI.Text>().text = magic.ToString();
 
             var textAsset = Resources.Load("ñÇñ@ÇégÇ§2") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -1634,3 +1631,7 @@ public class All : MonoBehaviour
         storyCard.GetComponent<SpriteRenderer>().sprite = SCard.images[42];
     }
 }
+
+
+//Debug.Log(tarot.magic.ToString());
+//Debug.Log(Te4.GetComponent<UnityEngine.UI.Text>().text);

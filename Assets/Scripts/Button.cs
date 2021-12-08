@@ -54,7 +54,7 @@ public class Button : MonoBehaviour
                 all.count++;
             }
         }
-        else if (all.moving == false && all.one == true)
+        else if (all.moving == false && all.one == true && tarot.selected == false)
         {
             card.GetComponent<SpriteRenderer>().sprite = tarot.tarotImage[all.count];
             tarot.ChooseTarot(all.count);
