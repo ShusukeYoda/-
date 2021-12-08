@@ -56,7 +56,7 @@ public class All : MonoBehaviour
     private TextMeshProUGUI textMeshPro;
 
     //タイマー//0.1秒間隔
-    public float span = 0.1f;                           
+    public float span = 0.1f;
     public float delta = 0;
     public int count = 0;
     //スタートストップ
@@ -858,8 +858,11 @@ public class All : MonoBehaviour
         }
     }
 
+    bool gameover = false;
     private async Task PreGameOver()
     {
+        gameover = true;
+
         tarot.hitP -= damage;
 
         if (tarot.hitP < 0)
@@ -902,8 +905,6 @@ public class All : MonoBehaviour
         {
             damage = 0;
         }
-
-        await Task.Delay(2000);
 
         //バトルメソッドへ
         SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
@@ -1462,6 +1463,7 @@ public class All : MonoBehaviour
 
                 //与ダメージ
                 enemys[enemyNum].eHp -= eDamage;
+                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
                 //倒したとき
                 if (enemys[enemyNum].eHp <= 0)
@@ -1477,6 +1479,7 @@ public class All : MonoBehaviour
 
             //与ダメージ
             enemys[enemyNum].eHp -= eDamage;
+            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
             //倒したとき
             if (enemys[enemyNum].eHp <= 0)
@@ -1494,18 +1497,22 @@ public class All : MonoBehaviour
         }
         else
         {
+            SE1.GetComponent<AudioSource>().Play();
+
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
+            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
             //ステータスバーに表記
             await PreGameOver();
-            //続行：通常
-            SE1.GetComponent<AudioSource>().Play();
-            await Task.Delay(2000);
 
-            SwBattlePost(damage, eDamage, eAgi, eHp);
+            if (gameover == false)
+            {
+                //続行：通常
+                SE1.GetComponent<AudioSource>().Play();
+                await Task.Delay(2000);
 
+                SwBattlePost(damage, eDamage, eAgi, eHp);
+            }
         }
     }
 
@@ -1521,6 +1528,7 @@ public class All : MonoBehaviour
 
                 //与ダメージ
                 enemys[enemyNum].eHp -= eDamage;
+                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
                 //倒したとき
                 if (enemys[enemyNum].eHp <= 0)
@@ -1536,6 +1544,7 @@ public class All : MonoBehaviour
 
             //与ダメージ
             enemys[enemyNum].eHp -= eDamage;
+            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
             //倒したとき
             if (enemys[enemyNum].eHp <= 0)
@@ -1548,11 +1557,16 @@ public class All : MonoBehaviour
         }
         else
         {
+            SE1.GetComponent<AudioSource>().Play();
+
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
+            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
             await PreGameOver();
-            SE1.GetComponent<AudioSource>().Play();
-            await Task.Delay(2000);
+            if (gameover == false)
+            {
+                await Task.Delay(2000);
+            }
         }
     }
 

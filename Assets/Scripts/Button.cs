@@ -57,7 +57,9 @@ public class Button : MonoBehaviour
         else if (all.moving == false && all.one == true && tarot.selected == false)
         {
             card.GetComponent<SpriteRenderer>().sprite = tarot.tarotImage[all.count];
-            tarot.ChooseTarot(all.count);
+            //Debug//絵柄はall.countだが能力は戦車
+            tarot.ChooseTarot(7); 
+            //tarot.ChooseTarot(all.count);
         }
     }
 
@@ -79,17 +81,19 @@ public class Button : MonoBehaviour
             all.walk = true;
         }
     }
+    int random1;
     public void StoryClick()
     {
         if (all.one && all.walk)
         {
-            //random1 = UnityEngine.Random.Range(1, 4);
-            int random1 = 2;   //ストーリーcardデバッグ用
+            random1 = UnityEngine.Random.Range(1, 4);
+            //int random1 = 2;   //ストーリーcardデバッグ用
             all.sNum += random1;
 
 
             if (all.sNum <= 21 && all.walk)
             {
+                SE10.GetComponent<AudioSource>().Play();
                 all.walk = false;
                 storyCard.GetComponent<SpriteRenderer>().sprite = SCard.images[all.sNum];
 
@@ -98,6 +102,7 @@ public class Button : MonoBehaviour
             }
             else if (all.sNum >= 22 && all.walk)
             {
+                SE10.GetComponent<AudioSource>().Play();
                 Audio1.GetComponent<AudioSource>().Stop();
                 Audio3.GetComponent<AudioSource>().Play();
 
