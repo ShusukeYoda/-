@@ -21,7 +21,6 @@ public class All : MonoBehaviour
     StoryCard SCard;
 
     //オブジェクト
-    GameObject card;
     GameObject storyCard;
     GameObject Te0;
     GameObject Te1;
@@ -72,7 +71,7 @@ public class All : MonoBehaviour
     void Start()
     {
         //Find
-        this.card = GameObject.Find("card");
+        this.tarot = GameObject.Find("card").GetComponent<Tarot>();
         this.storyCard = GameObject.Find("storyCard");
         this.SCard = GameObject.Find("storyCard").GetComponent<StoryCard>();
         this.Te0 = GameObject.Find("Te0");
@@ -117,10 +116,6 @@ public class All : MonoBehaviour
 
         //「Dropdown」というGameObjectのDropDownコンポーネントを操作するために取得
         ddtmp = GameObject.Find("Dropdown").GetComponent<Dropdown>();
-
-        //DropDownコンポーネントのoptionsから選択されてているvalueをindexで指定し、
-        //選択されている文字を取得
-        //string selectedvalue = ddtmp.options[ddtmp.value].text;
 
         CommandSelected(ddtmp.value);
     }
@@ -1629,6 +1624,6 @@ public class All : MonoBehaviour
 
         walk = true;
 
-        storyCard.GetComponent<SpriteRenderer>().sprite = SCard.images[23];
+        storyCard.GetComponent<SpriteRenderer>().sprite = SCard.images[42];
     }
 }

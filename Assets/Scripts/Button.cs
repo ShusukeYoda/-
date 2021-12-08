@@ -104,7 +104,7 @@ public class Button : MonoBehaviour
                 var textAsset = Resources.Load("EndImage") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-                storyCard.GetComponent<SpriteRenderer>().sprite = SCard.images[22];
+                storyCard.GetComponent<SpriteRenderer>().sprite = SCard.images[42];
 
                 all.walk = false;
             }
