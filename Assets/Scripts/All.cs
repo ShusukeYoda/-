@@ -1628,7 +1628,7 @@ public class All : MonoBehaviour
 
         walk = true;
 
-        storyCard.GetComponent<SpriteRenderer>().sprite = SCard.images[42];
+        storyCard.GetComponent<SpriteRenderer>().sprite = SCard.images[22];
     }
 }
 
