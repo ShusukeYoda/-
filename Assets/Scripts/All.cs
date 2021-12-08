@@ -12,7 +12,10 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using static System.Net.Mime.MediaTypeNames;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
+using Debug = UnityEngine.Debug;
+using Text = UnityEngine.UI.Text;
 
 public class All : MonoBehaviour
 {
@@ -22,11 +25,11 @@ public class All : MonoBehaviour
 
     //オブジェクト
     GameObject storyCard;
-    GameObject Te0;
+    public GameObject Te0;
     GameObject Te1;
     GameObject Te2;
     GameObject Te3;
-    GameObject Te4;
+    public GameObject Te4;
     GameObject Te5;
     GameObject Te6;
     GameObject Te7;
@@ -78,14 +81,13 @@ public class All : MonoBehaviour
         this.Te1 = GameObject.Find("Te1");
         this.Te2 = GameObject.Find("Te2");
         this.Te3 = GameObject.Find("Te3");
-        //.GetComponent<Text>()
-        this.Te4 = GameObject.Find("Te4"); 
+
+        this.Te4 = GameObject.Find("Te4");
         this.Te5 = GameObject.Find("Te5");
         this.Te6 = GameObject.Find("Te6");
         this.Te7 = GameObject.Find("Te7");
         this.Style = GameObject.Find("Style");
         this.Dropdown = GameObject.Find("Dropdown");
-
 
         this.Audio1 = GameObject.Find("BGM");
         this.Audio2 = GameObject.Find("BGM1");
@@ -1381,6 +1383,13 @@ public class All : MonoBehaviour
         {
             SE4.GetComponent<AudioSource>().Play();
 
+            //mp消費
+            tarot.magic -= 5;
+            Te4.GetComponent<UnityEngine.UI.Text>().text = tarot.magic.ToString();
+
+            Debug.Log(tarot.magic.ToString());
+            Debug.Log(Te4.GetComponent<UnityEngine.UI.Text>().text);
+
             var textAsset = Resources.Load("魔法を使う2") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
@@ -1388,9 +1397,6 @@ public class All : MonoBehaviour
             battle = true;
             //2秒待ち
             await Task.Delay(2000);
-            //mp消費
-            tarot.magic -= 5;
-            Te4.GetComponent<UnityEngine.UI.Text>().text = tarot.magic.ToString();
 
             //与ダメ
             eDamage = tarot.mAttack - enemys[enemyNum].eRes;
