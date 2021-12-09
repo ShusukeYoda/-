@@ -199,7 +199,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack();
+                 Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -356,7 +356,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack();
+                 Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -443,7 +443,7 @@ public class All : MonoBehaviour
 
             if (co == 1 && walk == false)
             {
-                await Attack();
+                 Attack();
             }
             if (co == 2 && battle != true ||
                 co == 2 && walk == false)
@@ -510,7 +510,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack();
+                 Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -576,7 +576,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack();
+                 Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -629,7 +629,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack();
+                 Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -701,7 +701,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack();
+                 Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -741,7 +741,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack();
+                 Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -770,7 +770,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack();
+                 Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -799,7 +799,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false)
             {
-                await Attack();
+                 Attack();
             }
             if (co == 2 && walk == false)
             {
@@ -835,7 +835,7 @@ public class All : MonoBehaviour
             }
             if (co == 1 && walk == false && battle == true)
             {
-                await Attack();
+                 Attack();
             }
 
             if (co == 2 && battle != true)
@@ -880,7 +880,7 @@ public class All : MonoBehaviour
         }
     }
 
-    private async Task Attack()
+    private void Attack()
     {
         var textAsset = Resources.Load($"Ža‚è‚Â‚¯‚é{sNum}") as TextAsset;
         TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();

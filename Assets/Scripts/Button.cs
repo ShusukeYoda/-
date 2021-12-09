@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Threading.Tasks;
+using UnityEngine.UI;
 
 public class Button : MonoBehaviour
 {
@@ -43,23 +44,23 @@ public class Button : MonoBehaviour
             if (this.all.delta > this.all.span && all.count < 21)
             {
                 this.all.delta = 0;
-                card.GetComponent<SpriteRenderer>().sprite = tarot.tarotImage[all.count];
+                card.GetComponent<Image>().sprite = tarot.tarotImage[all.count];
                 all.count++;
             }
             else if (this.all.delta > this.all.span && all.count == 21)
             {
                 all.count = 0;
                 this.all.delta = 0;
-                card.GetComponent<SpriteRenderer>().sprite = tarot.tarotImage[all.count];
+                card.GetComponent<Image>().sprite = tarot.tarotImage[all.count];
                 all.count++;
             }
         }
         else if (all.moving == false && all.one == true && tarot.selected == false)
         {
-            card.GetComponent<SpriteRenderer>().sprite = tarot.tarotImage[all.count];
+            card.GetComponent<Image>().sprite = tarot.tarotImage[all.count];
             //Debug//äGïøÇÕall.countÇæÇ™î\óÕÇÕêÌé‘
-            tarot.ChooseTarot(7); 
-            //tarot.ChooseTarot(all.count);
+            //tarot.ChooseTarot(7); 
+            tarot.ChooseTarot(all.count);
         }
     }
 
@@ -95,7 +96,7 @@ public class Button : MonoBehaviour
             {
                 SE10.GetComponent<AudioSource>().Play();
                 all.walk = false;
-                storyCard.GetComponent<SpriteRenderer>().sprite = SCard.images[all.sNum];
+                storyCard.GetComponent<Image>().sprite = SCard.images[all.sNum];
 
                 var textAsset = Resources.Load("image" + all.sNum) as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -109,7 +110,7 @@ public class Button : MonoBehaviour
                 var textAsset = Resources.Load("EndImage") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-                storyCard.GetComponent<SpriteRenderer>().sprite = SCard.images[23];
+                storyCard.GetComponent<Image>().sprite = SCard.images[23];
 
                 all.walk = false;
             }
