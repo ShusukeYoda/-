@@ -14,6 +14,7 @@ using UnityEngine.UIElements;
 using static System.Net.Mime.MediaTypeNames;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 using Debug = UnityEngine.Debug;
+using Image = UnityEngine.UI.Image;
 using Text = UnityEngine.UI.Text;
 
 public class All : MonoBehaviour
@@ -1641,7 +1642,7 @@ public class All : MonoBehaviour
 
         walk = true;
 
-        storyCard.GetComponent<SpriteRenderer>().sprite = SCard.images[22];
+        storyCard.GetComponent<Image>().sprite = SCard.images[22];
     }
 }
 
