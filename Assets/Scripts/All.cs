@@ -163,29 +163,7 @@ public class All : MonoBehaviour
 
         if (sNum == 1)
         {
-            walk = false;
-
-            if (co == 0 && walk == false)
-            {
-                var textAsset = Resources.Load("˜b‚ð‚·‚é1") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-            }
-            if (co == 1 && walk == false)
-            {
-                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é1") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-            }
-            if (co == 2 && walk == false)
-            {
-                magic1Method();
-            }
-            if (co == 3 && walk == false)
-            {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é1") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
-            }
+            common_method(co);
         }
         if (sNum == 2)//sNum == 2 debug
         {
@@ -216,54 +194,12 @@ public class All : MonoBehaviour
 
         if (sNum == 3)
         {
-            walk = false;
-            if (co == 0 && walk == false)
-            {
-                var textAsset = Resources.Load("˜b‚ð‚·‚é3") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-            }
-            if (co == 1 && walk == false)
-            {
-                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é3") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-            }
-            if (co == 2 && walk == false)
-            {
-                magic1Method();
-            }
-            if (co == 3 && walk == false)
-            {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é3") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
-            }
+            common_method(co);
         }
 
         if (sNum == 4)
         {
-            walk = false;
-            if (co == 0 && walk == false)
-            {
-                var textAsset = Resources.Load("˜b‚ð‚·‚é4") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-            }
-            if (co == 1 && walk == false)
-            {
-                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é4") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-            }
-            if (co == 2 && walk == false)
-            {
-                magic1Method();
-            }
-            if (co == 3 && walk == false)
-            {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é4") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
-            }
+            common_method(co);
         }
         if (sNum == 5)
         {
@@ -461,28 +397,7 @@ public class All : MonoBehaviour
         }
         if (sNum == 10)
         {
-            walk = false;
-            if (co == 0 && walk == false)
-            {
-                var textAsset = Resources.Load("˜b‚ð‚·‚é10") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-            }
-            if (co == 1 && walk == false)
-            {
-                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é10") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-            }
-            if (co == 2 && walk == false)
-            {
-                magic1Method();
-            }
-            if (co == 3 && walk == false)
-            {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é10") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
-            }
+            common_method(co);
         }
         if (sNum == 11)
         {
@@ -539,28 +454,7 @@ public class All : MonoBehaviour
         }
         if (sNum == 12)
         {
-            walk = false;
-            if (co == 0 && walk == false)
-            {
-                var textAsset = Resources.Load("˜b‚ð‚·‚é12") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-            }
-            if (co == 1 && walk == false)
-            {
-                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é12") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-            }
-            if (co == 2 && walk == false)
-            {
-                magic1Method();
-            }
-            if (co == 3 && walk == false)
-            {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é12") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
-            }
+            common_method(co);
         }
         if (sNum == 13)
         {
@@ -593,28 +487,7 @@ public class All : MonoBehaviour
         }
         if (sNum == 14)
         {
-            walk = false;
-            if (co == 0 && walk == false)
-            {
-                var textAsset = Resources.Load("˜b‚ð‚·‚é14") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-            }
-            if (co == 1 && walk == false)
-            {
-                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é14") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-            }
-            if (co == 2 && walk == false)
-            {
-                magicRecovery();
-            }
-            if (co == 3 && walk == false)
-            {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é14") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
-            }
+            common_method(co);
         }
         if (sNum == 15)
         {
@@ -858,25 +731,30 @@ public class All : MonoBehaviour
         }
     }
 
-    bool gameover = false;
-    private async Task PreGameOver()
+    private void common_method(int co)
     {
-        gameover = true;
+        walk = false;
 
-        tarot.hitP -= damage;
-
-        if (tarot.hitP < 0)
+        if (co == 0 && walk == false)
         {
-            tarot.hitP = 0;
+            var textAsset = Resources.Load($"˜b‚ð‚·‚é{sNum}") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
         }
-        Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-        //“|‚ê‚½‚Æ‚«
-        if (tarot.hitP <= 0)
+        if (co == 1 && walk == false)
         {
-            await Task.Delay(2000);
+            var textAsset = Resources.Load($"Ža‚è‚Â‚¯‚é{sNum}") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+        }
+        if (co == 2 && walk == false)
+        {
+            magic1Method();
+        }
+        if (co == 3 && walk == false)
+        {
+            var textAsset = Resources.Load($"—§‚¿‹Ž‚é{sNum}") as TextAsset;
+            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
-            GameOver();
+            walk = true;
         }
     }
 
@@ -1627,11 +1505,32 @@ public class All : MonoBehaviour
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
         }
 
-
-
         walk = true;
         battle = false;
     }
+
+    bool gameover = false;
+    private async Task PreGameOver()
+    {
+        gameover = true;
+
+        tarot.hitP -= damage;
+
+        if (tarot.hitP < 0)
+        {
+            tarot.hitP = 0;
+        }
+        Te0.GetComponent<Text>().text = tarot.hitP.ToString();
+
+        //“|‚ê‚½‚Æ‚«
+        if (tarot.hitP <= 0)
+        {
+            await Task.Delay(2000);
+
+            GameOver();
+        }
+    }
+
     private void GameOver()
     {
         Audio1.GetComponent<AudioSource>().Stop();
