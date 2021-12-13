@@ -215,8 +215,7 @@ public class All : MonoBehaviour
             }
             if (command == 1 && walk == false)
             {
-                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é5") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                NonBattle();
             }
             if (command == 2 && walk == false)
             {
@@ -244,8 +243,7 @@ public class All : MonoBehaviour
             }
             if (command == 1 && walk == false)
             {
-                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é6") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                NonBattle();
             }
             if (command == 2 && walk == false)
             {
@@ -326,8 +324,7 @@ public class All : MonoBehaviour
             }
             if (command == 1 && walk == false)
             {
-                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é8") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                NonBattle();
             }
             if (command == 2 && walk == false)
             {
@@ -512,8 +509,7 @@ public class All : MonoBehaviour
             }
             if (command == 1 && walk == false)
             {
-                var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é16") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                NonBattle();
             }
             if (command == 2 && walk == false)
             {
@@ -693,6 +689,12 @@ public class All : MonoBehaviour
                 Leave();
             }
         }
+    }
+
+    private void NonBattle()
+    {
+        var textAsset = Resources.Load($"Ža‚è‚Â‚¯‚é{sNum}") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
     }
 
     private void Leave()
