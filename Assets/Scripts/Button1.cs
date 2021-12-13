@@ -5,7 +5,7 @@ using TMPro;
 using System.Threading.Tasks;
 using UnityEngine.UI;
 
-public class Button : MonoBehaviour
+public class Button1 : MonoBehaviour
 {
     GameObject card;
     GameObject SE9;
@@ -40,8 +40,6 @@ public class Button : MonoBehaviour
         //ボタンを押下したときのリスナーを設定
         button.onClick.AddListener(() => StartClick());
         
-        //button.GetComponent<Button>().onClick.AddListener(StartClick);
-
     }
     public void StartClick()
     {
