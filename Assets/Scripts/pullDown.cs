@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 public class pullDown : MonoBehaviour
 {
-    // Start is called before the first frame update
+    All all;
+    Dropdown ddtmp;
+
     void Start()
     {
-        
+        this.all = GameObject.Find("Main Camera").GetComponent<All>();
+        this.ddtmp = GameObject.Find("Dropdown").GetComponent<Dropdown>();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void pullClick()
     {
-        
+        all.CommandSelected(ddtmp.value);
     }
 }

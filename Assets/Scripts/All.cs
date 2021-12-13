@@ -34,7 +34,7 @@ public class All : MonoBehaviour
     GameObject Te6;
     GameObject Te7;
     GameObject Style;
-    GameObject Dropdown;
+
     //BGM
     GameObject Audio1;
     GameObject Audio2;
@@ -48,9 +48,6 @@ public class All : MonoBehaviour
     GameObject SE6;
     GameObject SE7;
     GameObject SE8;
-    GameObject SE9;
-    GameObject SE10;
-    GameObject SE11;
 
     public GameObject TextTMP;
     private TextMeshProUGUI textMeshPro;
@@ -87,7 +84,6 @@ public class All : MonoBehaviour
         this.Te6 = GameObject.Find("Te6");
         this.Te7 = GameObject.Find("Te7");
         this.Style = GameObject.Find("Style");
-        this.Dropdown = GameObject.Find("Dropdown");
 
         this.Audio1 = GameObject.Find("BGM");
         this.Audio2 = GameObject.Find("BGM1");
@@ -101,27 +97,13 @@ public class All : MonoBehaviour
         this.SE6 = GameObject.Find("magicSE");
         this.SE7 = GameObject.Find("onePointSE");
         this.SE8 = GameObject.Find("recoverySE");
-        this.SE9 = GameObject.Find("shaffleSE");
-        this.SE10 = GameObject.Find("tarot&StartSE");
-        this.SE11 = GameObject.Find("cardStopSE");
-
 
         this.TextTMP = GameObject.Find("TextTMP");
 
         Audio1.GetComponent<AudioSource>().Play();
     }
-    // Update is called once per frame
 
 
-    public void OnClick()
-    {
-        Dropdown ddtmp;
-
-        //「Dropdown」というGameObjectのDropDownコンポーネントを操作するために取得
-        ddtmp = GameObject.Find("Dropdown").GetComponent<Dropdown>();
-
-        CommandSelected(ddtmp.value);
-    }
 
     List<Status> enemys = new List<Status>
             {
