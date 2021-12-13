@@ -157,54 +157,51 @@ public class All : MonoBehaviour
 
     public int enemyNum;
 
-    public async void CommandSelected(int co)
+    public async void CommandSelected(int command)
     {
         cri = UnityEngine.Random.Range(0, 50);
 
         if (sNum == 1)
         {
-            common_method(co);
+            common_method(command);
         }
         if (sNum == 2)//sNum == 2 debug
         {
             walk = false;
             enemyNum = 0;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("˜b‚ð‚·‚é2") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 await magicAttack2(tarot.magic);
             }
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é2") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
 
         if (sNum == 3)
         {
-            common_method(co);
+            common_method(command);
         }
 
         if (sNum == 4)
         {
-            common_method(co);
+            common_method(command);
         }
         if (sNum == 5)
         {
             walk = false;
-            if (co == 0 && walk == false)
+            if (command == 0 && walk == false)
             {
                 SE7.GetComponent<AudioSource>().Play();
 
@@ -216,27 +213,24 @@ public class All : MonoBehaviour
 
                 walk = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                 var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é5") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 magic1Method();
             }
-            if (co == 3 && walk == false)
+            if (command == 3 && walk == false)
             {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é5") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 6)
         {
             walk = false;
-            if (co == 0 && walk == false)
+            if (command == 0 && walk == false)
             {
                 SE6.GetComponent<AudioSource>().Play();
 
@@ -248,21 +242,18 @@ public class All : MonoBehaviour
 
                 walk = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                 var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é6") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 magic6();
             }
-            if (co == 3 && walk == false)
+            if (command == 3 && walk == false)
             {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é6") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 7)
@@ -270,8 +261,8 @@ public class All : MonoBehaviour
             walk = false;
             enemyNum = 1;
             battle = true;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 SE1.GetComponent<AudioSource>().Play();
 
@@ -290,16 +281,16 @@ public class All : MonoBehaviour
                 await PreGameOver();
                 await Task.Delay(2000);
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 await magic7Attack();
             }
-            if (co == 3 && battle == false ||
-                co == 3 && walk == false)
+            if (command == 3 && battle == false ||
+                command == 3 && walk == false)
             {
                 SE1.GetComponent<AudioSource>().Play();
 
@@ -321,7 +312,7 @@ public class All : MonoBehaviour
         if (sNum == 8)
         {
             walk = false;
-            if (co == 0 && walk == false)
+            if (command == 0 && walk == false)
             {
                 SE7.GetComponent<AudioSource>().Play();
 
@@ -333,29 +324,26 @@ public class All : MonoBehaviour
 
                 walk = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                 var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é8") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 magic8();
             }
-            if (co == 3 && walk == false)
+            if (command == 3 && walk == false)
             {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é8") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 9)
         {
             walk = false;
             enemyNum = 2;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 SE1.GetComponent<AudioSource>().Play();
 
@@ -377,35 +365,32 @@ public class All : MonoBehaviour
                 await Task.Delay(2000);
             }
 
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && battle != true ||
-                co == 2 && walk == false)
+            if (command == 2 && battle != true ||
+                command == 2 && walk == false)
             {
                 await magic9Attack();
 
             }
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é9") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 10)
         {
-            common_method(co);
+            common_method(command);
         }
         if (sNum == 11)
         {
             walk = false;
             enemyNum = 3;
             battle = true;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 SE1.GetComponent<AudioSource>().Play();
 
@@ -423,16 +408,16 @@ public class All : MonoBehaviour
                 await PreGameOver();
                 await Task.Delay(2000);
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 await magic11Attack();
 
             }
-            if (co == 3 && walk == false)
+            if (command == 3 && walk == false)
             {
                 SE1.GetComponent<AudioSource>().Play();
 
@@ -454,72 +439,66 @@ public class All : MonoBehaviour
         }
         if (sNum == 12)
         {
-            common_method(co);
+            common_method(command);
         }
         if (sNum == 13)
         {
             walk = false;
             enemyNum = 4;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("˜b‚ð‚·‚é13") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 await magic13Attack();
 
             }
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é13") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 14)
         {
-            common_method(co);
+            common_method(command);
         }
         if (sNum == 15)
         {
             walk = false;
             enemyNum = 5;
-            if (co == 0 && walk == false)
+            if (command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("˜b‚ð‚·‚é15") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 magicSleep();
             }
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é15") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 16)
         {
             walk = false;
-            if (co == 0 && walk == false)
+            if (command == 0 && walk == false)
             {
                 SE7.GetComponent<AudioSource>().Play();
 
@@ -531,21 +510,18 @@ public class All : MonoBehaviour
 
                 walk = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                 var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é16") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 magic1Method();
             }
-            if (co == 3 && walk == false)
+            if (command == 3 && walk == false)
             {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é16") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 17)
@@ -553,8 +529,8 @@ public class All : MonoBehaviour
             walk = false;
             enemyNum = 6;
             battle = true;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 SE1.GetComponent<AudioSource>().Play();
 
@@ -572,16 +548,16 @@ public class All : MonoBehaviour
                 await PreGameOver();
                 await Task.Delay(2000);
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 await magic17Attack();
 
             }
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
                 SE1.GetComponent<AudioSource>().Play();
 
@@ -604,65 +580,59 @@ public class All : MonoBehaviour
         {
             walk = false;
             enemyNum = 7;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("˜b‚ð‚·‚é18") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 await magic18Attack();
 
             }
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é18") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                battle = true;
+                Leave();
             }
         }
         if (sNum == 19)
         {
             walk = false;
             enemyNum = 8;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("˜b‚ð‚·‚é19") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 magicInvisible();
             }
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é19") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 20)
         {
             walk = false;
             enemyNum = 9;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("˜b‚ð‚·‚é20") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -670,30 +640,27 @@ public class All : MonoBehaviour
                 battle = true;
 
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 await magic20Attack();
 
             }
 
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é20") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                battle = true;
+                Leave();
             }
         }
         if (sNum == 21)
         {
             walk = false;
             enemyNum = 10;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("˜b‚ð‚·‚é21") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -701,34 +668,39 @@ public class All : MonoBehaviour
                 battle = true;
 
             }
-            if (co == 1 && battle != true)
+            if (command == 1 && battle != true)
             {
                 var textAsset = Resources.Load("Ža‚è‚Â‚¯‚é21a") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
-            if (co == 1 && walk == false && battle == true)
+            if (command == 1 && walk == false && battle == true)
             {
                  Attack();
             }
 
-            if (co == 2 && battle != true)
+            if (command == 2 && battle != true)
             {
                 magic21();
             }
-            if (co == 2 && walk == false && battle == true)
+            if (command == 2 && walk == false && battle == true)
             {
                 await magic21Attack();
 
             }
-            if (co == 3 && battle != true ||
-                co == 0 && walk == false)
+            if (command == 3 && battle != true ||
+                command == 0 && walk == false)
             {
-                var textAsset = Resources.Load("—§‚¿‹Ž‚é21") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                battle = true;
+                Leave();
             }
         }
+    }
+
+    private void Leave()
+    {
+        var textAsset = Resources.Load($"—§‚¿‹Ž‚é{sNum}") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+        walk = true;
     }
 
     private void common_method(int co)

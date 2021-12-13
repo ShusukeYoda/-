@@ -20,8 +20,6 @@ public class Button : MonoBehaviour
     StoryCard SCard;
 
     Button button;
-
-    // Start is called before the first frame update
     void Start()
     {
         this.card = GameObject.Find("card");
@@ -35,8 +33,24 @@ public class Button : MonoBehaviour
         this.Audio1 = GameObject.Find("BGM");
         this.Audio3 = GameObject.Find("BGM2");
         //クラスを取得する書き方
-        this.all = GameObject.Find("Main Camera").GetComponent<All>(); 
+        this.all = GameObject.Find("Main Camera").GetComponent<All>();
+
+        
+        button = GetComponent<Button>();
+        //ボタンを押下したときのリスナーを設定
+        button.onClick.AddListener(() => StartClick());
+        
+        //button.GetComponent<Button>().onClick.AddListener(StartClick);
+
     }
+    public void StartClick()
+    {
+        SE10.GetComponent<AudioSource>().Play();
+        SE9.GetComponent<AudioSource>().Play();
+
+        all.moving = true;
+    }
+
     void Update()
     {
         //if(true)
@@ -66,13 +80,7 @@ public class Button : MonoBehaviour
         }
     }
 
-    public void StartClick()
-    {
-        SE10.GetComponent<AudioSource>().Play();
-        SE9.GetComponent<AudioSource>().Play();
 
-        all.moving = true;
-    }
     public void StopClick()
     {
         SE11.GetComponent<AudioSource>().Play();
