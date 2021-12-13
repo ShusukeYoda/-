@@ -1516,7 +1516,3 @@ public class All : MonoBehaviour
         storyCard.GetComponent<Image>().sprite = SCard.images[22];
     }
 }
-
-
-//Debug.Log(tarot.magic.ToString());
-//Debug.Log(Te4.GetComponent<UnityEngine.UI.Text>().text);
