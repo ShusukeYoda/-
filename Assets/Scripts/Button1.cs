@@ -79,17 +79,7 @@ public class Button1 : MonoBehaviour
     }
 
 
-    public void StopClick()
-    {
-        SE11.GetComponent<AudioSource>().Play();
 
-        if (all.moving == true && all.one == false)
-        {
-            all.moving = false;
-            all.one = true;
-            all.walk = true;
-        }
-    }
     int random1;
     public void StoryClick()
     {
