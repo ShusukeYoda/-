@@ -19,6 +19,8 @@ public class Button : MonoBehaviour
     Tarot tarot;
     StoryCard SCard;
 
+    Button button;
+
     // Start is called before the first frame update
     void Start()
     {
