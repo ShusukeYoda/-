@@ -448,7 +448,29 @@ public class All : MonoBehaviour
         }
         if (sNum == 14)
         {
-            common_method(command);
+            walk = false;
+
+            if (command == 0 && walk == false)
+            {
+                var textAsset = Resources.Load($"˜b‚ð‚·‚é{sNum}") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            }
+            if (command== 1 && walk == false)
+            {
+                var textAsset = Resources.Load($"Ža‚è‚Â‚¯‚é{sNum}") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            }
+            if (command== 2 && walk == false)
+            {
+                magicRecovery();
+            }
+            if (command== 3 && walk == false)
+            {
+                var textAsset = Resources.Load($"—§‚¿‹Ž‚é{sNum}") as TextAsset;
+                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+                walk = true;
+            }
         }
         if (sNum == 15)
         {
@@ -687,25 +709,25 @@ public class All : MonoBehaviour
         walk = true;
     }
 
-    private void common_method(int co)
+    private void common_method(int command)
     {
         walk = false;
 
-        if (co == 0 && walk == false)
+        if (command== 0 && walk == false)
         {
             var textAsset = Resources.Load($"˜b‚ð‚·‚é{sNum}") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
         }
-        if (co == 1 && walk == false)
+        if (command== 1 && walk == false)
         {
             var textAsset = Resources.Load($"Ža‚è‚Â‚¯‚é{sNum}") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
         }
-        if (co == 2 && walk == false)
+        if (command== 2 && walk == false)
         {
             magic1Method();
         }
-        if (co == 3 && walk == false)
+        if (command== 3 && walk == false)
         {
             var textAsset = Resources.Load($"—§‚¿‹Ž‚é{sNum}") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
