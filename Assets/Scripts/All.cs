@@ -1426,10 +1426,15 @@ public class All : MonoBehaviour
         }
     }
 
-    private async void KilledBranch(int enemyNum)
+    private bool KilledBranch(int enemyNum)
     {
         SE3.GetComponent<AudioSource>().Play();
-        await Task.Delay(1000);
+
+        StartCoroutine(GoToCoroutine());
+        IEnumerator GoToCoroutine()
+        {
+            yield return new WaitForSeconds(2);
+        }
 
         if (enemyNum == 0)
         {
@@ -1485,6 +1490,8 @@ public class All : MonoBehaviour
 
         walk = true;
         battle = false;
+
+        return battle == false;
     }
 
     bool gameover = false;
