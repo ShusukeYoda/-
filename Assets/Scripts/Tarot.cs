@@ -6,8 +6,6 @@ using static System.Net.WebRequestMethods;
 class Tarot :MonoBehaviour
 {
     All all;
-    Tarot tarot;
-    Text text;
     public Sprite[] tarotImage;   //配列ｽﾌﾟﾗｲﾄ 消すと消える
 
     Text Te0;
@@ -23,7 +21,6 @@ class Tarot :MonoBehaviour
     void Start()
     {
         this.all = GameObject.Find("Main Camera").GetComponent<All>();
-        this.tarot = GameObject.Find("card").GetComponent<Tarot>();
         this.Te0 = GameObject.Find("Te0").GetComponent<Text>();
         this.Te1 = GameObject.Find("Te1").GetComponent<Text>();
         this.Te2 = GameObject.Find("Te2").GetComponent<Text>();

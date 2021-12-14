@@ -34,7 +34,7 @@ public class All : MonoBehaviour
     GameObject Te6;
     GameObject Te7;
     GameObject Style;
-    GameObject Dropdown;
+
     //BGM
     GameObject Audio1;
     GameObject Audio2;
@@ -48,9 +48,6 @@ public class All : MonoBehaviour
     GameObject SE6;
     GameObject SE7;
     GameObject SE8;
-    GameObject SE9;
-    GameObject SE10;
-    GameObject SE11;
 
     public GameObject TextTMP;
     private TextMeshProUGUI textMeshPro;
@@ -87,7 +84,6 @@ public class All : MonoBehaviour
         this.Te6 = GameObject.Find("Te6");
         this.Te7 = GameObject.Find("Te7");
         this.Style = GameObject.Find("Style");
-        this.Dropdown = GameObject.Find("Dropdown");
 
         this.Audio1 = GameObject.Find("BGM");
         this.Audio2 = GameObject.Find("BGM1");
@@ -101,27 +97,13 @@ public class All : MonoBehaviour
         this.SE6 = GameObject.Find("magicSE");
         this.SE7 = GameObject.Find("onePointSE");
         this.SE8 = GameObject.Find("recoverySE");
-        this.SE9 = GameObject.Find("shaffleSE");
-        this.SE10 = GameObject.Find("tarot&StartSE");
-        this.SE11 = GameObject.Find("cardStopSE");
-
 
         this.TextTMP = GameObject.Find("TextTMP");
 
         Audio1.GetComponent<AudioSource>().Play();
     }
-    // Update is called once per frame
 
 
-    public void OnClick()
-    {
-        Dropdown ddtmp;
-
-        //「Dropdown」というGameObjectのDropDownコンポーネントを操作するために取得
-        ddtmp = GameObject.Find("Dropdown").GetComponent<Dropdown>();
-
-        CommandSelected(ddtmp.value);
-    }
 
     List<Status> enemys = new List<Status>
             {
@@ -157,54 +139,51 @@ public class All : MonoBehaviour
 
     public int enemyNum;
 
-    public async void CommandSelected(int co)
+    public async void CommandSelected(int command)
     {
         cri = UnityEngine.Random.Range(0, 50);
 
         if (sNum == 1)
         {
-            common_method(co);
+            common_method(command);
         }
         if (sNum == 2)//sNum == 2 debug
         {
             walk = false;
             enemyNum = 0;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする2") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 await magicAttack2(tarot.magic);
             }
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
-                var textAsset = Resources.Load("立ち去る2") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
 
         if (sNum == 3)
         {
-            common_method(co);
+            common_method(command);
         }
 
         if (sNum == 4)
         {
-            common_method(co);
+            common_method(command);
         }
         if (sNum == 5)
         {
             walk = false;
-            if (co == 0 && walk == false)
+            if (command == 0 && walk == false)
             {
                 SE7.GetComponent<AudioSource>().Play();
 
@@ -216,27 +195,23 @@ public class All : MonoBehaviour
 
                 walk = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
-                var textAsset = Resources.Load("斬りつける5") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                NonBattle();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 magic1Method();
             }
-            if (co == 3 && walk == false)
+            if (command == 3 && walk == false)
             {
-                var textAsset = Resources.Load("立ち去る5") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 6)
         {
             walk = false;
-            if (co == 0 && walk == false)
+            if (command == 0 && walk == false)
             {
                 SE6.GetComponent<AudioSource>().Play();
 
@@ -248,21 +223,17 @@ public class All : MonoBehaviour
 
                 walk = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
-                var textAsset = Resources.Load("斬りつける6") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                NonBattle();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 magic6();
             }
-            if (co == 3 && walk == false)
+            if (command == 3 && walk == false)
             {
-                var textAsset = Resources.Load("立ち去る6") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 7)
@@ -270,8 +241,8 @@ public class All : MonoBehaviour
             walk = false;
             enemyNum = 1;
             battle = true;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 SE1.GetComponent<AudioSource>().Play();
 
@@ -290,16 +261,16 @@ public class All : MonoBehaviour
                 await PreGameOver();
                 await Task.Delay(2000);
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 await magic7Attack();
             }
-            if (co == 3 && battle == false ||
-                co == 3 && walk == false)
+            if (command == 3 && battle == false ||
+                command == 3 && walk == false)
             {
                 SE1.GetComponent<AudioSource>().Play();
 
@@ -321,7 +292,7 @@ public class All : MonoBehaviour
         if (sNum == 8)
         {
             walk = false;
-            if (co == 0 && walk == false)
+            if (command == 0 && walk == false)
             {
                 SE7.GetComponent<AudioSource>().Play();
 
@@ -333,29 +304,25 @@ public class All : MonoBehaviour
 
                 walk = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
-                var textAsset = Resources.Load("斬りつける8") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                NonBattle();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 magic8();
             }
-            if (co == 3 && walk == false)
+            if (command == 3 && walk == false)
             {
-                var textAsset = Resources.Load("立ち去る8") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 9)
         {
             walk = false;
             enemyNum = 2;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 SE1.GetComponent<AudioSource>().Play();
 
@@ -377,35 +344,32 @@ public class All : MonoBehaviour
                 await Task.Delay(2000);
             }
 
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && battle != true ||
-                co == 2 && walk == false)
+            if (command == 2 && battle != true ||
+                command == 2 && walk == false)
             {
                 await magic9Attack();
 
             }
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
-                var textAsset = Resources.Load("立ち去る9") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 10)
         {
-            common_method(co);
+            common_method(command);
         }
         if (sNum == 11)
         {
             walk = false;
             enemyNum = 3;
             battle = true;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 SE1.GetComponent<AudioSource>().Play();
 
@@ -423,16 +387,16 @@ public class All : MonoBehaviour
                 await PreGameOver();
                 await Task.Delay(2000);
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 await magic11Attack();
 
             }
-            if (co == 3 && walk == false)
+            if (command == 3 && walk == false)
             {
                 SE1.GetComponent<AudioSource>().Play();
 
@@ -454,72 +418,66 @@ public class All : MonoBehaviour
         }
         if (sNum == 12)
         {
-            common_method(co);
+            common_method(command);
         }
         if (sNum == 13)
         {
             walk = false;
             enemyNum = 4;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする13") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 await magic13Attack();
 
             }
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
-                var textAsset = Resources.Load("立ち去る13") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 14)
         {
-            common_method(co);
+            common_method(command);
         }
         if (sNum == 15)
         {
             walk = false;
             enemyNum = 5;
-            if (co == 0 && walk == false)
+            if (command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする15") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 magicSleep();
             }
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
-                var textAsset = Resources.Load("立ち去る15") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 16)
         {
             walk = false;
-            if (co == 0 && walk == false)
+            if (command == 0 && walk == false)
             {
                 SE7.GetComponent<AudioSource>().Play();
 
@@ -531,21 +489,17 @@ public class All : MonoBehaviour
 
                 walk = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
-                var textAsset = Resources.Load("斬りつける16") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                NonBattle();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 magic1Method();
             }
-            if (co == 3 && walk == false)
+            if (command == 3 && walk == false)
             {
-                var textAsset = Resources.Load("立ち去る16") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 17)
@@ -553,8 +507,8 @@ public class All : MonoBehaviour
             walk = false;
             enemyNum = 6;
             battle = true;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 SE1.GetComponent<AudioSource>().Play();
 
@@ -572,16 +526,16 @@ public class All : MonoBehaviour
                 await PreGameOver();
                 await Task.Delay(2000);
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 await magic17Attack();
 
             }
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
                 SE1.GetComponent<AudioSource>().Play();
 
@@ -604,65 +558,59 @@ public class All : MonoBehaviour
         {
             walk = false;
             enemyNum = 7;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする18") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 await magic18Attack();
 
             }
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
-                var textAsset = Resources.Load("立ち去る18") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                battle = true;
+                Leave();
             }
         }
         if (sNum == 19)
         {
             walk = false;
             enemyNum = 8;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする19") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
                 battle = true;
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 magicInvisible();
             }
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
-                var textAsset = Resources.Load("立ち去る19") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                walk = true;
+                Leave();
             }
         }
         if (sNum == 20)
         {
             walk = false;
             enemyNum = 9;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする20") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -670,30 +618,27 @@ public class All : MonoBehaviour
                 battle = true;
 
             }
-            if (co == 1 && walk == false)
+            if (command == 1 && walk == false)
             {
                  Attack();
             }
-            if (co == 2 && walk == false)
+            if (command == 2 && walk == false)
             {
                 await magic20Attack();
 
             }
 
-            if (co == 3 && battle != true)
+            if (command == 3 && battle != true)
             {
-                var textAsset = Resources.Load("立ち去る20") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                battle = true;
+                Leave();
             }
         }
         if (sNum == 21)
         {
             walk = false;
             enemyNum = 10;
-            if (co == 0 && battle == false ||
-                co == 0 && walk == false)
+            if (command == 0 && battle == false ||
+                command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする21") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
@@ -701,34 +646,45 @@ public class All : MonoBehaviour
                 battle = true;
 
             }
-            if (co == 1 && battle != true)
+            if (command == 1 && battle != true)
             {
                 var textAsset = Resources.Load("斬りつける21a") as TextAsset;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
             }
-            if (co == 1 && walk == false && battle == true)
+            if (command == 1 && walk == false && battle == true)
             {
                  Attack();
             }
 
-            if (co == 2 && battle != true)
+            if (command == 2 && battle != true)
             {
                 magic21();
             }
-            if (co == 2 && walk == false && battle == true)
+            if (command == 2 && walk == false && battle == true)
             {
                 await magic21Attack();
 
             }
-            if (co == 3 && battle != true ||
-                co == 0 && walk == false)
+            if (command == 3 && battle != true ||
+                command == 0 && walk == false)
             {
-                var textAsset = Resources.Load("立ち去る21") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-                battle = true;
+                Leave();
             }
         }
+    }
+
+    private void NonBattle()
+    {
+        var textAsset = Resources.Load($"斬りつける{sNum}") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+    }
+
+    private void Leave()
+    {
+        var textAsset = Resources.Load($"立ち去る{sNum}") as TextAsset;
+        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+
+        walk = true;
     }
 
     private void common_method(int co)
@@ -1544,7 +1500,3 @@ public class All : MonoBehaviour
         storyCard.GetComponent<Image>().sprite = SCard.images[22];
     }
 }
-
-
-//Debug.Log(tarot.magic.ToString());
-//Debug.Log(Te4.GetComponent<UnityEngine.UI.Text>().text);
