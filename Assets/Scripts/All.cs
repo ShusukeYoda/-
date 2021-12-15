@@ -166,7 +166,7 @@ public class All : MonoBehaviour
             }
             if (command == 2 && walk == false)
             {
-                await magicAttack2(tarot.magic);
+                await magicAttack2();
             }
             if (command == 3 && battle != true)
             {
@@ -1239,7 +1239,7 @@ public class All : MonoBehaviour
         }
     }
 
-    private async Task magicAttack2(int magic)
+    private async Task magicAttack2()
     {
         if (tarot.magic >= 5)//magic >= 5 debug
         {
@@ -1247,7 +1247,7 @@ public class All : MonoBehaviour
 
             //mpè¡îÔ
             tarot.magic -= 5;
-            Te4.GetComponent<UnityEngine.UI.Text>().text = magic.ToString();
+            Te4.GetComponent<UnityEngine.UI.Text>().text = tarot.magic.ToString();
 
             var textAsset = Resources.Load("ñÇñ@ÇégÇ§2") as TextAsset;
             TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
