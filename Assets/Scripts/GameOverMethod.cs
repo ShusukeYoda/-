@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameOverMethod
+public class GameOverMethod : MonoBehaviour
 {
     All all;
     Tarot tarot;
