@@ -22,6 +22,7 @@ public class All : MonoBehaviour
     Tarot tarot;
     public List<Sprite> images;    //Listｽﾌﾟﾗｲﾄ
     StoryCard SCard;
+    GameOverMethod GameOverMethod;
 
     //オブジェクト
     GameObject storyCard;
@@ -74,6 +75,7 @@ public class All : MonoBehaviour
         this.tarot = GameObject.Find("card").GetComponent<Tarot>();
         this.storyCard = GameObject.Find("storyCard");
         this.SCard = GameObject.Find("storyCard").GetComponent<StoryCard>();
+        this.GameOverMethod = GameObject.Find("GameOver").GetComponent<GameOverMethod>();
         this.Te0 = GameObject.Find("Te0");
         this.Te1 = GameObject.Find("Te1");
         this.Te2 = GameObject.Find("Te2");
@@ -133,7 +135,7 @@ public class All : MonoBehaviour
     bool battle = false;
     bool critical = false;
 
-    int damage;
+    public int damage;
     int eDamage;
     int cri;
 
@@ -259,7 +261,7 @@ public class All : MonoBehaviour
                 //
 
                 //ステータスバーに表記
-                await PreGameOver();
+                await GameOverMethod.PreGameOver();
                 await Task.Delay(2000);
             }
             if (command == 1 && walk == false)
@@ -286,7 +288,7 @@ public class All : MonoBehaviour
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
-                await PreGameOver();
+                await GameOverMethod.PreGameOver();
                 await Task.Delay(2000);
             }
         }
@@ -341,7 +343,7 @@ public class All : MonoBehaviour
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
-                await PreGameOver();
+                await GameOverMethod.PreGameOver();
                 await Task.Delay(2000);
             }
 
@@ -385,7 +387,7 @@ public class All : MonoBehaviour
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
-                await PreGameOver();
+                await GameOverMethod.PreGameOver();
                 await Task.Delay(2000);
             }
             if (command == 1 && walk == false)
@@ -413,7 +415,7 @@ public class All : MonoBehaviour
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
-                await PreGameOver();
+                await GameOverMethod.PreGameOver();
                 await Task.Delay(2000);
             }
         }
@@ -546,7 +548,7 @@ public class All : MonoBehaviour
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
-                await PreGameOver();
+                await GameOverMethod.PreGameOver();
                 await Task.Delay(2000);
             }
             if (command == 1 && walk == false)
@@ -573,7 +575,7 @@ public class All : MonoBehaviour
                 UnityEngine.Debug.Log("チェックポイント");
                 //
 
-                await PreGameOver();
+                await GameOverMethod.PreGameOver();
                 await Task.Delay(2000);
             }
         }
@@ -973,7 +975,7 @@ public class All : MonoBehaviour
             UnityEngine.Debug.Log("チェックポイント");
             //
 
-            await PreGameOver();
+            await GameOverMethod.PreGameOver();
             await Task.Delay(2000);
         }
     }
@@ -1111,7 +1113,7 @@ public class All : MonoBehaviour
             UnityEngine.Debug.Log("チェックポイント");
             //
 
-            await PreGameOver();
+            await GameOverMethod.PreGameOver();
             await Task.Delay(2000);
         }
     }
@@ -1218,7 +1220,7 @@ public class All : MonoBehaviour
             UnityEngine.Debug.Log("チェックポイント");
             //
 
-            await PreGameOver();
+            await GameOverMethod.PreGameOver();
             await Task.Delay(2000);
         }
     }
@@ -1362,9 +1364,9 @@ public class All : MonoBehaviour
             Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
             //ステータスバーに表記
-            await PreGameOver();
+            await GameOverMethod.PreGameOver();
 
-            if (gameover == false)
+            if (GameOverMethod.gameover == false)
             {
                 //続行：通常
                 SE1.GetComponent<AudioSource>().Play();
@@ -1421,8 +1423,8 @@ public class All : MonoBehaviour
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
             Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
-            await PreGameOver();
-            if (gameover == false)
+            await GameOverMethod.PreGameOver();
+            if (GameOverMethod.gameover == false)
             {
                 await Task.Delay(2000);
             }
@@ -1495,40 +1497,5 @@ public class All : MonoBehaviour
         battle = false;
 
         return battle == false;
-    }
-
-    bool gameover = false;
-    private async Task PreGameOver()
-    {
-        gameover = true;
-
-        tarot.hitP -= damage;
-
-        if (tarot.hitP < 0)
-        {
-            tarot.hitP = 0;
-        }
-        Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-        //倒れたとき
-        if (tarot.hitP <= 0)
-        {
-            await Task.Delay(2000);
-
-            GameOver();
-        }
-    }
-
-    private void GameOver()
-    {
-        Audio1.GetComponent<AudioSource>().Stop();
-        Audio2.GetComponent<AudioSource>().Play();
-
-        var textAsset = Resources.Load("GameOver") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-        walk = true;
-
-        storyCard.GetComponent<Image>().sprite = SCard.images[22];
     }
 }
