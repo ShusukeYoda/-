@@ -139,6 +139,7 @@ public class All : MonoBehaviour
 
     public int enemyNum;
 
+    #region コマンドセレクト
     public async void CommandSelected(int command)
     {
         cri = UnityEngine.Random.Range(0, 50);
@@ -694,6 +695,8 @@ public class All : MonoBehaviour
             }
         }
     }
+
+    #endregion
 
     private void NonBattle()
     {
