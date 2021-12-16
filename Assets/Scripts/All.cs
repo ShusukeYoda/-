@@ -23,6 +23,7 @@ public class All : MonoBehaviour
     public List<Sprite> images;    //Listｽﾌﾟﾗｲﾄ
     StoryCard SCard;
     GameOverMethod GameOverMethod;
+    AttackMethod attackMethod;
 
     //オブジェクト
     GameObject storyCard;
@@ -76,6 +77,7 @@ public class All : MonoBehaviour
         this.storyCard = GameObject.Find("storyCard");
         this.SCard = GameObject.Find("storyCard").GetComponent<StoryCard>();
         this.GameOverMethod = GameObject.Find("GameOver").GetComponent<GameOverMethod>();
+        this.attackMethod = GameObject.Find("AttackMethod").GetComponent<AttackMethod>();
         this.Te0 = GameObject.Find("Te0");
         this.Te1 = GameObject.Find("Te1");
         this.Te2 = GameObject.Find("Te2");
@@ -107,7 +109,7 @@ public class All : MonoBehaviour
 
 
 
-    List<Status> enemys = new List<Status>
+    public List<Status> enemys = new List<Status>
             {
                 new Status {eHp = 50,eAtt = 45 ,eDef=5, eRes = 5, eAgi = 10},　//１騎士
 
@@ -132,12 +134,12 @@ public class All : MonoBehaviour
                 new Status {eHp = 40,eAtt = 50 ,eDef=15, eRes = 0, eAgi = 10}　 //１１住人
             };
 
-    bool battle = false;
-    bool critical = false;
+    public bool battle = false;
+    public bool critical = false;
 
     public int damage;
-    int eDamage;
-    int cri;
+    public int eDamage;
+    public int cri;
 
     public int enemyNum;
 
@@ -162,7 +164,7 @@ public class All : MonoBehaviour
             }
             if (command == 1 && walk == false)
             {
-                 Attack();
+                attackMethod.Attack();
             }
             if (command == 2 && walk == false)
             {
@@ -266,7 +268,7 @@ public class All : MonoBehaviour
             }
             if (command == 1 && walk == false)
             {
-                 Attack();
+                attackMethod.Attack();
             }
             if (command == 2 && walk == false)
             {
@@ -349,7 +351,7 @@ public class All : MonoBehaviour
 
             if (command == 1 && walk == false)
             {
-                 Attack();
+                attackMethod.Attack();
             }
             if (command == 2 && battle != true ||
                 command == 2 && walk == false)
@@ -392,7 +394,7 @@ public class All : MonoBehaviour
             }
             if (command == 1 && walk == false)
             {
-                 Attack();
+                attackMethod.Attack();
             }
             if (command == 2 && walk == false)
             {
@@ -437,7 +439,7 @@ public class All : MonoBehaviour
             }
             if (command == 1 && walk == false)
             {
-                 Attack();
+                attackMethod.Attack();
             }
             if (command == 2 && walk == false)
             {
@@ -488,7 +490,7 @@ public class All : MonoBehaviour
             }
             if (command == 1 && walk == false)
             {
-                 Attack();
+                attackMethod.Attack();
             }
             if (command == 2 && walk == false)
             {
@@ -553,7 +555,7 @@ public class All : MonoBehaviour
             }
             if (command == 1 && walk == false)
             {
-                 Attack();
+                attackMethod.Attack();
             }
             if (command == 2 && walk == false)
             {
@@ -593,7 +595,7 @@ public class All : MonoBehaviour
             }
             if (command == 1 && walk == false)
             {
-                 Attack();
+                attackMethod.Attack();
             }
             if (command == 2 && walk == false)
             {
@@ -619,7 +621,7 @@ public class All : MonoBehaviour
             }
             if (command == 1 && walk == false)
             {
-                 Attack();
+                attackMethod.Attack();
             }
             if (command == 2 && walk == false)
             {
@@ -645,7 +647,7 @@ public class All : MonoBehaviour
             }
             if (command == 1 && walk == false)
             {
-                 Attack();
+                attackMethod.Attack();
             }
             if (command == 2 && walk == false)
             {
@@ -678,7 +680,7 @@ public class All : MonoBehaviour
             }
             if (command == 1 && walk == false && battle == true)
             {
-                 Attack();
+                attackMethod.Attack();
             }
 
             if (command == 2 && battle != true)
@@ -741,35 +743,6 @@ public class All : MonoBehaviour
         }
     }
 
-    private void Attack()
-    {
-        var textAsset = Resources.Load($"斬りつける{sNum}") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-        //battle
-        battle = true;
-
-        if (cri <= tarot.luck)
-        {
-            critical = true;
-
-            eDamage = tarot.attack * 2 - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-        else
-        {
-            eDamage = tarot.attack - enemys[enemyNum].eDef;
-            damage = enemys[enemyNum].eAtt - tarot.defense;
-        }
-
-        if (damage < 0)
-        {
-            damage = 0;
-        }
-
-        //バトルメソッドへ
-        SwBattlePre(damage, eDamage, enemys[enemyNum].eAgi, enemys[enemyNum].eHp);
-    }
 
     private async Task magic21Attack()
     {
@@ -1311,127 +1284,7 @@ public class All : MonoBehaviour
         }
     }
 
-    private async void SwBattlePre(int damage, int eDamage, int eAgi, int eHp)
-    {
-
-        if (tarot.agility >= eAgi)
-        {
-            if (critical)
-            {
-                SE2.GetComponent<AudioSource>().Play();
-                critical = false;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-
-                //与ダメージ
-                enemys[enemyNum].eHp -= eDamage;
-                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-                //倒したとき
-                if (enemys[enemyNum].eHp <= 0)
-                {
-                    KilledBranch(enemyNum);
-                }
-                await Task.Delay(2000);
-                SwBattlePost(damage, eDamage, eAgi, eHp);
-            }
-
-            //criticalではないとき
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-
-            //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
-            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-            //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
-            {
-                KilledBranch(enemyNum);
-            }
-            //続行：通常
-            else
-            {
-                SE1.GetComponent<AudioSource>().Play();
-                await Task.Delay(2000);
-
-                SwBattlePost(damage, eDamage, eAgi, eHp);
-            }
-        }
-        else
-        {
-            SE1.GetComponent<AudioSource>().Play();
-
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
-            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-            //ステータスバーに表記
-            await GameOverMethod.PreGameOver();
-
-            if (GameOverMethod.gameover == false)
-            {
-                //続行：通常
-                SE1.GetComponent<AudioSource>().Play();
-                await Task.Delay(2000);
-
-                SwBattlePost(damage, eDamage, eAgi, eHp);
-            }
-        }
-    }
-
-    private async void SwBattlePost(int damage, int eDamage, int eAgi, int eHp)
-    {
-        if (tarot.agility >= eAgi)
-        {
-            if (critical)
-            {
-                SE2.GetComponent<AudioSource>().Play();
-                critical = false;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
-
-                //与ダメージ
-                enemys[enemyNum].eHp -= eDamage;
-                Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-                //倒したとき
-                if (enemys[enemyNum].eHp <= 0)
-                {
-                    KilledBranch(enemyNum);
-                }
-                SE1.GetComponent<AudioSource>().Play();
-                await Task.Delay(2000);
-            }
-
-            //criticalではないとき
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
-
-            //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
-            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-            //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
-            {
-                KilledBranch(enemyNum);
-            }
-            SE1.GetComponent<AudioSource>().Play();
-            await Task.Delay(2000);
-
-        }
-        else
-        {
-            SE1.GetComponent<AudioSource>().Play();
-
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-            await GameOverMethod.PreGameOver();
-            if (GameOverMethod.gameover == false)
-            {
-                await Task.Delay(2000);
-            }
-        }
-    }
-
-    private bool KilledBranch(int enemyNum)
+    public bool KilledBranch(int enemyNum)
     {
         SE3.GetComponent<AudioSource>().Play();
 

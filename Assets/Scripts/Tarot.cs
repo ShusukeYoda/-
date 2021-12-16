@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static System.Net.WebRequestMethods;
 
-class Tarot :MonoBehaviour
+class Tarot : MonoBehaviour
 {
     All all;
     public Sprite[] tarotImage;   //配列ｽﾌﾟﾗｲﾄ 消すと消える
@@ -59,7 +59,7 @@ class Tarot :MonoBehaviour
         }
         //プレイヤーステータス
         attack = select[v].str + (select[v].dex / 5) * (select[v].luc / 5);
-        defense = select[v].vit + (select[v].dex / 5) * (select[v].luc / 5);
+        defense = select[v].vit + (select[v].dex / 5) * (select[v].luc / 5) * 2;
         mAttack = select[v].mg - 5 + (select[v].dex / 5) * (select[v].luc / 5);
         mDefense = select[v].res + (select[v].dex / 5) * (select[v].luc / 5);
 

@@ -34,8 +34,8 @@ public class Button3 : MonoBehaviour
     {
         if (all.one && all.walk)
         {
-            random1 = UnityEngine.Random.Range(1, 4);
-            //int random1 = 2;   //ストーリーcardデバッグ用
+            //random1 = UnityEngine.Random.Range(1, 4);
+            int random1 = 2;   //ストーリーcardデバッグ用
             all.sNum += random1;
 
             if (all.sNum <= 21 && all.walk)

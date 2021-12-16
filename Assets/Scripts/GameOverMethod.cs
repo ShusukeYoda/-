@@ -41,13 +41,8 @@ public class GameOverMethod : MonoBehaviour
         }
         Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
-        //“|‚ê‚½‚Æ‚«
-        if (tarot.hitP <= 0)
-        {
-            await Task.Delay(2000);
-
-            GameOver();
-        }
+        await Task.Delay(2000);
+        GameOver();
     }
 
     private void GameOver()
@@ -62,5 +57,4 @@ public class GameOverMethod : MonoBehaviour
 
         storyCard.GetComponent<Image>().sprite = SCard.images[22];
     }
-
 }
