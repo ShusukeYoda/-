@@ -3,5 +3,5 @@ using UnityEngine;
 
 public class StoryCard : MonoBehaviour
 {
-    public List<Sprite> images;    //List½Ìß×²Ä
+    public List<Sprite> images;
 }

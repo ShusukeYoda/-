@@ -89,7 +89,7 @@ public class CommandSelect : MonoBehaviour
                 command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする2") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
             }
             if (command == 1 && walk == false)
             {
@@ -122,7 +122,7 @@ public class CommandSelect : MonoBehaviour
                 SE7.GetComponent<AudioSource>().Play();
 
                 var textAsset = Resources.Load("話をする5") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 tarot.magic += 10;
                 Te4.GetComponent<Text>().text = tarot.magic.ToString();
@@ -150,7 +150,7 @@ public class CommandSelect : MonoBehaviour
                 SE6.GetComponent<AudioSource>().Play();
 
                 var textAsset = Resources.Load("話をする6") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 tarot.luck -= 10;
                 Te3.GetComponent<Text>().text = tarot.luck.ToString();
@@ -181,7 +181,7 @@ public class CommandSelect : MonoBehaviour
                 SE1.GetComponent<AudioSource>().Play();
 
                 var textAsset = Resources.Load("話をする7") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 await Task.Delay(2000);
 
@@ -209,7 +209,7 @@ public class CommandSelect : MonoBehaviour
                 SE1.GetComponent<AudioSource>().Play();
 
                 var textAsset = Resources.Load("立ち去る7") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 await Task.Delay(2000);
 
@@ -231,7 +231,7 @@ public class CommandSelect : MonoBehaviour
                 SE7.GetComponent<AudioSource>().Play();
 
                 var textAsset = Resources.Load("話をする8") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 tarot.strength += 10;
                 Te1.GetComponent<Text>().text = tarot.strength.ToString();                                //Te1で正しいのか
@@ -261,7 +261,7 @@ public class CommandSelect : MonoBehaviour
                 SE1.GetComponent<AudioSource>().Play();
 
                 var textAsset = Resources.Load("話をする9") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
 
                 battle = true;
@@ -308,7 +308,7 @@ public class CommandSelect : MonoBehaviour
                 SE1.GetComponent<AudioSource>().Play();
 
                 var textAsset = Resources.Load("話をする11") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 await Task.Delay(2000);
 
@@ -335,7 +335,7 @@ public class CommandSelect : MonoBehaviour
                 SE1.GetComponent<AudioSource>().Play();
 
                 var textAsset = Resources.Load("立ち去る11") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
 
                 await Task.Delay(2000);
@@ -362,7 +362,7 @@ public class CommandSelect : MonoBehaviour
                 command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする13") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 battle = true;
             }
@@ -387,12 +387,12 @@ public class CommandSelect : MonoBehaviour
             if (command == 0 && walk == false)
             {
                 var textAsset = Resources.Load($"話をする{sNum}") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
             }
             if (command== 1 && walk == false)
             {
                 var textAsset = Resources.Load($"斬りつける{sNum}") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
             }
             if (command== 2 && walk == false)
             {
@@ -401,7 +401,7 @@ public class CommandSelect : MonoBehaviour
             if (command== 3 && walk == false)
             {
                 var textAsset = Resources.Load($"立ち去る{sNum}") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 walk = true;
             }
@@ -413,7 +413,7 @@ public class CommandSelect : MonoBehaviour
             if (command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする15") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 battle = true;
             }
@@ -438,7 +438,7 @@ public class CommandSelect : MonoBehaviour
                 SE7.GetComponent<AudioSource>().Play();
 
                 var textAsset = Resources.Load("話をする16") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 tarot.luck += 10;
                 Te3.GetComponent<Text>().text = tarot.luck.ToString();
@@ -469,7 +469,7 @@ public class CommandSelect : MonoBehaviour
                 SE1.GetComponent<AudioSource>().Play();
 
                 var textAsset = Resources.Load("話をする17") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 await Task.Delay(2000);
 
@@ -496,7 +496,7 @@ public class CommandSelect : MonoBehaviour
                 SE1.GetComponent<AudioSource>().Play();
 
                 var textAsset = Resources.Load("立ち去る17") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 await Task.Delay(2000);
 
@@ -518,7 +518,7 @@ public class CommandSelect : MonoBehaviour
                 command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする18") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 battle = true;
             }
@@ -544,7 +544,7 @@ public class CommandSelect : MonoBehaviour
                 command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする19") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 battle = true;
             }
@@ -569,7 +569,7 @@ public class CommandSelect : MonoBehaviour
                 command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする20") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 battle = true;
 
@@ -597,7 +597,7 @@ public class CommandSelect : MonoBehaviour
                 command == 0 && walk == false)
             {
                 var textAsset = Resources.Load("話をする21") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 battle = true;
 
@@ -605,7 +605,7 @@ public class CommandSelect : MonoBehaviour
             if (command == 1 && battle != true)
             {
                 var textAsset = Resources.Load("斬りつける21a") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
             }
             if (command == 1 && walk == false && battle == true)
             {
@@ -634,13 +634,13 @@ public class CommandSelect : MonoBehaviour
     private void NonBattle()
     {
         var textAsset = Resources.Load($"斬りつける{sNum}") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+        TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
     }
 
     private void Leave()
     {
         var textAsset = Resources.Load($"立ち去る{sNum}") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+        TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
         walk = true;
     }
@@ -652,12 +652,12 @@ public class CommandSelect : MonoBehaviour
         if (command== 0 && walk == false)
         {
             var textAsset = Resources.Load($"話をする{sNum}") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
         }
         if (command== 1 && walk == false)
         {
             var textAsset = Resources.Load($"斬りつける{sNum}") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
         }
         if (command== 2 && walk == false)
         {
@@ -666,7 +666,7 @@ public class CommandSelect : MonoBehaviour
         if (command== 3 && walk == false)
         {
             var textAsset = Resources.Load($"立ち去る{sNum}") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
             walk = true;
         }

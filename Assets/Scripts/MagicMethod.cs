@@ -41,7 +41,7 @@ public class MagicMethod : MonoBehaviour
             SE4.GetComponent<AudioSource>().Play();
 
             var textAsset = Resources.Load($"魔法を使う{all.sNum}") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
 
             all.battle = true;
@@ -69,7 +69,7 @@ public class MagicMethod : MonoBehaviour
         else
         {
             var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
         }
     }
     // 7.11.17
@@ -80,7 +80,7 @@ public class MagicMethod : MonoBehaviour
             SE4.GetComponent<AudioSource>().Play();
 
             var textAsset = Resources.Load($"魔法を使う{all.sNum}") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
 
             all.battle = true;
@@ -108,7 +108,7 @@ public class MagicMethod : MonoBehaviour
         else
         {
             var textAsset = Resources.Load($"魔法を使う{all.sNum}b") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
 
             await Task.Delay(2000);
@@ -128,12 +128,12 @@ public class MagicMethod : MonoBehaviour
         if (tarot.magic >= 5)
         {
             var textAsset = Resources.Load("魔法を使う21b") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
         }
         else
         {
             var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
         }
     }
 
@@ -144,7 +144,7 @@ public class MagicMethod : MonoBehaviour
             SE6.GetComponent<AudioSource>().Play();
 
             var textAsset = Resources.Load("魔法を使う19") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
 
             tarot.magic -= 5;
@@ -155,7 +155,7 @@ public class MagicMethod : MonoBehaviour
         else
         {
             var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
         }
     }
     public void magicSleep()
@@ -165,7 +165,7 @@ public class MagicMethod : MonoBehaviour
             SE6.GetComponent<AudioSource>().Play();
 
             var textAsset = Resources.Load("魔法を使う15") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
             tarot.magic -= 5;
             Te4.GetComponent<Text>().text = tarot.magic.ToString();
@@ -175,7 +175,7 @@ public class MagicMethod : MonoBehaviour
         else
         {
             var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
         }
     }
 
@@ -186,7 +186,7 @@ public class MagicMethod : MonoBehaviour
             SE8.GetComponent<AudioSource>().Play();
 
             var textAsset = Resources.Load("魔法を使う14") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
             tarot.magic -= 5;
             tarot.hitP += 10;
@@ -198,7 +198,7 @@ public class MagicMethod : MonoBehaviour
         else
         {
             var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
         }
     }
 
@@ -207,12 +207,12 @@ public class MagicMethod : MonoBehaviour
         if (tarot.magic >= 5)
         {
             var textAsset = Resources.Load("魔法を使う8") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
         }
         else
         {
             var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
         }
     }
 
@@ -221,12 +221,12 @@ public class MagicMethod : MonoBehaviour
         if (tarot.magic >= 5)
         {
             var textAsset = Resources.Load("魔法を使う6") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
         }
         else
         {
             var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
         }
     }
 
@@ -237,7 +237,7 @@ public class MagicMethod : MonoBehaviour
             SE8.GetComponent<AudioSource>().Play();
 
             var textAsset = Resources.Load("魔法を使う1") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
             tarot.magic -= 5;
             tarot.luck += 5;
@@ -254,7 +254,7 @@ public class MagicMethod : MonoBehaviour
         else
         {
             var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+            TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
         }
     }
 }

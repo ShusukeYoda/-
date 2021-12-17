@@ -46,15 +46,15 @@ class Tarot : MonoBehaviour
     {
         if (tarotImage[all.count]) //tarotImage[0] == 
         {
-            Te0.text = select[v].hp.ToString();
-            Te1.text = select[v].str.ToString();
-            Te2.text = select[v].vit.ToString();
-            Te3.text = select[v].luc.ToString();
-            Te4.text = select[v].mg.ToString();
-            Te5.text = select[v].res.ToString();
-            Te6.text = select[v].agi.ToString();
-            Te7.text = select[v].dex.ToString();
-            Style.text = select[v].line.ToString();
+            Te0.text = "" + select[v].hp;
+            Te1.text = "" + select[v].str;
+            Te2.text = "" + select[v].vit;
+            Te3.text = "" + select[v].luc;
+            Te4.text = "" + select[v].mg;
+            Te5.text = "" + select[v].res;
+            Te6.text = "" + select[v].agi;
+            Te7.text = "" + select[v].dex;
+            Style.text = "" + select[v].line;
             selected = true;
         }
         //プレイヤーステータス

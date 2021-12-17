@@ -39,7 +39,7 @@ public class GameOverMethod : MonoBehaviour
         {
             tarot.hitP = 0;
         }
-        Te0.GetComponent<Text>().text = tarot.hitP.ToString();
+        Te0.GetComponent<Text>().text = "" + tarot.hitP ;
 
         await Task.Delay(2000);
         GameOver();
@@ -51,7 +51,7 @@ public class GameOverMethod : MonoBehaviour
         Audio2.GetComponent<AudioSource>().Play();
 
         var textAsset = Resources.Load("GameOver") as TextAsset;
-        TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+        TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset ;
 
         all.walk = true;
 

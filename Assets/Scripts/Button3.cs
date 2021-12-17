@@ -47,7 +47,7 @@ public class Button3 : MonoBehaviour
                 storyCard.GetComponent<Image>().sprite = SCard.images[all.sNum];
 
                 var textAsset = Resources.Load("image" + all.sNum) as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
             }
             else if (all.sNum >= 22 && all.walk)
             {
@@ -56,7 +56,7 @@ public class Button3 : MonoBehaviour
                 Audio3.GetComponent<AudioSource>().Play();
 
                 var textAsset = Resources.Load("EndImage") as TextAsset;
-                TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
+                TextTMP.GetComponent<TextMeshProUGUI>().text = "" + textAsset;
 
                 storyCard.GetComponent<Image>().sprite = SCard.images[23];
 
