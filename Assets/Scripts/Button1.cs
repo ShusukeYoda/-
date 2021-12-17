@@ -23,10 +23,10 @@ public class Button1 : MonoBehaviour
         
         button = GetComponent<Button>();
         //ボタンを押下したときのリスナーを設定
-        button.onClick.AddListener(StartClick);
+        button.onClick.AddListener(TarotClick);
         
     }
-    public void StartClick()
+    public void TarotClick()
     {
         SE10.GetComponent<AudioSource>().Play();
         SE9.GetComponent<AudioSource>().Play();
