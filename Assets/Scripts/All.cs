@@ -10,39 +10,25 @@ public class All : MonoBehaviour
     Tarot tarot;
     EnemyList enemyList;
     public List<Sprite> images;    //Listｽﾌﾟﾗｲﾄ
-    StoryCard SCard;
     GameOverMethod GameOverMethod;
     AttackMethod attackMethod;
     MagicMethod magicMethod;
 
-    //オブジェクト
-    GameObject storyCard;
+    //テキスト
     public GameObject Te0;
     GameObject Te1;
-    GameObject Te2;
     GameObject Te3;
     public GameObject Te4;
-    GameObject Te5;
-    GameObject Te6;
-    GameObject Te7;
-    GameObject Style;
+    public GameObject TextTMP;
 
     //BGM
     GameObject Audio1;
-    GameObject Audio2;
-    GameObject Audio3;
     //SE
     GameObject SE1;
-    GameObject SE2;
     GameObject SE3;
-    GameObject SE4;
-    GameObject SE5;
     GameObject SE6;
     GameObject SE7;
-    GameObject SE8;
 
-    public GameObject TextTMP;
-    private TextMeshProUGUI textMeshPro;
 
     //タイマー//0.1秒間隔
     public float span = 0.1f;
@@ -64,37 +50,21 @@ public class All : MonoBehaviour
     {
         //Find
         this.tarot = GameObject.Find("card").GetComponent<Tarot>();
-        this.storyCard = GameObject.Find("storyCard");
-        this.SCard = GameObject.Find("storyCard").GetComponent<StoryCard>();
         this.GameOverMethod = GameObject.Find("GameOver").GetComponent<GameOverMethod>();
         this.attackMethod = GameObject.Find("AttackMethod").GetComponent<AttackMethod>();
         this.magicMethod = GameObject.Find("MagicMethod").GetComponent<MagicMethod>();
         this.enemyList = GameObject.Find("EnemyList").GetComponent<EnemyList>();
         this.Te0 = GameObject.Find("Te0");
         this.Te1 = GameObject.Find("Te1");
-        this.Te2 = GameObject.Find("Te2");
         this.Te3 = GameObject.Find("Te3");
-
         this.Te4 = GameObject.Find("Te4");
-        this.Te5 = GameObject.Find("Te5");
-        this.Te6 = GameObject.Find("Te6");
-        this.Te7 = GameObject.Find("Te7");
-        this.Style = GameObject.Find("Style");
+        this.TextTMP = GameObject.Find("TextTMP");
 
         this.Audio1 = GameObject.Find("BGM");
-        this.Audio2 = GameObject.Find("BGM1");
-        this.Audio3 = GameObject.Find("BGM2");
-
         this.SE1 = GameObject.Find("attackDamegeSE");
-        this.SE2 = GameObject.Find("criticalSE");
         this.SE3 = GameObject.Find("destroySE");
-        this.SE4 = GameObject.Find("magicAttack1SE");
-        this.SE5 = GameObject.Find("magicAttack2SE");
         this.SE6 = GameObject.Find("magicSE");
         this.SE7 = GameObject.Find("onePointSE");
-        this.SE8 = GameObject.Find("recoverySE");
-
-        this.TextTMP = GameObject.Find("TextTMP");
 
         Audio1.GetComponent<AudioSource>().Play();
     }
@@ -105,7 +75,6 @@ public class All : MonoBehaviour
     public int damage;
     public int eDamage;
     public int cri;
-
     public int enemyNum;
 
     #region コマンドセレクト
