@@ -8,6 +8,7 @@ using Text = UnityEngine.UI.Text;
 public class All : MonoBehaviour
 {
     Tarot tarot;
+    EnemyList enemyList;
     public List<Sprite> images;    //Listｽﾌﾟﾗｲﾄ
     StoryCard SCard;
     GameOverMethod GameOverMethod;
@@ -68,6 +69,7 @@ public class All : MonoBehaviour
         this.GameOverMethod = GameObject.Find("GameOver").GetComponent<GameOverMethod>();
         this.attackMethod = GameObject.Find("AttackMethod").GetComponent<AttackMethod>();
         this.magicMethod = GameObject.Find("MagicMethod").GetComponent<MagicMethod>();
+        this.enemyList = GameObject.Find("EnemyList").GetComponent<EnemyList>();
         this.Te0 = GameObject.Find("Te0");
         this.Te1 = GameObject.Find("Te1");
         this.Te2 = GameObject.Find("Te2");
@@ -96,33 +98,6 @@ public class All : MonoBehaviour
 
         Audio1.GetComponent<AudioSource>().Play();
     }
-
-
-
-    public List<Status> enemys = new List<Status>
-            {
-                new Status {eHp = 50,eAtt = 45 ,eDef=5, eRes = 5, eAgi = 10},　//１騎士
-
-                new Status {eHp = 55,eAtt = 50 ,eDef=15, eRes = 0, eAgi = 10},　//２山賊
-
-                new Status {eHp = 50,eAtt = 50 ,eDef=15, eRes = 5, eAgi = 15},　//３山賊(測)
-
-                new Status {eHp = 55,eAtt = 50 ,eDef=15, eRes = 0, eAgi = 10},　//４山賊
-
-                new Status {eHp = 50,eAtt = 50 ,eDef=15, eRes = 10, eAgi = 15},　//５冒険者
-
-                new Status {eHp = 50,eAtt = 50 ,eDef=15, eRes = 5, eAgi = 15},　//６若者
-
-                new Status {eHp = 60,eAtt = 55 ,eDef=15, eRes = 15, eAgi = 20},　//７屈強な
-
-                new Status {eHp = 60,eAtt = 55 ,eDef=15, eRes = 5, eAgi = 10},　//８正規兵
-
-                new Status {eHp = 55,eAtt = 50 ,eDef=15, eRes = 10, eAgi = 15},　//９傭兵
-
-                new Status {eHp = 60,eAtt = 55 ,eDef=15, eRes = 5, eAgi = 10},　//１０正規兵ら
-
-                new Status {eHp = 40,eAtt = 50 ,eDef=15, eRes = 0, eAgi = 10}　 //１１住人
-            };
 
     public bool battle = false;
     public bool critical = false;
@@ -246,7 +221,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = tarot.attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - enemyList.enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -274,7 +249,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = tarot.attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - enemyList.enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -329,7 +304,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = tarot.attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - enemyList.enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -373,7 +348,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = tarot.attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - enemyList.enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -401,7 +376,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = tarot.attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - enemyList.enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -534,7 +509,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = tarot.attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - enemyList.enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");
@@ -561,7 +536,7 @@ public class All : MonoBehaviour
 
                 await Task.Delay(2000);
 
-                damage = tarot.attack - enemys[enemyNum].eDef;
+                damage = tarot.attack - enemyList.enemys[enemyNum].eDef;
 
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
                 UnityEngine.Debug.Log("チェックポイント");

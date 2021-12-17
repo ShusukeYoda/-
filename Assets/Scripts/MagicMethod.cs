@@ -7,6 +7,7 @@ public class MagicMethod : MonoBehaviour
 {
     All all;
     Tarot tarot;
+    EnemyList enemyList;
     public GameObject TextTMP;
     GameObject SE4;
     GameObject SE6;
@@ -22,6 +23,7 @@ public class MagicMethod : MonoBehaviour
     {
         this.all = GameObject.Find("Main Camera").GetComponent<All>();
         this.tarot = GameObject.Find("card").GetComponent<Tarot>();
+        this.enemyList = GameObject.Find("EnemyList").GetComponent<EnemyList>();
         this.TextTMP = GameObject.Find("TextTMP");
         this.SE4 = GameObject.Find("magicAttack1SE");
         this.SE6 = GameObject.Find("magicSE");
@@ -49,17 +51,17 @@ public class MagicMethod : MonoBehaviour
             tarot.magic -= 5;
             Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            all.eDamage = tarot.mAttack - all.enemys[all.enemyNum].eRes;
-            all.enemys[all.enemyNum].eHp -= all.eDamage;
+            all.eDamage = tarot.mAttack - enemyList.enemys[all.enemyNum].eRes;
+            enemyList.enemys[all.enemyNum].eHp -= all.eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ all.eDamage}ダメージを与えた";
 
             await Task.Delay(2000);
             //与ダメージ
-            all.enemys[all.enemyNum].eHp -= all.eDamage;
+            enemyList.enemys[all.enemyNum].eHp -= all.eDamage;
 
             //倒したとき
-            if (all.enemys[all.enemyNum].eHp <= 0)
+            if (enemyList.enemys[all.enemyNum].eHp <= 0)
             {
                 all.KilledBranch(all.enemyNum);
             }
@@ -88,17 +90,17 @@ public class MagicMethod : MonoBehaviour
             tarot.magic -= 5;
             Te4.GetComponent<Text>().text = tarot.magic.ToString();
 
-            all.eDamage = tarot.mAttack - all.enemys[all.enemyNum].eRes;
-            all.enemys[all.enemyNum].eHp -= all.eDamage;
+            all.eDamage = tarot.mAttack - enemyList.enemys[all.enemyNum].eRes;
+            enemyList.enemys[all.enemyNum].eHp -= all.eDamage;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ all.eDamage}ダメージを与えた";
 
             await Task.Delay(2000);
             //与ダメージ
-            all.enemys[all.enemyNum].eHp -= all.eDamage;
+            enemyList.enemys[all.enemyNum].eHp -= all.eDamage;
 
             //倒したとき
-            if (all.enemys[all.enemyNum].eHp <= 0)
+            if (enemyList.enemys[all.enemyNum].eHp <= 0)
             {
                 all.KilledBranch(all.enemyNum);
             }
@@ -111,7 +113,7 @@ public class MagicMethod : MonoBehaviour
 
             await Task.Delay(2000);
 
-            all.damage = tarot.attack - all.enemys[all.enemyNum].eDef;
+            all.damage = tarot.attack - enemyList.enemys[all.enemyNum].eDef;
 
             TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{all.damage}ダメージを受けた";
             UnityEngine.Debug.Log("チェックポイント");

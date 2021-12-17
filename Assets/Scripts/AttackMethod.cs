@@ -7,6 +7,7 @@ public class AttackMethod : MonoBehaviour
 {
     All all;
     Tarot tarot;
+    EnemyList enemyList;
     public GameObject TextTMP;
     GameObject SE1;
     GameObject SE2;
@@ -19,6 +20,7 @@ public class AttackMethod : MonoBehaviour
     {
         this.all = GameObject.Find("Main Camera").GetComponent<All>();
         this.tarot = GameObject.Find("card").GetComponent<Tarot>();
+        this.enemyList = GameObject.Find("EnemyList").GetComponent<EnemyList>();
         this.TextTMP = GameObject.Find("TextTMP");
         this.SE1 = GameObject.Find("attackDamegeSE");
         this.SE2 = GameObject.Find("criticalSE");
@@ -38,13 +40,13 @@ public class AttackMethod : MonoBehaviour
         {
             all.critical = true;
 
-            all.eDamage = tarot.attack * 2 - all.enemys[all.enemyNum].eDef;
+            all.eDamage = tarot.attack * 2 - enemyList.enemys[all.enemyNum].eDef;
         }
         else
         {
-            all.eDamage = tarot.attack - all.enemys[all.enemyNum].eDef;
+            all.eDamage = tarot.attack - enemyList.enemys[all.enemyNum].eDef;
         }
-        all.damage = all.enemys[all.enemyNum].eAtt - tarot.defense;
+        all.damage = enemyList.enemys[all.enemyNum].eAtt - tarot.defense;
 
         if (all.eDamage < 0)
         {
@@ -55,7 +57,7 @@ public class AttackMethod : MonoBehaviour
             all.damage = 0;
         }
 
-        SwBattlePre(all.damage, all.eDamage, all.enemys[all.enemyNum].eAgi, all.enemys[all.enemyNum].eHp);
+        SwBattlePre(all.damage, all.eDamage, enemyList.enemys[all.enemyNum].eAgi, enemyList.enemys[all.enemyNum].eHp);
     }
 
     public bool destroy = false;
@@ -70,11 +72,11 @@ public class AttackMethod : MonoBehaviour
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{eDamage}ダメージを与えた";
 
                 //与ダメージ
-                all.enemys[all.enemyNum].eHp -= eDamage;
+                enemyList.enemys[all.enemyNum].eHp -= eDamage;
 
                 await Task.Delay(2000);
                 //倒したとき
-                if (all.enemys[all.enemyNum].eHp <= 0)
+                if (enemyList.enemys[all.enemyNum].eHp <= 0)
                 {
                     destroy = true;
                     all.KilledBranch(all.enemyNum);
@@ -90,11 +92,11 @@ public class AttackMethod : MonoBehaviour
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{eDamage}ダメージを与えた";
 
                 //与ダメージ
-                all.enemys[all.enemyNum].eHp -= eDamage;
+                enemyList.enemys[all.enemyNum].eHp -= eDamage;
 
                 await Task.Delay(2000);
                 //倒したとき
-                if (all.enemys[all.enemyNum].eHp <= 0)
+                if (enemyList.enemys[all.enemyNum].eHp <= 0)
                 {
                     destroy = true;
                     all.KilledBranch(all.enemyNum);
@@ -159,11 +161,11 @@ public class AttackMethod : MonoBehaviour
                     TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{eDamage}ダメージを与えた";
 
                     //与ダメージ
-                    all.enemys[all.enemyNum].eHp -= eDamage;
+                    enemyList.enemys[all.enemyNum].eHp -= eDamage;
 
                     await Task.Delay(2000);
                     //倒したとき
-                    if (all.enemys[all.enemyNum].eHp <= 0)
+                    if (enemyList.enemys[all.enemyNum].eHp <= 0)
                     {
                         destroy = true;
                         all.KilledBranch(all.enemyNum);
@@ -175,11 +177,11 @@ public class AttackMethod : MonoBehaviour
                     TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
 
                     //与ダメージ
-                    all.enemys[all.enemyNum].eHp -= eDamage;
+                    enemyList.enemys[all.enemyNum].eHp -= eDamage;
 
                     await Task.Delay(2000);
                     //倒したとき
-                    if (all.enemys[all.enemyNum].eHp <= 0)
+                    if (enemyList.enemys[all.enemyNum].eHp <= 0)
                     {
                         all.KilledBranch(all.enemyNum);
                     }
