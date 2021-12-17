@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MagicMethod : MonoBehaviour
 {
-    All all;
+    CommandSelect all;
     Tarot tarot;
     EnemyList enemyList;
     public GameObject TextTMP;
@@ -16,12 +16,12 @@ public class MagicMethod : MonoBehaviour
     GameObject Te3;
     public GameObject Te4;
     GameOverMethod GameOverMethod;
-
+    KilledBranch killedBranch;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.all = GameObject.Find("Main Camera").GetComponent<All>();
+        this.all = GameObject.Find("Main Camera").GetComponent<CommandSelect>();
         this.tarot = GameObject.Find("card").GetComponent<Tarot>();
         this.enemyList = GameObject.Find("EnemyList").GetComponent<EnemyList>();
         this.TextTMP = GameObject.Find("TextTMP");
@@ -32,7 +32,7 @@ public class MagicMethod : MonoBehaviour
         this.Te3 = GameObject.Find("Te3");
         this.Te4 = GameObject.Find("Te4");
         this.GameOverMethod = GameObject.Find("GameOver").GetComponent<GameOverMethod>();
-
+        this.killedBranch = GameObject.Find("KilledBranch").GetComponent<KilledBranch>();
     }
     public async Task magicAttack()
     {
@@ -63,7 +63,7 @@ public class MagicMethod : MonoBehaviour
             //“|‚µ‚½‚Æ‚«
             if (enemyList.enemys[all.enemyNum].eHp <= 0)
             {
-                all.KilledBranch(all.enemyNum);
+                killedBranch.destroyingBranch(all.enemyNum);
             }
         }
         else
@@ -102,7 +102,7 @@ public class MagicMethod : MonoBehaviour
             //“|‚µ‚½‚Æ‚«
             if (enemyList.enemys[all.enemyNum].eHp <= 0)
             {
-                all.KilledBranch(all.enemyNum);
+                killedBranch.destroyingBranch(all.enemyNum);
             }
         }
         else

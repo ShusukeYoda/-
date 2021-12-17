@@ -3,12 +3,12 @@ using UnityEngine.UI;
 
 public class pullDown : MonoBehaviour
 {
-    All all;
+    CommandSelect all;
     Dropdown ddtmp;
 
     void Start()
     {
-        this.all = GameObject.Find("Main Camera").GetComponent<All>();
+        this.all = GameObject.Find("Main Camera").GetComponent<CommandSelect>();
         this.ddtmp = GameObject.Find("Dropdown").GetComponent<Dropdown>();
     }
     public void pullClick()

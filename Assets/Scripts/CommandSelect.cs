@@ -1,15 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using Text = UnityEngine.UI.Text;
 
-public class All : MonoBehaviour
+public class CommandSelect : MonoBehaviour
 {
     Tarot tarot;
     EnemyList enemyList;
-    public List<Sprite> images;    //Listｽﾌﾟﾗｲﾄ
+    public List<Sprite> images;    
     GameOverMethod GameOverMethod;
     AttackMethod attackMethod;
     MagicMethod magicMethod;
@@ -25,25 +24,8 @@ public class All : MonoBehaviour
     GameObject Audio1;
     //SE
     GameObject SE1;
-    GameObject SE3;
     GameObject SE6;
     GameObject SE7;
-
-
-    //タイマー//0.1秒間隔
-    public float span = 0.1f;
-    public float delta = 0;
-    public int count = 0;
-    //スタートストップ
-    public bool moving = false;
-    public bool one = false;
-
-    //乱数・ボタン３用
-    public int random1;
-    //ストーリー進行num
-    public int sNum;
-    //ストーリー進行bool
-    public bool walk = true;
 
     // Start is called before the first frame update
     void Start()
@@ -62,16 +44,29 @@ public class All : MonoBehaviour
 
         this.Audio1 = GameObject.Find("BGM");
         this.SE1 = GameObject.Find("attackDamegeSE");
-        this.SE3 = GameObject.Find("destroySE");
         this.SE6 = GameObject.Find("magicSE");
         this.SE7 = GameObject.Find("onePointSE");
 
         Audio1.GetComponent<AudioSource>().Play();
     }
 
-    public bool battle = false;
-    public bool critical = false;
+    //タイマー//0.1秒間隔
+    public float span = 0.1f;
+    public float delta = 0;
+    public int count = 0;
+    //スタートストップ
+    public bool moving = false;
+    public bool one = false;
 
+    //乱数・ボタン３用
+    public int random1;
+    //ストーリー進行num
+    public int sNum;
+    //ストーリー進行bool
+    public bool walk = true;
+    public bool battle = false;
+
+    public bool critical = false;
     public int damage;
     public int eDamage;
     public int cri;
@@ -675,76 +670,5 @@ public class All : MonoBehaviour
 
             walk = true;
         }
-    }
-
-
-
-
-    public bool KilledBranch(int enemyNum)
-    {
-        SE3.GetComponent<AudioSource>().Play();
-
-        StartCoroutine(GoToCoroutine());
-        IEnumerator GoToCoroutine()
-        {
-            yield return new WaitForSeconds(2);
-        }
-
-        if (enemyNum == 0)
-        {
-            var textAsset = Resources.Load("battle2") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-
-        if (enemyNum == 1 || enemyNum == 3)
-        {
-            var textAsset = Resources.Load("battle7.11") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-        if (enemyNum == 2)
-        {
-            var textAsset = Resources.Load("battle9") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-        if (enemyNum == 4)
-        {
-            var textAsset = Resources.Load("battle13") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-        if (enemyNum == 5)
-        {
-            var textAsset = Resources.Load("battle15") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-        if (enemyNum == 6)
-        {
-            var textAsset = Resources.Load("battle17") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-        if (enemyNum == 7)
-        {
-            var textAsset = Resources.Load("battle18") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-        if (enemyNum == 8)
-        {
-            var textAsset = Resources.Load("battle19") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-        if (enemyNum == 9)
-        {
-            var textAsset = Resources.Load("battle20") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-        if (enemyNum == 10)
-        {
-            var textAsset = Resources.Load("battle21") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-
-        walk = true;
-        battle = false;
-
-        return battle == false;
     }
 }

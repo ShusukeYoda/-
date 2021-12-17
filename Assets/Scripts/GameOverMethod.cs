@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameOverMethod : MonoBehaviour
 {
-    All all;
+    CommandSelect all;
     Tarot tarot;
     public GameObject Te0;
     GameObject Audio1;
@@ -17,7 +17,7 @@ public class GameOverMethod : MonoBehaviour
 
     void Start()
     {
-        this.all = GameObject.Find("Main Camera").GetComponent<All>();
+        this.all = GameObject.Find("Main Camera").GetComponent<CommandSelect>();
         this.tarot = GameObject.Find("card").GetComponent<Tarot>();
         this.Te0 = GameObject.Find("Te0");
         this.Audio1 = GameObject.Find("BGM");

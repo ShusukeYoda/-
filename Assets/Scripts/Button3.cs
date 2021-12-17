@@ -5,7 +5,7 @@ using Image = UnityEngine.UI.Image;
 
 public class Button3 : MonoBehaviour
 {
-    All all;
+    CommandSelect all;
     StoryCard SCard;
     GameObject storyCard;
     GameObject TextTMP;
@@ -17,7 +17,7 @@ public class Button3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.all = GameObject.Find("Main Camera").GetComponent<All>();
+        this.all = GameObject.Find("Main Camera").GetComponent<CommandSelect>();
         this.SCard = GameObject.Find("storyCard").GetComponent<StoryCard>();
         this.storyCard = GameObject.Find("storyCard");
         this.TextTMP = GameObject.Find("TextTMP");
@@ -34,8 +34,8 @@ public class Button3 : MonoBehaviour
     {
         if (all.one && all.walk)
         {
-            //random1 = UnityEngine.Random.Range(1, 4);
-            int random1 = 2;   //ストーリーcardデバッグ用
+            random1 = UnityEngine.Random.Range(1, 4);
+            //int random1 = 2;   //ストーリーcardデバッグ用
             all.sNum += random1;
 
             if (all.sNum <= 21 && all.walk)

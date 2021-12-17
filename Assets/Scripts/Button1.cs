@@ -6,7 +6,7 @@ public class Button1 : MonoBehaviour
     GameObject card;
     GameObject SE9;
     GameObject SE10;
-    All all;
+    CommandSelect all;
     Tarot tarot;
 
     Button button;
@@ -17,7 +17,7 @@ public class Button1 : MonoBehaviour
         this.SE9 = GameObject.Find("shaffleSE");
         this.SE10 = GameObject.Find("tarot&StartSE");
         //ƒNƒ‰ƒX‚ğæ“¾‚·‚é‘‚«•û
-        this.all = GameObject.Find("Main Camera").GetComponent<All>();
+        this.all = GameObject.Find("Main Camera").GetComponent<CommandSelect>();
 
         
         button = GetComponent<Button>();

@@ -3,14 +3,14 @@ using UnityEngine.UI;
 
 public class Button2 : MonoBehaviour
 {
-    All all;
+    CommandSelect all;
     GameObject SE11;
     Button button;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.all = GameObject.Find("Main Camera").GetComponent<All>();
+        this.all = GameObject.Find("Main Camera").GetComponent<CommandSelect>();
         this.SE11 = GameObject.Find("cardStopSE");
 
         button = GetComponent<Button>();

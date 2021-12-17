@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class AttackMethod : MonoBehaviour
 {
-    All all;
+    CommandSelect CSelect;
     Tarot tarot;
     EnemyList enemyList;
     public GameObject TextTMP;
@@ -13,12 +13,12 @@ public class AttackMethod : MonoBehaviour
     GameObject SE2;
     public GameObject Te0;
     GameOverMethod GameOverMethod;
-
+    KilledBranch killedBranch;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.all = GameObject.Find("Main Camera").GetComponent<All>();
+        this.CSelect = GameObject.Find("Main Camera").GetComponent<CommandSelect>();
         this.tarot = GameObject.Find("card").GetComponent<Tarot>();
         this.enemyList = GameObject.Find("EnemyList").GetComponent<EnemyList>();
         this.TextTMP = GameObject.Find("TextTMP");
@@ -26,38 +26,38 @@ public class AttackMethod : MonoBehaviour
         this.SE2 = GameObject.Find("criticalSE");
         this.Te0 = GameObject.Find("Te0");
         this.GameOverMethod = GameObject.Find("GameOver").GetComponent<GameOverMethod>();
-
+        this.killedBranch = GameObject.Find("KilledBranch").GetComponent<KilledBranch>();
     }
     public void Attack()
     {
-        var textAsset = Resources.Load($"斬りつける{all.sNum}") as TextAsset;
+        var textAsset = Resources.Load($"斬りつける{CSelect.sNum}") as TextAsset;
         TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
 
         //battle
-        all.battle = true;
+        CSelect.battle = true;
 
-        if (all.cri <= tarot.luck)
+        if (CSelect.cri <= tarot.luck)
         {
-            all.critical = true;
+            CSelect.critical = true;
 
-            all.eDamage = tarot.attack * 2 - enemyList.enemys[all.enemyNum].eDef;
+            CSelect.eDamage = tarot.attack * 2 - enemyList.enemys[CSelect.enemyNum].eDef;
         }
         else
         {
-            all.eDamage = tarot.attack - enemyList.enemys[all.enemyNum].eDef;
+            CSelect.eDamage = tarot.attack - enemyList.enemys[CSelect.enemyNum].eDef;
         }
-        all.damage = enemyList.enemys[all.enemyNum].eAtt - tarot.defense;
+        CSelect.damage = enemyList.enemys[CSelect.enemyNum].eAtt - tarot.defense;
 
-        if (all.eDamage < 0)
+        if (CSelect.eDamage < 0)
         {
-            all.eDamage = 0;
+            CSelect.eDamage = 0;
         }
-        if (all.damage < 0)
+        if (CSelect.damage < 0)
         {
-            all.damage = 0;
+            CSelect.damage = 0;
         }
 
-        SwBattlePre(all.damage, all.eDamage, enemyList.enemys[all.enemyNum].eAgi, enemyList.enemys[all.enemyNum].eHp);
+        SwBattlePre(CSelect.damage, CSelect.eDamage, enemyList.enemys[CSelect.enemyNum].eAgi, enemyList.enemys[CSelect.enemyNum].eHp);
     }
 
     public bool destroy = false;
@@ -65,21 +65,21 @@ public class AttackMethod : MonoBehaviour
     {
         if (tarot.agility >= eAgi)
         {
-            if (all.critical)
+            if (CSelect.critical)
             {
                 SE2.GetComponent<AudioSource>().Play();
-                all.critical = false;
+                CSelect.critical = false;
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{eDamage}ダメージを与えた";
 
                 //与ダメージ
-                enemyList.enemys[all.enemyNum].eHp -= eDamage;
+                enemyList.enemys[CSelect.enemyNum].eHp -= eDamage;
 
                 await Task.Delay(2000);
                 //倒したとき
-                if (enemyList.enemys[all.enemyNum].eHp <= 0)
+                if (enemyList.enemys[CSelect.enemyNum].eHp <= 0)
                 {
                     destroy = true;
-                    all.KilledBranch(all.enemyNum);
+                    killedBranch.destroyingBranch(CSelect.enemyNum);
                 }
                 if (destroy == false)
                 {
@@ -92,14 +92,14 @@ public class AttackMethod : MonoBehaviour
                 TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{eDamage}ダメージを与えた";
 
                 //与ダメージ
-                enemyList.enemys[all.enemyNum].eHp -= eDamage;
+                enemyList.enemys[CSelect.enemyNum].eHp -= eDamage;
 
                 await Task.Delay(2000);
                 //倒したとき
-                if (enemyList.enemys[all.enemyNum].eHp <= 0)
+                if (enemyList.enemys[CSelect.enemyNum].eHp <= 0)
                 {
                     destroy = true;
-                    all.KilledBranch(all.enemyNum);
+                    killedBranch.destroyingBranch(CSelect.enemyNum);
                 }
                 if (destroy == false)
                 {
@@ -114,7 +114,7 @@ public class AttackMethod : MonoBehaviour
             Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
             //被ダメージ
-            tarot.hitP -= all.damage;
+            tarot.hitP -= CSelect.damage;
             Te0.GetComponent<Text>().text = tarot.hitP.ToString();
 
             if (tarot.hitP <= 0)
@@ -154,21 +154,21 @@ public class AttackMethod : MonoBehaviour
             }
             else if (tarot.agility < eAgi)
             {
-                if (all.critical)
+                if (CSelect.critical)
                 {
                     SE2.GetComponent<AudioSource>().Play();
-                    all.critical = false;
+                    CSelect.critical = false;
                     TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{eDamage}ダメージを与えた";
 
                     //与ダメージ
-                    enemyList.enemys[all.enemyNum].eHp -= eDamage;
+                    enemyList.enemys[CSelect.enemyNum].eHp -= eDamage;
 
                     await Task.Delay(2000);
                     //倒したとき
-                    if (enemyList.enemys[all.enemyNum].eHp <= 0)
+                    if (enemyList.enemys[CSelect.enemyNum].eHp <= 0)
                     {
                         destroy = true;
-                        all.KilledBranch(all.enemyNum);
+                        killedBranch.destroyingBranch(CSelect.enemyNum);
                     }
                 }
                 else
@@ -177,13 +177,13 @@ public class AttackMethod : MonoBehaviour
                     TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
 
                     //与ダメージ
-                    enemyList.enemys[all.enemyNum].eHp -= eDamage;
+                    enemyList.enemys[CSelect.enemyNum].eHp -= eDamage;
 
                     await Task.Delay(2000);
                     //倒したとき
-                    if (enemyList.enemys[all.enemyNum].eHp <= 0)
+                    if (enemyList.enemys[CSelect.enemyNum].eHp <= 0)
                     {
-                        all.KilledBranch(all.enemyNum);
+                        killedBranch.destroyingBranch(CSelect.enemyNum);
                     }
                 }
             }
