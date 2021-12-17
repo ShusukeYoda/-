@@ -5,6 +5,8 @@ public class Button2 : MonoBehaviour
 {
     CommandSelect all;
     GameObject SE11;
+
+    [SerializeField]
     Button button;
 
     // Start is called before the first frame update
@@ -15,7 +17,7 @@ public class Button2 : MonoBehaviour
 
         button = GetComponent<Button>();
         //ボタンを押下したときのリスナーを設定
-        button.onClick.AddListener(() => StopClick());
+        button.onClick.AddListener(StopClick);
     }
 
     public void StopClick()

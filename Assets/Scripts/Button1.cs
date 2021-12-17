@@ -9,6 +9,7 @@ public class Button1 : MonoBehaviour
     CommandSelect all;
     Tarot tarot;
 
+    [SerializeField]
     Button button;
     void Start()
     {
@@ -22,7 +23,7 @@ public class Button1 : MonoBehaviour
         
         button = GetComponent<Button>();
         //ボタンを押下したときのリスナーを設定
-        button.onClick.AddListener(() => StartClick());
+        button.onClick.AddListener(StartClick);
         
     }
     public void StartClick()

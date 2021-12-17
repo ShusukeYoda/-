@@ -12,6 +12,8 @@ public class Button3 : MonoBehaviour
     GameObject SE10;
     GameObject Audio1;
     GameObject Audio3;
+
+    [SerializeField]
     Button button;
 
     // Start is called before the first frame update
@@ -27,7 +29,7 @@ public class Button3 : MonoBehaviour
 
         button = GetComponent<Button>();
         //ボタンを押下したときのリスナーを設定
-        button.onClick.AddListener(() => StoryClick());
+        button.onClick.AddListener(StoryClick);
     }
     int random1;
     public void StoryClick()
