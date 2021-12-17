@@ -328,7 +328,11 @@ MonoBehaviour:
   random1: 0
   sNum: 0
   walk: 1
+  battle: 0
+  critical: 0
   damage: 0
+  eDamage: 0
+  cri: 0
   enemyNum: 0
 --- !u!1 &106125325
 GameObject:
@@ -434,7 +438,11 @@ MonoBehaviour:
   random1: 0
   sNum: 0
   walk: 1
+  battle: 0
+  critical: 0
   damage: 0
+  eDamage: 0
+  cri: 0
   enemyNum: 0
 --- !u!1 &143779979
 GameObject:
@@ -1727,6 +1735,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343066110}
   m_CullTransparentMesh: 1
+--- !u!1 &351555133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 351555134}
+  - component: {fileID: 351555135}
+  m_Layer: 0
+  m_Name: MagicMethod
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &351555134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351555133}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1918.2671, y: 369.91486, z: -264.62247}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &351555135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351555133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16cfa4c0c542cb0469d0feba330ba30e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextTMP: {fileID: 0}
+  Te0: {fileID: 0}
+  Te4: {fileID: 0}
 --- !u!1 &353767094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,7 +1885,11 @@ MonoBehaviour:
   random1: 0
   sNum: 0
   walk: 1
+  battle: 0
+  critical: 0
   damage: 0
+  eDamage: 0
+  cri: 0
   enemyNum: 0
 --- !u!1 &408383075
 GameObject:
@@ -2479,7 +2537,11 @@ MonoBehaviour:
   random1: 0
   sNum: 0
   walk: 1
+  battle: 0
+  critical: 0
   damage: 0
+  eDamage: 0
+  cri: 0
   enemyNum: 0
 --- !u!82 &519420034
 AudioSource:
@@ -4564,7 +4626,11 @@ MonoBehaviour:
   random1: 0
   sNum: 0
   walk: 1
+  battle: 0
+  critical: 0
   damage: 0
+  eDamage: 0
+  cri: 0
   enemyNum: 0
 --- !u!1 &1128818572
 GameObject:
@@ -4801,7 +4867,11 @@ MonoBehaviour:
   random1: 0
   sNum: 0
   walk: 1
+  battle: 0
+  critical: 0
   damage: 0
+  eDamage: 0
+  cri: 0
   enemyNum: 0
 --- !u!1 &1235806347
 GameObject:
@@ -5524,7 +5594,11 @@ MonoBehaviour:
   random1: 0
   sNum: 0
   walk: 1
+  battle: 0
+  critical: 0
   damage: 0
+  eDamage: 0
+  cri: 0
   enemyNum: 0
 --- !u!1 &1378341528
 GameObject:
@@ -5757,7 +5831,11 @@ MonoBehaviour:
   random1: 0
   sNum: 0
   walk: 1
+  battle: 0
+  critical: 0
   damage: 0
+  eDamage: 0
+  cri: 0
   enemyNum: 0
 --- !u!1 &1450911870
 GameObject:
@@ -6026,7 +6104,11 @@ MonoBehaviour:
   random1: 0
   sNum: 0
   walk: 1
+  battle: 0
+  critical: 0
   damage: 0
+  eDamage: 0
+  cri: 0
   enemyNum: 0
 --- !u!1 &1681810888
 GameObject:
@@ -6299,7 +6381,11 @@ MonoBehaviour:
   random1: 0
   sNum: 0
   walk: 1
+  battle: 0
+  critical: 0
   damage: 0
+  eDamage: 0
+  cri: 0
   enemyNum: 0
 --- !u!1 &1741911431
 GameObject:
@@ -6330,6 +6416,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac19bd0ed5512b478958ba02b9cb32e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TextTMP: {fileID: 0}
+  Te0: {fileID: 0}
+  destroy: 0
 --- !u!4 &1741911433
 Transform:
   m_ObjectHideFlags: 0

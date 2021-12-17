@@ -1,20 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Resources;
-using System.Text;
 using System.Threading.Tasks;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
-using static System.Net.Mime.MediaTypeNames;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
-using Debug = UnityEngine.Debug;
-using Image = UnityEngine.UI.Image;
 using Text = UnityEngine.UI.Text;
 
 public class All : MonoBehaviour
@@ -24,6 +12,7 @@ public class All : MonoBehaviour
     StoryCard SCard;
     GameOverMethod GameOverMethod;
     AttackMethod attackMethod;
+    MagicMethod magicMethod;
 
     //オブジェクト
     GameObject storyCard;
@@ -78,6 +67,7 @@ public class All : MonoBehaviour
         this.SCard = GameObject.Find("storyCard").GetComponent<StoryCard>();
         this.GameOverMethod = GameObject.Find("GameOver").GetComponent<GameOverMethod>();
         this.attackMethod = GameObject.Find("AttackMethod").GetComponent<AttackMethod>();
+        this.magicMethod = GameObject.Find("MagicMethod").GetComponent<MagicMethod>();
         this.Te0 = GameObject.Find("Te0");
         this.Te1 = GameObject.Find("Te1");
         this.Te2 = GameObject.Find("Te2");
@@ -168,7 +158,7 @@ public class All : MonoBehaviour
             }
             if (command == 2 && walk == false)
             {
-                await magicAttack2();
+                await magicMethod.magicAttack();
             }
             if (command == 3 && battle != true)
             {
@@ -206,7 +196,7 @@ public class All : MonoBehaviour
             }
             if (command == 2 && walk == false)
             {
-                magic1Method();
+                magicMethod.magic1Method();
             }
             if (command == 3 && walk == false)
             {
@@ -234,7 +224,7 @@ public class All : MonoBehaviour
             }
             if (command == 2 && walk == false)
             {
-                magic6();
+                magicMethod.magic6();
             }
             if (command == 3 && walk == false)
             {
@@ -272,7 +262,7 @@ public class All : MonoBehaviour
             }
             if (command == 2 && walk == false)
             {
-                await magic7Attack();
+                await magicMethod.magicAttackExistsRisk();
             }
             if (command == 3 && battle == false ||
                 command == 3 && walk == false)
@@ -315,7 +305,7 @@ public class All : MonoBehaviour
             }
             if (command == 2 && walk == false)
             {
-                magic8();
+                magicMethod.magic8();
             }
             if (command == 3 && walk == false)
             {
@@ -356,7 +346,7 @@ public class All : MonoBehaviour
             if (command == 2 && battle != true ||
                 command == 2 && walk == false)
             {
-                await magic9Attack();
+                await magicMethod.magicAttack();
 
             }
             if (command == 3 && battle != true)
@@ -398,7 +388,7 @@ public class All : MonoBehaviour
             }
             if (command == 2 && walk == false)
             {
-                await magic11Attack();
+                await magicMethod.magicAttackExistsRisk();
 
             }
             if (command == 3 && walk == false)
@@ -443,7 +433,7 @@ public class All : MonoBehaviour
             }
             if (command == 2 && walk == false)
             {
-                await magic13Attack();
+                await magicMethod.magicAttack();
 
             }
             if (command == 3 && battle != true)
@@ -467,7 +457,7 @@ public class All : MonoBehaviour
             }
             if (command== 2 && walk == false)
             {
-                magicRecovery();
+                magicMethod.magicRecovery();
             }
             if (command== 3 && walk == false)
             {
@@ -494,7 +484,7 @@ public class All : MonoBehaviour
             }
             if (command == 2 && walk == false)
             {
-                magicSleep();
+                magicMethod.magicSleep();
             }
             if (command == 3 && battle != true)
             {
@@ -522,7 +512,7 @@ public class All : MonoBehaviour
             }
             if (command == 2 && walk == false)
             {
-                magic1Method();
+                magicMethod.magic1Method();
             }
             if (command == 3 && walk == false)
             {
@@ -559,7 +549,7 @@ public class All : MonoBehaviour
             }
             if (command == 2 && walk == false)
             {
-                await magic17Attack();
+                await magicMethod.magicAttackExistsRisk();
 
             }
             if (command == 3 && battle != true)
@@ -599,7 +589,7 @@ public class All : MonoBehaviour
             }
             if (command == 2 && walk == false)
             {
-                await magic18Attack();
+                await magicMethod.magicAttack();
 
             }
             if (command == 3 && battle != true)
@@ -625,7 +615,7 @@ public class All : MonoBehaviour
             }
             if (command == 2 && walk == false)
             {
-                magicInvisible();
+                magicMethod.magicInvisible();
             }
             if (command == 3 && battle != true)
             {
@@ -651,7 +641,7 @@ public class All : MonoBehaviour
             }
             if (command == 2 && walk == false)
             {
-                await magic20Attack();
+                await magicMethod.magicAttack();
 
             }
 
@@ -685,11 +675,11 @@ public class All : MonoBehaviour
 
             if (command == 2 && battle != true)
             {
-                magic21();
+                magicMethod.magic21();
             }
             if (command == 2 && walk == false && battle == true)
             {
-                await magic21Attack();
+                await magicMethod.magicAttack();
 
             }
             if (command == 3 && battle != true ||
@@ -732,7 +722,7 @@ public class All : MonoBehaviour
         }
         if (command== 2 && walk == false)
         {
-            magic1Method();
+            magicMethod.magic1Method();
         }
         if (command== 3 && walk == false)
         {
@@ -744,545 +734,7 @@ public class All : MonoBehaviour
     }
 
 
-    private async Task magic21Attack()
-    {
-        if (tarot.magic >= 5)
-        {
-            SE4.GetComponent<AudioSource>().Play();
 
-            var textAsset = Resources.Load("魔法を使う21") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-            battle = true;
-
-            await Task.Delay(2000);
-
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
-
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
-
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
-
-            //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
-
-            //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
-            {
-                KilledBranch(enemyNum);
-            }
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-    }
-
-    private void magic21()
-    {
-        if (tarot.magic >= 5)
-        {
-            var textAsset = Resources.Load("魔法を使う21b") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-    }
-
-    private async Task magic20Attack()
-    {
-        if (tarot.magic >= 5)
-        {
-            SE4.GetComponent<AudioSource>().Play();
-
-            var textAsset = Resources.Load("魔法を使う20") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-            battle = true;
-
-            await Task.Delay(2000);
-
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
-
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
-
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
-
-            //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
-
-            //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
-            {
-                KilledBranch(enemyNum);
-            }
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-    }
-
-    private void magicInvisible()
-    {
-        if (tarot.magic >= 5)
-        {
-            SE6.GetComponent<AudioSource>().Play();
-
-            var textAsset = Resources.Load("魔法を使う19") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
-
-            walk = true;
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-    }
-
-    private async Task magic18Attack()
-    {
-        if (tarot.magic >= 5)
-        {
-            SE4.GetComponent<AudioSource>().Play();
-
-            var textAsset = Resources.Load("魔法を使う18") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-            battle = true;
-
-            await Task.Delay(2000);
-
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
-
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
-
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
-
-            //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
-
-            //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
-            {
-                KilledBranch(enemyNum);
-            }
-
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-    }
-
-    private async Task magic17Attack()
-    {
-        if (tarot.magic >= 5)
-        {
-            SE4.GetComponent<AudioSource>().Play();
-
-            var textAsset = Resources.Load("魔法を使う17") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-            battle = true;
-
-            await Task.Delay(2000);
-
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
-
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
-
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
-
-            //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
-
-            //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
-            {
-                KilledBranch(enemyNum);
-            }
-
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う17b") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-            await Task.Delay(2000);
-
-            damage = tarot.attack - enemys[enemyNum].eDef;
-
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
-
-            await GameOverMethod.PreGameOver();
-            await Task.Delay(2000);
-        }
-    }
-
-    private void magicSleep()
-    {
-        if (tarot.magic >= 5)
-        {
-            SE6.GetComponent<AudioSource>().Play();
-
-            var textAsset = Resources.Load("魔法を使う15") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
-
-            walk = true;
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-    }
-
-    private void magicRecovery()
-    {
-        if (tarot.magic >= 5)
-        {
-            SE8.GetComponent<AudioSource>().Play();
-
-            var textAsset = Resources.Load("魔法を使う14") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-            tarot.magic -= 5;
-            tarot.hitP += 10;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
-            Te0.GetComponent<Text>().text = tarot.hitP.ToString();
-
-            walk = true;
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-    }
-
-    private async Task magic13Attack()
-    {
-        if (tarot.magic >= 5)
-        {
-            SE4.GetComponent<AudioSource>().Play();
-
-            var textAsset = Resources.Load("魔法を使う13") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-            battle = true;
-
-            await Task.Delay(2000);
-
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
-
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
-
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
-
-            //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
-
-            //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
-            {
-                KilledBranch(enemyNum);
-            }
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-    }
-
-    private async Task magic11Attack()
-    {
-        if (tarot.magic >= 5)
-        {
-            SE4.GetComponent<AudioSource>().Play();
-
-            var textAsset = Resources.Load("魔法を使う11") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-            battle = true;
-
-            await Task.Delay(2000);
-
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
-
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
-
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
-
-            //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
-
-            //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
-            {
-                KilledBranch(enemyNum);
-            }
-
-            await Task.Delay(2000);
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う11b") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-            await Task.Delay(2000);
-
-            damage = tarot.attack - enemys[enemyNum].eDef;
-
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
-
-            await GameOverMethod.PreGameOver();
-            await Task.Delay(2000);
-        }
-    }
-
-    private async Task magic9Attack()
-    {
-        if (tarot.magic >= 5)
-        {
-            SE4.GetComponent<AudioSource>().Play();
-
-            var textAsset = Resources.Load("魔法を使う9a") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-            battle = true;
-
-            await Task.Delay(2000);
-
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
-
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
-
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
-
-            //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
-
-            //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
-            {
-                KilledBranch(enemyNum);
-            }
-
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う9b") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-            battle = true;
-        }
-    }
-
-    private void magic8()
-    {
-        if (tarot.magic >= 5)
-        {
-            var textAsset = Resources.Load("魔法を使う8") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-    }
-
-    private async Task magic7Attack()
-    {
-        if (tarot.magic >= 5)
-        {
-            SE4.GetComponent<AudioSource>().Play();
-
-            var textAsset = Resources.Load("魔法を使う7") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-            await Task.Delay(2000);
-
-            tarot.magic -= 5;
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
-
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
-
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
-
-            //与ダメージ
-            enemys[enemyNum].eHp -= eDamage;
-
-            //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
-            {
-                KilledBranch(enemyNum);
-            }
-
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う7b") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-
-            await Task.Delay(2000);
-
-            damage = tarot.attack - enemys[0].eDef;
-
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{damage}ダメージを受けた";
-            UnityEngine.Debug.Log("チェックポイント");
-            //
-
-            await GameOverMethod.PreGameOver();
-            await Task.Delay(2000);
-        }
-    }
-
-    private void magic6()
-    {
-        if (tarot.magic >= 5)
-        {
-            var textAsset = Resources.Load("魔法を使う6") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-    }
-
-    private async Task magicAttack2()
-    {
-        if (tarot.magic >= 5)//magic >= 5 debug
-        {
-            SE4.GetComponent<AudioSource>().Play();
-
-            //mp消費
-            tarot.magic -= 5;
-            Te4.GetComponent<UnityEngine.UI.Text>().text = tarot.magic.ToString();
-
-            var textAsset = Resources.Load("魔法を使う2") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-            //バトルフラグ
-            battle = true;
-            //2秒待ち
-            await Task.Delay(2000);
-
-            //与ダメ
-            eDamage = tarot.mAttack - enemys[enemyNum].eRes;
-            enemys[enemyNum].eHp -= eDamage;
-
-            if (eDamage < 0)
-            {
-                eDamage = 0;
-            }
-
-            TextTMP.GetComponent<TextMeshProUGUI>().text = $"\n{ eDamage}ダメージを与えた";
-
-            await Task.Delay(1000);
-
-            //倒したとき
-            if (enemys[enemyNum].eHp <= 0)
-            {
-                KilledBranch(enemyNum);
-            }
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-    }
-
-    private void magic1Method()
-    {
-        if (tarot.magic >= 5)
-        {
-            SE8.GetComponent<AudioSource>().Play();
-
-            var textAsset = Resources.Load("魔法を使う1") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-
-            tarot.magic -= 5;
-            tarot.luck += 5;
-
-            Te4.GetComponent<Text>().text = tarot.magic.ToString();
-            Te3.GetComponent<Text>().text = tarot.luck.ToString();
-            /*
-            magic -= 5;     //UIテスト
-            Te4.GetComponent<Text>().text = magic.ToString();
-            UnityEngine.Debug.Log(magic);
-            */
-            walk = true;
-        }
-        else
-        {
-            var textAsset = Resources.Load("魔法を使う0") as TextAsset;
-            TextTMP.GetComponent<TextMeshProUGUI>().text = textAsset.ToString();
-        }
-    }
 
     public bool KilledBranch(int enemyNum)
     {
