@@ -29,7 +29,7 @@ class Tarot : MonoBehaviour
         this.Te5 = GameObject.Find("Te5").GetComponent<Text>();
         this.Te6 = GameObject.Find("Te6").GetComponent<Text>();
         this.Te7 = GameObject.Find("Te7").GetComponent<Text>();
-        this.Style = GameObject.Find("Style").GetComponent<Text>();
+        this.Style = GameObject.Find("displayPlayerStyle").GetComponent<Text>();
     }
     public int attack;
     public int defense;
