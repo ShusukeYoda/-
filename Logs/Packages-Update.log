@@ -1,0 +1,14 @@
+
+=== Sat Dec 18 22:31:19 2021
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were 更新済:
+  com.unity.2d.animation をバージョン 6.0.5 から 7.0.2 へ
+  com.unity.2d.psdimporter をバージョン 5.0.4 から 6.0.1 へ
+  com.unity.2d.spriteshape をバージョン 6.0.1 から 7.0.3 へ
+  com.unity.2d.tilemap.extras をバージョン 2.2.0 から 2.2.1 へ
+  com.unity.collab-proxy をバージョン 1.13.5 から 1.15.4 へ
+  com.unity.timeline をバージョン 1.5.7 から 1.6.3 へ
+  com.unity.visualscripting をバージョン 1.6.1 から 1.7.6 へ
